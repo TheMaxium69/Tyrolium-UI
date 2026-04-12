@@ -15,7 +15,8 @@
     "target": "ES2022",
     "module": "preserve",
     "paths": {
-      "tyrolium-ui": ["./dist/tyrolium-ui"]
+      //      "tyrolium-ui": ["./dist/tyrolium-ui"]
+      "tyrolium-ui": ["./projects/tyrolium-ui/src/public-api.ts"]
     }
   },
   "angularCompilerOptions": {
