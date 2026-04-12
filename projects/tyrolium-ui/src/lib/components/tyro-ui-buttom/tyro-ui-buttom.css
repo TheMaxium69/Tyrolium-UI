@@ -1,0 +1,22 @@
+button{
+  border: none;
+  background: none;
+  padding: 20px;
+  margin: 20px;
+  font: inherit;
+  color: inherit;
+  cursor: pointer;
+  outline: none;
+  text-align: center;
+  border-radius: 10px;
+}
+
+#primary{
+  background-color: #0024ff;
+  color: #ffffff;
+}
+
+#secondary{
+  background-color: #ff0027;
+  color: #000000;
+}
