@@ -1,0 +1,91 @@
+<nav>
+  <div class="nav-right">
+    <img src="" alt="Logo" class="nav-logo">
+    <div class="nav-info">
+      <span class="nav-group">Tyrolium</span>
+      <span class="nav-name">SolidServ</span>
+    </div>
+  </div>
+
+  <div class="nav-center">
+    <a href="#" class="nav-link">Page 1</a>
+    <a href="#" class="nav-link">Page 2</a>
+    <a href="#" class="nav-link">Page 3</a>
+  </div>
+
+
+  <div class="nav-left">
+    <i class="nav-icon"></i>
+    <i class="nav-icon"></i>
+    <i class="nav-icon"></i>
+  </div>
+</nav>
+
+<style>
+  nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+    background-color: #fff;
+    border-bottom: 1px solid #e5e7eb;
+  }
+
+  .nav-right {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .nav-logo {
+    width: 40px;
+    height: 40px;
+    object-fit: contain;
+  }
+
+  .nav-info {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .nav-group {
+    font-size: 0.7rem;
+    color: #6b7280;
+    font-weight: 400;
+  }
+
+  .nav-name {
+    font-size: 1.125rem;
+    color: #111827;
+    font-weight: 600;
+  }
+
+  .nav-center {
+    display: flex;
+    gap: 2rem;
+  }
+
+  .nav-link {
+    text-decoration: none;
+    color: #4b5563;
+    font-size: 0.95rem;
+    font-weight: 500;
+    transition: color 0.2s;
+  }
+
+  .nav-link:hover {
+    color: #111827;
+  }
+
+  .nav-left {
+    display: flex;
+    gap: 1rem;
+  }
+
+  .nav-icon {
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+    color: #4b5563;
+  }
+</style>
