@@ -17,7 +17,7 @@ export class App {
    * */
 
   public APP_ENV = 'DEV';
-  public PROJECT_NAME = 'SolidServ';
+  public PROJECT_NAME = 'TyroServ';
 
   public pages: ITyroUiNavbarPages[] = [
     { label: 'Accueil', link: '/' },

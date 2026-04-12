@@ -1,6 +1,6 @@
 <nav>
   <div class="nav-right">
-    <img src="https://tyrolium.fr/Contenu/Image/SolidServ Site.png" alt="Logo" class="nav-logo">
+    <img src="https://tyrolium.fr/Contenu/Image/Tyrolium%20ServerMC%20Sword%203D.png" alt="Logo" class="nav-logo">
     <div class="nav-info">
       @if (project == "Tyrolium") {
         <span class="nav-name-main title">Tyrolium</span>
@@ -17,13 +17,71 @@
     }
   </div>
 
-
   <div class="nav-left">
     <i class="nav-icon ri-translate-2"></i>
     <i class="nav-icon ri-user-fill"></i>
-    <i class="nav-icon ri-function-fill"></i>
+
+    <!-- Wrapper pour le close-on-outside-click -->
+    <div class="nav-menu-wrapper">
+      <i class="nav-icon ri-function-fill" (click)="toggleMenu()"></i>
+
+      @if (menuOpen) {
+        <div class="app-menu">
+
+          <!-- Section épinglée sans titre -->
+          <div class="app-menu-pinned">
+            <a [routerLink]="pinnedApp.link" class="app-menu-row pinned" (click)="menuOpen = false">
+              <div class="app-row-icon" [style.background]="pinnedApp.iconBg">
+                <img [src]="pinnedApp.image" [alt]="pinnedApp.name" class="app-row-img">
+              </div>
+              <div class="app-row-info">
+                <span class="app-row-name">{{ pinnedApp.name }}</span>
+                <span class="app-row-desc">{{ pinnedApp.description }}</span>
+              </div>
+            </a>
+          </div>
+
+          <!-- Catégories -->
+          @for (cat of categories; track cat.label) {
+            <div class="app-menu-section">
+              <button class="app-menu-section-header" (click)="toggleCategory(cat)">
+                <span class="section-label">{{ cat.label }}</span>
+                <i class="ri-arrow-down-s-line section-chevron" [class.open]="cat.open"></i>
+              </button>
+
+              @if (cat.open) {
+                <div class="app-menu-section-body">
+                  @for (item of getVisibleItems(cat.items); track item.name) {
+                    <a [routerLink]="item.link"
+                       class="app-menu-row"
+                       [class.app-menu-row--sub]="item.isSubItem"
+                       (click)="menuOpen = false">
+                      <div class="app-row-icon" [style.background]="item.iconBg">
+                        <img [src]="item.image" [alt]="item.name" class="app-row-img">
+                      </div>
+                      <div class="app-row-info">
+                        <span class="app-row-name">{{ item.name }}</span>
+                        <span class="app-row-desc">{{ item.description }}</span>
+                      </div>
+
+                      @if (item.subItems?.length) {
+                        <button
+                          class="sub-expand-btn"
+                          [class.open]="item.subOpen"
+                          (click)="toggleSubItems(item, $event)"
+                        >
+                          <i class="ri-arrow-right-s-line"></i>
+                        </button>
+                      }
+                    </a>
+                  }
+                </div>
+              }
+            </div>
+          }
+
+        </div>
+      }
+    </div>
   </div>
 </nav>
-
-<style>
-</style>

@@ -72,3 +72,196 @@ nav {
   cursor: pointer;
   color: #4b5563;
 }
+
+/*
+
+MENU
+
+*/
+
+.nav-menu-wrapper {
+  position: relative;
+}
+
+.app-menu {
+  position: absolute;
+  top: calc(100% + 1.25rem);
+  right: 0;
+  width: 780px;          /* était 380px */
+  background: #fff;
+  border: 0.5px solid #e5e7eb;
+  border-radius: 12px;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+  z-index: 1000;
+  overflow: hidden;
+}
+
+
+/* Section épinglée */
+.app-menu-pinned {
+  padding: 0.75rem 1rem;
+  border-bottom: 0.5px solid #f3f4f6;
+}
+
+/* Header de catégorie */
+.app-menu-section {
+  border-bottom: 0.5px solid #f3f4f6;
+}
+.app-menu-section:last-child {
+  border-bottom: none;
+}
+
+.app-menu-section-header {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 1rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+.app-menu-section-header:hover {
+  background: #f9fafb;
+}
+
+.section-label {
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: #9ca3af;
+}
+
+.section-chevron {
+  font-size: 14px;
+  color: #9ca3af;
+  transition: transform 0.2s;
+}
+.section-chevron.open {
+  transform: rotate(180deg);
+}
+
+/* Corps de section */
+.app-menu-section-body {
+  padding: 0.25rem 0.75rem 0.75rem;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));  /* était repeat(2, ...) */
+  gap: 4px;
+}
+
+/* Ligne app (logo gauche + texte droite) */
+.app-menu-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 10px;
+  border-radius: 8px;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+.app-menu-row:hover {
+  background: #f9fafb;
+}
+.app-menu-row.pinned {
+  padding: 10px 12px;
+}
+
+.app-row-icon {
+  width: 42px;
+  height: 42px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  /* ne touche pas background — il vient du [style.background] */
+}
+
+.app-row-img {
+  width: 26px;
+  height: 26px;
+  object-fit: contain;
+}
+
+.app-row-info {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  min-width: 0;
+}
+.app-row-name {
+  font-size: 13px;
+  font-weight: 500;
+  color: #111827;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.app-row-desc {
+  font-size: 11px;
+  color: #6b7280;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+
+.app-item-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.app-menu-row--sub {
+  /*border-radius: 0;*/
+  border-radius: 0 8px 8px 0;
+  background: #f3f4f6;
+  position: relative;
+}
+.app-menu-row--sub:hover {
+  background: #e9eaec;
+}
+
+/* Trait vertical gauche */
+.app-menu-row--sub::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 3px;
+  background: #d1d5db;
+  border-radius: 8px 0 0 8px;
+}
+
+/* Bouton flèche sous-projets */
+.sub-expand-btn {
+  width: 24px;
+  height: 24px;
+  border-radius: 6px;
+  border: 0.5px solid #e5e7eb;
+  background: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  flex-shrink: 0;
+  transition: background 0.15s;
+  margin-left: auto;
+  padding: 0;
+}
+.sub-expand-btn:hover {
+  background: #f3f4f6;
+}
+.sub-expand-btn i {
+  font-size: 14px;
+  color: #6b7280;
+  transition: transform 0.2s;
+  transform: rotate(0deg);   /* fermé = pointe à droite */
+}
+.sub-expand-btn.open i {
+  transform: rotate(180deg);  /* ouvert = pointe en bas */
+}
