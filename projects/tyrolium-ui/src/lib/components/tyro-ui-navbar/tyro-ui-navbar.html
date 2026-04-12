@@ -1,6 +1,6 @@
 <nav>
   <div class="nav-right">
-    <img src="https://tyrolium.fr/Contenu/Image/Tyrolium%20ServerMC%20Sword%203D.png" alt="Logo" class="nav-logo">
+    <img [src]="logo" alt="Logo" class="nav-logo">
     <div class="nav-info">
       @if (project == "Tyrolium") {
         <span class="nav-name-main title">Tyrolium</span>
@@ -30,19 +30,19 @@
 
           <!-- Section épinglée sans titre -->
           <div class="app-menu-pinned">
-            <a [routerLink]="pinnedApp.link" class="app-menu-row pinned" (click)="menuOpen = false">
-              <div class="app-row-icon" [style.background]="pinnedApp.iconBg">
-                <img [src]="pinnedApp.image" [alt]="pinnedApp.name" class="app-row-img">
+            <a [routerLink]="navbarMenuPinned.link" class="app-menu-row pinned" (click)="menuOpen = false">
+              <div class="app-row-icon" [style.background]="navbarMenuPinned.iconBg">
+                <img [src]="navbarMenuPinned.image" [alt]="navbarMenuPinned.name" class="app-row-img">
               </div>
               <div class="app-row-info">
-                <span class="app-row-name">{{ pinnedApp.name }}</span>
-                <span class="app-row-desc">{{ pinnedApp.description }}</span>
+                <span class="app-row-name">{{ navbarMenuPinned.name }}</span>
+                <span class="app-row-desc">{{ navbarMenuPinned.description }}</span>
               </div>
             </a>
           </div>
 
           <!-- Catégories -->
-          @for (cat of categories; track cat.label) {
+          @for (cat of navbarMenuCategory; track cat.label) {
             <div class="app-menu-section">
               <button class="app-menu-section-header" (click)="toggleCategory(cat)">
                 <span class="section-label">{{ cat.label }}</span>

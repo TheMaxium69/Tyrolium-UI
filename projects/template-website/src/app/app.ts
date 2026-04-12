@@ -9,7 +9,6 @@ import { ITyroUiNavbarPages, TyroUiButtom, TyroUiNavbar } from 'tyrolium-ui';
   styleUrl: './app.css',
 })
 export class App {
-
   /*
    *
    * GLOBAL VARIABLE
@@ -17,7 +16,8 @@ export class App {
    * */
 
   public APP_ENV = 'DEV';
-  public PROJECT_NAME = 'TyroServ';
+  public PROJECT_NAME = 'SolidServ';
+  public PROJECT_LOGO = 'https://tyrolium.fr/Contenu/Image/SolidServ%20Site.png';
 
   public pages: ITyroUiNavbarPages[] = [
     { label: 'Accueil', link: '/' },

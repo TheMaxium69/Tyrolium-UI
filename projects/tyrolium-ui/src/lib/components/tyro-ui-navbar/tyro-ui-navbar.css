@@ -7,6 +7,8 @@ nav {
   background-color: #fff;
   border-bottom: 1px solid #e5e7eb;
   box-shadow: 18px 5px 20px #BABECC;
+
+  font-family: "Inter", sans-serif;
 }
 
 .nav-right {
@@ -87,7 +89,7 @@ MENU
   position: absolute;
   top: calc(100% + 1.25rem);
   right: 0;
-  width: 780px;          /* était 380px */
+  width: min(780px, calc(100vw - 2rem));  /* jamais plus large que l'écran */
   background: #fff;
   border: 0.5px solid #e5e7eb;
   border-radius: 12px;
@@ -147,7 +149,7 @@ MENU
 .app-menu-section-body {
   padding: 0.25rem 0.75rem 0.75rem;
   display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));  /* était repeat(2, ...) */
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
   gap: 4px;
 }
 
@@ -199,13 +201,13 @@ MENU
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+
+  font-family: "Noto Sans Display", sans-serif;
+
 }
 .app-row-desc {
   font-size: 11px;
   color: #6b7280;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
 }
 
 
@@ -264,4 +266,19 @@ MENU
 }
 .sub-expand-btn.open i {
   transform: rotate(180deg);  /* ouvert = pointe en bas */
+}
+
+
+@media (max-width: 600px) {
+  .nav-menu-wrapper {
+    position: static;
+  }
+
+  .app-menu {
+    position: fixed;
+    top: 60px;   /* hauteur de ta navbar */
+    left: 1rem;
+    right: 1rem;
+    width: auto;
+  }
 }
