@@ -4,3 +4,4 @@
 
 export * from './lib/components/tyro-ui-buttom/tyro-ui-buttom';
 export * from './lib/components/tyro-ui-navbar/tyro-ui-navbar';
+export * from './lib/interface/ityro-ui-navbar-pages'

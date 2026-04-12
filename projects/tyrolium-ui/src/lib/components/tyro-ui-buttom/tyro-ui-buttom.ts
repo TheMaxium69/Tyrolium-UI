@@ -8,5 +8,5 @@ import { Component, Input } from '@angular/core';
 })
 export class TyroUiButtom {
   @Input() name: string = 'Name Buttom';
-  @Input() type: string = 'primary';
+  @Input() type: string = 'none'; /* primary / secondary */
 }

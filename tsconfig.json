@@ -44,6 +44,12 @@
     },
     {
       "path": "./projects/solidserv-website/tsconfig.spec.json"
+    },
+    {
+      "path": "./projects/template-website/tsconfig.app.json"
+    },
+    {
+      "path": "./projects/template-website/tsconfig.spec.json"
     }
   ]
 }

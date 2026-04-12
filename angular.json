@@ -51,7 +51,10 @@
                 "input": "projects/tyrolium-website/public"
               }
             ],
-            "styles": ["projects/tyrolium-website/src/styles.css"]
+            "styles": [
+              "projects/tyrolium-ui/src/styles/tyrolium-ui.css",
+              "projects/tyrolium-website/src/styles.css"
+            ]
           },
           "configurations": {
             "production": {
@@ -112,7 +115,10 @@
                 "input": "projects/solidserv-website/public"
               }
             ],
-            "styles": ["projects/solidserv-website/src/styles.css"]
+            "styles": [
+              "projects/tyrolium-ui/src/styles/tyrolium-ui.css",
+              "projects/solidserv-website/src/styles.css"
+            ]
           },
           "configurations": {
             "production": {
@@ -146,6 +152,70 @@
             },
             "development": {
               "buildTarget": "solidserv-website:build:development"
+            }
+          },
+          "defaultConfiguration": "development"
+        },
+        "test": {
+          "builder": "@angular/build:unit-test"
+        }
+      }
+    },
+    "template-website": {
+      "projectType": "application",
+      "schematics": {},
+      "root": "projects/template-website",
+      "sourceRoot": "projects/template-website/src",
+      "prefix": "app",
+      "architect": {
+        "build": {
+          "builder": "@angular/build:application",
+          "options": {
+            "browser": "projects/template-website/src/main.ts",
+            "tsConfig": "projects/template-website/tsconfig.app.json",
+            "assets": [
+              {
+                "glob": "**/*",
+                "input": "projects/template-website/public"
+              }
+            ],
+            "styles": [
+              "projects/tyrolium-ui/src/styles/tyrolium-ui.css",
+              "projects/template-website/src/styles.css"
+            ]
+          },
+          "configurations": {
+            "production": {
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "500kB",
+                  "maximumError": "1MB"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "4kB",
+                  "maximumError": "8kB"
+                }
+              ],
+              "outputHashing": "all"
+            },
+            "development": {
+              "optimization": false,
+              "extractLicenses": false,
+              "sourceMap": true
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "serve": {
+          "builder": "@angular/build:dev-server",
+          "configurations": {
+            "production": {
+              "buildTarget": "template-website:build:production"
+            },
+            "development": {
+              "buildTarget": "template-website:build:development"
             }
           },
           "defaultConfiguration": "development"

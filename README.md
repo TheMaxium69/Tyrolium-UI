@@ -22,7 +22,19 @@ La librairie s'appuie sur **RemixIcon** pour la gestion de ses icônes.
 Dans le fichier de style global de l'application (ex: `styles.scss`), ajoutez l'import suivant tout en haut :
 `@import 'remixicon/fonts/remixicon.css';`
 
-## 🏷️ 3. Conventions de nommage (Standard Tyrolium)
+## 💅 3. Styles Globaux & Utilitaires
+
+La librairie embarque des classes CSS globales réutilisables (ex: couleurs, flexbox, etc.). 
+Pour que votre application puisse les utiliser, vous **ne devez pas** faire de `@import` dans vos fichiers CSS.
+
+Vous devez déclarer le fichier de style de la librairie directement dans le fichier **`angular.json`** à la racine du workspace, dans la section `architect > build > options > styles` de votre application :
+
+`"styles": [`
+  `"projects/tyrolium-ui/src/styles/tyrolium-ui.css",`
+  `"projects/tyrolium-website/src/styles.css"`
+`]`
+
+## 🏷️ 4. Conventions de nommage (Standard Tyrolium)
 
 Pour garantir la clarté entre les différents projets, nous utilisons le préfixe **"TyroUi"** (Tyrolium UI).
 
@@ -36,7 +48,7 @@ Pour garantir la clarté entre les différents projets, nous utilisons le préfi
 * **Convention :** `<tyro-ui-[nom]>`
 * **Exemple :** `<tyro-ui-button></tyro-ui-button>`
 
-## 🛠️ 4. Guide de développement (Ajouter un composant)
+## 🛠️ 5. Guide de développement (Ajouter un composant)
 
 ### A. Génération
 Utilisez toujours le flag `--project` pour cibler la librairie :
@@ -48,17 +60,17 @@ Tout nouveau composant créé est privé par défaut. Il doit obligatoirement ê
 **Exemple :**
 `export * from './lib/components/button/button';`
 
-## 🚀 5. Configuration du Workspace (Développement)
+## 🚀 6. Configuration du Workspace (Développement)
 
 Pour bénéficier du rechargement automatique (Hot Reload) sans avoir à compiler la librairie à chaque modification visuelle, assurez-vous que le fichier `tsconfig.json` à la racine pointe directement vers les sources de l'API publique :
 
-"paths": {
-  "tyrolium-ui": [
-    "./projects/tyrolium-ui/src/public-api.ts"
-  ]
-}
+`"paths": {`
+  `"tyrolium-ui": [`
+    `"./projects/tyrolium-ui/src/public-api.ts"`
+  `]`
+`}`
 
-## 💡 6. Utilisation dans une application
+## 💡 7. Utilisation dans une application
 
 1. **Importer** le composant dans le fichier `.ts` du site cible :
    `import { TyroUiButton } from 'tyrolium-ui';`
