@@ -38,6 +38,12 @@ nav {
   font-weight: 600;
 }
 
+.nav-name-main {
+  font-size: 1.125rem;
+  color: #111827;
+  font-weight: 600;
+}
+
 .nav-center {
   display: flex;
   gap: 2rem;

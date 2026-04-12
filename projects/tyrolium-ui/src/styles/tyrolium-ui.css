@@ -1,7 +1,19 @@
+* {
+  margin: 0;
+  padding: 0;
+
+}
+
 .title{
-  color: blue;
+  font-weight: bold;
+  font-family: 'Inter', sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 3px;
 }
 
 .title-second{
-  color: red;
+  font-weight: 400;
+  font-family: 'Inter', sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 3px;
 }

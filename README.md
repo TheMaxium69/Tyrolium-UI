@@ -13,7 +13,7 @@ Elle centralise l'identité visuelle pour l'ensemble des projets du groupe (Tyro
 
 ## ⚙️ 2. Dépendances et Installation
 
-La librairie s'appuie sur **RemixIcon** pour la gestion de ses icônes.
+La librairie s'appuie sur **RemixIcon** et des polices Google Fonts pour la gestion de ses icônes.
 
 ### A. Installation (à la racine du workspace)
 `npm install remixicon`
@@ -21,6 +21,7 @@ La librairie s'appuie sur **RemixIcon** pour la gestion de ses icônes.
 ### B. Configuration de l'application cliente
 Dans le fichier de style global de l'application (ex: `styles.scss`), ajoutez l'import suivant tout en haut :
 `@import 'remixicon/fonts/remixicon.css';`
+`@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');;`
 
 ## 💅 3. Styles Globaux & Utilitaires
 
