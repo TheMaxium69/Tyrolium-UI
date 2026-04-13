@@ -20,9 +20,17 @@ export class App {
   public PROJECT_LOGO = 'https://tyrolium.fr/Contenu/Image/SolidServ%20Site.png';
 
   public pages: ITyroUiNavbarPages[] = [
-    { label: 'Accueil', link: '/' },
-    { label: 'Projet', link: '/project' },
-    { label: 'Prestation', link: '/prestation' },
+    { label: 'Accueil', link: '/', icon: 'ri-home-line' },
+    { label: 'Projet', link: '/project', icon: 'ri-folder-line' },
+    {
+      label: 'Prestation',
+      icon: 'ri-briefcase-line',
+      children: [
+        { label: 'Développement web', link: '/prestation/web', icon: 'ri-code-line' },
+        { label: 'Infrastructure', link: '/prestation/infra', icon: 'ri-server-line' },
+        { label: 'Conseil', link: '/prestation/conseil' }, // pas d'icône, optionnel
+      ],
+    },
   ];
 
   public subpages: ITyroUiSubnavPages[] = [

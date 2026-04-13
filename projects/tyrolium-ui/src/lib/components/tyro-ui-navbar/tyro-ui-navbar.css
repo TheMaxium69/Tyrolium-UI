@@ -59,6 +59,23 @@ nav {
 }
 
 .nav-link {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.nav-link-icon {
+  font-size: 16px;
+  color: #9ca3af;
+  flex-shrink: 0;
+  transition: color 0.15s;
+}
+
+.nav-link:hover .nav-link-icon {
+  color: #374151;
+}
+
+.nav-link {
   padding: 0.4rem 0.75rem;
   border-radius: 7px;
   text-decoration: none;
@@ -191,6 +208,12 @@ nav {
   gap: 0.25rem;
 }
 
+.nav-mobile-link-icon {
+  font-size: 17px;
+  color: #9ca3af;
+  flex-shrink: 0;
+}
+
 .nav-mobile-link {
   display: block;
   padding: 0.75rem 1rem;
@@ -209,15 +232,14 @@ nav {
 
 /* ─── APP MENU ───────────────────────────────────────────── */
 
-/* ─── APP MENU ───────────────────────────────────────────── */
-
 .nav-menu-wrapper {
   position: relative;
 }
 
 .app-menu {
+  display: none;
   position: absolute;
-  top: calc(100% + 0.75rem);
+  top: calc(100% + 0.1rem);
   right: 0;
   width: min(780px, calc(100vw - 2rem));
   background: #fff;
@@ -226,6 +248,15 @@ nav {
   box-shadow: 0 8px 32px rgba(0,0,0,0.1);
   z-index: 1000;
   overflow: hidden;
+}
+
+.app-menu.open {
+  display: block;
+}
+@media (min-width: 769px) {
+  .nav-menu-wrapper:hover .app-menu {
+    display: block;
+  }
 }
 
 /* Épinglé */
@@ -413,4 +444,156 @@ nav {
     max-height: calc(100vh - 80px);
     overflow-y: auto;
   }
+}
+
+/* ─── DROPDOWN DESKTOP ───────────────────────────────────── */
+
+.nav-dropdown-wrapper {
+  position: relative;
+}
+
+.nav-dropdown-trigger {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-family: "Inter", sans-serif;
+}
+
+.nav-dropdown-chevron {
+  font-size: 14px;
+  color: #9ca3af;
+  transition: transform 0.2s;
+}
+
+.nav-dropdown-chevron.open {
+  transform: rotate(180deg);
+}
+
+.nav-dropdown {
+  display: none;
+  position: absolute;
+  top: calc(100% + 0.1rem);
+  left: 50%;
+  transform: translateX(-50%);
+  background: #fff;
+  border: 0.5px solid #e5e7eb;
+  border-radius: 10px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+  padding: 0.35rem;
+  min-width: 200px;
+  z-index: 200;
+}
+
+.nav-dropdown-wrapper:hover .nav-dropdown {
+  display: block;
+}
+
+.nav-dropdown-wrapper:hover .nav-dropdown-chevron {
+  transform: rotate(180deg);
+}
+
+.nav-dropdown-item {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.nav-dropdown-item-icon {
+  font-size: 16px;
+  color: #9ca3af;
+  flex-shrink: 0;
+  transition: color 0.15s;
+}
+
+.nav-dropdown-item:hover .nav-dropdown-item-icon {
+  color: #374151;
+}
+
+.nav-dropdown-item {
+  display: block;
+  padding: 0.55rem 0.875rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #374151;
+  text-decoration: none;
+  border-radius: 7px;
+  white-space: nowrap;
+  transition: background 0.15s, color 0.15s;
+}
+
+.nav-dropdown-item:hover {
+  background: #f3f4f6;
+  color: #111827;
+}
+
+
+
+/* ─── DROPDOWN MOBILE ────────────────────────────────────── */
+
+
+.nav-mobile-child {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.nav-mobile-child-icon {
+  font-size: 15px;
+  color: #9ca3af;
+  flex-shrink: 0;
+}
+
+.nav-mobile-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.nav-mobile-group-trigger {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-family: "Inter", sans-serif;
+  width: 100%;
+  text-align: left;
+}
+
+.nav-mobile-group-trigger i {
+  font-size: 18px;
+  color: #9ca3af;
+  transition: transform 0.2s;
+}
+
+.nav-mobile-group-trigger i.open {
+  transform: rotate(180deg);
+}
+
+.nav-mobile-children {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+  padding: 0.25rem 0 0.25rem 1rem;
+  margin-left: 1rem;
+  border-left: 2px solid #e5e7eb;
+}
+
+.nav-mobile-child {
+  display: block;
+  padding: 0.55rem 0.75rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #6b7280;
+  text-decoration: none;
+  border-radius: 8px;
+  transition: background 0.15s, color 0.15s;
+}
+
+.nav-mobile-child:hover {
+  background: #f3f4f6;
+  color: #111827;
 }

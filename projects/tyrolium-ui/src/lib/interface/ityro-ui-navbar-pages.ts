@@ -1,5 +1,7 @@
 export interface ITyroUiNavbarPages {
   label: string;
-  link: string;
-  tag?: string;
+  link?: string;
+  icon?: string;
+  children?: ITyroUiNavbarPages[];
+  childrenOpen?: boolean;
 }

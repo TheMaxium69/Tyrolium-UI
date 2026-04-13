@@ -13,9 +13,38 @@
 
   <!-- Liens centre — cachés sur mobile -->
   <div class="nav-center">
-    @for (page of pages; track page) {
-      <a [routerLink]="page.link" class="nav-link">{{ page.label }}</a>
-    }
+    <div class="nav-center">
+      @for (page of pages; track page.label) {
+        @if (page.children?.length) {
+          <div class="nav-dropdown-wrapper">
+            <button class="nav-link nav-dropdown-trigger">
+              @if (page.icon) {
+                <i [class]="page.icon + ' nav-link-icon'"></i>
+              }
+              {{ page.label }}
+              <i class="ri-arrow-down-s-line nav-dropdown-chevron"></i>
+            </button>
+            <div class="nav-dropdown">
+              @for (child of page.children; track child.label) {
+                <a [routerLink]="child.link" class="nav-dropdown-item">
+                  @if (child.icon) {
+                    <i [class]="child.icon + ' nav-dropdown-item-icon'"></i>
+                  }
+                  {{ child.label }}
+                </a>
+              }
+            </div>
+          </div>
+        } @else {
+          <a [routerLink]="page.link" class="nav-link">
+            @if (page.icon) {
+              <i [class]="page.icon + ' nav-link-icon'"></i>
+            }
+            {{ page.label }}
+          </a>
+        }
+      }
+    </div>
   </div>
 
   <div class="nav-left">
@@ -30,10 +59,10 @@
 
     <!-- Wrapper app menu -->
     <div class="nav-menu-wrapper">
-      <i class="nav-icon ri-function-fill nav-hide-mobile" (click)="toggleMenu()"></i>
+      <i class="nav-icon ri-function-fill nav-hide-mobile" (click)="toggleMenu()"></i>  <!---->
 
-      @if (menuOpen) {
-        <div class="app-menu">
+<!--      @if (menuOpen) {-->
+        <div class="app-menu" [class.open]="menuOpen">
           <div class="app-menu-pinned">
             <a [href]="navbarMenuPinned.link" class="app-menu-row pinned"> <!--(click)="menuOpen = false"-->
               <div class="app-row-icon" [style.background]="navbarMenuPinned.iconBg">
@@ -78,7 +107,7 @@
             </div>
           }
         </div>
-      }
+<!--      }-->
     </div>
   </div>
 </nav>
@@ -98,10 +127,39 @@
       </button>
     </div>
     <div class="nav-mobile-links">
-      @for (page of pages; track page) {
-        <a [routerLink]="page.link" class="nav-mobile-link" (click)="mobileMenuOpen = false">
-          {{ page.label }}
-        </a>
+      @for (page of pages; track page.label) {
+        @if (page.children?.length) {
+          <div class="nav-mobile-group">
+            <button class="nav-mobile-link nav-mobile-group-trigger" (click)="page.childrenOpen = !page.childrenOpen">
+              <div>
+              @if (page.icon) {
+                <i [class]="page.icon + ' nav-link-icon'"></i>
+              }
+              {{ page.label }}
+              </div>
+              <i class="ri-arrow-down-s-line" [class.open]="page.childrenOpen"></i>
+            </button>
+            @if (page.childrenOpen) {
+              <div class="nav-mobile-children">
+                @for (child of page.children; track child.label) {
+                  <a [routerLink]="child.link" class="nav-mobile-child" (click)="mobileMenuOpen = false; page.childrenOpen = false">
+                    @if (child.icon) {
+                      <i [class]="child.icon + ' nav-mobile-child-icon'"></i>
+                    }
+                    {{ child.label }}
+                  </a>
+                }
+              </div>
+            }
+          </div>
+        } @else {
+          <a [routerLink]="page.link" class="nav-link nav-mobile-link" (click)="mobileMenuOpen = false">
+            @if (page.icon) {
+              <i [class]="page.icon + ' nav-mobile-link-icon'"></i>
+            }
+            {{ page.label }}
+          </a>
+        }
       }
     </div>
   </div>
