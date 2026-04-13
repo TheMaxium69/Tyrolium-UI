@@ -23,7 +23,7 @@ export class App {
     { label: 'Accueil', link: '/', icon: 'ri-home-line' },
     { label: 'Projet', link: '/project', icon: 'ri-folder-line' },
     {
-      label: 'Prestation',
+      label: 'Produit',
       icon: 'ri-briefcase-line',
       children: [
         { label: 'Développement web', link: '/prestation/web', icon: 'ri-code-line' },

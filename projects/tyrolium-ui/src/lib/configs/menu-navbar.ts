@@ -97,7 +97,7 @@ export const NavbarMenuCategory: ITyroUiNavbarMenuCategory[] = [
         description: "Offre d'emploi",
         image:
           'https://play-lh.googleusercontent.com/BaPQwHryyFBlxlFRhZdyTVFN77-KivMmcOano34lTpoB91fLcsvPu_pXH6gxEsRSxoM',
-        link: '/erp',
+        link: 'https://jobs.tyrolium.fr',
         iconBg: '#EDE9FE',
       },
       {
@@ -105,14 +105,14 @@ export const NavbarMenuCategory: ITyroUiNavbarMenuCategory[] = [
         description: "Gestion d'entreprise",
         image:
           'https://play-lh.googleusercontent.com/BaPQwHryyFBlxlFRhZdyTVFN77-KivMmcOano34lTpoB91fLcsvPu_pXH6gxEsRSxoM',
-        link: '/erp',
+        link: 'https://app.tyrolium.fr',
         iconBg: '#EDE9FE',
       },
       {
         name: 'Repo',
         description: 'Serveur de Repository',
         image: 'http://repo.tyrolium.fr/assets/img/logo.png',
-        link: '/erp',
+        link: 'http://repo.tyrolium.fr',
         iconBg: '#EDE9FE',
       },
     ],
@@ -125,7 +125,7 @@ export const NavbarMenuCategory: ITyroUiNavbarMenuCategory[] = [
         name: 'Contactez-nous',
         description: 'Formulaire de contact',
         image: 'ri-file-text-line',
-        link: '/terms',
+        link: '/contact',
         iconBg: '#F0F9FF',
       },
       {
@@ -146,15 +146,15 @@ export const NavbarMenuCategory: ITyroUiNavbarMenuCategory[] = [
         name: 'Serveurs',
         description: 'Liste des serveurs',
         image: 'https://tyrolium.fr/uptime/assets/vps.png',
-        link: '/uptime',
+        link: 'https://tyrolium.fr/uptime/',
         iconBg: '#ECFDF5',
         subOpen: false,
         subItems: [
           {
             name: 'Uptime Robot',
             description: 'Etat des serveurs',
-            image: 'https://tyrolium.fr/uptime/assets/vps.png',
-            link: '/vturias',
+            image: 'https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/uptimerobot.svg',
+            link: 'http://uptimerobot.tyrolium.fr',
             iconBg: '#ead9f3',
             isSubItem: true,
           },
