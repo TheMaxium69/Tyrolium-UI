@@ -46,11 +46,27 @@ export class TyroUiNavbar {
     return result;
   }
 
+  mobileMenuOpen = false;
+
+  toggleMobileMenu() {
+    this.mobileMenuOpen = !this.mobileMenuOpen;
+  }
+
   @HostListener('document:click', ['$event'])
-  public onDocumentClick(event: MouseEvent) {
+  onDocumentClick(event: MouseEvent) {
     const target = event.target as HTMLElement;
-    if (!target.closest('.nav-menu-wrapper')) {
+
+    if (!target.closest('.nav-menu-wrapper') && !target.closest('.nav-mobile-action')) {
       this.menuOpen = false;
     }
+
+    if (!target.closest('nav') && !target.closest('.nav-mobile-menu')) {
+      this.mobileMenuOpen = false;
+    }
+  }
+
+  openAppsFromMobile() {
+    this.mobileMenuOpen = false;
+    this.menuOpen = true;
   }
 }

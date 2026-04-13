@@ -18,14 +18,14 @@ export const NavbarMenuCategory: ITyroUiNavbarMenuCategory[] = [
         name: 'TyroServ',
         description: 'Server Minecraft',
         image: 'https://tyrolium.fr/Contenu/Image/Tyrolium%20ServerMC%20Sword%203D.png',
-        link: '/useritium',
+        link: 'https://tyroserv.fr',
         iconBg: '#ebf5e1',
       },
       {
         name: 'SolidServ',
         description: 'Héberger de server',
         image: 'https://tyrolium.fr/Contenu/Image/SolidServ%20Site.png',
-        link: '/solidserv',
+        link: 'https://solidserv.fr',
         iconBg: '#E1F5EE',
       },
       {
@@ -33,14 +33,14 @@ export const NavbarMenuCategory: ITyroUiNavbarMenuCategory[] = [
         description: "Agence d'influenceur",
         image: 'https://tyrolium.fr/Contenu/Image/Influnias%20Site.png',
         iconBg: '#e7d0ff',
-        link: '/influnias',
+        link: 'https://www.influnias.fr',
         subOpen: false,
         subItems: [
           {
             name: 'Vturias',
             description: 'Agence de Vtubeur',
             image: 'https://tyrolium.fr/Contenu/Image/Vturias%20Site.png',
-            link: '/vturias',
+            link: 'https://vturias.fr',
             iconBg: '#ead9f3',
             isSubItem: true,
           },

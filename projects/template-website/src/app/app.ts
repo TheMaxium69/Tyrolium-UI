@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { ITyroUiNavbarPages, TyroUiButtom, TyroUiNavbar } from 'tyrolium-ui';
+import { ITyroUiNavbarPages, ITyroUiSubnavPages, TyroUiButtom, TyroUiNavbar, TyroUiSubnav } from 'tyrolium-ui';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, TyroUiButtom, TyroUiNavbar],
+  imports: [RouterOutlet, TyroUiButtom, TyroUiNavbar, TyroUiSubnav],
   templateUrl: './app.html',
   styleUrl: './app.css',
 })
@@ -23,5 +23,11 @@ export class App {
     { label: 'Accueil', link: '/' },
     { label: 'Projet', link: '/project' },
     { label: 'Prestation', link: '/prestation' },
+  ];
+
+  public subpages: ITyroUiSubnavPages[] = [
+    { label: 'Site Web', link: '/' },
+    { label: 'Serveur', link: 'server' },
+    { label: 'Minecraft', link: 'minecraft' },
   ];
 }

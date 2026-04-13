@@ -1,0 +1,12 @@
+<div class="subnav" [class.fixed]="isFixed">
+  <div class="subnav-row">
+    @for (page of pages; track page) {
+      <a class="subnav-item" [routerLink]="page.link" routerLinkActive="active">
+        {{ page.label }}
+      </a>
+    }
+  </div>
+</div>
+@if (isFixed) {
+  <div class="subnav-placeholder"></div>
+}

@@ -1,0 +1,55 @@
+.subnav {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  padding: 1.25rem 0;
+}
+
+.subnav.fixed {
+  position: fixed;
+  top: 63px; /* hauteur de ta navbar */
+  left: 0;
+  right: 0;
+  z-index: 90;
+  background: transparent;
+  padding: 0.75rem 0;
+}
+
+.subnav-placeholder{
+  height: 68px;
+  width: 100%;
+}
+
+.subnav-row {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 5px;
+  background: #fff;
+  border-radius: 100px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.08), 0 2px 8px rgba(0,0,0,0.06);
+  border: 0.5px solid #e5e7eb;
+}
+
+.subnav-item {
+  display: flex;
+  align-items: center;
+  padding: 0.6rem 1.75rem;
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: #6b7280;
+  text-decoration: none;
+  border-radius: 100px;
+  white-space: nowrap;
+  transition: background 0.15s, color 0.15s;
+}
+
+.subnav-item:hover {
+  background: #f3f4f6;
+  color: #111827;
+}
+
+.subnav-item.active {
+  background: #111827;
+  color: #fff;
+}

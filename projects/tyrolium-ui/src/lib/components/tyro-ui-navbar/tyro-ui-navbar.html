@@ -11,6 +11,7 @@
     </div>
   </div>
 
+  <!-- Liens centre — cachés sur mobile -->
   <div class="nav-center">
     @for (page of pages; track page) {
       <a [routerLink]="page.link" class="nav-link">{{ page.label }}</a>
@@ -18,19 +19,23 @@
   </div>
 
   <div class="nav-left">
-    <i class="nav-icon ri-translate-2"></i>
+    <!-- Translate — caché sur mobile -->
+    <i class="nav-icon ri-translate-2 nav-hide-mobile"></i>
     <i class="nav-icon ri-user-fill"></i>
 
-    <!-- Wrapper pour le close-on-outside-click -->
+    <!-- Burger mobile — visible uniquement sur mobile -->
+    <i class="nav-icon nav-burger"
+       [class]="mobileMenuOpen ? 'nav-icon nav-burger ri-close-line' : 'nav-icon nav-burger ri-menu-line'"
+       (click)="toggleMobileMenu()"></i>
+
+    <!-- Wrapper app menu -->
     <div class="nav-menu-wrapper">
-      <i class="nav-icon ri-function-fill" (click)="toggleMenu()"></i>
+      <i class="nav-icon ri-function-fill nav-hide-mobile" (click)="toggleMenu()"></i>
 
       @if (menuOpen) {
         <div class="app-menu">
-
-          <!-- Section épinglée sans titre -->
           <div class="app-menu-pinned">
-            <a [routerLink]="navbarMenuPinned.link" class="app-menu-row pinned" (click)="menuOpen = false">
+            <a [href]="navbarMenuPinned.link" class="app-menu-row pinned"> <!--(click)="menuOpen = false"-->
               <div class="app-row-icon" [style.background]="navbarMenuPinned.iconBg">
                 <img [src]="navbarMenuPinned.image" [alt]="navbarMenuPinned.name" class="app-row-img">
               </div>
@@ -41,7 +46,6 @@
             </a>
           </div>
 
-          <!-- Catégories -->
           @for (cat of navbarMenuCategory; track cat.label) {
             <div class="app-menu-section">
               <button class="app-menu-section-header" (click)="toggleCategory(cat)">
@@ -52,10 +56,9 @@
               @if (cat.open) {
                 <div class="app-menu-section-body">
                   @for (item of getVisibleItems(cat.items); track item.name) {
-                    <a [routerLink]="item.link"
+                    <a [href]="item.link"
                        class="app-menu-row"
-                       [class.app-menu-row--sub]="item.isSubItem"
-                       (click)="menuOpen = false">
+                       [class.app-menu-row--sub]="item.isSubItem">
                       <div class="app-row-icon" [style.background]="item.iconBg">
                         <img [src]="item.image" [alt]="item.name" class="app-row-img">
                       </div>
@@ -63,13 +66,8 @@
                         <span class="app-row-name">{{ item.name }}</span>
                         <span class="app-row-desc">{{ item.description }}</span>
                       </div>
-
                       @if (item.subItems?.length) {
-                        <button
-                          class="sub-expand-btn"
-                          [class.open]="item.subOpen"
-                          (click)="toggleSubItems(item, $event)"
-                        >
+                        <button class="sub-expand-btn" [class.open]="item.subOpen" (click)="toggleSubItems(item, $event)">
                           <i class="ri-arrow-right-s-line"></i>
                         </button>
                       }
@@ -79,9 +77,32 @@
               }
             </div>
           }
-
         </div>
       }
     </div>
   </div>
 </nav>
+
+
+<!-- Menu mobile déroulant -->
+@if (mobileMenuOpen) {
+  <div class="nav-mobile-menu">
+    <div class="nav-mobile-head">
+      <button class="nav-mobile-action" (click)="openAppsFromMobile()">
+        <i class="ri-function-fill"></i>
+        <span>Applications</span>
+      </button>
+      <button class="nav-mobile-action">
+        <i class="ri-translate-2"></i>
+        <span>Langue</span>
+      </button>
+    </div>
+    <div class="nav-mobile-links">
+      @for (page of pages; track page) {
+        <a [routerLink]="page.link" class="nav-mobile-link" (click)="mobileMenuOpen = false">
+          {{ page.label }}
+        </a>
+      }
+    </div>
+  </div>
+}
