@@ -16,6 +16,7 @@ export class TyroUiNavbar {
   @Input() project: string = ''; /* tyrolium / solidserv / gamenium / ... */
   @Input() logo: string = '';
   @Input() pages: ITyroUiNavbarPages[] = [];
+  @Input() placeholder: boolean = true;
 
   public navbarMenuPinned: ITyroUiNavbarMenuItem = NavbarMenuPinned;
   public navbarMenuCategory: ITyroUiNavbarMenuCategory[] = NavbarMenuCategory;

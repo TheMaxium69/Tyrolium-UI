@@ -4,7 +4,7 @@ import { Directive, ElementRef, HostListener, Input, OnInit } from '@angular/cor
   selector: '[TyroUiGloss]',
 })
 export class TyroUiGloss implements OnInit {
-  @Input() glossColor = 'rgba(255, 255, 255, 0.45)';
+  @Input() glossColor = 'rgba(160, 165, 180, 0.25)';
   @Input() glossSize = 80;
 
   private glossEl!: HTMLElement;
@@ -33,16 +33,19 @@ export class TyroUiGloss implements OnInit {
   @HostListener('mousemove', ['$event'])
   onMouseMove(e: MouseEvent) {
     const rect = this.el.nativeElement.getBoundingClientRect();
-    const x = ((e.clientX - rect.left) / rect.width * 100).toFixed(1) + '%';
-    const y = ((e.clientY - rect.top) / rect.height * 100).toFixed(1) + '%';
+    const x = (((e.clientX - rect.left) / rect.width) * 100).toFixed(1) + '%';
+    const y = (((e.clientY - rect.top) / rect.height) * 100).toFixed(1) + '%';
     // On lit glossColor et glossSize ici, pas dans ngOnInit
-    this.glossEl.style.background =
-      `radial-gradient(circle ${this.glossSize}px at ${x} ${y}, ${this.glossColor} 0%, transparent 70%)`;
+    this.glossEl.style.background = `radial-gradient(circle ${this.glossSize}px at ${x} ${y}, ${this.glossColor} 0%, transparent 70%)`;
   }
 
   @HostListener('mouseenter')
-  onEnter() { this.glossEl.style.opacity = '1'; }
+  onEnter() {
+    this.glossEl.style.opacity = '1';
+  }
 
   @HostListener('mouseleave')
-  onLeave() { this.glossEl.style.opacity = '0'; }
+  onLeave() {
+    this.glossEl.style.opacity = '0';
+  }
 }

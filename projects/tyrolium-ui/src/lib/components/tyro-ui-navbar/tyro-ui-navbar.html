@@ -17,7 +17,7 @@
       @for (page of pages; track page.label) {
         @if (page.children?.length) {
           <div class="nav-dropdown-wrapper">
-            <button class="nav-link nav-dropdown-trigger" TyroUiGloss [glossColor]="'rgba(218, 218, 218, 0.5)'">
+            <button class="nav-link nav-dropdown-trigger" TyroUiGloss>
               @if (page.icon) {
                 <i [class]="page.icon + ' nav-link-icon'"></i>
               }
@@ -26,7 +26,7 @@
             </button>
             <div class="nav-dropdown">
               @for (child of page.children; track child.label) {
-                <a [routerLink]="child.link" class="nav-dropdown-item" TyroUiGloss [glossColor]="'rgba(218, 218, 218, 0.5)'">
+                <a [routerLink]="child.link" class="nav-dropdown-item" TyroUiGloss>
                   @if (child.icon) {
                     <i [class]="child.icon + ' nav-dropdown-item-icon'"></i>
                   }
@@ -36,7 +36,7 @@
             </div>
           </div>
         } @else {
-          <a [routerLink]="page.link" class="nav-link" TyroUiGloss [glossColor]="'rgba(218, 218, 218, 0.5)'">
+          <a [routerLink]="page.link" class="nav-link" TyroUiGloss>
             @if (page.icon) {
               <i [class]="page.icon + ' nav-link-icon'"></i>
             }
@@ -49,8 +49,8 @@
 
   <div class="nav-left">
     <!-- Translate — caché sur mobile -->
-    <i class="nav-icon ri-translate-2 nav-hide-mobile"></i>
-    <i class="nav-icon ri-user-fill"></i>
+    <i class="nav-icon ri-translate-2 nav-hide-mobile" TyroUiGloss></i>
+    <i class="nav-icon ri-user-fill" TyroUiGloss></i>
 
     <!-- Burger mobile — visible uniquement sur mobile -->
     <i class="nav-icon nav-burger"
@@ -59,12 +59,12 @@
 
     <!-- Wrapper app menu -->
     <div class="nav-menu-wrapper">
-      <i class="nav-icon ri-function-fill nav-hide-mobile" (click)="toggleMenu()"></i>  <!---->
+      <i class="nav-icon ri-function-fill nav-hide-mobile" (click)="toggleMenu()" TyroUiGloss></i>  <!---->
 
 <!--      @if (menuOpen) {-->
         <div class="app-menu" [class.open]="menuOpen">
           <div class="app-menu-pinned">
-            <a [href]="navbarMenuPinned.link" class="app-menu-row pinned"> <!--(click)="menuOpen = false"-->
+            <a [href]="navbarMenuPinned.link" class="app-menu-row pinned" TyroUiGloss> <!--(click)="menuOpen = false"-->
               <div class="app-row-icon" [style.background]="navbarMenuPinned.iconBg">
                 <img [src]="navbarMenuPinned.image" [alt]="navbarMenuPinned.name" class="app-row-img">
               </div>
@@ -77,7 +77,7 @@
 
           @for (cat of navbarMenuCategory; track cat.label) {
             <div class="app-menu-section">
-              <button class="app-menu-section-header" (click)="toggleCategory(cat)">
+              <button class="app-menu-section-header" (click)="toggleCategory(cat)" TyroUiGloss [glossSize]="100">
                 <span class="section-label">{{ cat.label }}</span>
                 <i class="ri-arrow-down-s-line section-chevron" [class.open]="cat.open"></i>
               </button>
@@ -87,7 +87,8 @@
                   @for (item of getVisibleItems(cat.items); track item.name) {
                     <a [href]="item.link"
                        class="app-menu-row"
-                       [class.app-menu-row--sub]="item.isSubItem">
+                       [class.app-menu-row--sub]="item.isSubItem"
+                       TyroUiGloss [glossSize]="100">
                       <div class="app-row-icon" [style.background]="item.iconBg">
                         <img [src]="item.image" [alt]="item.name" class="app-row-img">
                       </div>
@@ -163,4 +164,8 @@
       }
     </div>
   </div>
+}
+
+@if (placeholder) {
+  <div class="nav-placeholder"></div>
 }

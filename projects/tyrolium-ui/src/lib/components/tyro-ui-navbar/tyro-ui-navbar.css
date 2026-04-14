@@ -16,6 +16,11 @@ nav {
   z-index: 999;
 }
 
+.nav-placeholder{
+  width: 100%;
+  height: 63px;
+}
+
 /* Gauche — logo + nom */
 .nav-right {
   display: flex;
