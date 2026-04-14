@@ -1,10 +1,10 @@
 import { Component, Input } from '@angular/core';
-import { ITyroUiNavbarPages } from 'tyrolium-ui';
+import { ITyroUiNavbarPages, TyroUiGloss } from 'tyrolium-ui';
 import { RouterLink, RouterLinkActive } from '@angular/router';
 
 @Component({
   selector: 'tyro-ui-subnav',
-  imports: [RouterLink, RouterLinkActive],
+  imports: [RouterLink, RouterLinkActive, TyroUiGloss],
   templateUrl: './tyro-ui-subnav.html',
   styleUrl: './tyro-ui-subnav.css',
 })

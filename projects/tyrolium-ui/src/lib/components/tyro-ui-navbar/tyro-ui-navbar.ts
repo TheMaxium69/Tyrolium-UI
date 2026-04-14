@@ -4,10 +4,11 @@ import { RouterLink } from '@angular/router';
 import { ITyroUiNavbarMenuItem } from '../../interface/ityro-ui-navbar-menu-item';
 import { ITyroUiNavbarMenuCategory } from '../../interface/ityro-ui-navbar-menu-category';
 import { NavbarMenuCategory, NavbarMenuPinned } from '../../configs/menu-navbar';
+import { TyroUiGloss } from '../../directive/tyro-ui-gloss';
 
 @Component({
   selector: 'tyro-ui-navbar',
-  imports: [RouterLink],
+  imports: [RouterLink, TyroUiGloss],
   templateUrl: './tyro-ui-navbar.html',
   styleUrl: './tyro-ui-navbar.css',
 })

@@ -1,7 +1,7 @@
 <div class="subnav" [class.fixed]="isFixed">
   <div class="subnav-row">
     @for (page of pages; track page) {
-      <a class="subnav-item" [routerLink]="page.link" routerLinkActive="active">
+      <a class="subnav-item" [routerLink]="page.link" routerLinkActive="active" TyroUiGloss [glossColor]="'rgba(218, 218, 218, 0.5)'">
         {{ page.label }}
       </a>
     }

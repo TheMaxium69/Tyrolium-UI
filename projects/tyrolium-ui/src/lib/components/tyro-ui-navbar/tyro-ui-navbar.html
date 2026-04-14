@@ -17,7 +17,7 @@
       @for (page of pages; track page.label) {
         @if (page.children?.length) {
           <div class="nav-dropdown-wrapper">
-            <button class="nav-link nav-dropdown-trigger">
+            <button class="nav-link nav-dropdown-trigger" TyroUiGloss [glossColor]="'rgba(218, 218, 218, 0.5)'">
               @if (page.icon) {
                 <i [class]="page.icon + ' nav-link-icon'"></i>
               }
@@ -26,7 +26,7 @@
             </button>
             <div class="nav-dropdown">
               @for (child of page.children; track child.label) {
-                <a [routerLink]="child.link" class="nav-dropdown-item">
+                <a [routerLink]="child.link" class="nav-dropdown-item" TyroUiGloss [glossColor]="'rgba(218, 218, 218, 0.5)'">
                   @if (child.icon) {
                     <i [class]="child.icon + ' nav-dropdown-item-icon'"></i>
                   }
@@ -36,7 +36,7 @@
             </div>
           </div>
         } @else {
-          <a [routerLink]="page.link" class="nav-link">
+          <a [routerLink]="page.link" class="nav-link" TyroUiGloss [glossColor]="'rgba(218, 218, 218, 0.5)'">
             @if (page.icon) {
               <i [class]="page.icon + ' nav-link-icon'"></i>
             }
