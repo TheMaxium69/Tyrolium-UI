@@ -6,6 +6,7 @@
 export * from './lib/components/tyro-ui-buttom/tyro-ui-buttom';
 export * from './lib/components/tyro-ui-navbar/tyro-ui-navbar';
 export * from './lib/components/tyro-ui-subnav/tyro-ui-subnav';
+export * from './lib/components/tyro-ui-footer/tyro-ui-footer';
 
 /* Interface */
 export * from './lib/interface/ityro-ui-navbar-pages'
