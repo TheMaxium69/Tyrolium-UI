@@ -50,6 +50,12 @@
     },
     {
       "path": "./projects/template-website/tsconfig.spec.json"
+    },
+    {
+      "path": "./projects/tyrociel-website/tsconfig.app.json"
+    },
+    {
+      "path": "./projects/tyrociel-website/tsconfig.spec.json"
     }
   ]
 }

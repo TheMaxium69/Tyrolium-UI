@@ -224,6 +224,70 @@
           "builder": "@angular/build:unit-test"
         }
       }
+    },
+    "tyrociel-website": {
+      "projectType": "application",
+      "schematics": {},
+      "root": "projects/tyrociel-website",
+      "sourceRoot": "projects/tyrociel-website/src",
+      "prefix": "app",
+      "architect": {
+        "build": {
+          "builder": "@angular/build:application",
+          "options": {
+            "browser": "projects/tyrociel-website/src/main.ts",
+            "tsConfig": "projects/tyrociel-website/tsconfig.app.json",
+            "assets": [
+              {
+                "glob": "**/*",
+                "input": "projects/tyrociel-website/public"
+              }
+            ],
+            "styles": [
+              "projects/tyrolium-ui/src/styles/tyrolium-ui.css",
+              "projects/tyrolium-website/src/styles.css"
+            ]
+          },
+          "configurations": {
+            "production": {
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "500kB",
+                  "maximumError": "1MB"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "4kB",
+                  "maximumError": "8kB"
+                }
+              ],
+              "outputHashing": "all"
+            },
+            "development": {
+              "optimization": false,
+              "extractLicenses": false,
+              "sourceMap": true
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "serve": {
+          "builder": "@angular/build:dev-server",
+          "configurations": {
+            "production": {
+              "buildTarget": "tyrociel-website:build:production"
+            },
+            "development": {
+              "buildTarget": "tyrociel-website:build:development"
+            }
+          },
+          "defaultConfiguration": "development"
+        },
+        "test": {
+          "builder": "@angular/build:unit-test"
+        }
+      }
     }
   }
 }
