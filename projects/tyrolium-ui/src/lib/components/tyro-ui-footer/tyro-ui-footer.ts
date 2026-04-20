@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component, Input} from '@angular/core';
 
 @Component({
   selector: 'tyro-ui-footer',
@@ -6,4 +6,7 @@ import { Component } from '@angular/core';
   templateUrl: './tyro-ui-footer.html',
   styleUrl: './tyro-ui-footer.css',
 })
-export class TyroUiFooter {}
+export class TyroUiFooter {
+  @Input() project: string = ''; /* tyrolium / solidserv / gamenium / ... */
+  @Input() logo: string = '';
+}

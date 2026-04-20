@@ -5,6 +5,7 @@
     "ng": "ng",
     "start tyrolium": "ng serve tyrolium-website --port 9001",
     "start solidserv": "ng serve solidserv-website --port 9002",
+    "start tyrociel": "ng serve tyrociel-website --port 9003",
     "start template": "ng serve template-website --port 9999",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
