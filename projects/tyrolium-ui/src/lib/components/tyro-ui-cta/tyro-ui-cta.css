@@ -12,6 +12,10 @@
     background: #f6f7fb;
 }
 
+.notBack {
+    background: unset!important;
+}
+
 .label {
     font-family: 'Inter', sans-serif;
     font-size: 0.72rem;

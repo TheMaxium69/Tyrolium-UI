@@ -65,7 +65,7 @@
         <div class="app-menu" [class.open]="menuOpen">
           <div class="app-menu-pinned">
             <a [href]="navbarMenuPinned.link" class="app-menu-row pinned" TyroUiGloss> <!--(click)="menuOpen = false"-->
-              <div class="app-row-icon" [style.background]="navbarMenuPinned.iconBg">
+              <div class="app-row-icon">
                 <img [src]="navbarMenuPinned.image" [alt]="navbarMenuPinned.name" class="app-row-img">
               </div>
               <div class="app-row-info">
@@ -89,7 +89,7 @@
                        class="app-menu-row"
                        [class.app-menu-row--sub]="item.isSubItem"
                        TyroUiGloss [glossSize]="100">
-                      <div class="app-row-icon" [style.background]="item.iconBg">
+                      <div class="app-row-icon">
                         <img [src]="item.image" [alt]="item.name" class="app-row-img">
                       </div>
                       <div class="app-row-info">

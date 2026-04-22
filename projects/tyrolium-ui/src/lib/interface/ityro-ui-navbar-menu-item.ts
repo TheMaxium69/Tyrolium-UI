@@ -3,7 +3,6 @@ export interface ITyroUiNavbarMenuItem {
   description: string;
   image: string;
   link: string;
-  iconBg?: string;
   subItems?: ITyroUiNavbarMenuItem[];
   subOpen?: boolean;
   isSubItem?: boolean;

@@ -17,6 +17,7 @@ export class TyroUiCTA {
   @Input() subbtn: string = "";
   @Input() subLink: string = "";
   @Input() subRouterLink: string = "";
+  @Input() notBack: boolean = false;
 
   
   
