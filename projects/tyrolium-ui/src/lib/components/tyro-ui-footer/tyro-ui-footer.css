@@ -5,6 +5,8 @@ footer {
 }
 
 .footer-head {
+  max-width: 1400px;
+  margin: auto;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -36,9 +38,11 @@ footer {
   font-weight: 500;
   text-transform: uppercase;
   letter-spacing: 0.05em;
+  font-family: "Noto Sans Display", sans-serif;
 }
 
-.footer-nav-name {
+.footer-nav-name,
+.footer-nav-name-main {
   font-size: 1rem;
   color: #111827;
   font-weight: 600;
@@ -56,7 +60,7 @@ footer {
   align-items: center;
   justify-content: center;
   border-radius: 7px;
-  border: 0.5px solid #e5e7eb;
+  /*border: 0.5px solid #e5e7eb;*/
   background: transparent;
   color: #6b7280;
   font-size: 16px;
@@ -72,6 +76,8 @@ footer {
 
 /* Main grid */
 .footer-main {
+  max-width: 1500px;
+  margin: auto;
   display: grid;
   grid-template-columns: 2fr 1fr 1fr 1fr;
   gap: 2rem;
@@ -122,6 +128,133 @@ footer {
 .footer-links a:hover {
   background: #f3f4f6;
   color: #111827;
+}
+
+/* Project list item — positioning context */
+.footer-project-item {
+  position: relative;
+}
+
+/* Icon flottante, invisible par défaut */
+.footer-project-icon {
+  position: absolute;
+  left: -44px;          /* apparaît à gauche du lien, quelques px avant */
+  top: 50%;
+  transform: translateY(-50%) scale(0.75);
+  width: 28px;
+  height: 28px;
+  object-fit: contain;
+  /*border-radius: 6px;*/
+  /*border: 0.5px solid #e5e7eb;*/
+  /*background: #fff;*/
+  pointer-events: none;
+
+  opacity: 0;
+  transition: opacity 0.18s ease, transform 0.18s ease;
+}
+
+/* Apparition au hover sur le li */
+.footer-project-item:hover .footer-project-icon {
+  opacity: 1;
+  transform: translateY(-50%) scale(1);
+}
+
+/* Trigger button — même style que les liens */
+.footer-dropdown-trigger {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  width: calc(100% + 1.2rem);
+  padding: 0.35rem 0.6rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #6b7280;
+  background: transparent;
+  border: none;
+  border-radius: 7px;
+  cursor: pointer;
+  text-align: left;
+  font-family: inherit;
+  transition: background 0.15s, color 0.15s;
+  margin-left: -0.6rem;
+}
+
+.footer-dropdown-trigger:hover {
+  background: #f3f4f6;
+  color: #111827;
+}
+
+.footer-dropdown-arrow {
+  margin-left: auto;
+  font-size: 14px;
+  transition: transform 0.2s ease;
+}
+
+/* Dropdown — s'ouvre vers le HAUT */
+.footer-dropdown-item {
+  position: relative;
+}
+
+.footer-dropdown-menu {
+  list-style: none;
+  margin: 0;
+  padding: 0.3rem;
+  position: absolute;
+  bottom: 100%; /* au-dessus du trigger */
+  left: -0.6rem;
+  min-width: 200px;
+  background: #fff;
+  border: 0.5px solid #e5e7eb;
+  border-radius: 10px;
+  box-shadow: 0 -4px 24px rgba(0, 0, 0, 0.07), 0 -1px 6px rgba(0, 0, 0, 0.04);
+
+  /* Caché par défaut */
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transform: translateY(6px);
+  transition: opacity 0.18s ease, transform 0.18s ease, visibility 0.18s;
+}
+
+.footer-dropdown-menu li a {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.4rem 0.6rem;
+  font-size: 0.845rem;
+  font-weight: 500;
+  color: #6b7280;
+  text-decoration: none;
+  border-radius: 7px;
+  transition: background 0.15s, color 0.15s;
+  margin-left: 0; /* reset du margin-left général */
+}
+
+.footer-dropdown-menu li a i {
+  font-size: 14px;
+  color: #9ca3af;
+  flex-shrink: 0;
+}
+
+.footer-dropdown-menu li a:hover {
+  background: #f3f4f6;
+  color: #111827;
+}
+
+.footer-dropdown-menu li a:hover i {
+  color: #6b7280;
+}
+
+/* Ouverture au hover */
+.footer-dropdown-item:hover .footer-dropdown-menu {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transform: translateY(0);
+}
+
+.footer-dropdown-item:hover .footer-dropdown-arrow {
+  transform: rotate(180deg); /* pointe vers le bas quand ouvert = visuellement logique */
 }
 
 /* Copyright */

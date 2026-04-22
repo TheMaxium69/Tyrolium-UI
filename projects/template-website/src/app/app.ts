@@ -25,10 +25,22 @@ export class App {
   public APP_ENV = 'DEV';
   public PROJECT_NAME = 'SolidServ';
   public PROJECT_LOGO = 'https://tyrolium.fr/Contenu/Image/SolidServ%20Site.png';
+  public PROJECT_CONTENT = `<strong>TyroServ</strong>, un serveur <strong>Minecraft moddé</strong> depuis <strong>2017</strong>,
+                propose du <strong>PVP-Faction moddés</strong> (actuellement en saison 3) et bientôt des
+                <strong>mini-jeux moddés</strong>. <strong>Gratuit</strong> et semi-crack, il offre une sécurité
+                renforcée contre les tricheurs grâce à la création de comptes spécifiques.`
+
+
+  /*
+   *
+   * PAGES
+   *
+   * */
 
   public pages: ITyroUiNavbarPages[] = [
     { label: 'Accueil', link: '/', icon: 'ri-home-line' },
     { label: 'Projet', link: '/project', icon: 'ri-folder-line' },
+    { label: 'Serveur', link: '/project', icon: 'ri-folder-line' },
     {
       label: 'Produit',
       icon: 'ri-briefcase-line',

@@ -3,19 +3,20 @@
         <div class="footer-head-logo">
             <img [src]="logo" alt="logo">
             <div class="footer-nav-info">
-                <span class="footer-nav-group">Tyrolium</span>
-                <span class="footer-nav-name">{{ project }}</span>
+
+                @if (project == "Tyrolium") {
+                    <span class="footer-nav-name-main title">Tyrolium</span>
+                } @else {
+                    <span class="footer-nav-group title">Tyrolium</span>
+                    <span class="footer-nav-name title">{{ project }}</span>
+                }
             </div>
         </div>
         <div class="footer-socials">
             <ul class="social-icons">
-                <li><a target="_blank" class="discord" href="https://discord.gg/km8h5jHezt"><i class="ri-discord-fill"></i></a></li>
-                <li><a target="_blank" class="instagram" href="https://www.instagram.com/tyroliumserver/"><i class="ri-instagram-line"></i></a></li>
-                <li><a target="_blank" class="twitter" href="https://twitter.com/tyrolium"><i class="ri-twitter-x-fill"></i></a></li>
-                <li><a target="_blank" class="youtube" href="https://www.youtube.com/@TyroServ"><i class="ri-youtube-fill"></i></a></li>
-                <li><a target="_blank" class="github" href="https://github.com/tyroserv"><i class="ri-github-fill"></i></a></li>
-                <li><a target="_blank" class="tiktok" href="https://www.tiktok.com/@tyroserv"><i class="ri-tiktok-fill"></i></a></li>
-                <li><a target="_blank" class="linkedin" href="https://www.linkedin.com/company/tyroserv"><i class="ri-linkedin-box-fill"></i></a></li>
+                @for (social of socials; track social.label) {
+                    <li><a [href]="social.link" target="_blank" TyroUiGloss><i [class]="social.icon"></i></a></li>
+                }
             </ul>
         </div>
     </div>
@@ -24,51 +25,65 @@
 
         <div class="footer-col footer-col--wide">
             <h5 class="footer-col-title">À propos</h5>
-            <p class="footer-desc">
-                <span>TyroServ</span>, un serveur <strong>Minecraft moddé</strong> depuis <strong>2017</strong>,
-                propose du <strong>PVP-Faction moddés</strong> (actuellement en saison 3) et bientôt des
-                <strong>mini-jeux moddés</strong>. <strong>Gratuit</strong> et semi-crack, il offre une sécurité
-                renforcée contre les tricheurs grâce à la création de comptes spécifiques.
+            <p class="footer-desc" [innerHTML]="content">
             </p>
         </div>
 
-        <div class="footer-col">
+        <div class="footer-col" style="padding-right: 20px;">
             <h5 class="footer-col-title">Pages</h5>
             <ul class="footer-links">
-                <li><a href="/">Accueil</a></li>
-                <li><a href=".#comment">Jouer</a></li>
-                <li><a href="/rank">Classements</a></li>
-                <li><a href="/">Wiki</a></li>
-                <li><a href="/support">Support</a></li>
-                <li><a href="/">Boutique</a></li>
+                @for (page of pages; track page.label) {
+                    @if (page.children && page.children.length) {
+                        <li class="footer-dropdown-item">
+                            <button class="footer-dropdown-trigger" TyroUiGloss>
+                                {{ page.label }}
+                                <i class="ri-arrow-up-s-line footer-dropdown-arrow"></i>
+                            </button>
+                            <ul class="footer-dropdown-menu">
+                                @for (child of page.children; track child.label) {
+                                    <li>
+                                        <a [routerLink]="child.link" TyroUiGloss>
+                                            @if (child.icon) { <i [class]="child.icon"></i> }
+                                            {{ child.label }}
+                                        </a>
+                                    </li>
+                                }
+                            </ul>
+                        </li>
+                    } @else {
+                        <li><a [routerLink]="page.link" TyroUiGloss>
+                            {{ page.label }}
+                        </a></li>
+                    }
+                }
             </ul>
         </div>
 
         <div class="footer-col">
-            <h5 class="footer-col-title">Jouer</h5>
+            <h5 class="footer-col-title">Projet</h5>
             <ul class="footer-links">
-                <li><a href=".#comment">Comment jouer ?</a></li>
-                <li><a href="#">Télécharger le launcher</a></li>
-                <li><a href="/panel/">Mon compte</a></li>
+                @for (projectPage of footerProjectPage; track projectPage.label) {
+                    <li class="footer-project-item">
+                        <a [href]="projectPage.link" TyroUiGloss>{{ projectPage.label }}</a>
+                        <img class="footer-project-icon" [src]="projectPage.icon" [alt]="projectPage.label">
+                    </li>
+                }
             </ul>
         </div>
 
         <div class="footer-col">
             <h5 class="footer-col-title">Autres liens</h5>
             <ul class="footer-links">
-                <li><a href="/terms">Termes</a></li>
-                <li><a href="/cgu">CGU</a></li>
-                <li><a href="/cgv">CGV</a></li>
-                <li><a target="_blank" href="https://stats.uptimerobot.com/7z9o3SEnWX">Serveur</a></li>
-                <li><a href="/recruiting">Recrutements</a></li>
-                <li><a target="_blank" href="https://tyrolium.fr">Tyrolium</a></li>
+                @for (otherPage of footerOtherLink; track otherPage.label) {
+                    <li><a [href]="otherPage.link" TyroUiGloss>{{ otherPage.label }}</a></li>
+                }
             </ul>
         </div>
 
     </div>
 
     <div class="footer-copyright">
-        <p>© 2024 <a target="_blank" href="https://tyrolium.fr">Tyrolium</a>. All rights reserved.</p>
+        <p>© {{ currentYear }} <a target="_blank" href="https://tyrolium.fr">Tyrolium</a>. All rights reserved.</p>
         <div class="footer-copy-links">
             <a href="/terms">Termes</a>
             <a href="/cgu">CGU</a>

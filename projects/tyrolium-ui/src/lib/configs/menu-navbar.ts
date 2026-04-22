@@ -141,6 +141,25 @@ export const NavbarMenuCategory: ITyroUiNavbarMenuCategory[] = [
         image: 'ri-file-text-line',
         link: '/terms',
         iconBg: '#F0F9FF',
+        subOpen: false,
+        subItems: [
+          {
+            name: 'GGU',
+            description: 'Contrat général d\'utilisation',
+            image: 'https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/uptimerobot.svg',
+            link: 'http://uptimerobot.tyrolium.fr',
+            iconBg: '#ead9f3',
+            isSubItem: true,
+          },
+          {
+            name: 'GGV',
+            description: 'Contrat général de vente',
+            image: 'https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/uptimerobot.svg',
+            link: 'http://uptimerobot.tyrolium.fr',
+            iconBg: '#ead9f3',
+            isSubItem: true,
+          },
+        ],
       },
       {
         name: 'Serveurs',
