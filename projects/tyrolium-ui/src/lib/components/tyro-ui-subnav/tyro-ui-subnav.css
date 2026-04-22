@@ -50,6 +50,6 @@
 }
 
 .subnav-item.active {
-  background: var(--active-bg-color);
+  background: #00065c;
   color: #fff;
 }

@@ -1,9 +1,7 @@
 <div class="subnav" [class.fixed]="isFixed">
   <div class="subnav-row">
-      @for (page of pages; track page; let i = $index) {
-          <a class="subnav-item" [id]="'subnav-item-' + i" [routerLink]="page.link" routerLinkActive="active"
-             TyroUiGloss
-             [style.--active-bg-color]="page.color || '#000000'">
+      @for (page of pages; track page) {
+          <a class="subnav-item" [routerLink]="page.link" routerLinkActive="active" TyroUiGloss>
               {{ page.label }}
           </a>
       }
