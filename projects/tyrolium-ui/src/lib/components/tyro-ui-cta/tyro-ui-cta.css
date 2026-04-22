@@ -1,0 +1,216 @@
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+.section {
+    padding: 100px 0;
+}
+
+.cta {
+    background: #f6f7fb;
+}
+
+.label {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: #001a6e;
+    margin-bottom: 0.6rem;
+    z-index: 1;
+}
+
+.label--white {
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.cta-card {
+    position: relative;
+    background: linear-gradient(135deg, #0000FF 0%, #BF0000 100%);
+    border-radius: 24px;
+    padding: 5rem 4rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 3rem;
+    overflow: hidden;
+}
+
+.cta-card__text h2 {
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(1.75rem, 3.5vw, 2.75rem);
+    font-weight: 700;
+    letter-spacing: -0.03em;
+    line-height: 1.15;
+    color: #ffffff;
+    margin-bottom: 0.75rem;
+    z-index: 1;
+}
+
+.cta-desc {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.95rem;
+    line-height: 1.75;
+    color: rgba(255,255,255,0.8);
+    max-width: 400px;
+    z-index: 1;
+}
+
+.cta-card__actions {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    flex-shrink: 0;
+    z-index: 1;
+}
+
+.btn-white {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: #ffffff;
+    color: #001a6e;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.875rem;
+    font-weight: 700;
+    letter-spacing: 0.01em;
+    padding: 0.9rem 1.75rem;
+    border-radius: 53px;
+    text-decoration: none;
+    white-space: nowrap;
+    transition: opacity 0.2s ease, transform 0.15s ease;
+    z-index: 1;
+}
+
+.btn-white:hover {
+    opacity: 0.92;
+    transform: translateY(-1px);
+}
+
+.btn-transparent {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    color: rgba(255,255,255,0.8);
+    font-family: 'Inter', sans-serif;
+    font-size: 0.875rem;
+    font-weight: 500;
+    text-decoration: none;
+    white-space: nowrap;
+    transition: color 0.2s ease, gap 0.2s ease;
+    z-index: 1;
+}
+
+.btn-transparent:hover {
+    color: #ffffff;
+    gap: 0.75rem;
+}
+
+/* Decorative glows */
+
+.cta-deco {
+    position: absolute;
+    border-radius: 50%;
+    pointer-events: none;
+}
+
+.cta-deco--1 {
+    width: 350px;
+    height: 350px;
+    background: rgba(40, 0, 110, 0.4);
+    filter: blur(70px);
+    top: -100px;
+    right: -80px;
+}
+
+.cta-deco--2 {
+    width: 250px;
+    height: 250px;
+    background: rgba(238, 43, 43, 0.2);
+    filter: blur(60px);
+    bottom: -60px;
+    left: 30%;
+}
+
+/* ══════════════════════════════════════════════════════════════════════════ */
+/* ── Responsive ───────────────────────────────────────────────────────────── */
+/* ══════════════════════════════════════════════════════════════════════════ */
+
+@media (max-width: 1100px) {
+    .values-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 992px) {
+    .services-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .tech-categories {
+        grid-template-columns: 1fr;
+    }
+
+    .cta-card {
+        flex-direction: column;
+        padding: 3.5rem 2.5rem;
+        text-align: center;
+    }
+
+    .cta-desc {
+        max-width: none;
+    }
+
+    .cta-card__actions {
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+}
+
+@media (max-width: 768px) {
+    .section {
+        padding: 72px 0;
+    }
+
+    .services-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .projects-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .values-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+
+    .cta-card {
+        padding: 2.5rem 1.75rem;
+    }
+
+    .timeline-track {
+        padding-left: 1.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .container {
+        padding: 0 1.25rem;
+    }
+
+    .cta-card__actions {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .btn-white,
+    .btn-transparent {
+        justify-content: center;
+    }
+}

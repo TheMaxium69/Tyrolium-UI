@@ -11,4 +11,5 @@ import { RouterLink, RouterLinkActive } from '@angular/router';
 export class TyroUiSubnav {
   @Input() pages: ITyroUiNavbarPages[] = [];
   @Input() isFixed: boolean = false;
+  @Input() havePlaceholder: boolean = true;
 }

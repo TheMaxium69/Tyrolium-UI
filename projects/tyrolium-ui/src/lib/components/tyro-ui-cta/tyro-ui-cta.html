@@ -1,0 +1,20 @@
+<section class="section cta">
+    <div class="container">
+        <div class="cta-card">
+            <div class="cta-card__text">
+                <p class="label label--white">{{label}}</p>
+                <h2 [innerHTML]="title"></h2>
+                <p class="cta-desc" [innerHTML]="content"></p>
+            </div>
+            <div class="cta-card__actions">
+                <a href="mailto:contact@tyrolium.fr" class="btn-white" [innerHTML]="btnIcon + ' ' + btn">
+                </a>
+                <a href="/project" class="btn-transparent">
+                    {{ subbtn }} <i class="ri-arrow-right-line"></i>
+                </a>
+            </div>
+            <div class="cta-deco cta-deco--1"></div>
+            <div class="cta-deco cta-deco--2"></div>
+        </div>
+    </div>
+</section>

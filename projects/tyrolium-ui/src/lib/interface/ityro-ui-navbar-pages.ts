@@ -4,4 +4,5 @@ export interface ITyroUiNavbarPages {
   icon?: string;
   children?: ITyroUiNavbarPages[];
   childrenOpen?: boolean;
+  color?: string;
 }
