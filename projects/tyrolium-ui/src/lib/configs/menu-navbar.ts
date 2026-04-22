@@ -49,19 +49,7 @@ export const NavbarMenuCategory: ITyroUiNavbarMenuCategory[] = [
         name: 'TyroStudio',
         description: 'Studio de jeu-vidéo',
         image: 'https://tyrolium.fr/Contenu/Image/Tyrolium%20Studio%20Site.png',
-
         link: '/influnias',
-        subOpen: false,
-        subItems: [
-          {
-            name: 'Rhodotales',
-            description: 'Jeu de plateforme',
-            image: 'https://tyrolium.fr/Contenu/Image/Vturias%20Site.png',
-            link: '/vturias',
-
-            isSubItem: true,
-          },
-        ],
       },
       {
         name: 'Gamenium',
