@@ -11,6 +11,11 @@ export * from './lib/components/tyro-ui-footer/tyro-ui-footer';
 /* Interface */
 export * from './lib/interface/ityro-ui-navbar-pages'
 export * from './lib/interface/ityro-ui-subnav-pages'
+export * from './lib/interface/ityro-ui-navbar-menu-item'
+export * from './lib/interface/ityro-ui-navbar-menu-category'
+
+/* Configs */
+export * from './lib/configs/menu-navbar'
 
 /*Directive*/
 export * from './lib/directive/tyro-ui-gloss';
