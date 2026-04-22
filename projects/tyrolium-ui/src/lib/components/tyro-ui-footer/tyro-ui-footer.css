@@ -1,5 +1,5 @@
 footer {
-  background: var(--color-background-primary, #fff);
+  background: #fff;
   border-top: 0.5px solid #e5e7eb;
   font-family: "Inter", sans-serif;
 }
