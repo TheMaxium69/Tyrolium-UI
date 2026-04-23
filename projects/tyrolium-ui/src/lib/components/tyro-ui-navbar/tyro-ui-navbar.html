@@ -1,5 +1,5 @@
 <nav>
-  <div class="nav-right" routerLink=".">
+  <div class="nav-right" routerLink="." (click)="mobileMenuOpen = false">
     <img [src]="logo" alt="Logo" class="nav-logo">
     <div class="nav-info">
       @if (project == "Tyrolium") {
@@ -213,16 +213,16 @@
       @for (page of pages; track page.label) {
         @if (page.children?.length) {
           <div class="nav-mobile-group">
-            <button class="nav-mobile-link nav-mobile-group-trigger" (click)="page.childrenOpen = !page.childrenOpen">
+            <button class="nav-mobile-link nav-mobile-group-trigger" [routerLink]="page.link" (click)="mobileMenuOpen = false; page.childrenOpen = false">
               <div>
               @if (page.icon) {
                 <i [class]="page.icon + ' nav-link-icon'"></i>
               }
               {{ page.label }}
               </div>
-              <i class="ri-arrow-down-s-line" [class.open]="page.childrenOpen"></i>
+<!--              <i class="ri-arrow-down-s-line" [class.open]="page.childrenOpen"></i>-->
             </button>
-            @if (page.childrenOpen) {
+<!--            @if (page.childrenOpen) {-->
               <div class="nav-mobile-children">
                 @for (child of page.children; track child.label) {
                   <a [routerLink]="child.link" class="nav-mobile-child" (click)="mobileMenuOpen = false; page.childrenOpen = false">
@@ -233,7 +233,7 @@
                   </a>
                 }
               </div>
-            }
+<!--            }-->
           </div>
         } @else {
           <a [routerLink]="page.link" class="nav-link nav-mobile-link" (click)="mobileMenuOpen = false">
