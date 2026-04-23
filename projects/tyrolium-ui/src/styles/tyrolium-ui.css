@@ -86,17 +86,41 @@ body {
             linear-gradient(var(--page-card-bg), var(--page-card-bg)) padding-box,
             conic-gradient(
                     from var(--border-angle),
-                    #001a6e 0%, #4055dd 30%, #ee2b2b 55%, #ff3333 70%, #001a6e 100%
+                    #001a6e 0%, #4055dd 30%, #ee2b2b 55%, #a80303 70%, #001a6e 100%
+            ) border-box !important;
+  }
+  [data-theme="dark"] .project-card--sub {
+    background:
+            linear-gradient(var(--page-card-bg), var(--page-card-bg)) padding-box,
+            conic-gradient(
+                    from var(--border-angle),
+                    #00b8ff 0%,
+                    #ff00a5 40%,
+                    #ff00a5 70%,
+                    #00b8ff 100%
             ) border-box !important;
   }
 }
+
 [data-theme="dark"] .project-card:hover {
   background:
     linear-gradient(var(--page-card-bg), var(--page-card-bg)) padding-box,
     conic-gradient(
       from var(--border-angle),
-      #001a6e 0%, #4055dd 30%, #ee2b2b 55%, #ff3333 70%, #001a6e 100%
+      #001a6e 0%, #4055dd 30%, #ee2b2b 55%, #a80303 70%, #001a6e 100%
     ) border-box !important;
+}
+
+[data-theme="dark"] .project-card--sub:hover {
+  background:
+          linear-gradient(var(--page-card-bg), var(--page-card-bg)) padding-box,
+          conic-gradient(
+                  from var(--border-angle),
+                  #00b8ff 0%,
+                  #ff00a5 40%,
+                  #ff00a5 70%,
+                  #00b8ff 100%
+          ) border-box !important;
 }
 [data-theme="dark"] .project-card:hover .project-card__visual {
   background: var(--page-bg-light) !important;
@@ -104,6 +128,11 @@ body {
 [data-theme="dark"] .project-card__title-row h3 { color: var(--page-text) !important; }
 [data-theme="dark"] .project-card__body p       { color: var(--page-text-muted) !important; }
 [data-theme="dark"]  .project-card:hover .project-arrow{ color: #fff !important; }
+[data-theme="dark"]  .sub-toggle{
+  color: #fff !important;
+  border: 1.5px solid #9c9c9c !important;
+  background: var(--page-bg-light)!important;
+}
 @media (max-width: 850px) {
   [data-theme="dark"] .project-card .project-card__visual {
     background: var(--page-bg-light) !important;
