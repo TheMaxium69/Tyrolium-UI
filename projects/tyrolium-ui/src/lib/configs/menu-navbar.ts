@@ -4,7 +4,7 @@ import { ITyroUiNavbarMenuItem } from '../interface/ityro-ui-navbar-menu-item';
 export const NavbarMenuPinned: ITyroUiNavbarMenuItem = {
   name: 'Tyrolium',
   description: 'Maison mère',
-  image: 'https://tyrolium.fr/Contenu/Image/Tyrolium%20Site.png',
+  image: 'assets/Tyrolium.png',
   link: 'https://tyrolium.fr',
 };
 
@@ -16,21 +16,21 @@ export const NavbarMenuCategory: ITyroUiNavbarMenuCategory[] = [
       {
         name: 'TyroServ',
         description: 'Server Minecraft',
-        image: 'TyroServ.png',
+        image: 'assets/TyroServ.png',
         link: 'https://tyroserv.fr',
 
       },
       {
         name: 'SolidServ',
         description: 'Héberger de server',
-        image: 'SolidServ.png',
+        image: 'assets/SolidServ.png',
         link: 'https://solidserv.fr',
 
       },
       {
         name: 'Influnias',
         description: "Agence d'influenceur",
-        image: 'Influnias.png',
+        image: 'assets/Influnias.png',
 
         link: 'https://www.influnias.fr',
         subOpen: false,
@@ -48,20 +48,20 @@ export const NavbarMenuCategory: ITyroUiNavbarMenuCategory[] = [
       {
         name: 'TyroCiel',
         description: 'Studio de jeu-vidéo',
-        image: 'TyroCiel.png',
+        image: 'assets/TyroCiel.png',
         link: 'https://tyrociel.fr',
       },
       {
         name: 'Gamenium',
         description: 'Site actu jeu-vidéo',
-        image: 'Gamenium.png',
+        image: 'assets/Gamenium.png',
         link: 'https://gamenium.fr',
 
       },
       {
         name: 'NexiumiaCRM',
         description: 'CRM',
-        image: 'NexiumiaCRM.png',
+        image: 'assets/NexiumiaCRM.png',
         link: 'https://nexiumiacrm.fr',
 
       },
