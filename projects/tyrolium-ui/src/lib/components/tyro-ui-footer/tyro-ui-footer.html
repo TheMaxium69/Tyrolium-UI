@@ -75,7 +75,15 @@
             <h5 class="footer-col-title">Autres liens</h5>
             <ul class="footer-links">
                 @for (otherPage of footerOtherLink; track otherPage.label) {
-                    <li><a [href]="otherPage.link" TyroUiGloss>{{ otherPage.label }}</a></li>
+                    @if (otherPage.host) {
+                        @if (project == "Tyrolium") {
+                            <li><a [routerLink]="otherPage.link" TyroUiGloss>{{ otherPage.label }}</a></li>
+                        } @else {
+                            <li><a [href]="otherPage.host + otherPage.link" TyroUiGloss>{{ otherPage.label }}</a></li>
+                        }
+                    } @else {
+                        <li><a [href]="otherPage.link" TyroUiGloss>{{ otherPage.label }}</a></li>
+                    }
                 }
             </ul>
         </div>
@@ -85,9 +93,16 @@
     <div class="footer-copyright">
         <p>© {{ currentYear }} <a target="_blank" href="https://tyrolium.fr">Tyrolium</a>. All rights reserved.</p>
         <div class="footer-copy-links">
-            <a href="/terms">Termes</a>
-            <a href="/cgu">CGU</a>
-            <a href="/cgv">CGV</a>
+
+            @if (project == "Tyrolium") {
+                <a routerLink="/legal">Mentions légales</a>
+                <a routerLink="/legal/cgu">CGU</a>
+                <a routerLink="/legal/cgv">CGV</a>
+            } @else {
+                <a href="https://tyrolium.fr/legal">Mentions légales</a>
+                <a href="https://tyrolium.fr/legal/cgu">CGU</a>
+                <a href="https://tyrolium.fr/legal/cgv">CGV</a>
+            }
         </div>
     </div>
 </footer>

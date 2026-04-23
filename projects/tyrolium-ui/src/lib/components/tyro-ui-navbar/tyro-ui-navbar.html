@@ -1,5 +1,5 @@
 <nav>
-  <div class="nav-right">
+  <div class="nav-right" routerLink=".">
     <img [src]="logo" alt="Logo" class="nav-logo">
     <div class="nav-info">
       @if (project == "Tyrolium") {
@@ -85,23 +85,64 @@
               @if (cat.open) {
                 <div class="app-menu-section-body">
                   @for (item of getVisibleItems(cat.items); track item.name) {
-                    <a [href]="item.link"
-                       class="app-menu-row"
-                       [class.app-menu-row--sub]="item.isSubItem"
-                       TyroUiGloss [glossSize]="100">
-                      <div class="app-row-icon">
-                        <img [src]="item.image" [alt]="item.name" class="app-row-img">
-                      </div>
-                      <div class="app-row-info">
-                        <span class="app-row-name">{{ item.name }}</span>
-                        <span class="app-row-desc">{{ item.description }}</span>
-                      </div>
-                      @if (item.subItems?.length) {
-                        <button class="sub-expand-btn" [class.open]="item.subOpen" (click)="toggleSubItems(item, $event)">
-                          <i class="ri-arrow-right-s-line"></i>
-                        </button>
+
+                      @if (item.host) {
+                          @if (project == "Tyrolium") {
+                              <a [routerLink]="item.link"
+                                 class="app-menu-row"
+                                 [class.app-menu-row--sub]="item.isSubItem"
+                                 TyroUiGloss [glossSize]="100">
+                                  <div class="app-row-icon">
+                                      <img [src]="item.image" [alt]="item.name" class="app-row-img">
+                                  </div>
+                                  <div class="app-row-info">
+                                      <span class="app-row-name">{{ item.name }}</span>
+                                      <span class="app-row-desc">{{ item.description }}</span>
+                                  </div>
+                                  @if (item.subItems?.length) {
+                                      <button class="sub-expand-btn" [class.open]="item.subOpen" (click)="toggleSubItems(item, $event)">
+                                          <i class="ri-arrow-right-s-line"></i>
+                                      </button>
+                                  }
+                              </a>
+                          } @else {
+                              <a [href]="item.host + item.link"
+                                 class="app-menu-row"
+                                 [class.app-menu-row--sub]="item.isSubItem"
+                                 TyroUiGloss [glossSize]="100">
+                                  <div class="app-row-icon">
+                                      <img [src]="item.image" [alt]="item.name" class="app-row-img">
+                                  </div>
+                                  <div class="app-row-info">
+                                      <span class="app-row-name">{{ item.name }}</span>
+                                      <span class="app-row-desc">{{ item.description }}</span>
+                                  </div>
+                                  @if (item.subItems?.length) {
+                                      <button class="sub-expand-btn" [class.open]="item.subOpen" (click)="toggleSubItems(item, $event)">
+                                          <i class="ri-arrow-right-s-line"></i>
+                                      </button>
+                                  }
+                              </a>
+                          }
+                      } @else {
+                              <a [href]="item.link"
+                                 class="app-menu-row"
+                                 [class.app-menu-row--sub]="item.isSubItem"
+                                 TyroUiGloss [glossSize]="100">
+                                  <div class="app-row-icon">
+                                      <img [src]="item.image" [alt]="item.name" class="app-row-img">
+                                  </div>
+                                  <div class="app-row-info">
+                                      <span class="app-row-name">{{ item.name }}</span>
+                                      <span class="app-row-desc">{{ item.description }}</span>
+                                  </div>
+                                  @if (item.subItems?.length) {
+                                      <button class="sub-expand-btn" [class.open]="item.subOpen" (click)="toggleSubItems(item, $event)">
+                                          <i class="ri-arrow-right-s-line"></i>
+                                      </button>
+                                  }
+                              </a>
                       }
-                    </a>
                   }
                 </div>
               }

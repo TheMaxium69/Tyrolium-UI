@@ -2,6 +2,10 @@ footer {
   background: #fff;
   border-top: 0.5px solid #e5e7eb;
   font-family: "Inter", sans-serif;
+
+  /* Test mobile for subnav*/
+  position: relative;
+  z-index: 998;
 }
 
 .footer-head {

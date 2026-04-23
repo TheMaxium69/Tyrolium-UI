@@ -42,6 +42,9 @@
     gap: 3rem;
     overflow: hidden;
 }
+.cta-card__text{
+    z-index: 1;
+}
 
 .cta-card__text h2 {
     font-family: 'Syne', sans-serif;
@@ -120,6 +123,7 @@
     position: absolute;
     border-radius: 50%;
     pointer-events: none;
+    z-index: 0;
 }
 
 .cta-deco--1 {

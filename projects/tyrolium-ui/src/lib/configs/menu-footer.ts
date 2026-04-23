@@ -50,9 +50,53 @@ export const FooterProjectPage: ITyroUiFooterPage[] = [
 
 export const FooterOtherLink: ITyroUiFooterPage[] = [
     {
-        label: 'Terms',
-        link: 'https://tyroserv.fr',
-        icon: 'https://tyrolium.fr/Contenu/Image/Tyrolium%20Site.png',
+        label: 'Contactez-nous',
+        link: '/contact',
+        host: 'https://tyrolium.fr',
     },
+
+    {
+        label: 'Boutique',
+        link: 'https://tyrolium-shop.myspreadshop.fr/',
+
+    },
+    {
+        label: 'Recrutements',
+        link: 'https://jobs.tyrolium.fr',
+    },
+    {
+        label: 'ERP Interne',
+        link: 'https://app.tyrolium.fr',
+    },
+    {
+        label: 'Serveur de Repository',
+        link: 'https://repo.tyrolium.fr',
+    },
+
+    {
+        label: 'Liste des Serveurs',
+        link: 'https://tyrolium.fr/uptime/',
+    },
+    {
+        label: 'Uptime Robot',
+        link: 'http://uptimerobot.tyrolium.fr'
+    },
+
+    {
+        label: 'Mentions légales',
+        link: '/legal',
+        host: 'https://tyrolium.fr',
+    },
+    {
+        label: 'CGU',
+        link: '/legal/cgu',
+        host: 'https://tyrolium.fr',
+    },
+    {
+        label: 'CGV',
+        link: '/legal/cgv',
+        host: 'https://tyrolium.fr',
+    },
+
 ];
 

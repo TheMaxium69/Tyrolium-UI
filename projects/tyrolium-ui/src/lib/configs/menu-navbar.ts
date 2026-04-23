@@ -113,6 +113,7 @@ export const NavbarMenuCategory: ITyroUiNavbarMenuCategory[] = [
         description: 'Formulaire de contact',
         image: 'ri-file-text-line',
         link: '/contact',
+        host: 'https://tyrolium.fr',
 
       },
       {
@@ -123,26 +124,29 @@ export const NavbarMenuCategory: ITyroUiNavbarMenuCategory[] = [
 
       },
       {
-        name: 'Terms',
-        description: "Information sur l'entreprise",
+        name: 'Mentions légales',
+        description: "Information",
         image: 'ri-file-text-line',
-        link: '/terms',
+        link: '/legal',
+        host: 'https://tyrolium.fr',
 
         subOpen: false,
         subItems: [
           {
-            name: 'GGU',
+            name: 'CGU',
             description: 'Contrat général d\'utilisation',
             image: 'https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/uptimerobot.svg',
-            link: 'http://uptimerobot.tyrolium.fr',
+            link: '/legal/cgu',
+            host: 'https://tyrolium.fr',
 
             isSubItem: true,
           },
           {
-            name: 'GGV',
+            name: 'CGV',
             description: 'Contrat général de vente',
             image: 'https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/uptimerobot.svg',
-            link: 'http://uptimerobot.tyrolium.fr',
+            link: '/legal/cgv',
+            host: 'https://tyrolium.fr',
 
             isSubItem: true,
           },
