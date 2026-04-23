@@ -3,7 +3,7 @@ import {Injectable, signal} from '@angular/core';
 @Injectable({providedIn: 'root'})
 export class TyroUiThemeService {
     readonly isDark = signal<boolean>(false);
-    readonly darkThemeEnabled = signal<boolean>(false);
+    readonly darkThemeEnabled = signal<boolean>(true);
 
     constructor() {
         const saved = localStorage.getItem('tyro-theme');

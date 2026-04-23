@@ -24,19 +24,19 @@
     <div class="footer-main">
 
         <div class="footer-col footer-col--wide">
-            <h5 class="footer-col-title">À propos</h5>
+            <h5 class="footer-col-title">{{ lang() === 'en' ? 'About' : 'À propos' }}</h5>
             <p class="footer-desc" [innerHTML]="content">
             </p>
         </div>
 
         <div class="footer-col" style="padding-right: 20px;">
-            <h5 class="footer-col-title">Pages</h5>
+            <h5 class="footer-col-title">{{ lang() === 'en' ? 'Pages' : 'Pages' }}</h5>
             <ul class="footer-links">
                 @for (page of pages; track page.label) {
                     @if (page.children && page.children.length) {
                         <li class="footer-dropdown-item">
                             <button class="footer-dropdown-trigger" TyroUiGloss>
-                                {{ page.label }}
+                                {{ lang() === 'en' ? (page.labelEn ?? page.label) : page.label }}
                                 <i class="ri-arrow-up-s-line footer-dropdown-arrow"></i>
                             </button>
                             <ul class="footer-dropdown-menu">
@@ -44,7 +44,7 @@
                                     <li>
                                         <a [routerLink]="child.link" TyroUiGloss>
                                             @if (child.icon) { <i [class]="child.icon"></i> }
-                                            {{ child.label }}
+                                            {{ lang() === 'en' ? (child.labelEn ?? child.label) : child.label }}
                                         </a>
                                     </li>
                                 }
@@ -52,7 +52,7 @@
                         </li>
                     } @else {
                         <li><a [routerLink]="page.link" TyroUiGloss>
-                            {{ page.label }}
+                            {{ lang() === 'en' ? (page.labelEn ?? page.label) : page.label }}
                         </a></li>
                     }
                 }
@@ -60,7 +60,7 @@
         </div>
 
         <div class="footer-col">
-            <h5 class="footer-col-title">Projet</h5>
+            <h5 class="footer-col-title">{{ lang() === 'en' ? 'Projects' : 'Projet' }}</h5>
             <ul class="footer-links">
                 @for (projectPage of footerProjectPage; track projectPage.label) {
                     <li class="footer-project-item">
@@ -72,17 +72,17 @@
         </div>
 
         <div class="footer-col">
-            <h5 class="footer-col-title">Autres liens</h5>
+            <h5 class="footer-col-title">{{ lang() === 'en' ? 'Other links' : 'Autres liens' }}</h5>
             <ul class="footer-links">
                 @for (otherPage of footerOtherLink; track otherPage.label) {
                     @if (otherPage.host) {
                         @if (project == "Tyrolium") {
-                            <li><a [routerLink]="otherPage.link" TyroUiGloss>{{ otherPage.label }}</a></li>
+                            <li><a [routerLink]="otherPage.link" TyroUiGloss>{{ lang() === 'en' ? (otherPage.labelEn ?? otherPage.label) : otherPage.label }}</a></li>
                         } @else {
-                            <li><a [href]="otherPage.host + otherPage.link" TyroUiGloss>{{ otherPage.label }}</a></li>
+                            <li><a [href]="otherPage.host + otherPage.link" TyroUiGloss>{{ lang() === 'en' ? (otherPage.labelEn ?? otherPage.label) : otherPage.label }}</a></li>
                         }
                     } @else {
-                        <li><a [href]="otherPage.link" TyroUiGloss>{{ otherPage.label }}</a></li>
+                        <li><a [href]="otherPage.link" TyroUiGloss>{{ lang() === 'en' ? (otherPage.labelEn ?? otherPage.label) : otherPage.label }}</a></li>
                     }
                 }
             </ul>
@@ -95,13 +95,13 @@
         <div class="footer-copy-links">
 
             @if (project == "Tyrolium") {
-                <a routerLink="/legal">Mentions légales</a>
-                <a routerLink="/legal/cgu">CGU</a>
-                <a routerLink="/legal/cgv">CGV</a>
+                <a routerLink="/legal">{{ lang() === 'en' ? 'Legal notice' : 'Mentions légales' }}</a>
+                <a routerLink="/legal/cgu">{{ lang() === 'en' ? 'TOS' : 'CGU' }}</a>
+                <a routerLink="/legal/cgv">{{ lang() === 'en' ? 'Terms of Sale' : 'CGV' }}</a>
             } @else {
-                <a href="https://tyrolium.fr/legal">Mentions légales</a>
-                <a href="https://tyrolium.fr/legal/cgu">CGU</a>
-                <a href="https://tyrolium.fr/legal/cgv">CGV</a>
+                <a href="https://tyrolium.fr/legal">{{ lang() === 'en' ? 'Legal notice' : 'Mentions légales' }}</a>
+                <a href="https://tyrolium.fr/legal/cgu">{{ lang() === 'en' ? 'TOS' : 'CGU' }}</a>
+                <a href="https://tyrolium.fr/legal/cgv">{{ lang() === 'en' ? 'Terms of Sale' : 'CGV' }}</a>
             }
         </div>
     </div>

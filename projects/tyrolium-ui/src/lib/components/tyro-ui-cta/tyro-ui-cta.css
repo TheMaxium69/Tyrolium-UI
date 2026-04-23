@@ -222,3 +222,8 @@
         justify-content: center;
     }
 }
+
+/* ── Dark theme ──────────────────────────────────────────────────────────── */
+
+:host-context([data-theme="dark"]) .cta { background: var(--page-bg); }
+:host-context([data-theme="dark"]) .label { color: #60a5fa; }

@@ -299,3 +299,35 @@ footer {
   .footer-main { grid-template-columns: 1fr; padding: 1.25rem 1rem; }
   .footer-copyright { flex-direction: column; gap: 0.5rem; text-align: center; }
 }
+
+/* ── Dark theme ──────────────────────────────────────────────────────────── */
+
+:host-context([data-theme="dark"]) footer { background: #111827; border-top-color: #374151; }
+:host-context([data-theme="dark"]) .footer-head { border-bottom-color: #374151; }
+:host-context([data-theme="dark"]) .footer-nav-name,
+:host-context([data-theme="dark"]) .footer-nav-name-main { color: #f3f4f6; }
+:host-context([data-theme="dark"]) .footer-nav-group { color: #6b7280; }
+:host-context([data-theme="dark"]) .social-icons a { color: #9ca3af; }
+:host-context([data-theme="dark"]) .social-icons a:hover { background: #374151; color: #f3f4f6; }
+:host-context([data-theme="dark"]) .footer-col-title { color: #6b7280; }
+:host-context([data-theme="dark"]) .footer-desc { color: #6b7280; }
+:host-context([data-theme="dark"]) .footer-desc span,
+:host-context([data-theme="dark"]) .footer-desc strong { color: #d1d5db; }
+:host-context([data-theme="dark"]) .footer-links a { color: #9ca3af; }
+:host-context([data-theme="dark"]) .footer-links a:hover { background: #1f2937; color: #f3f4f6; }
+:host-context([data-theme="dark"]) .footer-dropdown-trigger { color: #9ca3af; }
+:host-context([data-theme="dark"]) .footer-dropdown-trigger:hover { background: #1f2937; color: #f3f4f6; }
+:host-context([data-theme="dark"]) .footer-dropdown-menu {
+  background: #1f2937;
+  border-color: #374151;
+  box-shadow: 0 -4px 24px rgba(0,0,0,0.3);
+}
+:host-context([data-theme="dark"]) .footer-dropdown-menu li a { color: #9ca3af; }
+:host-context([data-theme="dark"]) .footer-dropdown-menu li a i { color: #6b7280; }
+:host-context([data-theme="dark"]) .footer-dropdown-menu li a:hover { background: #374151; color: #f3f4f6; }
+:host-context([data-theme="dark"]) .footer-dropdown-menu li a:hover i { color: #9ca3af; }
+:host-context([data-theme="dark"]) .footer-copyright { border-top-color: #374151; }
+:host-context([data-theme="dark"]) .footer-copyright p { color: #6b7280; }
+:host-context([data-theme="dark"]) .footer-copyright a:hover { color: #9ca3af; }
+:host-context([data-theme="dark"]) .footer-copy-links a { color: #6b7280; }
+:host-context([data-theme="dark"]) .footer-copy-links a:hover { color: #9ca3af; }

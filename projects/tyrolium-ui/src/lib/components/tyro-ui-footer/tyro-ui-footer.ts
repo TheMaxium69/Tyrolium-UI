@@ -1,9 +1,10 @@
-import {Component, Input} from '@angular/core';
+import {Component, Input, inject} from '@angular/core';
 import {FooterOtherLink, FooterProjectPage} from "../../configs/menu-footer";
 import {ITyroUiFooterPage} from "../../interface/ityro-ui-footer-page";
 import {TyroUiGloss} from "../../directive/tyro-ui-gloss";
 import {ITyroUiNavbarPages} from "../../interface/ityro-ui-navbar-pages";
 import {RouterLink} from "@angular/router";
+import {TyroUiLangService} from "../../services/tyro-ui-lang.service";
 
 @Component({
   selector: 'tyro-ui-footer',
@@ -25,4 +26,6 @@ export class TyroUiFooter {
 
   public footerProjectPage: ITyroUiFooterPage[] = FooterProjectPage;
   public footerOtherLink: ITyroUiFooterPage[] = FooterOtherLink;
+
+  readonly lang = inject(TyroUiLangService).lang;
 }
