@@ -7,7 +7,7 @@
                 <p class="cta-desc" [innerHTML]="content"></p>
             </div>
             <div class="cta-card__actions">
-                <a href="mailto:contact@tyrolium.fr" class="btn-white" [innerHTML]="btnIcon + ' ' + btn">
+                <a [href]="btnLink" [routerLink]="btnRouterLink" class="btn-white" [innerHTML]="btnIcon + ' ' + btn">
                 </a>
                 <a href="/project" class="btn-transparent">
                     {{ subbtn }} <i class="ri-arrow-right-line"></i>

@@ -15,14 +15,14 @@ export const NavbarMenuCategory: ITyroUiNavbarMenuCategory[] = [
     items: [
       {
         name: 'TyroServ',
-        description: 'Server Minecraft',
+        description: 'Serveur Minecraft',
         image: 'assets/TyroServ.png',
         link: 'https://tyroserv.fr',
 
       },
       {
         name: 'SolidServ',
-        description: 'Héberger de server',
+        description: 'Héberger de serveur',
         image: 'assets/SolidServ.png',
         link: 'https://solidserv.fr',
 
@@ -53,7 +53,7 @@ export const NavbarMenuCategory: ITyroUiNavbarMenuCategory[] = [
       },
       {
         name: 'Gamenium',
-        description: 'Site actu jeu-vidéo',
+        description: 'Site d\'actu jeu-vidéo',
         image: 'assets/Gamenium.png',
         link: 'https://gamenium.fr',
 

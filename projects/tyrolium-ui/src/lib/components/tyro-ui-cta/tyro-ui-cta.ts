@@ -1,8 +1,11 @@
 import {Component, Input} from "@angular/core";
+import {RouterLink} from "@angular/router";
 
 @Component({
   selector: "tyro-ui-cta",
-  imports: [],
+  imports: [
+    RouterLink
+  ],
   templateUrl: "./tyro-ui-cta.html",
   styleUrl: "./tyro-ui-cta.css",
 })
