@@ -51,7 +51,15 @@ footer {
 /* Socials */
 .footer-socials { display: flex; gap: 4px; }
 
-.social-icons { display: flex; gap: 4px; list-style: none; margin: 0; padding: 0; }
+.social-icons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  justify-content: center;
+}
 
 .social-icons a {
   width: 32px;

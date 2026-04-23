@@ -2,20 +2,21 @@
   width: 100%;
   display: flex;
   justify-content: center;
-  padding: 1.25rem 0;
+  padding: 1.25rem 1rem;
+  overflow: hidden;
 }
 
 .subnav.fixed {
   position: fixed;
-  top: 63px; /* hauteur de ta navbar */
+  top: 63px;
   left: 0;
   right: 0;
   z-index: 90;
   background: transparent;
-  padding: 0.75rem 0;
+  padding: 0.75rem 1rem;
 }
 
-.subnav-placeholder{
+.subnav-placeholder {
   height: 68px;
   width: 100%;
 }
@@ -29,6 +30,13 @@
   border-radius: 100px;
   box-shadow: 0 1px 3px rgba(0,0,0,0.08), 0 2px 8px rgba(0,0,0,0.06);
   border: 0.5px solid #e5e7eb;
+  max-width: 100%;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+
+.subnav-row::-webkit-scrollbar {
+  display: none;
 }
 
 .subnav-item {
@@ -41,6 +49,7 @@
   text-decoration: none;
   border-radius: 100px;
   white-space: nowrap;
+  flex-shrink: 0;
   transition: background 0.15s, color 0.15s;
 }
 
@@ -52,4 +61,30 @@
 .subnav-item.active {
   background: #00065c;
   color: #fff;
+}
+
+@media (max-width: 768px) {
+  .subnav {
+    justify-content: flex-start;
+    /*padding: 0.75rem 1rem;*/
+    padding: 0.6rem 0 !important;
+  }
+
+  .subnav.fixed {
+    top: 57px;
+    padding: 0.6rem 1rem;
+  }
+
+  .subnav-placeholder {
+    height: 60px;
+  }
+
+  .subnav-row {
+    width: 100%;
+  }
+
+  .subnav-item {
+    padding: 0.5rem 1.1rem;
+    font-size: 0.88rem;
+  }
 }
