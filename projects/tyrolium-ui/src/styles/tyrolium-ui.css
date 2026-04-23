@@ -129,9 +129,9 @@ body {
 [data-theme="dark"] .subnav-item:hover { background: #374151 !important; color: #f9fafb !important; }
 [data-theme="dark"] .subnav-item.active { background: #1d4ed8 !important; color: #fff !important; }
 
-/* Page hero waves (contact, project, legal) */
-[data-theme="dark"] .page-hero__wave svg use:nth-child(3) { fill: rgba(15,17,23,0.5); }
-[data-theme="dark"] .page-hero__wave svg use:nth-child(2) { fill: rgba(15,17,23,0.3); }
+/* Page hero waves (contact, project, legal) — <defs> is child 1, use = children 2, 3, last(4) */
+[data-theme="dark"] .page-hero__wave svg use:nth-child(2) { fill: rgba(15,17,23,0.5); }
+[data-theme="dark"] .page-hero__wave svg use:nth-child(3) { fill: rgba(15,17,23,0.3); }
 [data-theme="dark"] .page-hero__wave svg use:last-child   { fill: #161b27; }
 
 /* Contact channel icon */
@@ -141,6 +141,7 @@ body {
 [data-theme="dark"] .independence   { background: var(--page-bg) !important; }
 [data-theme="dark"] .ind-text       { color: var(--page-text-2) !important; }
 [data-theme="dark"] .ind-item--yes  { background: #1e2d5a !important; border-color: #3b4cb8 !important; }
-[data-theme="dark"] .ind-item--no   { background: rgba(238,43,43,0.12) !important; }
+[data-theme="dark"] .ind-item--no   { background: rgba(238,43,43,0.12) !important; border: 1px solid #f87171!important; }
 [data-theme="dark"] .ind-item strong { color: var(--page-text) !important; }
 [data-theme="dark"] .ind-item span  { color: var(--page-text-muted) !important; }
+
