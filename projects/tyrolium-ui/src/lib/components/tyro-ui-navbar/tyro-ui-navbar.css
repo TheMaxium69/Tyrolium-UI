@@ -102,6 +102,10 @@ nav {
   color: var(--nav-text-hov);
   font-weight: 600;
   font-family: "Inter", sans-serif;
+  margin-bottom: unset;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  line-height: unset;
 }
 
 /* ─── Centre — liens ─────────────────────────────────────── */
