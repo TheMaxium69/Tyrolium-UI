@@ -73,7 +73,7 @@
     <button class="nav-icon nav-hide-mobile"
             (click)="themeService.toggle()"
             TyroUiGloss>
-      <i [class]="themeService.isDark() ? 'ri-sun-line' : 'ri-moon-line'"></i>
+      <i [class]="themeService.isDark() ? 'ri-sun-fill' : 'ri-moon-fill'"></i>
     </button>
 
     <i class="nav-icon ri-user-fill" TyroUiGloss></i>
@@ -205,7 +205,7 @@
       </div>
       <!-- Thème mobile -->
       <button class="nav-mobile-action" (click)="themeService.toggle()">
-        <i [class]="themeService.isDark() ? 'ri-sun-line' : 'ri-moon-line'"></i>
+        <i [class]="themeService.isDark() ? 'ri-sun-fill' : 'ri-moon-fill'"></i>
         <span>{{ themeService.isDark() ? 'Clair' : 'Sombre' }}</span>
       </button>
     </div>
