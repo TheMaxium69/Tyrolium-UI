@@ -16,21 +16,21 @@ export const NavbarMenuCategory: ITyroUiNavbarMenuCategory[] = [
       {
         name: 'TyroServ',
         description: 'Server Minecraft',
-        image: 'https://tyrolium.fr/Contenu/Image/Tyrolium%20ServerMC%20Sword%203D.png',
+        image: 'TyroServ.png',
         link: 'https://tyroserv.fr',
 
       },
       {
         name: 'SolidServ',
         description: 'Héberger de server',
-        image: 'https://tyrolium.fr/Contenu/Image/SolidServ%20Site.png',
+        image: 'SolidServ.png',
         link: 'https://solidserv.fr',
 
       },
       {
         name: 'Influnias',
         description: "Agence d'influenceur",
-        image: 'https://tyrolium.fr/Contenu/Image/Influnias%20Site.png',
+        image: 'Influnias.png',
 
         link: 'https://www.influnias.fr',
         subOpen: false,
@@ -46,23 +46,23 @@ export const NavbarMenuCategory: ITyroUiNavbarMenuCategory[] = [
         ],
       },
       {
-        name: 'TyroStudio',
+        name: 'TyroCiel',
         description: 'Studio de jeu-vidéo',
-        image: 'https://tyrolium.fr/Contenu/Image/Tyrolium%20Studio%20Site.png',
-        link: '/influnias',
+        image: 'TyroCiel.png',
+        link: 'https://tyrociel.fr',
       },
       {
         name: 'Gamenium',
         description: 'Site actu jeu-vidéo',
-        image: 'https://tyrolium.fr/Contenu/Image/Gamenium%20Lettre%20Site.png',
-        link: '/gamenium',
+        image: 'Gamenium.png',
+        link: 'https://gamenium.fr',
 
       },
       {
         name: 'NexiumiaCRM',
         description: 'CRM',
-        image: 'https://tyrolium.fr/Contenu/Image/NexiumiaCRM%20Site.png',
-        link: '/gamenium',
+        image: 'NexiumiaCRM.png',
+        link: 'https://nexiumiacrm.fr',
 
       },
 
@@ -70,7 +70,7 @@ export const NavbarMenuCategory: ITyroUiNavbarMenuCategory[] = [
         name: 'Useritium',
         description: 'Compte',
         image: 'https://tyrolium.fr/Contenu/Image/Useritium%20Site.png',
-        link: '/useritium',
+        link: 'https://useritium.fr',
 
       },
     ],

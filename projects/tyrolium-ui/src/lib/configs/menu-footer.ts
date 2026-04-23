@@ -70,7 +70,7 @@ export const FooterOtherLink: ITyroUiFooterPage[] = [
     },
     {
         label: 'Serveur de Repository',
-        link: 'https://repo.tyrolium.fr',
+        link: 'http://repo.tyrolium.fr',
     },
 
     {
