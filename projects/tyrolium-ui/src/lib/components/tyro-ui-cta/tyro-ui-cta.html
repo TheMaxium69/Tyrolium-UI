@@ -9,7 +9,7 @@
             <div class="cta-card__actions">
                 <a [href]="btnLink" [routerLink]="btnRouterLink" class="btn-white" [innerHTML]="btnIcon + ' ' + btn">
                 </a>
-                <a href="/project" class="btn-transparent">
+                <a [href]="subLink" [routerLink]="subRouterLink"  class="btn-transparent">
                     {{ subbtn }} <i class="ri-arrow-right-line"></i>
                 </a>
             </div>
