@@ -7,11 +7,21 @@
                 <p class="cta-desc" [innerHTML]="content"></p>
             </div>
             <div class="cta-card__actions">
-                <a [href]="btnLink" [routerLink]="btnRouterLink" class="btn-white" [innerHTML]="btnIcon + ' ' + btn">
-                </a>
-                <a [href]="subLink" [routerLink]="subRouterLink"  class="btn-transparent">
-                    {{ subbtn }} <i class="ri-arrow-right-line"></i>
-                </a>
+                @if (btnRouterLink == "") {
+                    <a target="_blank" [href]="btnLink" class="btn-white" [innerHTML]="btnIcon + ' ' + btn"></a>
+                } @else {
+                    <a [routerLink]="btnRouterLink" class="btn-white" [innerHTML]="btnIcon + ' ' + btn"></a>
+                }
+
+                @if (subRouterLink == "") {
+                    <a target="_blank" [href]="subLink" class="btn-transparent">
+                        {{ subbtn }} <i class="ri-arrow-right-line"></i>
+                    </a>
+                } @else {
+                    <a [routerLink]="subRouterLink"  class="btn-transparent">
+                        {{ subbtn }} <i class="ri-arrow-right-line"></i>
+                    </a>
+                }
             </div>
             <div class="cta-deco cta-deco--1"></div>
             <div class="cta-deco cta-deco--2"></div>
