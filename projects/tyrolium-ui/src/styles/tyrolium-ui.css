@@ -53,7 +53,7 @@ body {
   --page-card-bg:  #1f2937;
 }
 
-/* ─── Dark mode — page-level overrides ───────────────────── */
+/* ─── Dark mode — Tyrolium.fr theme ───────────────────── */
 
 [data-theme="dark"] body {
   background: var(--page-bg);
