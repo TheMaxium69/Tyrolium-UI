@@ -1,6 +1,8 @@
 @import 'remixicon/fonts/remixicon.css';
 @import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Noto+Sans+Display:ital,wght@0,100..900;1,100..900&family=Syne:wght@400..800&display=swap');
 
+/* ─── Reset ───────────────────────────────────────────────── */
+
 * {
   margin: 0;
   padding: 0;
@@ -8,18 +10,121 @@
 
 body {
   font-family: "Inter", sans-serif;
+  background: var(--page-bg, #ffffff);
+  color: var(--page-text, #111827);
+  transition: background 0.2s, color 0.2s;
 }
 
-.title{
+/* ─── Utility classes (navbar display) ───────────────────── */
+
+.title {
   font-weight: bold;
   font-family: 'Inter', sans-serif;
   text-transform: uppercase;
   letter-spacing: 3px;
 }
 
-.title-second{
+.title-second {
   font-weight: 400;
   font-family: "Noto Sans Display", sans-serif;
   text-transform: uppercase;
   letter-spacing: 3px;
 }
+
+/* ─── CSS Variables ───────────────────────────────────────── */
+
+:root {
+  --page-bg:       #ffffff;
+  --page-bg-light: #f6f7fb;
+  --page-text:     #111827;
+  --page-text-2:   #4b5563;
+  --page-text-muted: #9ca3af;
+  --page-border:   #e5e7eb;
+  --page-card-bg:  #ffffff;
+}
+
+[data-theme="dark"] {
+  --page-bg:       #0f1117;
+  --page-bg-light: #161b27;
+  --page-text:     #f3f4f6;
+  --page-text-2:   #d1d5db;
+  --page-text-muted: #6b7280;
+  --page-border:   #374151;
+  --page-card-bg:  #1f2937;
+}
+
+/* ─── Dark mode — page-level overrides ───────────────────── */
+
+[data-theme="dark"] body {
+  background: var(--page-bg);
+  color: var(--page-text);
+}
+
+/* Sections */
+[data-theme="dark"] .section       { background: var(--page-bg) !important; }
+[data-theme="dark"] .bg-light      { background: var(--page-bg-light) !important; }
+[data-theme="dark"] .independence-banner { background: var(--page-bg) !important; }
+
+/* Textes */
+[data-theme="dark"] .title         { color: var(--page-text) !important; }
+[data-theme="dark"] .label         { color: #60a5fa !important; }
+[data-theme="dark"] .hero-desc     { color: rgba(255,255,255,0.55) !important; }
+[data-theme="dark"] .ind-title     { color: var(--page-text) !important; }
+[data-theme="dark"] .ind-item      { color: var(--page-text-2) !important; }
+[data-theme="dark"] .ind-sep       { color: var(--page-border) !important; }
+[data-theme="dark"] .section-count { color: var(--page-text-muted) !important; }
+
+/* Project cards */
+[data-theme="dark"] .project-card {
+  background:
+    linear-gradient(var(--page-card-bg), var(--page-card-bg)) padding-box,
+    linear-gradient(#374151, #374151) border-box !important;
+}
+[data-theme="dark"] .project-card:hover {
+  background:
+    linear-gradient(var(--page-card-bg), var(--page-card-bg)) padding-box,
+    conic-gradient(
+      from var(--border-angle),
+      #001a6e 0%, #4055dd 30%, #ee2b2b 55%, #ff5533 70%, #001a6e 100%
+    ) border-box !important;
+}
+[data-theme="dark"] .project-card__title-row h3 { color: var(--page-text) !important; }
+[data-theme="dark"] .project-card__body p       { color: var(--page-text-muted) !important; }
+
+/* Legal / contact shared */
+[data-theme="dark"] .legal-doc h2  { color: var(--page-text) !important; }
+[data-theme="dark"] .legal-doc p,
+[data-theme="dark"] .legal-doc li  { color: var(--page-text-2) !important; }
+[data-theme="dark"] .legal-update  { color: var(--page-text-muted) !important; }
+[data-theme="dark"] .doc-title     { color: var(--page-text) !important; }
+
+/* Contact form */
+[data-theme="dark"] .contact-form-wrap {
+  background: var(--page-card-bg) !important;
+  border-color: var(--page-border) !important;
+}
+[data-theme="dark"] .contact-channel {
+  background: var(--page-card-bg) !important;
+  border-color: var(--page-border) !important;
+}
+[data-theme="dark"] .contact-channel__value { color: var(--page-text) !important; }
+[data-theme="dark"] .contact-intro          { color: var(--page-text-muted) !important; }
+[data-theme="dark"] .contact-badge          { background: #1f2937 !important; color: var(--page-text-2) !important; }
+[data-theme="dark"] .form-group label       { color: var(--page-text-2) !important; }
+[data-theme="dark"] .form-group input,
+[data-theme="dark"] .form-group textarea    {
+  background: #1f2937 !important;
+  border-color: var(--page-border) !important;
+  color: var(--page-text) !important;
+}
+[data-theme="dark"] .form-group input::placeholder,
+[data-theme="dark"] .form-group textarea::placeholder { color: var(--page-text-muted) !important; }
+
+/* Subnav */
+[data-theme="dark"] .subnav-row {
+  background: #1f2937 !important;
+  border-color: #374151 !important;
+}
+[data-theme="dark"] .subnav-item   { color: #9ca3af !important; }
+[data-theme="dark"] .subnav-item:hover { background: #374151 !important; color: #f9fafb !important; }
+[data-theme="dark"] .subnav-item.active { background: #1d4ed8 !important; color: #fff !important; }

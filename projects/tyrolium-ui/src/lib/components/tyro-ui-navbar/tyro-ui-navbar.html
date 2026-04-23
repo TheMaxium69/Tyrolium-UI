@@ -48,108 +48,131 @@
   </div>
 
   <div class="nav-left">
-    <!-- Translate — caché sur mobile -->
-    <i class="nav-icon ri-translate-2 nav-hide-mobile" TyroUiGloss></i>
+
+    <!-- Sélecteur de langue — caché sur mobile -->
+    <div class="nav-lang-wrapper nav-hide-mobile">
+      <button class="nav-icon nav-lang-trigger"
+              [class.active]="langDropdownOpen"
+              (click)="toggleLangDropdown()"
+              TyroUiGloss>
+        <span class="nav-lang-flag">{{ langService.lang() === 'fr' ? '🇫🇷' : '🇬🇧' }}</span>
+      </button>
+      <div class="nav-lang-dropdown" [class.open]="langDropdownOpen">
+        <button class="nav-lang-option" [class.selected]="langService.lang() === 'fr'" (click)="setLang('fr')">
+          <span>🇫🇷</span> Français
+          @if (langService.lang() === 'fr') { <i class="ri-check-line nav-lang-check"></i> }
+        </button>
+        <button class="nav-lang-option" [class.selected]="langService.lang() === 'en'" (click)="setLang('en')">
+          <span>🇬🇧</span> English
+          @if (langService.lang() === 'en') { <i class="ri-check-line nav-lang-check"></i> }
+        </button>
+      </div>
+    </div>
+
+    <!-- Toggle thème — caché sur mobile -->
+    <button class="nav-icon nav-hide-mobile"
+            (click)="themeService.toggle()"
+            TyroUiGloss>
+      <i [class]="themeService.isDark() ? 'ri-sun-line' : 'ri-moon-line'"></i>
+    </button>
+
     <i class="nav-icon ri-user-fill" TyroUiGloss></i>
 
-    <!-- Burger mobile — visible uniquement sur mobile -->
+    <!-- Burger mobile -->
     <i class="nav-icon nav-burger"
        [class]="mobileMenuOpen ? 'nav-icon nav-burger ri-close-line' : 'nav-icon nav-burger ri-menu-line'"
        (click)="toggleMobileMenu()"></i>
 
     <!-- Wrapper app menu -->
     <div class="nav-menu-wrapper">
-      <i class="nav-icon ri-function-fill nav-hide-mobile" (click)="toggleMenu()" TyroUiGloss></i>  <!---->
+      <i class="nav-icon ri-function-fill nav-hide-mobile" (click)="toggleMenu()" TyroUiGloss></i>
 
-<!--      @if (menuOpen) {-->
-        <div class="app-menu" [class.open]="menuOpen">
-          <div class="app-menu-pinned">
-            <a [href]="navbarMenuPinned.link" class="app-menu-row pinned" TyroUiGloss> <!--(click)="menuOpen = false"-->
-              <div class="app-row-icon">
-                <img [src]="navbarMenuPinned.image" [alt]="navbarMenuPinned.name" class="app-row-img">
-              </div>
-              <div class="app-row-info">
-                <span class="app-row-name">{{ navbarMenuPinned.name }}</span>
-                <span class="app-row-desc">{{ navbarMenuPinned.description }}</span>
-              </div>
-            </a>
-          </div>
-
-          @for (cat of navbarMenuCategory; track cat.label) {
-            <div class="app-menu-section">
-              <button class="app-menu-section-header" (click)="toggleCategory(cat)" TyroUiGloss [glossSize]="100">
-                <span class="section-label">{{ cat.label }}</span>
-                <i class="ri-arrow-down-s-line section-chevron" [class.open]="cat.open"></i>
-              </button>
-
-              @if (cat.open) {
-                <div class="app-menu-section-body">
-                  @for (item of getVisibleItems(cat.items); track item.name) {
-
-                      @if (item.host) {
-                          @if (project == "Tyrolium") {
-                              <a [routerLink]="item.link"
-                                 class="app-menu-row"
-                                 [class.app-menu-row--sub]="item.isSubItem"
-                                 TyroUiGloss [glossSize]="100">
-                                  <div class="app-row-icon">
-                                      <img [src]="item.image" [alt]="item.name" class="app-row-img">
-                                  </div>
-                                  <div class="app-row-info">
-                                      <span class="app-row-name">{{ item.name }}</span>
-                                      <span class="app-row-desc">{{ item.description }}</span>
-                                  </div>
-                                  @if (item.subItems?.length) {
-                                      <button class="sub-expand-btn" [class.open]="item.subOpen" (click)="toggleSubItems(item, $event)">
-                                          <i class="ri-arrow-right-s-line"></i>
-                                      </button>
-                                  }
-                              </a>
-                          } @else {
-                              <a [href]="item.host + item.link"
-                                 class="app-menu-row"
-                                 [class.app-menu-row--sub]="item.isSubItem"
-                                 TyroUiGloss [glossSize]="100">
-                                  <div class="app-row-icon">
-                                      <img [src]="item.image" [alt]="item.name" class="app-row-img">
-                                  </div>
-                                  <div class="app-row-info">
-                                      <span class="app-row-name">{{ item.name }}</span>
-                                      <span class="app-row-desc">{{ item.description }}</span>
-                                  </div>
-                                  @if (item.subItems?.length) {
-                                      <button class="sub-expand-btn" [class.open]="item.subOpen" (click)="toggleSubItems(item, $event)">
-                                          <i class="ri-arrow-right-s-line"></i>
-                                      </button>
-                                  }
-                              </a>
-                          }
-                      } @else {
-                              <a [href]="item.link"
-                                 class="app-menu-row"
-                                 [class.app-menu-row--sub]="item.isSubItem"
-                                 TyroUiGloss [glossSize]="100">
-                                  <div class="app-row-icon">
-                                      <img [src]="item.image" [alt]="item.name" class="app-row-img">
-                                  </div>
-                                  <div class="app-row-info">
-                                      <span class="app-row-name">{{ item.name }}</span>
-                                      <span class="app-row-desc">{{ item.description }}</span>
-                                  </div>
-                                  @if (item.subItems?.length) {
-                                      <button class="sub-expand-btn" [class.open]="item.subOpen" (click)="toggleSubItems(item, $event)">
-                                          <i class="ri-arrow-right-s-line"></i>
-                                      </button>
-                                  }
-                              </a>
-                      }
-                  }
-                </div>
-              }
+      <div class="app-menu" [class.open]="menuOpen">
+        <div class="app-menu-pinned">
+          <a [href]="navbarMenuPinned.link" class="app-menu-row pinned" TyroUiGloss>
+            <div class="app-row-icon">
+              <img [src]="navbarMenuPinned.image" [alt]="navbarMenuPinned.name" class="app-row-img">
             </div>
-          }
+            <div class="app-row-info">
+              <span class="app-row-name">{{ navbarMenuPinned.name }}</span>
+              <span class="app-row-desc">{{ navbarMenuPinned.description }}</span>
+            </div>
+          </a>
         </div>
-<!--      }-->
+
+        @for (cat of navbarMenuCategory; track cat.label) {
+          <div class="app-menu-section">
+            <button class="app-menu-section-header" (click)="toggleCategory(cat)" TyroUiGloss [glossSize]="100">
+              <span class="section-label">{{ cat.label }}</span>
+              <i class="ri-arrow-down-s-line section-chevron" [class.open]="cat.open"></i>
+            </button>
+
+            @if (cat.open) {
+              <div class="app-menu-section-body">
+                @for (item of getVisibleItems(cat.items); track item.name) {
+                  @if (item.host) {
+                    @if (project == "Tyrolium") {
+                      <a [routerLink]="item.link"
+                         class="app-menu-row"
+                         [class.app-menu-row--sub]="item.isSubItem"
+                         TyroUiGloss [glossSize]="100">
+                        <div class="app-row-icon">
+                          <img [src]="item.image" [alt]="item.name" class="app-row-img">
+                        </div>
+                        <div class="app-row-info">
+                          <span class="app-row-name">{{ item.name }}</span>
+                          <span class="app-row-desc">{{ item.description }}</span>
+                        </div>
+                        @if (item.subItems?.length) {
+                          <button class="sub-expand-btn" [class.open]="item.subOpen" (click)="toggleSubItems(item, $event)">
+                            <i class="ri-arrow-right-s-line"></i>
+                          </button>
+                        }
+                      </a>
+                    } @else {
+                      <a [href]="item.host + item.link"
+                         class="app-menu-row"
+                         [class.app-menu-row--sub]="item.isSubItem"
+                         TyroUiGloss [glossSize]="100">
+                        <div class="app-row-icon">
+                          <img [src]="item.image" [alt]="item.name" class="app-row-img">
+                        </div>
+                        <div class="app-row-info">
+                          <span class="app-row-name">{{ item.name }}</span>
+                          <span class="app-row-desc">{{ item.description }}</span>
+                        </div>
+                        @if (item.subItems?.length) {
+                          <button class="sub-expand-btn" [class.open]="item.subOpen" (click)="toggleSubItems(item, $event)">
+                            <i class="ri-arrow-right-s-line"></i>
+                          </button>
+                        }
+                      </a>
+                    }
+                  } @else {
+                    <a [href]="item.link"
+                       class="app-menu-row"
+                       [class.app-menu-row--sub]="item.isSubItem"
+                       TyroUiGloss [glossSize]="100">
+                      <div class="app-row-icon">
+                        <img [src]="item.image" [alt]="item.name" class="app-row-img">
+                      </div>
+                      <div class="app-row-info">
+                        <span class="app-row-name">{{ item.name }}</span>
+                        <span class="app-row-desc">{{ item.description }}</span>
+                      </div>
+                      @if (item.subItems?.length) {
+                        <button class="sub-expand-btn" [class.open]="item.subOpen" (click)="toggleSubItems(item, $event)">
+                          <i class="ri-arrow-right-s-line"></i>
+                        </button>
+                      }
+                    </a>
+                  }
+                }
+              </div>
+            }
+          </div>
+        }
+      </div>
     </div>
   </div>
 </nav>
@@ -163,9 +186,27 @@
         <i class="ri-function-fill"></i>
         <span>Applications</span>
       </button>
-      <button class="nav-mobile-action">
-        <i class="ri-translate-2"></i>
-        <span>Langue</span>
+      <!-- Langue mobile -->
+      <div class="nav-lang-wrapper">
+        <button class="nav-mobile-action" (click)="toggleLangDropdown()">
+          <span>{{ langService.lang() === 'fr' ? '🇫🇷' : '🇬🇧' }}</span>
+          <span>{{ langService.lang() === 'fr' ? 'Français' : 'English' }}</span>
+        </button>
+        <div class="nav-lang-dropdown" [class.open]="langDropdownOpen">
+          <button class="nav-lang-option" [class.selected]="langService.lang() === 'fr'" (click)="setLang('fr')">
+            <span>🇫🇷</span> Français
+            @if (langService.lang() === 'fr') { <i class="ri-check-line nav-lang-check"></i> }
+          </button>
+          <button class="nav-lang-option" [class.selected]="langService.lang() === 'en'" (click)="setLang('en')">
+            <span>🇬🇧</span> English
+            @if (langService.lang() === 'en') { <i class="ri-check-line nav-lang-check"></i> }
+          </button>
+        </div>
+      </div>
+      <!-- Thème mobile -->
+      <button class="nav-mobile-action" (click)="themeService.toggle()">
+        <i [class]="themeService.isDark() ? 'ri-sun-line' : 'ri-moon-line'"></i>
+        <span>{{ themeService.isDark() ? 'Clair' : 'Sombre' }}</span>
       </button>
     </div>
     <div class="nav-mobile-links">

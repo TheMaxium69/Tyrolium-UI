@@ -18,6 +18,10 @@ export * from './lib/interface/ityro-ui-navbar-menu-category'
 /* Configs */
 export * from './lib/configs/menu-navbar'
 
+/* Services */
+export * from './lib/services/tyro-ui-theme.service';
+export * from './lib/services/tyro-ui-lang.service';
+
 /*Directive*/
 export * from './lib/directive/tyro-ui-gloss';
 export * from './lib/directive/tyro-ui-gloss-border';
