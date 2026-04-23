@@ -3,21 +3,21 @@ import { ITyroUiFooterPage } from '../interface/ityro-ui-footer-page';
 export const FooterProjectPage: ITyroUiFooterPage[] = [
     {
         label: 'Tyrolium',
-        icon: 'https://tyrolium.fr/Contenu/Image/Tyrolium%20Site.png',
+        icon: 'assets/Tyrolium.png',
         link: 'https://tyrolium.fr',
     },{
         label: 'TyroServ',
-        icon: 'https://tyrolium.fr/Contenu/Image/Tyrolium%20ServerMC%20Sword%203D.png',
+        icon: 'assets/TyroServ.png',
         link: 'https://tyroserv.fr',
     },
     {
         label: 'SolidServ',
-        icon: 'https://tyrolium.fr/Contenu/Image/SolidServ%20Site.png',
+        icon: 'assets/SolidServ.png',
         link: 'https://solidserv.fr',
     },
     {
         label: 'Influnias',
-        icon: 'https://tyrolium.fr/Contenu/Image/Influnias%20Site.png',
+        icon: 'assets/Influnias.png',
         link: 'https://www.influnias.fr',
     },
     {
@@ -26,25 +26,25 @@ export const FooterProjectPage: ITyroUiFooterPage[] = [
         link: 'https://vturias.fr',
     },
     {
-        label: 'TyroStudio',
-        icon: 'https://tyrolium.fr/Contenu/Image/Tyrolium%20Studio%20Site.png',
-        link: '/influnias',
+        label: 'TyroCiel',
+        icon: 'assets/TyroCiel.png',
+        link: 'https://tyrociel.fr',
     },
     {
         label: 'Gamenium',
-        icon: 'https://tyrolium.fr/Contenu/Image/Gamenium%20Lettre%20Site.png',
-        link: '/gamenium',
+        icon: 'assets/Gamenium.png',
+        link: 'https://gamenium.fr',
     },
     {
         label: 'NexiumiaCRM',
-        icon: 'https://tyrolium.fr/Contenu/Image/NexiumiaCRM%20Site.png',
-        link: '/gamenium',
+        icon: 'assets/NexiumiaCRM.png',
+        link: 'https://nexiumiacrm.fr',
     },
 
     {
         label: 'Useritium',
         icon: 'https://tyrolium.fr/Contenu/Image/Useritium%20Site.png',
-        link: '/useritium',
+        link: 'https://useritium.fr',
     },
 ];
 
