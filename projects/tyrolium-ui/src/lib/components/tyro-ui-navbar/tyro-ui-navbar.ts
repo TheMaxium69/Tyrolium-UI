@@ -19,6 +19,7 @@ export class TyroUiNavbar {
   @Input() logo: string = '';
   @Input() pages: ITyroUiNavbarPages[] = [];
   @Input() placeholder: boolean = true;
+  @Input() currentUser: any = [];
 
   public navbarMenuPinned: ITyroUiNavbarMenuItem = NavbarMenuPinned;
   public navbarMenuCategory: ITyroUiNavbarMenuCategory[] = NavbarMenuCategory;
