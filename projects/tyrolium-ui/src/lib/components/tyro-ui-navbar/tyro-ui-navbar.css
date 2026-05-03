@@ -873,13 +873,18 @@ nav {
 /* ─── USER MENU MOBILE ───────────────────────────────────── */
 
 @media (max-width: 768px) {
+  .nav-user-wrapper {
+    position: static;
+  }
+
   .user-menu {
     position: fixed;
-    top: 63px;
-    right: 0.75rem;
-    left: auto;
-    width: calc(100vw - 1.5rem);
-    max-width: 280px;
+    top: 60px;
+    left: 0;
+    right: 0;
+    width: 100%;
+    max-width: 100%;
+    border-radius: 0 0 12px 12px;
   }
 }
 
