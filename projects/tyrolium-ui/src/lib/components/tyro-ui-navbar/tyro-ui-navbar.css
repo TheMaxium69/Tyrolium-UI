@@ -19,6 +19,7 @@
   --dd-bg:        #ffffff;
   --dd-border:    #e5e7eb;
   --lang-check:   #001a6e;
+  --user-btn-primary-bg: #00065c;
 }
 
 /* Dark mode overrides */
@@ -41,6 +42,7 @@
   --dd-bg:        #1f2937;
   --dd-border:    #374151;
   --lang-check:   #60a5fa;
+  --user-btn-primary-bg: #1d4ed8;
 }
 
 /* ─── NAVBAR ─────────────────────────────────────────────── */
@@ -743,8 +745,8 @@ nav {
 }
 
 .user-menu-btn--primary {
-  background: var(--nav-text-hov);
-  color: var(--nav-bg);
+  background: var(--user-btn-primary-bg);
+  color: #fff;
   border: none;
 }
 
@@ -868,29 +870,17 @@ nav {
   color: #ef4444;
 }
 
-/* ─── USER MOBILE ────────────────────────────────────────── */
+/* ─── USER MENU MOBILE ───────────────────────────────────── */
 
-.nav-mobile-user-avatar {
-  width: 18px;
-  height: 18px;
-  border-radius: 50%;
-  object-fit: cover;
-}
-
-.nav-mobile-user-initials {
-  width: 18px;
-  height: 18px;
-  border-radius: 50%;
-  background: var(--nav-hover);
-  border: 1px solid var(--nav-border);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 8px;
-  font-weight: 600;
-  color: var(--nav-text-hov);
-  font-family: "Inter", sans-serif;
-  flex-shrink: 0;
+@media (max-width: 768px) {
+  .user-menu {
+    position: fixed;
+    top: 63px;
+    right: 0.75rem;
+    left: auto;
+    width: calc(100vw - 1.5rem);
+    max-width: 280px;
+  }
 }
 
 /* ─── DROPDOWN DESKTOP ───────────────────────────────────── */

@@ -77,7 +77,7 @@
     </button>
 
     <!-- Wrapper user menu -->
-    <div class="nav-user-wrapper nav-hide-mobile">
+    <div class="nav-user-wrapper">
       @if (currentUser.length === 0) {
         <button class="nav-icon"
                 [class.active]="userMenuOpen"
@@ -89,8 +89,8 @@
         <button class="nav-user-trigger"
                 [class.active]="userMenuOpen"
                 (click)="toggleUserMenu()">
-          @if (currentUser[0].avatar || currentUser[0].photo) {
-            <img [src]="currentUser[0].avatar || currentUser[0].photo" [alt]="currentUser[0].name" class="nav-user-avatar-img">
+          @if (currentUser[0].urlPictureProfil || currentUser[0].avatar || currentUser[0].photo) {
+            <img [src]="currentUser[0].urlPictureProfil || currentUser[0].avatar || currentUser[0].photo" [alt]="currentUser[0].name" class="nav-user-avatar-img">
           } @else {
             <span class="nav-user-initials">{{ getUserInitials() }}</span>
           }
@@ -115,8 +115,8 @@
           </div>
         } @else {
           <div class="user-menu-profile">
-            @if (currentUser[0].avatar || currentUser[0].photo) {
-              <img [src]="currentUser[0].avatar || currentUser[0].photo" [alt]="currentUser[0].name" class="user-menu-avatar-img">
+            @if (currentUser[0].urlPictureProfil || currentUser[0].avatar || currentUser[0].photo) {
+              <img [src]="currentUser[0].urlPictureProfil || currentUser[0].avatar || currentUser[0].photo" [alt]="currentUser[0].name" class="user-menu-avatar-img">
             } @else {
               <div class="user-menu-avatar-initials">{{ getUserInitials() }}</div>
             }
@@ -259,24 +259,6 @@
         <i class="ri-function-fill"></i>
         <span>{{ langService.lang() === 'en' ? 'Apps' : 'Applications' }}</span>
       </button>
-      <!-- User mobile -->
-      <div class="nav-user-mobile">
-        @if (currentUser.length === 0) {
-          <button class="nav-mobile-action" (click)="loginClick.emit(); mobileMenuOpen = false">
-            <i class="ri-user-line"></i>
-            <span>{{ langService.lang() === 'en' ? 'Sign in' : 'Se connecter' }}</span>
-          </button>
-        } @else {
-          <button class="nav-mobile-action nav-mobile-action--user" (click)="mobileMenuOpen = false">
-            @if (currentUser[0].avatar || currentUser[0].photo) {
-              <img [src]="currentUser[0].avatar || currentUser[0].photo" [alt]="currentUser[0].name" class="nav-mobile-user-avatar">
-            } @else {
-              <span class="nav-mobile-user-initials">{{ getUserInitials() }}</span>
-            }
-            <span>{{ currentUser[0].name }}</span>
-          </button>
-        }
-      </div>
       <!-- Langue mobile -->
       <div class="nav-lang-wrapper">
         <button class="nav-mobile-action" (click)="toggleLangDropdown()">
