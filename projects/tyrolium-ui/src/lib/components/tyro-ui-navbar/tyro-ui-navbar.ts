@@ -1,4 +1,4 @@
-import { Component, HostListener, Input, inject } from '@angular/core';
+import { Component, HostListener, Input, Output, EventEmitter, inject } from '@angular/core';
 import { ITyroUiNavbarPages } from '../../interface/ityro-ui-navbar-pages';
 import { RouterLink } from '@angular/router';
 import { ITyroUiNavbarMenuItem } from '../../interface/ityro-ui-navbar-menu-item';
@@ -24,9 +24,14 @@ export class TyroUiNavbar {
   public navbarMenuPinned: ITyroUiNavbarMenuItem = NavbarMenuPinned;
   public navbarMenuCategory: ITyroUiNavbarMenuCategory[] = NavbarMenuCategory;
 
+  @Output() loginClick = new EventEmitter<void>();
+  @Output() registerClick = new EventEmitter<void>();
+  @Output() logoutClick = new EventEmitter<void>();
+
   public menuOpen = false;
   public langDropdownOpen = false;
   public mobileMenuOpen = false;
+  public userMenuOpen = false;
 
   readonly themeService = inject(TyroUiThemeService);
   readonly langService = inject(TyroUiLangService);
@@ -74,6 +79,16 @@ export class TyroUiNavbar {
     this.menuOpen = true;
   }
 
+  toggleUserMenu() {
+    this.userMenuOpen = !this.userMenuOpen;
+  }
+
+  getUserInitials(): string {
+    if (!this.currentUser?.length) return '';
+    const name = this.currentUser[0]?.name || '';
+    return name.split(' ').map((n: string) => n[0] || '').join('').toUpperCase().slice(0, 2);
+  }
+
   @HostListener('document:click', ['$event'])
   onDocumentClick(event: MouseEvent) {
     const target = event.target as HTMLElement;
@@ -84,6 +99,10 @@ export class TyroUiNavbar {
 
     if (!target.closest('.nav-lang-wrapper')) {
       this.langDropdownOpen = false;
+    }
+
+    if (!target.closest('.nav-user-wrapper') && !target.closest('.nav-user-mobile')) {
+      this.userMenuOpen = false;
     }
 
     if (!target.closest('nav') && !target.closest('.nav-mobile-menu')) {

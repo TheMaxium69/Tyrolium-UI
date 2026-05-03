@@ -76,7 +76,80 @@
       <i [class]="themeService.isDark() ? 'ri-sun-fill' : 'ri-moon-fill'"></i>
     </button>
 
-    <i class="nav-icon ri-user-fill" TyroUiGloss></i>
+    <!-- Wrapper user menu -->
+    <div class="nav-user-wrapper nav-hide-mobile">
+      @if (currentUser.length === 0) {
+        <button class="nav-icon"
+                [class.active]="userMenuOpen"
+                (click)="toggleUserMenu()"
+                TyroUiGloss>
+          <i class="ri-user-fill"></i>
+        </button>
+      } @else {
+        <button class="nav-user-trigger"
+                [class.active]="userMenuOpen"
+                (click)="toggleUserMenu()">
+          @if (currentUser[0].avatar || currentUser[0].photo) {
+            <img [src]="currentUser[0].avatar || currentUser[0].photo" [alt]="currentUser[0].name" class="nav-user-avatar-img">
+          } @else {
+            <span class="nav-user-initials">{{ getUserInitials() }}</span>
+          }
+        </button>
+      }
+
+      <div class="user-menu" [class.open]="userMenuOpen">
+        @if (currentUser.length === 0) {
+          <div class="user-menu-guest">
+            <div class="user-menu-guest-icon-wrap">
+              <i class="ri-user-3-line user-menu-guest-icon"></i>
+            </div>
+            <span class="user-menu-guest-title">{{ langService.lang() === 'en' ? 'Not signed in' : 'Non connecté' }}</span>
+            <button class="user-menu-btn user-menu-btn--primary" (click)="loginClick.emit(); userMenuOpen = false" TyroUiGloss>
+              <i class="ri-login-box-line"></i>
+              {{ langService.lang() === 'en' ? 'Sign in' : 'Se connecter' }}
+            </button>
+            <button class="user-menu-btn user-menu-btn--secondary" (click)="registerClick.emit(); userMenuOpen = false" TyroUiGloss>
+              <i class="ri-user-add-line"></i>
+              {{ langService.lang() === 'en' ? 'Sign up' : "S'inscrire" }}
+            </button>
+          </div>
+        } @else {
+          <div class="user-menu-profile">
+            @if (currentUser[0].avatar || currentUser[0].photo) {
+              <img [src]="currentUser[0].avatar || currentUser[0].photo" [alt]="currentUser[0].name" class="user-menu-avatar-img">
+            } @else {
+              <div class="user-menu-avatar-initials">{{ getUserInitials() }}</div>
+            }
+            <span class="user-menu-name">{{ currentUser[0].name }}</span>
+            @if (currentUser[0].email) {
+              <span class="user-menu-email">{{ currentUser[0].email }}</span>
+            }
+          </div>
+          <div class="user-menu-divider"></div>
+          <div class="user-menu-actions">
+            <button class="user-menu-action" TyroUiGloss [glossSize]="100">
+              <i class="ri-user-line"></i>
+              {{ langService.lang() === 'en' ? 'My profile' : 'Mon profil' }}
+            </button>
+            <button class="user-menu-action" TyroUiGloss [glossSize]="100">
+              <i class="ri-settings-3-line"></i>
+              {{ langService.lang() === 'en' ? 'Settings' : 'Paramètres' }}
+            </button>
+            <button class="user-menu-action" TyroUiGloss [glossSize]="100">
+              <i class="ri-dashboard-line"></i>
+              {{ langService.lang() === 'en' ? 'Dashboard' : 'Tableau de bord' }}
+            </button>
+          </div>
+          <div class="user-menu-divider"></div>
+          <div class="user-menu-actions">
+            <button class="user-menu-action user-menu-action--danger" (click)="logoutClick.emit(); userMenuOpen = false" TyroUiGloss [glossSize]="100">
+              <i class="ri-logout-box-r-line"></i>
+              {{ langService.lang() === 'en' ? 'Sign out' : 'Se déconnecter' }}
+            </button>
+          </div>
+        }
+      </div>
+    </div>
 
     <!-- Burger mobile -->
     <i class="nav-icon nav-burger"
@@ -186,6 +259,24 @@
         <i class="ri-function-fill"></i>
         <span>{{ langService.lang() === 'en' ? 'Apps' : 'Applications' }}</span>
       </button>
+      <!-- User mobile -->
+      <div class="nav-user-mobile">
+        @if (currentUser.length === 0) {
+          <button class="nav-mobile-action" (click)="loginClick.emit(); mobileMenuOpen = false">
+            <i class="ri-user-line"></i>
+            <span>{{ langService.lang() === 'en' ? 'Sign in' : 'Se connecter' }}</span>
+          </button>
+        } @else {
+          <button class="nav-mobile-action nav-mobile-action--user" (click)="mobileMenuOpen = false">
+            @if (currentUser[0].avatar || currentUser[0].photo) {
+              <img [src]="currentUser[0].avatar || currentUser[0].photo" [alt]="currentUser[0].name" class="nav-mobile-user-avatar">
+            } @else {
+              <span class="nav-mobile-user-initials">{{ getUserInitials() }}</span>
+            }
+            <span>{{ currentUser[0].name }}</span>
+          </button>
+        }
+      </div>
       <!-- Langue mobile -->
       <div class="nav-lang-wrapper">
         <button class="nav-mobile-action" (click)="toggleLangDropdown()">
