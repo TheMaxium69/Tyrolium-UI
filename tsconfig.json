@@ -56,6 +56,12 @@
     },
     {
       "path": "./projects/tyrociel-website/tsconfig.spec.json"
+    },
+    {
+      "path": "./projects/influnias-website/tsconfig.app.json"
+    },
+    {
+      "path": "./projects/influnias-website/tsconfig.spec.json"
     }
   ]
 }
