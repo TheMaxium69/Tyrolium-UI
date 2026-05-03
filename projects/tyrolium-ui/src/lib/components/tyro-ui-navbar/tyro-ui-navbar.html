@@ -115,11 +115,13 @@
           </div>
         } @else {
           <div class="user-menu-profile">
-            @if (currentUser[0].urlPictureProfil || currentUser[0].avatar || currentUser[0].photo) {
-              <img [src]="currentUser[0].urlPictureProfil || currentUser[0].avatar || currentUser[0].photo" [alt]="currentUser[0].name" class="user-menu-avatar-img">
-            } @else {
-              <div class="user-menu-avatar-initials">{{ getUserInitials() }}</div>
-            }
+            <div class="user-menu-avatar-ring">
+              @if (currentUser[0].urlPictureProfil || currentUser[0].avatar || currentUser[0].photo) {
+                <img [src]="currentUser[0].urlPictureProfil || currentUser[0].avatar || currentUser[0].photo" [alt]="currentUser[0].name" class="user-menu-avatar-img">
+              } @else {
+                <div class="user-menu-avatar-initials">{{ getUserInitials() }}</div>
+              }
+            </div>
             <span class="user-menu-name">{{ currentUser[0].name }}</span>
             @if (currentUser[0].email) {
               <span class="user-menu-email">{{ currentUser[0].email }}</span>
