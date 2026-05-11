@@ -68,6 +68,12 @@
     },
     {
       "path": "./projects/nexiumiacrm-website/tsconfig.spec.json"
+    },
+    {
+      "path": "./projects/useritium-website/tsconfig.app.json"
+    },
+    {
+      "path": "./projects/useritium-website/tsconfig.spec.json"
     }
   ]
 }
