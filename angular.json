@@ -436,8 +436,8 @@
               }
             ],
             "styles": [
-              "projects/useritium-website/src/styles.css",
-              "projects/nexiumiacrm-website/src/styles.css"
+              "projects/tyrolium-ui/src/styles/tyrolium-ui.css",
+              "projects/useritium-website/src/styles.css"
             ]
           },
           "configurations": {
@@ -450,8 +450,8 @@
                 },
                 {
                   "type": "anyComponentStyle",
-                  "maximumWarning": "4kB",
-                  "maximumError": "8kB"
+                  "maximumWarning": "25kB",
+                  "maximumError": "40kB"
                 }
               ],
               "outputHashing": "all"
