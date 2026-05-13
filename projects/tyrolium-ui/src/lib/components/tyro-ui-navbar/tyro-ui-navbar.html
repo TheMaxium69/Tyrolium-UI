@@ -26,22 +26,43 @@
             </button>
             <div class="nav-dropdown">
               @for (child of page.children; track child.label) {
-                <a [routerLink]="child.link" class="nav-dropdown-item" TyroUiGloss>
-                  @if (child.icon) {
-                    <i [class]="child.icon + ' nav-dropdown-item-icon'"></i>
+
+                  @if (child.ancre) {
+                      <a (click)="scrollTo(child.ancre)" class="nav-dropdown-item" TyroUiGloss>
+                          @if (child.icon) {
+                              <i [class]="child.icon + ' nav-dropdown-item-icon'"></i>
+                          }
+                          {{ child.label }}
+                      </a>
+                  } @else {
+                      <a [routerLink]="child.link" class="nav-dropdown-item" TyroUiGloss>
+                          @if (child.icon) {
+                              <i [class]="child.icon + ' nav-dropdown-item-icon'"></i>
+                          }
+                          {{ child.label }}
+                      </a>
                   }
-                  {{ child.label }}
-                </a>
+
               }
             </div>
           </div>
         } @else {
-          <a [routerLink]="page.link" class="nav-link" TyroUiGloss>
-            @if (page.icon) {
-              <i [class]="page.icon + ' nav-link-icon'"></i>
+            @if (page.ancre) {
+                <a (click)="scrollTo(page.ancre)" class="nav-link" TyroUiGloss>
+                    @if (page.icon) {
+                        <i [class]="page.icon + ' nav-link-icon'"></i>
+                    }
+                    {{ page.label }}
+                </a>
+            } @else {
+                <a [routerLink]="page.link" class="nav-link" TyroUiGloss>
+                    @if (page.icon) {
+                        <i [class]="page.icon + ' nav-link-icon'"></i>
+                    }
+                    {{ page.label }}
+                </a>
             }
-            {{ page.label }}
-          </a>
+
         }
       }
     </div>
