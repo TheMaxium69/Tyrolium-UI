@@ -42,18 +42,33 @@
                             <ul class="footer-dropdown-menu">
                                 @for (child of page.children; track child.label) {
                                     <li>
-                                        <a [routerLink]="child.link" TyroUiGloss>
-                                            @if (child.icon) { <i [class]="child.icon"></i> }
-                                            {{ lang() === 'en' ? (child.labelEn ?? child.label) : child.label }}
-                                        </a>
+                                        @if (child.ancre) {
+                                            <a (click)="scrollTo(child.ancre)" TyroUiGloss>
+                                                @if (child.icon) { <i [class]="child.icon"></i> }
+                                                {{ lang() === 'en' ? (child.labelEn ?? child.label) : child.label }}
+                                            </a>
+                                        } @else {
+                                            <a [routerLink]="child.link" TyroUiGloss>
+                                                @if (child.icon) { <i [class]="child.icon"></i> }
+                                                {{ lang() === 'en' ? (child.labelEn ?? child.label) : child.label }}
+                                            </a>
+                                        }
                                     </li>
                                 }
                             </ul>
                         </li>
                     } @else {
-                        <li><a [routerLink]="page.link" TyroUiGloss>
-                            {{ lang() === 'en' ? (page.labelEn ?? page.label) : page.label }}
-                        </a></li>
+                        <li>
+                            @if (page.ancre) {
+                                <a (click)="scrollTo(page.ancre)" TyroUiGloss>
+                                    {{ lang() === 'en' ? (page.labelEn ?? page.label) : page.label }}
+                                </a>
+                            } @else {
+                                <a [routerLink]="page.link" TyroUiGloss>
+                                    {{ lang() === 'en' ? (page.labelEn ?? page.label) : page.label }}
+                                </a>
+                            }
+                        </li>
                     }
                 }
             </ul>

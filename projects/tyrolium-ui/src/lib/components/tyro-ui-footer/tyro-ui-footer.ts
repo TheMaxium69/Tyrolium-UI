@@ -28,4 +28,13 @@ export class TyroUiFooter {
   public footerOtherLink: ITyroUiFooterPage[] = FooterOtherLink;
 
   readonly lang = inject(TyroUiLangService).lang;
+
+  scrollTo(ancre:string) {
+    const element = document.getElementById(ancre);
+    if (element) {
+      const elementPosition = element.getBoundingClientRect().top + window.pageYOffset;
+      const offsetPosition = elementPosition - 70;
+      window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
+    }
+  }
 }
