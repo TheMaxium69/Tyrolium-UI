@@ -309,35 +309,64 @@
       @for (page of pages; track page.label) {
         @if (page.children?.length) {
           <div class="nav-mobile-group">
-            <button class="nav-mobile-link nav-mobile-group-trigger" [routerLink]="page.link" (click)="mobileMenuOpen = false; page.childrenOpen = false">
-              <div>
-              @if (page.icon) {
-                <i [class]="page.icon + ' nav-link-icon'"></i>
+              @if (page.ancre) {
+                 <button class="nav-mobile-link nav-mobile-group-trigger" (click)="scrollTo(page.ancre); mobileMenuOpen = false; page.childrenOpen = false">
+                     <div>
+                         @if (page.icon) {
+                           <i [class]="page.icon + ' nav-link-icon'"></i>
+                         }
+                         {{ page.label }}
+                     </div>
+                 </button>
+              } @else {
+                  <button class="nav-mobile-link nav-mobile-group-trigger" [routerLink]="page.link" (click)="mobileMenuOpen = false; page.childrenOpen = false">
+                      <div>
+                          @if (page.icon) {
+                              <i [class]="page.icon + ' nav-link-icon'"></i>
+                          }
+                          {{ page.label }}
+                      </div>
+                  </button>
               }
-              {{ page.label }}
-              </div>
-<!--              <i class="ri-arrow-down-s-line" [class.open]="page.childrenOpen"></i>-->
-            </button>
-<!--            @if (page.childrenOpen) {-->
+
               <div class="nav-mobile-children">
                 @for (child of page.children; track child.label) {
-                  <a [routerLink]="child.link" class="nav-mobile-child" (click)="mobileMenuOpen = false; page.childrenOpen = false">
-                    @if (child.icon) {
-                      <i [class]="child.icon + ' nav-mobile-child-icon'"></i>
+                    @if (child.ancre) {
+                        <a class="nav-mobile-child" (click)="scrollTo(child.ancre); mobileMenuOpen = false; page.childrenOpen = false">
+                            @if (child.icon) {
+                                <i [class]="child.icon + ' nav-mobile-child-icon'"></i>
+                            }
+                            {{ child.label }}
+                        </a>
+                    } @else {
+                        <a [routerLink]="child.link" class="nav-mobile-child" (click)="mobileMenuOpen = false; page.childrenOpen = false">
+                            @if (child.icon) {
+                                <i [class]="child.icon + ' nav-mobile-child-icon'"></i>
+                            }
+                            {{ child.label }}
+                        </a>
                     }
-                    {{ child.label }}
-                  </a>
                 }
               </div>
-<!--            }-->
           </div>
         } @else {
-          <a [routerLink]="page.link" class="nav-link nav-mobile-link" (click)="mobileMenuOpen = false">
-            @if (page.icon) {
-              <i [class]="page.icon + ' nav-mobile-link-icon'"></i>
+
+            @if (page.ancre) {
+                <a class="nav-link nav-mobile-link" (click)="scrollTo(page.ancre); mobileMenuOpen = false">
+                    @if (page.icon) {
+                        <i [class]="page.icon + ' nav-mobile-link-icon'"></i>
+                    }
+                    {{ page.label }}
+                </a>
+            } @else {
+                <a [routerLink]="page.link" class="nav-link nav-mobile-link" (click)="mobileMenuOpen = false">
+                    @if (page.icon) {
+                        <i [class]="page.icon + ' nav-mobile-link-icon'"></i>
+                    }
+                    {{ page.label }}
+                </a>
             }
-            {{ page.label }}
-          </a>
+          
         }
       }
     </div>
