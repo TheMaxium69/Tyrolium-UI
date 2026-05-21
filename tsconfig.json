@@ -74,6 +74,12 @@
     },
     {
       "path": "./projects/useritium-website/tsconfig.spec.json"
+    },
+    {
+      "path": "./projects/vturias-website/tsconfig.app.json"
+    },
+    {
+      "path": "./projects/vturias-website/tsconfig.spec.json"
     }
   ]
 }

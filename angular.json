@@ -480,6 +480,75 @@
           "builder": "@angular/build:unit-test"
         }
       }
+    },
+    "vturias-website": {
+      "projectType": "application",
+      "schematics": {},
+      "root": "projects/vturias-website",
+      "sourceRoot": "projects/vturias-website/src",
+      "prefix": "app",
+      "architect": {
+        "build": {
+          "builder": "@angular/build:application",
+          "options": {
+            "browser": "projects/vturias-website/src/main.ts",
+            "tsConfig": "projects/vturias-website/tsconfig.app.json",
+            "assets": [
+              {
+                "glob": "**/*",
+                "input": "projects/vturias-website/public"
+              },
+              {
+                "glob": "**/*",
+                "input": "projects/vturias-website/old/assets",
+                "output": "assets"
+              }
+            ],
+            "styles": [
+              "projects/tyrolium-ui/src/styles/tyrolium-ui.css",
+              "projects/vturias-website/src/styles.css"
+            ]
+          },
+          "configurations": {
+            "production": {
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "500kB",
+                  "maximumError": "1MB"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "4kB",
+                  "maximumError": "8kB"
+                }
+              ],
+              "outputHashing": "all"
+            },
+            "development": {
+              "optimization": false,
+              "extractLicenses": false,
+              "sourceMap": true
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "serve": {
+          "builder": "@angular/build:dev-server",
+          "configurations": {
+            "production": {
+              "buildTarget": "vturias-website:build:production"
+            },
+            "development": {
+              "buildTarget": "vturias-website:build:development"
+            }
+          },
+          "defaultConfiguration": "development"
+        },
+        "test": {
+          "builder": "@angular/build:unit-test"
+        }
+      }
     }
   }
 }
