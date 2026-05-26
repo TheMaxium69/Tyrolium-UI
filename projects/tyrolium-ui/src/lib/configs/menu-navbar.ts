@@ -11,8 +11,8 @@ export const NavbarMenuPinned: ITyroUiNavbarMenuItem = {
 
 export const NavbarMenuCategory: ITyroUiNavbarMenuCategory[] = [
   {
-    label: 'Projets',
-    labelEn: 'Projects',
+    label: 'Filiales',
+    labelEn: 'Subsidiaries',
     open: true,
     items: [
       {
