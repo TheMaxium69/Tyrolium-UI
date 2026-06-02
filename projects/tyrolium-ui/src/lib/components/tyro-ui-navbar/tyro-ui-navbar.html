@@ -180,8 +180,8 @@
        (click)="toggleMobileMenu()"></i>
 
     <!-- Wrapper app menu -->
-    <div class="nav-menu-wrapper">
-      <i class="nav-icon ri-function-fill nav-hide-mobile" (click)="toggleMenu()" TyroUiGloss></i>
+    <div class="nav-menu-wrapper" (mouseenter)="menuOpen = true" (mouseleave)="onMenuMouseLeave()">
+      <i class="nav-icon ri-function-fill nav-hide-mobile" [class.active]="menuPinned" (click)="toggleMenu()" TyroUiGloss></i>
 
       <div class="app-menu" [class.open]="menuOpen">
         <div class="app-menu-pinned">
@@ -211,7 +211,8 @@
                       <a [routerLink]="item.link"
                          class="app-menu-row"
                          [class.app-menu-row--sub]="item.isSubItem"
-                         TyroUiGloss [glossSize]="100">
+                         TyroUiGloss [glossSize]="100"
+                         (click)="closeMenu()">
                         <div class="app-row-icon">
                           <img [src]="item.image" [alt]="item.name" class="app-row-img">
                         </div>
@@ -285,16 +286,16 @@
       <!-- Langue mobile -->
       <div class="nav-lang-wrapper">
         <button class="nav-mobile-action" (click)="toggleLangDropdown()">
-          <img [src]="langService.lang() === 'fr' ? '/assets/tyrolium-ui/france.png' : '/assets/tyrolium-ui/royaume-uni.png'" [alt]="langService.lang() === 'fr' ? 'FR' : 'EN'" class="nav-lang-flag-img">
+          <img [src]="langService.lang() === 'fr' ? '/assets/tyrolium-ui/flags/france.png' : '/assets/tyrolium-ui/flags/royaume-uni.png'" [alt]="langService.lang() === 'fr' ? 'FR' : 'EN'" class="nav-lang-flag-img">
           <span>{{ langService.lang() === 'fr' ? 'Français' : 'English' }}</span>
         </button>
         <div class="nav-lang-dropdown" [class.open]="langDropdownOpen">
           <button class="nav-lang-option" [class.selected]="langService.lang() === 'fr'" (click)="setLang('fr')">
-            <img src="/assets/tyrolium-ui/france.png" alt="FR" class="nav-lang-flag-img"> Français
+            <img src="/assets/tyrolium-ui/flags/france.png" alt="FR" class="nav-lang-flag-img"> Français
             @if (langService.lang() === 'fr') { <i class="ri-check-line nav-lang-check"></i> }
           </button>
           <button class="nav-lang-option" [class.selected]="langService.lang() === 'en'" (click)="setLang('en')">
-            <img src="/assets/tyrolium-ui/royaume-uni.png" alt="EN" class="nav-lang-flag-img"> English
+            <img src="/assets/tyrolium-ui/flags/royaume-uni.png" alt="EN" class="nav-lang-flag-img"> English
             @if (langService.lang() === 'en') { <i class="ri-check-line nav-lang-check"></i> }
           </button>
         </div>

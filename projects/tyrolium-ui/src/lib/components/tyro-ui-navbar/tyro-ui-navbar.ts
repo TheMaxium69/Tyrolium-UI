@@ -29,6 +29,7 @@ export class TyroUiNavbar {
   @Output() logoutClick = new EventEmitter<void>();
 
   public menuOpen = false;
+  public menuPinned = false;
   public langDropdownOpen = false;
   public mobileMenuOpen = false;
   public userMenuOpen = false;
@@ -37,7 +38,19 @@ export class TyroUiNavbar {
   readonly langService = inject(TyroUiLangService);
 
   toggleMenu() {
-    this.menuOpen = !this.menuOpen;
+    this.menuPinned = !this.menuPinned;
+    this.menuOpen = this.menuPinned;
+  }
+
+  onMenuMouseLeave() {
+    if (!this.menuPinned) {
+      this.menuOpen = false;
+    }
+  }
+
+  closeMenu() {
+    this.menuOpen = false;
+    this.menuPinned = false;
   }
 
   toggleLangDropdown() {
@@ -95,6 +108,7 @@ export class TyroUiNavbar {
 
     if (!target.closest('.nav-menu-wrapper') && !target.closest('.nav-mobile-action')) {
       this.menuOpen = false;
+      this.menuPinned = false;
     }
 
     if (!target.closest('.nav-lang-wrapper')) {

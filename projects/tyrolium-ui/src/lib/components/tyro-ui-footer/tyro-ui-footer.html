@@ -103,7 +103,7 @@
     </div>
 
     <div class="footer-copyright">
-        <p>© {{ currentYear }} <a target="_blank" href="https://tyrolium.fr">Tyrolium</a>. All rights reserved.</p>
+        <p>© {{ currentYear }} <a target="_blank" href="https://tyrolium.fr">Tyrolium</a>. {{ lang() === 'en' ? 'All rights reserved.' : 'Tous droits réservés.' }}</p>
         <div class="footer-copy-links">
 
             @if (project == "Tyrolium") {

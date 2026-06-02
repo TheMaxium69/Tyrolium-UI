@@ -396,11 +396,6 @@ nav {
   display: block;
 }
 
-@media (min-width: 769px) {
-  .nav-menu-wrapper:hover .app-menu {
-    display: block;
-  }
-}
 
 .app-menu-pinned {
   padding: 0.875rem 1rem;
