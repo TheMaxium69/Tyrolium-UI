@@ -171,103 +171,50 @@ footer {
   transform: translateY(-50%) scale(1);
 }
 
-/* Trigger button — même style que les liens */
-.footer-dropdown-trigger {
+/* Group item avec sous-liens inline */
+.footer-group-item {
   display: flex;
-  align-items: center;
-  gap: 0.4rem;
-  width: calc(100% + 1.2rem);
+  flex-direction: column;
+}
+
+.footer-group-label {
+  display: block;
   padding: 0.35rem 0.6rem;
   font-size: 0.875rem;
   font-weight: 500;
   color: #6b7280;
-  background: transparent;
-  border: none;
-  border-radius: 7px;
-  cursor: pointer;
-  text-align: left;
-  font-family: inherit;
-  transition: background 0.15s, color 0.15s;
   margin-left: -0.6rem;
 }
 
-.footer-dropdown-trigger:hover {
-  background: #f3f4f6;
-  color: #111827;
-}
-
-.footer-dropdown-arrow {
-  margin-left: auto;
-  font-size: 14px;
-  transition: transform 0.2s ease;
-}
-
-/* Dropdown — s'ouvre vers le HAUT */
-.footer-dropdown-item {
-  position: relative;
-}
-
-.footer-dropdown-menu {
+.footer-sub-links {
   list-style: none;
-  margin: 0;
-  padding: 0.3rem;
-  position: absolute;
-  bottom: 100%; /* au-dessus du trigger */
-  left: -0.6rem;
-  min-width: 200px;
-  background: #fff;
-  border: 0.5px solid #e5e7eb;
-  border-radius: 10px;
-  box-shadow: 0 -4px 24px rgba(0, 0, 0, 0.07), 0 -1px 6px rgba(0, 0, 0, 0.04);
-
-  /* Caché par défaut */
-  opacity: 0;
-  visibility: hidden;
-  pointer-events: none;
-  transform: translateY(6px);
-  transition: opacity 0.18s ease, transform 0.18s ease, visibility 0.18s;
+  margin: 0 0 0.1rem 0.4rem;
+  padding: 0.1rem 0 0.1rem 0.75rem;
+  border-left: 2px solid #e5e7eb;
+  display: flex;
+  flex-direction: column;
+  gap: 0.05rem;
 }
 
-.footer-dropdown-menu li a {
+.footer-sub-links li a {
   display: flex;
   align-items: center;
   gap: 0.5rem;
-  padding: 0.4rem 0.6rem;
+  padding: 0.3rem 0.6rem;
   font-size: 0.845rem;
   font-weight: 500;
   color: #6b7280;
   text-decoration: none;
   border-radius: 7px;
   transition: background 0.15s, color 0.15s;
-  margin-left: 0; /* reset du margin-left général */
+  margin-left: -0.6rem;
 }
 
-.footer-dropdown-menu li a i {
-  font-size: 14px;
-  color: #9ca3af;
-  flex-shrink: 0;
-}
-
-.footer-dropdown-menu li a:hover {
+.footer-sub-links li a:hover {
   background: #f3f4f6;
   color: #111827;
 }
 
-.footer-dropdown-menu li a:hover i {
-  color: #6b7280;
-}
-
-/* Ouverture au hover */
-.footer-dropdown-item:hover .footer-dropdown-menu {
-  opacity: 1;
-  visibility: visible;
-  pointer-events: auto;
-  transform: translateY(0);
-}
-
-.footer-dropdown-item:hover .footer-dropdown-arrow {
-  transform: rotate(180deg); /* pointe vers le bas quand ouvert = visuellement logique */
-}
 
 /* Copyright */
 .footer-copyright {
@@ -315,17 +262,11 @@ footer {
 :host-context([data-theme="dark"]) .footer-desc strong { color: #d1d5db; }
 :host-context([data-theme="dark"]) .footer-links a { color: #9ca3af; }
 :host-context([data-theme="dark"]) .footer-links a:hover { background: #1f2937; color: #f3f4f6; }
-:host-context([data-theme="dark"]) .footer-dropdown-trigger { color: #9ca3af; }
-:host-context([data-theme="dark"]) .footer-dropdown-trigger:hover { background: #1f2937; color: #f3f4f6; }
-:host-context([data-theme="dark"]) .footer-dropdown-menu {
-  background: #1f2937;
-  border-color: #374151;
-  box-shadow: 0 -4px 24px rgba(0,0,0,0.3);
-}
-:host-context([data-theme="dark"]) .footer-dropdown-menu li a { color: #9ca3af; }
-:host-context([data-theme="dark"]) .footer-dropdown-menu li a i { color: #6b7280; }
-:host-context([data-theme="dark"]) .footer-dropdown-menu li a:hover { background: #374151; color: #f3f4f6; }
-:host-context([data-theme="dark"]) .footer-dropdown-menu li a:hover i { color: #9ca3af; }
+:host-context([data-theme="dark"]) .footer-group-label { color: #9ca3af; }
+:host-context([data-theme="dark"]) .footer-sub-links { border-left-color: #374151; }
+:host-context([data-theme="dark"]) .footer-sub-links li a { color: #9ca3af; }
+:host-context([data-theme="dark"]) .footer-sub-links li a:hover { background: #374151; color: #f3f4f6; }
+:host-context([data-theme="dark"]) .footer-sub-links li a:hover i { color: #9ca3af; }
 :host-context([data-theme="dark"]) .footer-copyright { border-top-color: #374151; }
 :host-context([data-theme="dark"]) .footer-copyright p { color: #6b7280; }
 :host-context([data-theme="dark"]) .footer-copyright a:hover { color: #9ca3af; }

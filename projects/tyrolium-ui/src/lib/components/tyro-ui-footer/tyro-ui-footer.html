@@ -34,22 +34,19 @@
             <ul class="footer-links">
                 @for (page of pages; track page.label) {
                     @if (page.children && page.children.length) {
-                        <li class="footer-dropdown-item">
-                            <button class="footer-dropdown-trigger" TyroUiGloss>
+                        <li class="footer-group-item">
+                            <span class="footer-group-label">
                                 {{ lang() === 'en' ? (page.labelEn ?? page.label) : page.label }}
-                                <i class="ri-arrow-up-s-line footer-dropdown-arrow"></i>
-                            </button>
-                            <ul class="footer-dropdown-menu">
+                            </span>
+                            <ul class="footer-sub-links">
                                 @for (child of page.children; track child.label) {
                                     <li>
                                         @if (child.ancre) {
                                             <a (click)="scrollTo(child.ancre)" TyroUiGloss>
-                                                @if (child.icon) { <i [class]="child.icon"></i> }
                                                 {{ lang() === 'en' ? (child.labelEn ?? child.label) : child.label }}
                                             </a>
                                         } @else {
                                             <a [routerLink]="child.link" TyroUiGloss>
-                                                @if (child.icon) { <i [class]="child.icon"></i> }
                                                 {{ lang() === 'en' ? (child.labelEn ?? child.label) : child.label }}
                                             </a>
                                         }

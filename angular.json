@@ -49,6 +49,11 @@
               {
                 "glob": "**/*",
                 "input": "projects/tyrolium-website/public"
+              },
+              {
+                "glob": "**/*",
+                "input": "projects/tyrolium-ui/src/styles/assets",
+                "output": "assets/tyrolium-ui"
               }
             ],
             "styles": [
@@ -113,6 +118,11 @@
               {
                 "glob": "**/*",
                 "input": "projects/solidserv-website/public"
+              },
+              {
+                "glob": "**/*",
+                "input": "projects/tyrolium-ui/src/styles/assets",
+                "output": "assets/tyrolium-ui"
               }
             ],
             "styles": [
@@ -177,6 +187,11 @@
               {
                 "glob": "**/*",
                 "input": "projects/template-website/public"
+              },
+              {
+                "glob": "**/*",
+                "input": "projects/tyrolium-ui/src/styles/assets",
+                "output": "assets/tyrolium-ui"
               }
             ],
             "styles": [
@@ -241,6 +256,11 @@
               {
                 "glob": "**/*",
                 "input": "projects/tyrociel-website/public"
+              },
+              {
+                "glob": "**/*",
+                "input": "projects/tyrolium-ui/src/styles/assets",
+                "output": "assets/tyrolium-ui"
               }
             ],
             "styles": [
@@ -305,6 +325,11 @@
               {
                 "glob": "**/*",
                 "input": "projects/influnias-website/public"
+              },
+              {
+                "glob": "**/*",
+                "input": "projects/tyrolium-ui/src/styles/assets",
+                "output": "assets/tyrolium-ui"
               }
             ],
             "styles": [
@@ -369,6 +394,11 @@
               {
                 "glob": "**/*",
                 "input": "projects/nexiumiacrm-website/public"
+              },
+              {
+                "glob": "**/*",
+                "input": "projects/tyrolium-ui/src/styles/assets",
+                "output": "assets/tyrolium-ui"
               }
             ],
             "styles": [
@@ -433,6 +463,11 @@
               {
                 "glob": "**/*",
                 "input": "projects/useritium-website/public"
+              },
+              {
+                "glob": "**/*",
+                "input": "projects/tyrolium-ui/src/styles/assets",
+                "output": "assets/tyrolium-ui"
               }
             ],
             "styles": [
@@ -502,6 +537,11 @@
                 "glob": "**/*",
                 "input": "projects/vturias-website/old/assets",
                 "output": "assets"
+              },
+              {
+                "glob": "**/*",
+                "input": "projects/tyrolium-ui/src/styles/assets",
+                "output": "assets/tyrolium-ui"
               }
             ],
             "styles": [
@@ -567,6 +607,11 @@
               {
                 "glob": "**/*",
                 "input": "projects/gamenium-website/public"
+              },
+              {
+                "glob": "**/*",
+                "input": "projects/tyrolium-ui/src/styles/assets",
+                "output": "assets/tyrolium-ui"
               }
             ],
             "styles": [

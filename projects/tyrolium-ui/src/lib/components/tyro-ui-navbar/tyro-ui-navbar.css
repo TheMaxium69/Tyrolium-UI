@@ -186,9 +186,13 @@ nav {
   line-height: 1;
 }
 
-.nav-lang-flag {
-  font-size: 16px;
-  line-height: 1;
+.nav-lang-flag-img {
+  width: 20px;
+  height: 14px;
+  object-fit: cover;
+  border-radius: 2px;
+  display: inline-block;
+  flex-shrink: 0;
 }
 
 .nav-lang-dropdown {
@@ -475,7 +479,7 @@ nav {
   padding: 0.875rem 1.5rem;
   gap: 0.875rem;
   width: 100%;
-  max-width: 160px;
+  max-width: 161px;
 }
 
 .app-menu-row.pinned .app-row-icon {
