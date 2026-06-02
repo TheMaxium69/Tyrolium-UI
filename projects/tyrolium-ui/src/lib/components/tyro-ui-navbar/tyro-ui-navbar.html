@@ -94,7 +94,11 @@
     <button class="nav-icon nav-hide-mobile"
             (click)="themeService.toggle()"
             TyroUiGloss>
-      <i [class]="themeService.isDark() ? 'ri-sun-fill' : 'ri-moon-fill'"></i>
+      @switch (themeService.mode()) {
+        @case ('auto')  { <i class="ri-computer-line"></i> }
+        @case ('light') { <i class="ri-sun-fill"></i> }
+        @case ('dark')  { <i class="ri-moon-fill"></i> }
+      }
     </button>
 
     <!-- Wrapper user menu -->
@@ -302,8 +306,18 @@
       </div>
       <!-- Thème mobile -->
       <button class="nav-mobile-action" (click)="themeService.toggle()">
-        <i [class]="themeService.isDark() ? 'ri-sun-fill' : 'ri-moon-fill'"></i>
-        <span>{{ themeService.isDark() ? (langService.lang() === 'en' ? 'Light' : 'Clair') : (langService.lang() === 'en' ? 'Dark' : 'Sombre') }}</span>
+        @switch (themeService.mode()) {
+          @case ('auto')  { <i class="ri-computer-line"></i> }
+          @case ('light') { <i class="ri-sun-fill"></i> }
+          @case ('dark')  { <i class="ri-moon-fill"></i> }
+        }
+        <span>
+          @switch (themeService.mode()) {
+            @case ('auto')  { {{ langService.lang() === 'en' ? 'Auto' : 'Auto' }} }
+            @case ('light') { {{ langService.lang() === 'en' ? 'Light' : 'Clair' }} }
+            @case ('dark')  { {{ langService.lang() === 'en' ? 'Dark' : 'Sombre' }} }
+          }
+        </span>
       </button>
     </div>
     <div class="nav-mobile-links">
