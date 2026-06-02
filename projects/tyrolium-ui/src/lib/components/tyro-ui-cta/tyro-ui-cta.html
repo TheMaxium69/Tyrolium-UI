@@ -13,12 +13,16 @@
                     <a [routerLink]="btnRouterLink" class="btn-white" [innerHTML]="btnIcon + ' ' + btn"></a>
                 }
 
-                @if (subRouterLink == "") {
+                @if (subRouterLink == "" && subAncreLink == "") {
                     <a target="_blank" [href]="subLink" class="btn-transparent">
                         {{ subbtn }} <i class="ri-arrow-right-line"></i>
                     </a>
+                } @else if (subLink == "" && subAncreLink == "") {
+                    <a [routerLink]="subRouterLink" class="btn-transparent">
+                        {{ subbtn }} <i class="ri-arrow-right-line"></i>
+                    </a>
                 } @else {
-                    <a [routerLink]="subRouterLink"  class="btn-transparent">
+                    <a (click)="scrollTo(subAncreLink)" class="btn-transparent">
                         {{ subbtn }} <i class="ri-arrow-right-line"></i>
                     </a>
                 }
