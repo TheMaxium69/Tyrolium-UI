@@ -248,6 +248,13 @@ nav {
   color: var(--lang-check);
 }
 
+.nav-theme-auto-icon {
+  display: block;
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+}
+
 /* ─── RESPONSIVE ─────────────────────────────────────────── */
 
 .nav-burger {
@@ -326,7 +333,8 @@ nav {
   border-color: var(--nav-text-dim);
 }
 
-.nav-mobile-action i {
+.nav-mobile-action i,
+.nav-mobile-action .nav-theme-auto-icon {
   font-size: 15px;
   color: var(--nav-text-dim);
 }
