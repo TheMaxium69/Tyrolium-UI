@@ -13,11 +13,11 @@ export const FooterProjectPage: ITyroUiFooterPage[] = [
 ];
 
 export const FooterCorpoLink: ITyroUiFooterPage[] = [
-    { label: 'CSR',           labelEn: 'CSR',           link: '#' },
+    { label: 'RSE',           labelEn: 'CSR',           link: '/rse', host: 'https://tyrolium.fr' },
     { label: 'Partenaires',   labelEn: 'Partners',      link: '/partenaires', host: 'https://tyrolium.fr' },
     { label: 'Recrutements',  labelEn: 'Jobs',          link: 'https://jobs.tyrolium.fr' },
     { label: 'Tyrolium Labs', labelEn: 'Tyrolium Labs', link: '#' },
-    { label: 'Chronologie',   labelEn: 'Timeline',      link: '/#timeline',  host: 'https://tyrolium.fr' },
+    { label: 'Chronologie',   labelEn: 'Timeline',      link: '/chronologie', host: 'https://tyrolium.fr' },
     { label: 'Media Kit',     labelEn: 'Media Kit',     link: '/mediakit',   host: 'https://tyrolium.fr' },
     { label: 'Boutique',      labelEn: 'Shop',          link: 'https://tyrolium-shop.myspreadshop.fr/' },
 ];

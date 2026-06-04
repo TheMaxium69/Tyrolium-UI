@@ -83,11 +83,13 @@ export const NavbarMenuCategory: ITyroUiNavbarMenuCategory[] = [
     open: false,
     items: [
       {
-        name: 'CSR',
+        name: 'RSE',
+        nameEn: 'CSR',
         description: 'Responsabilité sociétale',
         descriptionEn: 'Corporate social responsibility',
         icon: 'ri-leaf-fill',
-        link: '#',
+        link: '/rse',
+        host: 'https://tyrolium.fr',
       },
       {
         name: 'Partenaires',
@@ -119,7 +121,7 @@ export const NavbarMenuCategory: ITyroUiNavbarMenuCategory[] = [
         description: 'Notre histoire',
         descriptionEn: 'Our history',
         icon: 'ri-time-fill',
-        link: '/#timeline',
+        link: '/chronologie',
         host: 'https://tyrolium.fr',
       },
       {

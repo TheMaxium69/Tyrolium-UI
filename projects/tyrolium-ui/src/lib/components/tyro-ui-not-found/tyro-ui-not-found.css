@@ -208,11 +208,16 @@ h1 {
   .nf-actions {
     flex-direction: column;
     width: 100%;
+    align-self: stretch;
   }
 
   .nf-btn-primary,
   .nf-btn-secondary {
     width: 100%;
+    box-sizing: border-box;
     justify-content: center;
+    white-space: normal;
+    text-align: center;
+    padding: 0.75rem 1.25rem;
   }
 }
