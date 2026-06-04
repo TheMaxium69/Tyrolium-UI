@@ -91,8 +91,8 @@ footer {
   max-width: 1500px;
   margin: auto;
   display: grid;
-  grid-template-columns: 2fr 1fr 1fr 1fr;
-  gap: 2rem;
+  grid-template-columns: 2fr 1fr 1fr 1fr 1fr;
+  gap: 1.25rem;
   padding: 2rem;
 }
 
@@ -108,6 +108,10 @@ footer {
 /* Retire les ::before/::after de l'ancien design */
 .footer-col-title::after,
 .footer-col-title::before { display: none; }
+
+.footer-links + .footer-col-title {
+  margin-top: 1.5rem;
+}
 
 .footer-desc {
   font-size: 0.875rem;

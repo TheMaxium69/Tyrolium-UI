@@ -92,17 +92,49 @@
         </div>
 
         <div class="footer-col">
-            <h5 class="footer-col-title">{{ lang() === 'en' ? 'Other links' : 'Autres liens' }}</h5>
+            <h5 class="footer-col-title">Corporate</h5>
             <ul class="footer-links">
-                @for (otherPage of footerOtherLink; track otherPage.label) {
-                    @if (otherPage.host) {
+                @for (p of footerCorpoLink; track p.label) {
+                    @if (p.host) {
                         @if (project == "Tyrolium") {
-                            <li><a [routerLink]="otherPage.link" TyroUiGloss>{{ lang() === 'en' ? (otherPage.labelEn ?? otherPage.label) : otherPage.label }}</a></li>
+                            <li><a [routerLink]="p.link" TyroUiGloss>{{ lang() === 'en' ? (p.labelEn ?? p.label) : p.label }}</a></li>
                         } @else {
-                            <li><a [href]="otherPage.host + otherPage.link" TyroUiGloss>{{ lang() === 'en' ? (otherPage.labelEn ?? otherPage.label) : otherPage.label }}</a></li>
+                            <li><a [href]="p.host + p.link" TyroUiGloss>{{ lang() === 'en' ? (p.labelEn ?? p.label) : p.label }}</a></li>
                         }
                     } @else {
-                        <li><a [href]="otherPage.link" TyroUiGloss>{{ lang() === 'en' ? (otherPage.labelEn ?? otherPage.label) : otherPage.label }}</a></li>
+                        <li><a [href]="p.link" TyroUiGloss>{{ lang() === 'en' ? (p.labelEn ?? p.label) : p.label }}</a></li>
+                    }
+                }
+            </ul>
+        </div>
+
+        <div class="footer-col">
+            <h5 class="footer-col-title">{{ lang() === 'en' ? 'Service & Info' : 'Service & Info' }}</h5>
+            <ul class="footer-links">
+                @for (p of footerServiceLink; track p.label) {
+                    @if (p.host) {
+                        @if (project == "Tyrolium") {
+                            <li><a [routerLink]="p.link" TyroUiGloss>{{ lang() === 'en' ? (p.labelEn ?? p.label) : p.label }}</a></li>
+                        } @else {
+                            <li><a [href]="p.host + p.link" TyroUiGloss>{{ lang() === 'en' ? (p.labelEn ?? p.label) : p.label }}</a></li>
+                        }
+                    } @else {
+                        <li><a [href]="p.link" TyroUiGloss>{{ lang() === 'en' ? (p.labelEn ?? p.label) : p.label }}</a></li>
+                    }
+                }
+            </ul>
+
+            <h5 class="footer-col-title">{{ lang() === 'en' ? 'Internal' : 'Interne' }}</h5>
+            <ul class="footer-links">
+                @for (p of FooterInternalLink; track p.label) {
+                    @if (p.host) {
+                        @if (project == "Tyrolium") {
+                            <li><a [routerLink]="p.link" TyroUiGloss>{{ lang() === 'en' ? (p.labelEn ?? p.label) : p.label }}</a></li>
+                        } @else {
+                            <li><a [href]="p.host + p.link" TyroUiGloss>{{ lang() === 'en' ? (p.labelEn ?? p.label) : p.label }}</a></li>
+                        }
+                    } @else {
+                        <li><a [href]="p.link" TyroUiGloss>{{ lang() === 'en' ? (p.labelEn ?? p.label) : p.label }}</a></li>
                     }
                 }
             </ul>
