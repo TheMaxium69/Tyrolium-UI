@@ -95,7 +95,8 @@ export const NavbarMenuCategory: ITyroUiNavbarMenuCategory[] = [
         description: 'Nos partenaires',
         descriptionEn: 'Our partners',
         icon: 'ri-group-fill',
-        link: '#',
+        link: '/partenaires',
+        host: 'https://tyrolium.fr',
       },
       {
         name: 'Recrutements',
