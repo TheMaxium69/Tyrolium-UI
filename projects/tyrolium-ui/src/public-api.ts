@@ -9,6 +9,7 @@ export * from './lib/components/tyro-ui-subnav/tyro-ui-subnav';
 export * from './lib/components/tyro-ui-footer/tyro-ui-footer';
 export * from './lib/components/tyro-ui-cta/tyro-ui-cta';
 export * from './lib/components/tyro-ui-auth-modal/tyro-ui-auth-modal';
+export * from './lib/components/tyro-ui-not-found/tyro-ui-not-found';
 
 /* Interface */
 export * from './lib/interface/ityro-ui-user'

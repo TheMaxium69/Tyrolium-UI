@@ -45,6 +45,10 @@
                                             <a (click)="scrollTo(child.ancre)" TyroUiGloss>
                                                 {{ lang() === 'en' ? (child.labelEn ?? child.label) : child.label }}
                                             </a>
+                                        } @else if (child.href) {
+                                            <a [href]="child.href" TyroUiGloss>
+                                                {{ lang() === 'en' ? (child.labelEn ?? child.label) : child.label }}
+                                            </a>
                                         } @else {
                                             <a [routerLink]="child.link" TyroUiGloss>
                                                 {{ lang() === 'en' ? (child.labelEn ?? child.label) : child.label }}
@@ -58,6 +62,10 @@
                         <li>
                             @if (page.ancre) {
                                 <a (click)="scrollTo(page.ancre)" TyroUiGloss>
+                                    {{ lang() === 'en' ? (page.labelEn ?? page.label) : page.label }}
+                                </a>
+                            } @else if (page.href) {
+                                <a [href]="page.href" TyroUiGloss>
                                     {{ lang() === 'en' ? (page.labelEn ?? page.label) : page.label }}
                                 </a>
                             } @else {

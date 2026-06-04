@@ -144,5 +144,10 @@ export class TyroUiNavbar {
     window.location.href = 'https://useritium.fr/connect.php';
   }
 
+  goToHref(href: string) {
+    this.mobileMenuOpen = false;
+    window.location.href = href;
+  }
+
 
 }

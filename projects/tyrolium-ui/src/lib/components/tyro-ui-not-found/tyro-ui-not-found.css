@@ -1,0 +1,218 @@
+:host {
+  display: block;
+}
+
+/* ─── Section ─────────────────────────────────────────────── */
+
+.nf-section {
+  position: relative;
+  background: var(--page-bg, #ffffff);
+  overflow: hidden;
+  min-height: calc(100vh - 63px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ─── Déco de fond ────────────────────────────────────────── */
+
+.nf-deco {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.nf-deco-blob {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(90px);
+  opacity: 0.45;
+}
+
+.nf-deco-blob--1 {
+  width: 500px;
+  height: 500px;
+  background: rgba(0, 0, 255, 0.12);
+  top: -120px;
+  left: -100px;
+}
+
+.nf-deco-blob--2 {
+  width: 400px;
+  height: 400px;
+  background: rgba(191, 0, 0, 0.1);
+  bottom: -100px;
+  right: -80px;
+}
+
+/* ─── Contenu ─────────────────────────────────────────────── */
+
+.nf-inner {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 3rem 2rem;
+  gap: 1.25rem;
+  max-width: 580px;
+  width: 100%;
+}
+
+/* ─── Badge ───────────────────────────────────────────────── */
+
+.nf-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: var(--page-bg-light, #f6f7fb);
+  border: 1px solid var(--page-border, #e5e7eb);
+  border-radius: 100px;
+  padding: 0.35rem 1rem;
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.07em;
+  color: var(--page-text-2, #4b5563);
+  font-family: 'Inter', sans-serif;
+  text-transform: uppercase;
+}
+
+.nf-badge-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #ef4444;
+  flex-shrink: 0;
+  animation: nf-blink 2.2s ease-in-out infinite;
+}
+
+@keyframes nf-blink {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0.25; }
+}
+
+/* ─── 404 ─────────────────────────────────────────────────── */
+
+.nf-code {
+  font-family: 'Syne', sans-serif;
+  font-size: clamp(6rem, 20vw, 10rem);
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: -0.04em;
+  margin: 0;
+  background: linear-gradient(135deg, #0000ff 0%, #bf0000 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ─── Titre ───────────────────────────────────────────────── */
+
+h1 {
+  font-family: 'Syne', sans-serif;
+  font-size: clamp(1.4rem, 3.5vw, 2rem);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--page-text, #111827);
+  margin: 0;
+}
+
+/* ─── Séparateur ──────────────────────────────────────────── */
+
+.nf-sep {
+  width: 48px;
+  height: 3px;
+  border-radius: 99px;
+  background: linear-gradient(90deg, #0000ff, #bf0000);
+}
+
+/* ─── Description ─────────────────────────────────────────── */
+
+.nf-desc {
+  font-family: 'Inter', sans-serif;
+  font-size: clamp(0.875rem, 1.6vw, 1rem);
+  line-height: 1.75;
+  color: var(--page-text-2, #4b5563);
+  margin: 0;
+}
+
+/* ─── Actions ─────────────────────────────────────────────── */
+
+.nf-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.875rem;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 0.5rem;
+}
+
+.nf-btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: linear-gradient(135deg, #0000ff 0%, #bf0000 100%);
+  color: #ffffff;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.875rem;
+  font-weight: 600;
+  padding: 0.8rem 1.75rem;
+  border-radius: 53px;
+  text-decoration: none;
+  transition: opacity 0.2s ease, transform 0.15s ease;
+  white-space: nowrap;
+}
+
+.nf-btn-primary:hover {
+  opacity: 0.88;
+  transform: translateY(-1px);
+}
+
+.nf-btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: transparent;
+  border: 1px solid var(--page-border, #e5e7eb);
+  color: var(--page-text-2, #4b5563);
+  font-family: 'Inter', sans-serif;
+  font-size: 0.875rem;
+  font-weight: 500;
+  padding: 0.8rem 1.75rem;
+  border-radius: 53px;
+  cursor: pointer;
+  transition: border-color 0.2s ease, color 0.2s ease, transform 0.15s ease;
+  white-space: nowrap;
+}
+
+.nf-btn-secondary:hover {
+  border-color: var(--page-text-2, #4b5563);
+  color: var(--page-text, #111827);
+  transform: translateY(-1px);
+}
+
+/* ─── Responsive ──────────────────────────────────────────── */
+
+@media (max-width: 768px) {
+  .nf-section {
+    min-height: calc(100dvh - 63px);
+  }
+
+  .nf-deco-blob--1,
+  .nf-deco-blob--2 {
+    opacity: 0.25;
+  }
+
+  .nf-actions {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .nf-btn-primary,
+  .nf-btn-secondary {
+    width: 100%;
+    justify-content: center;
+  }
+}

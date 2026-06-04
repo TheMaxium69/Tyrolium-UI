@@ -34,6 +34,13 @@
                           }
                           {{ child.label }}
                       </a>
+                  } @else if (child.href) {
+                      <a [href]="child.href" class="nav-dropdown-item" TyroUiGloss>
+                          @if (child.icon) {
+                              <i [class]="child.icon + ' nav-dropdown-item-icon'"></i>
+                          }
+                          {{ child.label }}
+                      </a>
                   } @else {
                       <a [routerLink]="child.link" class="nav-dropdown-item" TyroUiGloss>
                           @if (child.icon) {
@@ -49,6 +56,13 @@
         } @else {
             @if (page.ancre) {
                 <a (click)="scrollTo(page.ancre)" class="nav-link" TyroUiGloss>
+                    @if (page.icon) {
+                        <i [class]="page.icon + ' nav-link-icon'"></i>
+                    }
+                    {{ page.label }}
+                </a>
+            } @else if (page.href) {
+                <a [href]="page.href" class="nav-link" TyroUiGloss>
                     @if (page.icon) {
                         <i [class]="page.icon + ' nav-link-icon'"></i>
                     }
@@ -353,6 +367,15 @@
                          {{ page.label }}
                      </div>
                  </button>
+              } @else if (page.href) {
+                  <a class="nav-mobile-link nav-mobile-group-trigger" (click)="goToHref(page.href); page.childrenOpen = false">
+                      <div>
+                          @if (page.icon) {
+                              <i [class]="page.icon + ' nav-link-icon'"></i>
+                          }
+                          {{ page.label }}
+                      </div>
+                  </a>
               } @else {
                   <button class="nav-mobile-link nav-mobile-group-trigger" [routerLink]="page.link" (click)="mobileMenuOpen = false; page.childrenOpen = false">
                       <div>
@@ -373,6 +396,13 @@
                             }
                             {{ child.label }}
                         </a>
+                    } @else if (child.href) {
+                        <a class="nav-mobile-child" (click)="goToHref(child.href); page.childrenOpen = false">
+                            @if (child.icon) {
+                                <i [class]="child.icon + ' nav-mobile-child-icon'"></i>
+                            }
+                            {{ child.label }}
+                        </a>
                     } @else {
                         <a [routerLink]="child.link" class="nav-mobile-child" (click)="mobileMenuOpen = false; page.childrenOpen = false">
                             @if (child.icon) {
@@ -388,6 +418,13 @@
 
             @if (page.ancre) {
                 <a class="nav-link nav-mobile-link" (click)="scrollTo(page.ancre); mobileMenuOpen = false">
+                    @if (page.icon) {
+                        <i [class]="page.icon + ' nav-mobile-link-icon'"></i>
+                    }
+                    {{ page.label }}
+                </a>
+            } @else if (page.href) {
+                <a class="nav-link nav-mobile-link" (click)="goToHref(page.href)">
                     @if (page.icon) {
                         <i [class]="page.icon + ' nav-mobile-link-icon'"></i>
                     }
