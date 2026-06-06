@@ -113,7 +113,8 @@ export const NavbarMenuCategory: ITyroUiNavbarMenuCategory[] = [
         description: "Laboratoire d'innovation",
         descriptionEn: 'Innovation lab',
         icon: 'ri-flask-fill',
-        link: '#',
+        link: '/labs',
+        host: 'https://tyrolium.fr',
       },
       {
         name: 'Chronologie',
@@ -157,19 +158,20 @@ export const NavbarMenuCategory: ITyroUiNavbarMenuCategory[] = [
         host: 'https://tyrolium.fr',
       },
       {
-        name: 'Uptime Robot',
-        description: 'État des serveurs',
-        descriptionEn: 'Server status',
-        icon: 'ri-pulse-fill',
-        link: 'http://uptimerobot.tyrolium.fr',
-      },
-      {
         name: 'Serveurs',
         nameEn: 'Servers',
         description: 'Liste des serveurs',
         descriptionEn: 'Server list',
         icon: 'ri-server-fill',
-        link: 'https://tyrolium.fr/uptime/',
+        link: '/server',
+        host: 'https://tyrolium.fr',
+      },
+      {
+        name: 'Uptime Robot',
+        description: 'État des serveurs',
+        descriptionEn: 'Server status',
+        icon: 'ri-pulse-fill',
+        link: 'http://uptimerobot.tyrolium.fr',
       },
       {
         name: 'Légal',

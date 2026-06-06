@@ -16,7 +16,7 @@ export const FooterCorpoLink: ITyroUiFooterPage[] = [
     { label: 'RSE',           labelEn: 'CSR',           link: '/rse', host: 'https://tyrolium.fr' },
     { label: 'Partenaires',   labelEn: 'Partners',      link: '/partenaires', host: 'https://tyrolium.fr' },
     { label: 'Recrutements',  labelEn: 'Jobs',          link: 'https://jobs.tyrolium.fr' },
-    { label: 'Tyrolium Labs', labelEn: 'Tyrolium Labs', link: '#' },
+    { label: 'Tyrolium Labs', labelEn: 'Tyrolium Labs', link: '/labs', host: 'https://tyrolium.fr', },
     { label: 'Chronologie',   labelEn: 'Timeline',      link: '/chronologie', host: 'https://tyrolium.fr' },
     { label: 'Media Kit',     labelEn: 'Media Kit',     link: '/mediakit',   host: 'https://tyrolium.fr' },
     { label: 'Boutique',      labelEn: 'Shop',          link: 'https://tyrolium-shop.myspreadshop.fr/' },
@@ -24,8 +24,8 @@ export const FooterCorpoLink: ITyroUiFooterPage[] = [
 
 export const FooterServiceLink: ITyroUiFooterPage[] = [
     { label: 'Contactez-nous',        labelEn: 'Contact',           link: '/contact',                              host: 'https://tyrolium.fr' },
+    { label: 'Liste des Serveurs',    labelEn: 'Server list',       link: '/server',   host: 'https://tyrolium.fr' },
     { label: 'Uptime Robot',          labelEn: 'Uptime Robot',      link: 'http://uptimerobot.tyrolium.fr' },
-    { label: 'Liste des Serveurs',    labelEn: 'Server list',       link: 'https://tyrolium.fr/uptime/' },
 ];
 
 export const FooterInternalLink: ITyroUiFooterPage[] = [
