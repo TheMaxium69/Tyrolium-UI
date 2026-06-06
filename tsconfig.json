@@ -86,6 +86,12 @@
     },
     {
       "path": "./projects/gamenium-website/tsconfig.spec.json"
+    },
+    {
+      "path": "./projects/tyrolium-uptime/tsconfig.app.json"
+    },
+    {
+      "path": "./projects/tyrolium-uptime/tsconfig.spec.json"
     }
   ]
 }
