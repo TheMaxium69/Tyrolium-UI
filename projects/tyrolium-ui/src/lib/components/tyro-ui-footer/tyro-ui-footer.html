@@ -41,7 +41,11 @@
                             <ul class="footer-sub-links">
                                 @for (child of page.children; track child.label) {
                                     <li>
-                                        @if (child.ancre) {
+                                        @if (child.ancreHost && child.ancre) {
+                                            <a [routerLink]="child.ancreHost" [fragment]="child.ancre" TyroUiGloss>
+                                                {{ lang() === 'en' ? (child.labelEn ?? child.label) : child.label }}
+                                            </a>
+                                        } @else if (child.ancre) {
                                             <a (click)="scrollTo(child.ancre)" TyroUiGloss>
                                                 {{ lang() === 'en' ? (child.labelEn ?? child.label) : child.label }}
                                             </a>
@@ -60,7 +64,11 @@
                         </li>
                     } @else {
                         <li>
-                            @if (page.ancre) {
+                            @if (page.ancreHost && page.ancre) {
+                                <a [routerLink]="page.ancreHost" [fragment]="page.ancre" TyroUiGloss>
+                                    {{ lang() === 'en' ? (page.labelEn ?? page.label) : page.label }}
+                                </a>
+                            } @else if (page.ancre) {
                                 <a (click)="scrollTo(page.ancre)" TyroUiGloss>
                                     {{ lang() === 'en' ? (page.labelEn ?? page.label) : page.label }}
                                 </a>

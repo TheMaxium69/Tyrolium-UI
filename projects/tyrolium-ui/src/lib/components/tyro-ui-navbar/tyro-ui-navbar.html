@@ -27,7 +27,14 @@
             <div class="nav-dropdown">
               @for (child of page.children; track child.label) {
 
-                  @if (child.ancre) {
+                  @if (child.ancreHost && child.ancre) {
+                      <a [routerLink]="child.ancreHost" [fragment]="child.ancre" class="nav-dropdown-item" TyroUiGloss>
+                          @if (child.icon) {
+                              <i [class]="child.icon + ' nav-dropdown-item-icon'"></i>
+                          }
+                          {{ child.label }}
+                      </a>
+                  } @else if (child.ancre) {
                       <a (click)="scrollTo(child.ancre)" class="nav-dropdown-item" TyroUiGloss>
                           @if (child.icon) {
                               <i [class]="child.icon + ' nav-dropdown-item-icon'"></i>
@@ -54,7 +61,14 @@
             </div>
           </div>
         } @else {
-            @if (page.ancre) {
+            @if (page.ancreHost && page.ancre) {
+                <a [routerLink]="page.ancreHost" [fragment]="page.ancre" class="nav-link" TyroUiGloss>
+                    @if (page.icon) {
+                        <i [class]="page.icon + ' nav-link-icon'"></i>
+                    }
+                    {{ page.label }}
+                </a>
+            } @else if (page.ancre) {
                 <a (click)="scrollTo(page.ancre)" class="nav-link" TyroUiGloss>
                     @if (page.icon) {
                         <i [class]="page.icon + ' nav-link-icon'"></i>
@@ -370,7 +384,16 @@
       @for (page of pages; track page.label) {
         @if (page.children?.length) {
           <div class="nav-mobile-group">
-              @if (page.ancre) {
+              @if (page.ancreHost && page.ancre) {
+                  <a [routerLink]="page.ancreHost" [fragment]="page.ancre" class="nav-mobile-link nav-mobile-group-trigger" (click)="mobileMenuOpen = false; page.childrenOpen = false">
+                      <div>
+                          @if (page.icon) {
+                              <i [class]="page.icon + ' nav-link-icon'"></i>
+                          }
+                          {{ page.label }}
+                      </div>
+                  </a>
+              } @else if (page.ancre) {
                  <button class="nav-mobile-link nav-mobile-group-trigger" (click)="scrollTo(page.ancre); mobileMenuOpen = false; page.childrenOpen = false">
                      <div>
                          @if (page.icon) {
@@ -401,7 +424,14 @@
 
               <div class="nav-mobile-children">
                 @for (child of page.children; track child.label) {
-                    @if (child.ancre) {
+                    @if (child.ancreHost && child.ancre) {
+                        <a [routerLink]="child.ancreHost" [fragment]="child.ancre" class="nav-mobile-child" (click)="mobileMenuOpen = false; page.childrenOpen = false">
+                            @if (child.icon) {
+                                <i [class]="child.icon + ' nav-mobile-child-icon'"></i>
+                            }
+                            {{ child.label }}
+                        </a>
+                    } @else if (child.ancre) {
                         <a class="nav-mobile-child" (click)="scrollTo(child.ancre); mobileMenuOpen = false; page.childrenOpen = false">
                             @if (child.icon) {
                                 <i [class]="child.icon + ' nav-mobile-child-icon'"></i>
@@ -428,7 +458,14 @@
           </div>
         } @else {
 
-            @if (page.ancre) {
+            @if (page.ancreHost && page.ancre) {
+                <a [routerLink]="page.ancreHost" [fragment]="page.ancre" class="nav-link nav-mobile-link" (click)="mobileMenuOpen = false">
+                    @if (page.icon) {
+                        <i [class]="page.icon + ' nav-mobile-link-icon'"></i>
+                    }
+                    {{ page.label }}
+                </a>
+            } @else if (page.ancre) {
                 <a class="nav-link nav-mobile-link" (click)="scrollTo(page.ancre); mobileMenuOpen = false">
                     @if (page.icon) {
                         <i [class]="page.icon + ' nav-mobile-link-icon'"></i>

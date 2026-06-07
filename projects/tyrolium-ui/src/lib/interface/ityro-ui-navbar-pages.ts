@@ -3,6 +3,7 @@ export interface ITyroUiNavbarPages {
   labelEn?: string;
   link?: string;
   href?: string;
+  ancreHost?: string;
   ancre?: string;
   icon?: string;
   children?: ITyroUiNavbarPages[];
