@@ -22,6 +22,7 @@ export class TyroUiCTA {
   @Input() subRouterLink: string = "";
   @Input() subAncreLink: string = "";
   @Input() notBack: boolean = false;
+  @Input() vturias: boolean = false;
 
   scrollTo(ancre:string) {
     const element = document.getElementById(ancre);

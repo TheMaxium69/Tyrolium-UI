@@ -31,6 +31,14 @@
     color: rgba(255, 255, 255, 0.8);
 }
 
+.vturias .cta-card{
+    background: linear-gradient(
+            135deg,
+            #f472b6 0%,
+            #a78bfa 50%,
+            #7dd3fc 100%)!important;
+}
+
 .cta-card {
     position: relative;
     background: linear-gradient(135deg, #0000FF 0%, #BF0000 100%);
@@ -46,6 +54,11 @@
     z-index: 1;
 }
 
+.vturias .cta-card__text h2 {
+    font-family: "Inter", sans-serif!important;
+    font-weight: 900!important;
+    letter-spacing: -0.3px!important;
+}
 .cta-card__text h2 {
     font-family: 'Syne', sans-serif;
     font-size: clamp(1.75rem, 3.5vw, 2.75rem);
@@ -72,6 +85,10 @@
     gap: 1rem;
     flex-shrink: 0;
     z-index: 1;
+}
+
+.vturias .btn-white{
+    color: #f472b6!important;
 }
 
 .btn-white {
@@ -126,6 +143,9 @@
 }
 
 /* Decorative glows */
+.vturias .cta-deco{
+    display: none!important;
+}
 
 .cta-deco {
     position: absolute;
@@ -233,6 +253,10 @@
 
 /* ── Dark theme ──────────────────────────────────────────────────────────── */
 
+:host-context([data-theme="dark"]) .vturias.cta { background: #0d0a14!important; }
 :host-context([data-theme="dark"]) .cta { background: var(--page-bg-light)!important; }
+:host-context([data-theme="dark"]) .vturias .cta-card { background: linear-gradient(135deg, #a9386f 0%,#7058ae 50%,#467da6 100%)!important; }
 :host-context([data-theme="dark"]) .notBack { background: unset!important; }
+:host-context([data-theme="dark"]) .vturias .label { color: white!important; }
+:host-context([data-theme="dark"]) .label--white { color: #a5cdff!important; }
 :host-context([data-theme="dark"]) .label { color: #60a5fa; }
