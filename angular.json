@@ -730,6 +730,75 @@
           "builder": "@angular/build:unit-test"
         }
       }
+    },
+    "tyroserv-website": {
+      "projectType": "application",
+      "schematics": {},
+      "root": "projects/tyroserv-website",
+      "sourceRoot": "projects/tyroserv-website/src",
+      "prefix": "app",
+      "architect": {
+        "build": {
+          "builder": "@angular/build:application",
+          "options": {
+            "browser": "projects/tyroserv-website/src/main.ts",
+            "tsConfig": "projects/tyroserv-website/tsconfig.app.json",
+            "assets": [
+              {
+                "glob": "**/*",
+                "input": "projects/tyroserv-website/public"
+              },
+              {
+                "glob": "**/*",
+                "input": "projects/tyrolium-ui/src/styles/assets",
+                "output": "assets/tyrolium-ui"
+              }
+            ],
+            "styles": [
+              "projects/tyrolium-ui/src/styles/tyrolium-ui.css",
+              "projects/tyroserv-website/src/styles.css"
+            ]
+          },
+          "configurations": {
+            "production": {
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "500kB",
+                  "maximumError": "1MB"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "16kB",
+                  "maximumError": "32kB"
+                }
+              ],
+              "outputHashing": "all"
+            },
+            "development": {
+              "optimization": false,
+              "extractLicenses": false,
+              "sourceMap": true
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "serve": {
+          "builder": "@angular/build:dev-server",
+          "configurations": {
+            "production": {
+              "buildTarget": "tyroserv-website:build:production"
+            },
+            "development": {
+              "buildTarget": "tyroserv-website:build:development"
+            }
+          },
+          "defaultConfiguration": "development"
+        },
+        "test": {
+          "builder": "@angular/build:unit-test"
+        }
+      }
     }
   }
 }
