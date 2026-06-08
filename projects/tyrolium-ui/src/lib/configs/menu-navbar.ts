@@ -126,6 +126,15 @@ export const NavbarMenuCategory: ITyroUiNavbarMenuCategory[] = [
         host: 'https://tyrolium.fr',
       },
       {
+        name: 'Équipe',
+        nameEn: 'Team',
+        description: 'Qui sommes-nous',
+        descriptionEn: 'Who we are',
+        icon: 'ri-group-fill',
+        link: '/equipe',
+        host: 'https://tyrolium.fr',
+      },
+      {
         name: 'Media Kit',
         description: 'Charte graphique',
         descriptionEn: 'Brand guidelines',
