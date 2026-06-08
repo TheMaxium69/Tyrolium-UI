@@ -171,7 +171,7 @@ export const NavbarMenuCategory: ITyroUiNavbarMenuCategory[] = [
         description: 'État des serveurs',
         descriptionEn: 'Server status',
         icon: 'ri-pulse-fill',
-        link: 'http://uptimerobot.tyrolium.fr',
+        link: 'https://stats.uptimerobot.com/7z9o3SEnWX',
       },
       {
         name: 'Légal',

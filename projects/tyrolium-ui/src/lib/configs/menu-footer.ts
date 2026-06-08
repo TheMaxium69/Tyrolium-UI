@@ -25,7 +25,7 @@ export const FooterCorpoLink: ITyroUiFooterPage[] = [
 export const FooterServiceLink: ITyroUiFooterPage[] = [
     { label: 'Contactez-nous',        labelEn: 'Contact',           link: '/contact',                              host: 'https://tyrolium.fr' },
     { label: 'Liste des Serveurs',    labelEn: 'Server list',       link: '/server',   host: 'https://tyrolium.fr' },
-    { label: 'Uptime Robot',          labelEn: 'Uptime Robot',      link: 'http://uptimerobot.tyrolium.fr' },
+    { label: 'Uptime Robot',          labelEn: 'Uptime Robot',      link: 'https://stats.uptimerobot.com/7z9o3SEnWX' },
 ];
 
 export const FooterInternalLink: ITyroUiFooterPage[] = [
