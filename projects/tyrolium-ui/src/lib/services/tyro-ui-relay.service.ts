@@ -13,6 +13,10 @@ export const TYRO_RELAY_URL = new InjectionToken<string>('TYRO_RELAY_URL', {
 
 type RelayHandler = (value: string, type: 'init' | 'changed') => void;
 
+// Ordre de dispatch garanti à l'init : logout et login-at en premier pour que
+// les handlers auth puissent bloquer token/user si besoin
+const PRIORITY_KEYS = ['tyrolium-logout', 'tyrolium-login-at'];
+
 @Injectable({ providedIn: 'root' })
 export class TyroUiRelayService {
   private readonly relayUrl = inject(TYRO_RELAY_URL);
@@ -31,10 +35,18 @@ export class TyroUiRelayService {
     this.handlers.get(key)!.push(handler);
   }
 
-  /** Envoie une valeur au relay (persiste dans le localStorage de tyrolium.fr). */
+  /** Stocke une valeur dans le relay (localStorage de tyrolium.fr). */
   send(key: string, value: string) {
     this.frame?.contentWindow?.postMessage(
       { type: 'tyro-relay-set', key, value },
+      this.origin || '*'
+    );
+  }
+
+  /** Supprime une clé du relay (localStorage de tyrolium.fr). */
+  remove(key: string) {
+    this.frame?.contentWindow?.postMessage(
+      { type: 'tyro-relay-remove', key },
       this.origin || '*'
     );
   }
@@ -57,11 +69,16 @@ export class TyroUiRelayService {
       if (!d) return;
 
       if (d.type === 'tyro-relay-init' && d.data) {
+        // Dispatch les clés prioritaires en premier (logout, login-at) puis les autres
+        for (const key of PRIORITY_KEYS) {
+          if (d.data[key]) this.dispatch(key, d.data[key], 'init');
+        }
         for (const [key, value] of Object.entries<string>(d.data)) {
+          if (PRIORITY_KEYS.includes(key)) continue;
           if (value) this.dispatch(key, value, 'init');
         }
-      } else if (d.type === 'tyro-relay-changed' && d.key && d.value) {
-        this.dispatch(d.key, d.value, 'changed');
+      } else if (d.type === 'tyro-relay-changed' && d.key && 'value' in d) {
+        this.dispatch(d.key, d.value ?? '', 'changed');
       }
     });
 

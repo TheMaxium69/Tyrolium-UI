@@ -12,6 +12,7 @@ export const TYRO_ECOSYSTEM_DOMAINS = [
   'https://vturias.fr',
   'https://nexiumiacrm.fr',
   'https://useritium.fr',
+  'https://tyroserv.fr',
 ] as const;
 
 export type TyroDomain = (typeof TYRO_ECOSYSTEM_DOMAINS)[number];
