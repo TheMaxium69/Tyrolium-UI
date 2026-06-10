@@ -44,7 +44,13 @@ export class TyroUiNavbar {
   /** Utilisateur effectif : auth service en priorité, puis currentUser input (legacy). */
   readonly effectiveUser = computed(() => {
     const u = this.authService.user();
-    if (u) return [{ name: u.displayname || u.username, email: u.email, urlPictureProfil: u.pp ? `http://192.168.1.81/Useritium-Dashboard/uploads/pp/${u.pp}` : undefined }];
+    if (u) {
+      const letter = (u.displayname || u.username).charAt(0).toUpperCase();
+      const pp = u.pp
+        ? `http://192.168.1.81/Useritium-Dashboard/uploads/pp/${u.pp}`
+        : `https://tyrolium.fr/generate-pp/?c=183153&l=${letter}`;
+      return [{ name: u.displayname || u.username, email: u.email, urlPictureProfil: pp }];
+    }
     return this.currentUser;
   });
 
