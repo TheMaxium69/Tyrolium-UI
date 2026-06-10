@@ -664,6 +664,19 @@ nav {
   transition: opacity 0.15s;
 }
 
+#vturias .nav-user-trigger {
+  background-image:
+          linear-gradient(var(--nav-bg), var(--nav-bg)),
+          conic-gradient(
+                  from -45deg,
+                  #f472b6 0%,
+                  #7dd3fc 40%,
+                  #7dd3fc 70%,
+                  #f472b6 100%)
+  !important;
+}
+
+
 .nav-user-trigger:hover,
 .nav-user-trigger.active {
   opacity: 0.78;
@@ -812,6 +825,18 @@ nav {
   overflow: hidden;
   flex-shrink: 0;
   margin-bottom: 0.25rem;
+}
+
+#vturias .user-menu-avatar-ring{
+  background-image:
+          linear-gradient(var(--menu-bg), var(--menu-bg)),
+          conic-gradient(
+                  from -45deg,
+                  #f472b6 0%,
+                  #7dd3fc 40%,
+                  #7dd3fc 70%,
+                  #f472b6 100%)
+  !important;
 }
 
 .user-menu-avatar-img {

@@ -1,5 +1,5 @@
-<nav>
-  <div class="nav-right" routerLink="." (click)="mobileMenuOpen = false">
+<nav [id]="project === 'Vturias' ? 'vturias' : ''">
+<div class="nav-right" routerLink="." (click)="mobileMenuOpen = false">
     <img [src]="logo" alt="Logo" class="nav-logo">
     <div class="nav-info">
       @if (project == "Tyrolium") {
