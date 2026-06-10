@@ -257,7 +257,7 @@ footer {
 :host-context([data-theme="dark"]) .footer-head { border-bottom-color: #374151; }
 :host-context([data-theme="dark"]) .footer-nav-name,
 :host-context([data-theme="dark"]) .footer-nav-name-main { color: #f3f4f6; }
-:host-context([data-theme="dark"]) .footer-nav-group { color: #6b7280; }
+:host-context([data-theme="dark"]) .footer-nav-group { color: #6b7280!important; }
 :host-context([data-theme="dark"]) .social-icons a { color: #9ca3af; }
 :host-context([data-theme="dark"]) .social-icons a:hover { background: #374151; color: #f3f4f6; }
 :host-context([data-theme="dark"]) .footer-col-title { color: #6b7280; }

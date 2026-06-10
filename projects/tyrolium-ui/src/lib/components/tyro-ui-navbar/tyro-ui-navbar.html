@@ -273,27 +273,51 @@
                         }
                       </a>
                     } @else {
-                      <a [href]="item.host + item.link"
-                         class="app-menu-row"
-                         [class.app-menu-row--sub]="item.isSubItem"
-                         TyroUiGloss [glossSize]="100">
-                        <div class="app-row-icon" [class.app-row-icon--ri]="!!item.icon">
-                          @if (item.icon) {
-                            <i [class]="item.icon + ' app-row-icon-ri'"></i>
-                          } @else {
-                            <img [src]="item.image" [alt]="item.name" class="app-row-img">
-                          }
-                        </div>
-                        <div class="app-row-info">
-                          <span class="app-row-name">{{ langService.lang() === 'en' ? (item.nameEn ?? item.name) : item.name }}</span>
-                          <span class="app-row-desc">{{ langService.lang() === 'en' ? (item.descriptionEn ?? item.description) : item.description }}</span>
-                        </div>
-                        @if (item.subItems?.length) {
-                          <button class="sub-expand-btn" [class.open]="item.subOpen" (click)="toggleSubItems(item, $event)">
-                            <i class="ri-arrow-right-s-line"></i>
-                          </button>
+                        @if (item.link === '/contact') {
+                            <a [href]="item.host + item.link + '?from=' + project"
+                               class="app-menu-row"
+                               [class.app-menu-row--sub]="item.isSubItem"
+                               TyroUiGloss [glossSize]="100">
+                                <div class="app-row-icon" [class.app-row-icon--ri]="!!item.icon">
+                                    @if (item.icon) {
+                                        <i [class]="item.icon + ' app-row-icon-ri'"></i>
+                                    } @else {
+                                        <img [src]="item.image" [alt]="item.name" class="app-row-img">
+                                    }
+                                </div>
+                                <div class="app-row-info">
+                                    <span class="app-row-name">{{ langService.lang() === 'en' ? (item.nameEn ?? item.name) : item.name }}</span>
+                                    <span class="app-row-desc">{{ langService.lang() === 'en' ? (item.descriptionEn ?? item.description) : item.description }}</span>
+                                </div>
+                                @if (item.subItems?.length) {
+                                    <button class="sub-expand-btn" [class.open]="item.subOpen" (click)="toggleSubItems(item, $event)">
+                                        <i class="ri-arrow-right-s-line"></i>
+                                    </button>
+                                }
+                            </a>
+                        } @else {
+                            <a [href]="item.host + item.link"
+                               class="app-menu-row"
+                               [class.app-menu-row--sub]="item.isSubItem"
+                               TyroUiGloss [glossSize]="100">
+                                <div class="app-row-icon" [class.app-row-icon--ri]="!!item.icon">
+                                    @if (item.icon) {
+                                        <i [class]="item.icon + ' app-row-icon-ri'"></i>
+                                    } @else {
+                                        <img [src]="item.image" [alt]="item.name" class="app-row-img">
+                                    }
+                                </div>
+                                <div class="app-row-info">
+                                    <span class="app-row-name">{{ langService.lang() === 'en' ? (item.nameEn ?? item.name) : item.name }}</span>
+                                    <span class="app-row-desc">{{ langService.lang() === 'en' ? (item.descriptionEn ?? item.description) : item.description }}</span>
+                                </div>
+                                @if (item.subItems?.length) {
+                                    <button class="sub-expand-btn" [class.open]="item.subOpen" (click)="toggleSubItems(item, $event)">
+                                        <i class="ri-arrow-right-s-line"></i>
+                                    </button>
+                                }
+                            </a>
                         }
-                      </a>
                     }
                   } @else {
                     <a [href]="item.link"
