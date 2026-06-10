@@ -171,7 +171,7 @@
               <i class="ri-login-box-line"></i>
               {{ langService.lang() === 'en' ? 'Sign in' : 'Se connecter' }}
             </button>
-            <button class="user-menu-btn user-menu-btn--secondary" (click)="registerLink()" TyroUiGloss>
+            <button class="user-menu-btn user-menu-btn--secondary" (click)="hrefLink('https://dashboard.useritium.fr/?w=s')" TyroUiGloss>
               <i class="ri-user-add-line"></i>
               {{ langService.lang() === 'en' ? 'Sign up' : "S'inscrire" }}
             </button>
@@ -192,17 +192,17 @@
           </div>
           <div class="user-menu-divider"></div>
           <div class="user-menu-actions">
-            <button class="user-menu-action" TyroUiGloss [glossSize]="100">
+            <!--<button class="user-menu-action" TyroUiGloss [glossSize]="100">
               <i class="ri-user-line"></i>
               {{ langService.lang() === 'en' ? 'My profile' : 'Mon profil' }}
-            </button>
-            <button class="user-menu-action" TyroUiGloss [glossSize]="100">
-              <i class="ri-settings-3-line"></i>
-              {{ langService.lang() === 'en' ? 'Settings' : 'Paramètres' }}
-            </button>
-            <button class="user-menu-action" TyroUiGloss [glossSize]="100">
+            </button>-->
+            <button class="user-menu-action" TyroUiGloss [glossSize]="100" (click)="hrefLink('https://dashboard.useritium.fr/panel.php')">
               <i class="ri-dashboard-line"></i>
               {{ langService.lang() === 'en' ? 'Dashboard' : 'Tableau de bord' }}
+            </button>
+            <button class="user-menu-action" TyroUiGloss [glossSize]="100" (click)="hrefLink('https://dashboard.useritium.fr/panel.php?p=2')">
+              <i class="ri-settings-3-line"></i>
+              {{ langService.lang() === 'en' ? 'Settings' : 'Paramètres' }}
             </button>
           </div>
           <div class="user-menu-divider"></div>

@@ -146,8 +146,8 @@ export class TyroUiNavbar {
     }
   }
 
-  registerLink() {
-    window.location.href = 'https://useritium.fr/connect.php';
+  hrefLink(link: string) {
+    window.location.href = link;
   }
 
   goToHref(href: string) {
