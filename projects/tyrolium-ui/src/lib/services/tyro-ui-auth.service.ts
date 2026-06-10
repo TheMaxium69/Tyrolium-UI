@@ -1,6 +1,7 @@
 import { Injectable, signal, inject, InjectionToken } from '@angular/core';
 import { ITyroUiUser } from '../interface/ityro-ui-user';
 import { TyroUiRelayService } from './tyro-ui-relay.service';
+import { TyroUiLangService } from './tyro-ui-lang.service';
 
 /**
  * URL de base de l'API Useritium.
@@ -26,6 +27,7 @@ interface UseritiumResponse {
 export class TyroUiAuthService {
   private readonly apiUrl = inject(TYRO_AUTH_API);
   private readonly relay  = inject(TyroUiRelayService);
+  private readonly lang   = inject(TyroUiLangService).lang;
 
   readonly user      = signal<ITyroUiUser | null>(null);
   readonly loading   = signal(false);
@@ -67,12 +69,15 @@ export class TyroUiAuthService {
       });
       const data: UseritiumResponse = await res.json();
       if (data.status !== 'true' || !data.result) {
-        throw new Error(data.why ?? 'Identifiants incorrects.');
+        this.error.set(this.translateLoginError(data.why));
+        return;
       }
       this.storeSession(data.result.webToken, data.result);
       this.closeModal();
-    } catch (e: any) {
-      this.error.set(e?.message ?? 'Une erreur est survenue.');
+    } catch {
+      const fr = 'Impossible de contacter le serveur. Vérifiez votre connexion.';
+      const en = 'Unable to reach the server. Please check your connection.';
+      this.error.set(this.lang() === 'en' ? en : fr);
     } finally {
       this.loading.set(false);
     }
@@ -161,6 +166,21 @@ export class TyroUiAuthService {
         }
       } catch { /* json malformé */ }
     });
+  }
+
+  private translateLoginError(why?: string): string {
+    const fr: Record<string, string> = {
+      'bad password':        'Mot de passe incorrect.',
+      'non-existent account': 'Aucun compte ne correspond à cet identifiant.',
+      'indefinite fields':   'Veuillez remplir tous les champs.',
+    };
+    const en: Record<string, string> = {
+      'bad password':        'Incorrect password.',
+      'non-existent account': 'No account matches this identifier.',
+      'indefinite fields':   'Please fill in all fields.',
+    };
+    const map = this.lang() === 'en' ? en : fr;
+    return map[why ?? ''] ?? (this.lang() === 'en' ? 'An error occurred.' : 'Une erreur est survenue.');
   }
 
   private storeSession(token: string, user: ITyroUiUser) {
