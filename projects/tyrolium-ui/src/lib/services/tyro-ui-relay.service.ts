@@ -3,7 +3,7 @@ import { Injectable, inject, InjectionToken } from '@angular/core';
 /**
  * Fournir ce token sur les sites tiers pour activer la sync cross-domaine
  * via la page relay hébergée sur tyrolium.fr.
- * En dev : 'http://localhost:PORT/relay.html'
+ * En dev : 'http://192.168.1.81:PORT/relay.html'
  * En prod : TYRO_RELAY_PAGE_URL
  */
 export const TYRO_RELAY_URL = new InjectionToken<string>('TYRO_RELAY_URL', {

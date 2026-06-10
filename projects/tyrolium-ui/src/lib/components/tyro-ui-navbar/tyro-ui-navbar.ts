@@ -44,7 +44,7 @@ export class TyroUiNavbar {
   /** Utilisateur effectif : auth service en priorité, puis currentUser input (legacy). */
   readonly effectiveUser = computed(() => {
     const u = this.authService.user();
-    if (u) return [{ name: u.displayname || u.username, email: u.email, urlPictureProfil: u.pp ?? undefined }];
+    if (u) return [{ name: u.displayname || u.username, email: u.email, urlPictureProfil: u.pp ? `http://192.168.1.81/Useritium-Dashboard/uploads/pp/${u.pp}` : undefined }];
     return this.currentUser;
   });
 

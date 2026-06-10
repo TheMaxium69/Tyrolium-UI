@@ -8,7 +8,7 @@ import { TyroUiRelayService } from './tyro-ui-relay.service';
  */
 export const TYRO_AUTH_API = new InjectionToken<string>('TYRO_AUTH_API', {
   providedIn: 'root',
-  factory: () => 'http://localhost/ApiUseritium',
+  factory: () => 'http://192.168.1.81/ApiUseritium',
 });
 
 const TOKEN_KEY    = 'tyrolium-token';
