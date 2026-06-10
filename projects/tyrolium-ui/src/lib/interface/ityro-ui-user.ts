@@ -1,6 +1,8 @@
 export interface ITyroUiUser {
-  displayname: string;
-  name: string;
+  id: number;
   email: string;
-  urlPictureProfil?: string;
+  username: string;
+  displayname: string | null;
+  pp: string | null;
+  webToken: string;
 }

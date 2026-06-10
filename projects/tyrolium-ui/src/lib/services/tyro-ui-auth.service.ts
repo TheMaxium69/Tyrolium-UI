@@ -4,37 +4,43 @@ import { TyroUiRelayService } from './tyro-ui-relay.service';
 
 /**
  * URL de base de l'API Useritium.
- * Ex : { provide: TYRO_AUTH_API, useValue: 'https://api.useritium.fr' }
+ * Ex : { provide: TYRO_AUTH_API, useValue: 'https://useritium.fr/api-externe' }
  */
 export const TYRO_AUTH_API = new InjectionToken<string>('TYRO_AUTH_API', {
   providedIn: 'root',
-  factory: () => 'https://api.useritium.fr',
+  factory: () => 'http://localhost/ApiUseritium',
 });
 
 const TOKEN_KEY = 'tyrolium-token';
 const USER_KEY  = 'tyrolium-user';
+
+interface UseritiumResponse {
+  status: string;
+  why: string;
+  result?: ITyroUiUser;
+}
 
 @Injectable({ providedIn: 'root' })
 export class TyroUiAuthService {
   private readonly apiUrl = inject(TYRO_AUTH_API);
   private readonly relay  = inject(TyroUiRelayService);
 
-  readonly user    = signal<ITyroUiUser | null>(null);
-  readonly loading = signal(false);
-  readonly error   = signal<string | null>(null);
+  readonly user      = signal<ITyroUiUser | null>(null);
+  readonly loading   = signal(false);
+  readonly error     = signal<string | null>(null);
   readonly modalOpen = signal(false);
   readonly modalTab  = signal<'login' | 'register'>('login');
 
   constructor() {
     this.restoreSession();
 
-    // Sync cross-domaine : token reçu via relay → restaure la session
-    this.relay.on(TOKEN_KEY, (token, type) => {
+    this.relay.on(TOKEN_KEY, (token) => {
       if (!token || localStorage.getItem(TOKEN_KEY) === token) return;
       localStorage.setItem(TOKEN_KEY, token);
+      this.reconnectWithToken(token);
     });
 
-    this.relay.on(USER_KEY, (json, type) => {
+    this.relay.on(USER_KEY, (json) => {
       if (!json) return;
       try {
         const u: ITyroUiUser = JSON.parse(json);
@@ -57,22 +63,24 @@ export class TyroUiAuthService {
     this.error.set(null);
   }
 
-  async login(email: string, password: string): Promise<void> {
+  async login(loginUseritium: string, mdpUseritium: string): Promise<void> {
     this.loading.set(true);
     this.error.set(null);
     try {
-      const res = await fetch(`${this.apiUrl}/auth/login`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email, password }),
+      const body = new URLSearchParams({
+        login_useritium: loginUseritium,
+        mdp_useritium: mdpUseritium,
       });
-      if (!res.ok) {
-        const body = await res.json().catch(() => ({}));
-        throw new Error(body?.message ?? 'Identifiants incorrects.');
+      const res = await fetch(`${this.apiUrl}/?controller=WebSite&task=connect`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: body.toString(),
+      });
+      const data: UseritiumResponse = await res.json();
+      if (data.status !== 'true' || !data.result) {
+        throw new Error(data.why ?? 'Identifiants incorrects.');
       }
-      const data = await res.json();
-      // Réponse attendue : { token: string, user: ITyroUiUser }
-      this.storeSession(data.token, data.user ?? data);
+      this.storeSession(data.result.webToken, data.result);
       this.closeModal();
     } catch (e: any) {
       this.error.set(e?.message ?? 'Une erreur est survenue.');
@@ -81,35 +89,30 @@ export class TyroUiAuthService {
     }
   }
 
-  async register(email: string, password: string, displayname: string): Promise<void> {
-    this.loading.set(true);
-    this.error.set(null);
+  async reconnectWithToken(token: string): Promise<boolean> {
     try {
-      const res = await fetch(`${this.apiUrl}/auth/register`, {
+      const body = new URLSearchParams({ webtoken_useritium: token });
+      const res = await fetch(`${this.apiUrl}/?controller=WebSite&task=connectToken`, {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email, password, displayname }),
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: body.toString(),
       });
-      if (!res.ok) {
-        const body = await res.json().catch(() => ({}));
-        throw new Error(body?.message ?? 'Erreur lors de la création du compte.');
+      const data: UseritiumResponse = await res.json();
+      if (data.status !== 'true' || !data.result) {
+        this.clearSession();
+        return false;
       }
-      const data = await res.json();
-      this.storeSession(data.token, data.user ?? data);
-      this.closeModal();
-    } catch (e: any) {
-      this.error.set(e?.message ?? 'Une erreur est survenue.');
-    } finally {
-      this.loading.set(false);
+      this.storeSession(data.result.webToken, data.result);
+      return true;
+    } catch {
+      return false;
     }
   }
 
   logout() {
-    localStorage.removeItem(TOKEN_KEY);
-    localStorage.removeItem(USER_KEY);
+    this.clearSession();
     this.relay.send(TOKEN_KEY, '');
     this.relay.send(USER_KEY, '');
-    this.user.set(null);
   }
 
   getToken(): string | null {
@@ -125,11 +128,22 @@ export class TyroUiAuthService {
     this.user.set(user);
   }
 
+  private clearSession() {
+    localStorage.removeItem(TOKEN_KEY);
+    localStorage.removeItem(USER_KEY);
+    this.user.set(null);
+  }
+
   private restoreSession() {
     const token = localStorage.getItem(TOKEN_KEY);
-    const json  = localStorage.getItem(USER_KEY);
-    if (token && json) {
+    if (!token) return;
+
+    // Affiche l'utilisateur en cache immédiatement, puis valide côté serveur
+    const json = localStorage.getItem(USER_KEY);
+    if (json) {
       try { this.user.set(JSON.parse(json)); } catch { /* json corrompu */ }
     }
+
+    this.reconnectWithToken(token);
   }
 }

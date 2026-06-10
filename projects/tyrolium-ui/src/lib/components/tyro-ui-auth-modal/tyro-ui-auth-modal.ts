@@ -13,7 +13,7 @@ export class TyroUiAuthModal {
   readonly auth = inject(TyroUiAuthService);
   readonly lang = inject(TyroUiLangService).lang;
 
-  email    = '';
+  login    = '';
   password = '';
   showPass = false;
 
@@ -25,8 +25,8 @@ export class TyroUiAuthModal {
 
   async submit(e: Event) {
     e.preventDefault();
-    await this.auth.login(this.email, this.password);
-    this.email    = '';
+    await this.auth.login(this.login, this.password);
+    this.login    = '';
     this.password = '';
     this.showPass = false;
   }

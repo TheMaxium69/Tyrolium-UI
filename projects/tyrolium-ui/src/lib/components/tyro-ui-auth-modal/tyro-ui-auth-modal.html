@@ -26,10 +26,10 @@
       <form class="auth-form" (submit)="submit($event)">
 
         <div class="auth-field">
-          <label>E-mail</label>
-          <input type="email" [(ngModel)]="email" name="email"
-                 [placeholder]="lang() === 'en' ? 'you@example.com' : 'vous@exemple.fr'"
-                 autocomplete="email" required>
+          <label>{{ lang() === 'en' ? 'E-mail or username' : 'E-mail ou nom d\'utilisateur' }}</label>
+          <input type="text" [(ngModel)]="login" name="login"
+                 [placeholder]="lang() === 'en' ? 'you@example.com or username' : 'vous@exemple.fr ou nom d\'utilisateur'"
+                 autocomplete="username" required>
         </div>
 
         <div class="auth-field">
