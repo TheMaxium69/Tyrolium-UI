@@ -47,7 +47,8 @@ export class TyroUiNavbar {
     if (u) {
       const letter = (u.displayname || u.username).charAt(0).toUpperCase();
       const pp = u.pp
-        ? `http://dashboard.useritium.fr/uploads/pp/${u.pp}`
+        // ? `http://dashboard.useritium.fr/uploads/pp/${u.pp}`
+        ? `http://192.168.1.81/Useritium-Dashboard/uploads/pp/${u.pp}`
         : `https://tyrolium.fr/generate-pp/?c=183153&l=${letter}`;
       return [{ name: u.displayname || u.username, email: u.email, urlPictureProfil: pp }];
     }
