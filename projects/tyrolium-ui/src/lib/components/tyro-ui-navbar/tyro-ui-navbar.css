@@ -261,7 +261,7 @@ nav {
   display: none;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 1024px) {
   nav {
     padding: 0.75rem 1.25rem;
   }
@@ -603,7 +603,7 @@ nav {
 
 /* ─── APP MENU MOBILE ────────────────────────────────────── */
 
-@media (max-width: 768px) {
+@media (max-width: 1024px) {
   .nav-menu-wrapper {
     position: static;
   }
@@ -722,7 +722,7 @@ nav {
   display: flex;
 }
 
-@media (min-width: 769px) {
+@media (min-width: 1025px) {
   .nav-user-wrapper:hover .user-menu {
     display: flex;
   }
@@ -934,7 +934,7 @@ nav {
 
 /* ─── USER MENU MOBILE ───────────────────────────────────── */
 
-@media (max-width: 768px) {
+@media (max-width: 1024px) {
   .nav-user-wrapper {
     position: static;
   }
