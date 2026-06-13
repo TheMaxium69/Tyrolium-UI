@@ -1,0 +1,256 @@
+<!doctype html>
+<html lang="">
+  <!--
+    lang : code langue principale du site
+    Exemples : "fr", "en", "fr-FR"
+  -->
+  <head>
+    <meta charset="utf-8" />
+
+    <!-- ═══════════════════════════════════════════════════════════════
+         TITRE
+         Affiché dans l'onglet du navigateur et dans les résultats Google.
+         Format recommandé : "Nom du site - Courte description"
+         Longueur idéale : 50 à 60 caractères
+    ════════════════════════════════════════════════════════════════ -->
+    <title></title>
+
+    <base href="/" />
+
+    <!-- ═══════════════════════════════════════════════════════════════
+         SEO BASE
+    ════════════════════════════════════════════════════════════════ -->
+
+    <!-- Adaptation au mobile, ne pas modifier -->
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <!--
+      description : résumé du site affiché sous le titre dans Google.
+      Longueur idéale : 150 à 160 caractères.
+      Inclure les mots-clés principaux naturellement.
+    -->
+    <meta name="description" content="" />
+
+    <!--
+      keywords : mots-clés séparés par des virgules.
+      Peu utilisés par Google aujourd'hui mais utiles pour d'autres moteurs.
+      Exemples : "mot1, mot2, mot3"
+    -->
+    <meta name="keywords" content="" />
+
+    <!--
+      author : nom du créateur ou de l'organisation responsable du site.
+    -->
+    <meta name="author" content="" />
+
+    <!--
+      robots : indique aux moteurs de recherche quoi faire.
+      "index, follow"    → indexer la page et suivre les liens (défaut recommandé)
+      "noindex, nofollow" → ne pas indexer (utile pour les pages privées)
+    -->
+    <meta name="robots" content="index, follow" />
+
+    <!--
+      theme-color : couleur de la barre du navigateur sur mobile (Chrome Android).
+      Format : couleur hexadécimale, ex: "#1a1a2e"
+    -->
+    <meta name="theme-color" content="" />
+
+    <!--
+      language : langue principale du contenu.
+      Exemples : "French", "English"
+    -->
+    <meta name="language" content="" />
+
+    <!--
+      revisit-after : fréquence à laquelle les robots doivent revisiter la page.
+      Exemples : "7 days", "1 month"
+    -->
+    <meta name="revisit-after" content="" />
+
+    <!--
+      rating : public cible du site.
+      "general" pour tous publics.
+    -->
+    <meta name="rating" content="general" />
+
+    <!-- ═══════════════════════════════════════════════════════════════
+         OPEN GRAPH — Aperçu partagé sur Discord, Facebook, LinkedIn…
+         Ces balises contrôlent ce qui s'affiche quand on colle un lien.
+    ════════════════════════════════════════════════════════════════ -->
+
+    <!--
+      og:type : type de contenu.
+      "website" pour un site classique.
+      Autres valeurs : "article", "video.other", "music.song"…
+    -->
+    <meta property="og:type" content="website" />
+
+    <!--
+      og:site_name : nom du site tel qu'il apparaît dans l'aperçu.
+    -->
+    <meta property="og:site_name" content="" />
+
+    <!--
+      og:title : titre affiché dans l'aperçu partagé.
+      Peut être identique au <title> ou légèrement différent.
+    -->
+    <meta property="og:title" content="" />
+
+    <!--
+      og:description : description dans l'aperçu partagé.
+      Peut être identique à la meta description.
+    -->
+    <meta property="og:description" content="" />
+
+    <!--
+      og:image : image affichée dans l'aperçu.
+      Doit être une URL absolue (https://...).
+      Taille recommandée : 1200×630 px.
+    -->
+    <meta property="og:image" content="" />
+
+    <!--
+      og:image:alt : texte alternatif de l'image OG (accessibilité).
+    -->
+    <meta property="og:image:alt" content="" />
+
+    <!-- Dimensions de l'image OG — à adapter si différentes -->
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+
+    <!--
+      og:url : URL canonique de la page.
+      Doit être une URL absolue (https://...).
+    -->
+    <meta property="og:url" content="" />
+
+    <!--
+      og:locale : langue principale du contenu au format IETF.
+      Exemples : "fr_FR", "en_US"
+    -->
+    <meta property="og:locale" content="" />
+
+    <!--
+      og:locale:alternate : langue(s) alternative(s) si le site est multilingue.
+      Répéter cette balise pour chaque langue supplémentaire.
+    -->
+    <meta property="og:locale:alternate" content="" />
+
+    <!-- ═══════════════════════════════════════════════════════════════
+         TWITTER / X CARD — Aperçu partagé sur X (Twitter)
+    ════════════════════════════════════════════════════════════════ -->
+
+    <!--
+      twitter:card : type de carte Twitter.
+      "summary_large_image" → grande image + titre + description (recommandé)
+      "summary"             → petite image carrée
+    -->
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <!--
+      twitter:site : compte Twitter/X du site. Format : "@compte"
+    -->
+    <meta name="twitter:site" content="" />
+
+    <!--
+      twitter:creator : compte Twitter/X de l'auteur. Format : "@compte"
+    -->
+    <meta name="twitter:creator" content="" />
+
+    <!-- twitter:title, description, image : identiques aux balises OG -->
+    <meta name="twitter:title" content="" />
+    <meta name="twitter:description" content="" />
+    <meta name="twitter:image" content="" />
+
+    <!--
+      twitter:image:alt : texte alternatif de l'image (accessibilité).
+    -->
+    <meta name="twitter:image:alt" content="" />
+
+    <!-- ═══════════════════════════════════════════════════════════════
+         ICÔNES & CANONICAL
+    ════════════════════════════════════════════════════════════════ -->
+
+    <!--
+      Favicon classique — chemin vers l'icône du site (PNG recommandé).
+    -->
+    <link rel="icon" type="image/png" href="" />
+
+    <!--
+      Apple touch icon — icône affichée sur iOS quand on ajoute le site
+      à l'écran d'accueil. Même image que le favicon ou version 180×180.
+    -->
+    <link rel="apple-touch-icon" href="" />
+
+    <!--
+      canonical : URL de référence de la page pour éviter le duplicate content.
+      Toujours une URL absolue (https://...).
+    -->
+    <link rel="canonical" href="" />
+
+    <!-- ═══════════════════════════════════════════════════════════════
+         JSON-LD — Données structurées Schema.org lues par Google
+         Permet d'obtenir des rich snippets dans les résultats de recherche.
+         Choisir le @type adapté au contenu :
+           "Organization"  → entreprise / organisation
+           "WebSite"       → site généraliste
+           "VideoGame"     → jeu / serveur de jeu
+           "Article"       → article de blog
+           "Product"       → produit e-commerce
+         Référence complète : https://schema.org
+    ════════════════════════════════════════════════════════════════ -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+
+      "@type": "",
+//      <!-- Type Schema.org — voir liste ci-dessus -->
+
+      "name": "",
+//      <!-- Nom du site ou du projet -->
+
+      "description": "",
+//      <!-- Description courte, identique ou proche de la meta description -->
+
+      "url": "",
+//      <!-- URL principale du site (https://...) -->
+
+      "image": "",
+//      <!-- URL absolue de l'image représentant le site -->
+
+      "inLanguage": [""],
+//      <!-- Langues du contenu, ex: ["fr", "en"] -->
+
+      "publisher": {
+        "@type": "Organization",
+        "name": "",
+//        <!-- Nom de l'organisation éditrice -->
+        "url": ""
+//        <!-- URL de l'organisation éditrice -->
+      },
+
+      "sameAs": [
+        ""
+//        <!-- URLs des réseaux sociaux et profils officiels liés au site.
+//             Ajouter autant d'entrées que nécessaire :
+//             Discord, Twitter/X, Instagram, YouTube, TikTok, GitHub, LinkedIn… -->
+      ]
+    }
+    </script>
+
+    <!-- ═══════════════════════════════════════════════════════════════
+         POLICES — Ajouter ici les <link> vers Google Fonts ou autres
+    ════════════════════════════════════════════════════════════════ -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <!--
+      Remplacer le lien ci-dessous par l'URL de la police choisie sur fonts.google.com
+    -->
+    <link href="" rel="stylesheet" />
+
+  </head>
+  <body>
+    <!-- Point d'entrée de l'application -->
+  </body>
+</html>

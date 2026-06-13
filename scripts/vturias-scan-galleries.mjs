@@ -20,7 +20,7 @@ for (const slug of slugs) {
     .map(e => `assets/vtubers/${slug}/${e.name}`);
 }
 
-writeFileSync(OUTPUT, `// AUTO-GENERATED — ne pas éditer manuellement
+writeFileSync(OUTPUT, `// AUTO-GENERATED - ne pas éditer manuellement
 // Regénérer avec : node scripts/vturias-scan-galleries.mjs
 export const GALLERY_MANIFEST: Record<string, string[]> = ${JSON.stringify(manifest, null, 2)};
 `);
