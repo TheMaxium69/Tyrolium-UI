@@ -31,7 +31,7 @@ export const NavbarMenuCategory: ITyroUiNavbarMenuCategory[] = [
       },
       {
         name: 'Influnias',
-        description: "Agence d'influenceur",
+        description: "Agence d'influenceurs",
         descriptionEn: 'Influencer agency',
         image: 'assets/tyrolium-ui/projects/Influnias.png',
         link: 'https://www.influnias.fr',
@@ -39,7 +39,7 @@ export const NavbarMenuCategory: ITyroUiNavbarMenuCategory[] = [
         subItems: [
           {
             name: 'Vturias',
-            description: 'Agence de Vtubeur',
+            description: 'Agence de VTubers',
             descriptionEn: 'VTuber agency',
             image: 'assets/tyrolium-ui/projects/Vturias.png',
             link: 'https://vturias.fr',
