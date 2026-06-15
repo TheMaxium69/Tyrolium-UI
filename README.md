@@ -1,6 +1,6 @@
 # 🎨 Tyrolium-UI : Documentation Technique & Design System
 
-**Version :** 0.1.0-beta  
+**Version :** 1.0.0
 **Framework :** Angular (Workspace)  
 **Iconographie :** RemixIcon  
 
