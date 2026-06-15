@@ -9,28 +9,30 @@
 
     <div class="nf-badge">
       <span class="nf-badge-dot"></span>
-      Erreur 404
+      {{ lang() === 'en' ? 'Error 404' : 'Erreur 404' }}
     </div>
 
     <p class="nf-code">404</p>
 
     <div class="nf-sep"></div>
 
-    <h1>Page introuvable</h1>
+    <h1>{{ lang() === 'en' ? 'Page not found' : 'Page introuvable' }}</h1>
 
     <p class="nf-desc">
-      La page que vous cherchez n'existe pas ou a été déplacée.<br>
-      Vérifiez l'URL ou revenez à l'accueil.
+      {{ lang() === 'en'
+        ? 'The page you are looking for does not exist or has been moved.'
+        : 'La page que vous cherchez n\'existe pas ou a été déplacée.' }}<br>
+      {{ lang() === 'en' ? 'Check the URL or go back to the home page.' : 'Vérifiez l\'URL ou revenez à l\'accueil.' }}
     </p>
 
     <div class="nf-actions">
       <a [routerLink]="homeLink" class="nf-btn-primary">
         <i class="ri-home-4-line"></i>
-        {{ homeLabel }}
+        {{ lang() === 'en' ? homeLabelEn : homeLabel }}
       </a>
       <button class="nf-btn-secondary" (click)="goBack()">
         <i class="ri-arrow-left-line"></i>
-        Page précédente
+        {{ lang() === 'en' ? 'Previous page' : 'Page précédente' }}
       </button>
     </div>
 
