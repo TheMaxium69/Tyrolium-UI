@@ -72,7 +72,10 @@ export class TyroUiThemeService {
   }
 
   private applyDom(write: boolean) {
-    document.documentElement.setAttribute('data-theme', this.isDark() ? 'dark' : 'light');
+    const dark = this.isDark();
+    document.documentElement.setAttribute('data-theme', dark ? 'dark' : 'light');
+    const metaTheme = document.querySelector<HTMLMetaElement>('meta[name="theme-color"]');
+    if (metaTheme) metaTheme.content = dark ? '#111827' : '#ffffff';
     if (write) this.save(this.mode());
   }
 
