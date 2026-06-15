@@ -24,7 +24,7 @@ export const NavbarMenuCategory: ITyroUiNavbarMenuCategory[] = [
       },
       {
         name: 'SolidServ',
-        description: 'Héberger de serveur',
+        description: 'Hébergeur de serveurs',
         descriptionEn: 'Server hosting',
         image: 'assets/tyrolium-ui/projects/SolidServ.png',
         link: 'https://solidserv.fr',
