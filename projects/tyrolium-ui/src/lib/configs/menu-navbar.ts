@@ -161,7 +161,7 @@ export const NavbarMenuCategory: ITyroUiNavbarMenuCategory[] = [
         name: 'Contactez-nous',
         nameEn: 'Contact',
         description: 'Formulaire de contact',
-        descriptionEn: 'Contact us',
+        descriptionEn: 'Contact form',
         icon: 'ri-mail-fill',
         link: '/contact',
         host: 'https://tyrolium.fr',
