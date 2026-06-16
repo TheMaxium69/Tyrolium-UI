@@ -77,6 +77,7 @@ export const NavbarMenuCategory: ITyroUiNavbarMenuCategory[] = [
         description: 'Compte',
         descriptionEn: 'Account',
         image: 'assets/tyrolium-ui/projects/Useritium.png',
+        imageLight: 'assets/tyrolium-ui/projects/Useritium-White.png',
         link: 'https://useritium.fr',
       },
     ],
