@@ -42,6 +42,7 @@ export const NavbarMenuCategory: ITyroUiNavbarMenuCategory[] = [
             description: 'Agence de VTubers',
             descriptionEn: 'VTuber agency',
             image: 'assets/tyrolium-ui/projects/Vturias.png',
+            imageLight: 'assets/tyrolium-ui/projects/Vturias-White.png',
             link: 'https://vturias.fr',
             isSubItem: true,
           },
