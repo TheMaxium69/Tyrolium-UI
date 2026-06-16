@@ -20,6 +20,7 @@ export const NavbarMenuCategory: ITyroUiNavbarMenuCategory[] = [
         description: 'Serveur Minecraft',
         descriptionEn: 'Minecraft Server',
         image: 'assets/tyrolium-ui/projects/TyroServ.png',
+        imageLight: 'assets/tyrolium-ui/projects/TyroServ-White.png',
         link: 'https://tyroserv.fr',
       },
       {
