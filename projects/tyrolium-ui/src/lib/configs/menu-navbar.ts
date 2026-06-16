@@ -34,7 +34,7 @@ export const NavbarMenuCategory: ITyroUiNavbarMenuCategory[] = [
         description: "Agence d'influenceurs",
         descriptionEn: 'Influencer agency',
         image: 'assets/tyrolium-ui/projects/Influnias.png',
-        link: 'https://www.influnias.fr',
+        link: 'https://influnias.fr',
         subOpen: false,
         subItems: [
           {
