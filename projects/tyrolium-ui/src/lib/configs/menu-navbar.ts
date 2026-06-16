@@ -52,6 +52,7 @@ export const NavbarMenuCategory: ITyroUiNavbarMenuCategory[] = [
         description: 'Studio de jeu-vidéo',
         descriptionEn: 'Video game studio',
         image: 'assets/tyrolium-ui/projects/TyroCiel.png',
+        imageLight: 'assets/tyrolium-ui/projects/TyroCiel-White.png',
         link: 'https://tyrociel.fr',
       },
       {
