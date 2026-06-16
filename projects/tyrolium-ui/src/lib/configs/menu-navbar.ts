@@ -72,6 +72,7 @@ export const NavbarMenuCategory: ITyroUiNavbarMenuCategory[] = [
         description: 'CRM',
         descriptionEn: 'CRM',
         image: 'assets/tyrolium-ui/projects/NexiumiaCRM.png',
+        imageLight: 'assets/tyrolium-ui/projects/NexiumiaCRM-White.png',
         link: 'https://nexiumiacrm.fr',
       },
       {
