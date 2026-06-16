@@ -64,6 +64,7 @@ export const NavbarMenuCategory: ITyroUiNavbarMenuCategory[] = [
         description: "Site d'actu jeu-vidéo",
         descriptionEn: 'Gaming news site',
         image: 'assets/tyrolium-ui/projects/Gamenium.png',
+        imageLight: 'assets/tyrolium-ui/projects/Gamenium-White.png',
         link: 'https://gamenium.fr',
       },
       {
