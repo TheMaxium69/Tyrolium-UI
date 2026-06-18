@@ -16,14 +16,6 @@ export const NavbarMenuCategory: ITyroUiNavbarMenuCategory[] = [
     open: true,
     items: [
       {
-        name: 'TyroServ',
-        description: 'Serveur Minecraft',
-        descriptionEn: 'Minecraft Server',
-        image: 'assets/tyrolium-ui/projects/TyroServ.png',
-        imageLight: 'assets/tyrolium-ui/projects/TyroServ-White.png',
-        link: 'https://tyroserv.fr',
-      },
-      {
         name: 'SolidServ',
         description: 'Hébergeur de serveurs',
         descriptionEn: 'Server hosting',
@@ -60,6 +52,14 @@ export const NavbarMenuCategory: ITyroUiNavbarMenuCategory[] = [
         link: 'https://tyrociel.fr',
       },
       {
+        name: 'TyroServ',
+        description: 'Serveur Minecraft',
+        descriptionEn: 'Minecraft Server',
+        image: 'assets/tyrolium-ui/projects/TyroServ.png',
+        imageLight: 'assets/tyrolium-ui/projects/TyroServ-White.png',
+        link: 'https://tyroserv.fr',
+      },
+      {
         name: 'Gamenium',
         description: "Site d'actu jeu-vidéo",
         descriptionEn: 'Gaming news site',
@@ -68,20 +68,20 @@ export const NavbarMenuCategory: ITyroUiNavbarMenuCategory[] = [
         link: 'https://gamenium.fr',
       },
       {
-        name: 'NexiumiaCRM',
-        description: 'CRM',
-        descriptionEn: 'CRM',
-        image: 'assets/tyrolium-ui/projects/NexiumiaCRM.png',
-        imageLight: 'assets/tyrolium-ui/projects/NexiumiaCRM-White.png',
-        link: 'https://nexiumiacrm.fr',
-      },
-      {
         name: 'Useritium',
         description: 'Compte',
         descriptionEn: 'Account',
         image: 'assets/tyrolium-ui/projects/Useritium.png',
         imageLight: 'assets/tyrolium-ui/projects/Useritium-White.png',
         link: 'https://useritium.fr',
+      },
+      {
+        name: 'NexiumiaCRM',
+        description: 'CRM',
+        descriptionEn: 'CRM',
+        image: 'assets/tyrolium-ui/projects/NexiumiaCRM.png',
+        imageLight: 'assets/tyrolium-ui/projects/NexiumiaCRM-White.png',
+        link: 'https://nexiumiacrm.fr',
       },
     ],
   },
