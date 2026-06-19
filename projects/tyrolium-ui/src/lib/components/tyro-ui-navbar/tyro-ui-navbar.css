@@ -489,7 +489,7 @@ nav {
   width: 54px;
   height: 54px;
   border-radius: 14px;
-  background: var(--nav-hover);
+  background: transparent;
 }
 
 .app-menu-row.pinned .app-row-img {
@@ -637,6 +637,14 @@ nav {
 
   .app-menu-row.pinned .app-row-info {
     align-items: center;
+  }
+
+  .app-menu-row.pinned .app-row-icon {
+    background: var(--nav-hover);
+  }
+
+  :host-context([data-theme="dark"]) .app-menu-row.pinned .app-row-icon {
+    background: var(--menu-row-hov);
   }
 }
 
