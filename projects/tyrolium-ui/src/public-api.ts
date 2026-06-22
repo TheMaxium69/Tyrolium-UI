@@ -22,7 +22,6 @@ export * from './lib/interface/ityro-ui-navbar-menu-category'
 
 /* Configs */
 export * from './lib/configs/menu-navbar'
-export * from './lib/configs/tyro-ui-domains'
 
 /* Services */
 export * from './lib/services/tyro-ui-sso.service';
