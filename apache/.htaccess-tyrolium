@@ -39,4 +39,4 @@ Options -Indexes
 # Si une erreur 404 (Introuvable) ou 403 (Interdit) survient côté Apache,
 # on renvoie le visiteur sur l'index d'Angular.
 ErrorDocument 404 /index.html
-ErrorDocument 403 /index.html
+ErrorDocument 403 https://tyrolium.fr/403
