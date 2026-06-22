@@ -24,7 +24,7 @@ export * from './lib/configs/menu-navbar'
 export * from './lib/configs/tyro-ui-domains'
 
 /* Services */
-export * from './lib/services/tyro-ui-relay.service';
+export * from './lib/services/tyro-ui-sso.service';
 export * from './lib/services/tyro-ui-theme.service';
 export * from './lib/services/tyro-ui-lang.service';
 export * from './lib/services/tyro-ui-auth.service';

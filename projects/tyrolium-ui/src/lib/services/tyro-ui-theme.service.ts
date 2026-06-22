@@ -1,16 +1,14 @@
 import { Injectable, signal, computed, inject } from '@angular/core';
-import { TyroUiRelayService } from './tyro-ui-relay.service';
+import { TyroSsoService } from './tyro-ui-sso.service';
 
 export type ThemeMode = 'auto' | 'light' | 'dark';
-
-export { TYRO_RELAY_URL } from './tyro-ui-relay.service';
 
 const MODES: ThemeMode[] = ['auto', 'light', 'dark'];
 const KEY = 'tyrolium-theme';
 
 @Injectable({ providedIn: 'root' })
 export class TyroUiThemeService {
-  private readonly relay = inject(TyroUiRelayService);
+  private readonly sso = inject(TyroSsoService);
 
   private readonly _systemDark = signal(window.matchMedia('(prefers-color-scheme: dark)').matches);
 
@@ -44,19 +42,21 @@ export class TyroUiThemeService {
       }
     });
 
-    // Sync cross-domaine via relay
-    this.relay.on(KEY, (value, type) => {
+    // Sync cross-domaine via SSO
+    this.sso.on('theme', (value, type) => {
       const mode = value as ThemeMode;
-      if (!MODES.includes(mode)) return;
+      if (value && !MODES.includes(mode)) return;
       if (type === 'init') {
-        if (!localStorage.getItem(KEY)) {
+        if (value) {
+          // SSO a un thème → l'appliquer
           this.mode.set(mode);
           localStorage.setItem(KEY, mode);
           this.applyDom(false);
-        } else {
-          this.relay.send(KEY, this.mode());
+        } else if (localStorage.getItem(KEY)) {
+          // SSO vide, on a un thème local → le pousser vers SSO
+          this.sso.post('theme', this.mode());
         }
-      } else if (mode !== this.mode()) {
+      } else if (value && mode !== this.mode()) {
         this.mode.set(mode);
         localStorage.setItem(KEY, mode);
         this.applyDom(false);
@@ -93,6 +93,6 @@ export class TyroUiThemeService {
 
   private save(mode: ThemeMode) {
     localStorage.setItem(KEY, mode);
-    this.relay.send(KEY, mode);
+    this.sso.post('theme', mode);
   }
 }

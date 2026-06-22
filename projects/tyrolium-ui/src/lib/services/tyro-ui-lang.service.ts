@@ -1,5 +1,5 @@
 import { Injectable, signal, inject } from '@angular/core';
-import { TyroUiRelayService } from './tyro-ui-relay.service';
+import { TyroSsoService } from './tyro-ui-sso.service';
 
 export type TyroLang = 'fr' | 'en';
 
@@ -8,7 +8,7 @@ const KEY = 'tyrolium-lang';
 
 @Injectable({ providedIn: 'root' })
 export class TyroUiLangService {
-  private readonly relay = inject(TyroUiRelayService);
+  private readonly sso = inject(TyroSsoService);
 
   readonly lang = signal<TyroLang>('fr');
 
@@ -26,19 +26,21 @@ export class TyroUiLangService {
       }
     });
 
-    // Sync cross-domaine via relay
-    this.relay.on(KEY, (value, type) => {
+    // Sync cross-domaine via SSO
+    this.sso.on('lang', (value, type) => {
       const lang = value as TyroLang;
-      if (!LANGS.includes(lang)) return;
+      if (value && !LANGS.includes(lang)) return;
       if (type === 'init') {
-        if (!localStorage.getItem(KEY)) {
+        if (value) {
+          // SSO a une langue → l'appliquer
           this.lang.set(lang);
           localStorage.setItem(KEY, lang);
           this.applyDom(false);
-        } else {
-          this.relay.send(KEY, this.lang());
+        } else if (localStorage.getItem(KEY)) {
+          // SSO vide, on a une langue locale → la pousser vers SSO
+          this.sso.post('lang', this.lang());
         }
-      } else if (lang !== this.lang()) {
+      } else if (value && lang !== this.lang()) {
         this.lang.set(lang);
         localStorage.setItem(KEY, lang);
         this.applyDom(false);
@@ -65,12 +67,11 @@ export class TyroUiLangService {
       localStorage.removeItem('tyro-lang');
       return legacy;
     }
-    // Détection navigateur : français → 'fr', tout le reste → 'en'
     return navigator.language?.startsWith('fr') ? 'fr' : 'en';
   }
 
   private save(lang: TyroLang) {
     localStorage.setItem(KEY, lang);
-    this.relay.send(KEY, lang);
+    this.sso.post('lang', lang);
   }
 }

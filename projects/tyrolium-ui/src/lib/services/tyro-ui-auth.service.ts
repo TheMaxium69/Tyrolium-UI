@@ -1,22 +1,15 @@
 import { Injectable, signal, inject, InjectionToken } from '@angular/core';
 import { ITyroUiUser } from '../interface/ityro-ui-user';
-import { TyroUiRelayService } from './tyro-ui-relay.service';
+import { TyroSsoService } from './tyro-ui-sso.service';
 import { TyroUiLangService } from './tyro-ui-lang.service';
 
-/**
- * URL de base de l'API Useritium.
- * Ex : { provide: TYRO_AUTH_API, useValue: 'https://useritium.fr/api-externe' }
- */
 export const TYRO_AUTH_API = new InjectionToken<string>('TYRO_AUTH_API', {
   providedIn: 'root',
   factory: () => 'https://useritium.fr/api-externe',
-  // factory: () => 'http://192.168.1.81/ApiUseritium',
 });
 
-const TOKEN_KEY    = 'tyrolium-token';
-const USER_KEY     = 'tyrolium-user';
-const LOGOUT_KEY   = 'tyrolium-logout';
-const LOGIN_AT_KEY = 'tyrolium-login-at';
+const TOKEN_KEY = 'tyrolium-token';
+const USER_KEY  = 'tyrolium-user';
 
 interface UseritiumResponse {
   status: string;
@@ -27,7 +20,7 @@ interface UseritiumResponse {
 @Injectable({ providedIn: 'root' })
 export class TyroUiAuthService {
   private readonly apiUrl = inject(TYRO_AUTH_API);
-  private readonly relay  = inject(TyroUiRelayService);
+  private readonly sso    = inject(TyroSsoService);
   private readonly lang   = inject(TyroUiLangService).lang;
 
   readonly user      = signal<ITyroUiUser | null>(null);
@@ -36,12 +29,9 @@ export class TyroUiAuthService {
   readonly modalOpen = signal(false);
   readonly modalTab  = signal<'login' | 'register'>('login');
 
-  // Timestamp de déco reçu via relay : bloque reconnectWithToken tant qu'un nouveau login ne l'a pas réinitialisé
-  private logoutSignaledAt = 0;
-
   constructor() {
     this.restoreSession();
-    this.listenRelay();
+    this.listenSso();
   }
 
   openModal(tab: 'login' | 'register' = 'login') {
@@ -85,7 +75,6 @@ export class TyroUiAuthService {
   }
 
   async reconnectWithToken(token: string): Promise<boolean> {
-    if (this.logoutSignaledAt > 0) return false;
     try {
       const body = new URLSearchParams({ webtoken_useritium: token });
       const res = await fetch(`${this.apiUrl}/?controller=WebSite&task=connectToken`, {
@@ -98,12 +87,12 @@ export class TyroUiAuthService {
         this.clearSession();
         return false;
       }
-      // Vérifie qu'un logout relay n'est pas arrivé pendant l'appel réseau
-      if (this.logoutSignaledAt > 0) {
+      // Si le token a été effacé pendant l'appel async (logout d'un autre site)
+      if (!localStorage.getItem(TOKEN_KEY)) {
         this.clearSession();
         return false;
       }
-      this.storeSession(data.result.webToken, data.result);
+      this.storeSession(data.result.webToken, data.result, false);
       return true;
     } catch {
       return false;
@@ -111,90 +100,49 @@ export class TyroUiAuthService {
   }
 
   logout() {
-    const now = Date.now().toString();
     this.clearSession();
-    this.relay.send(LOGOUT_KEY, now);
-    this.relay.remove(TOKEN_KEY);
-    this.relay.remove(USER_KEY);
+    this.sso.post('token', '');
   }
 
   getToken(): string | null {
     return localStorage.getItem(TOKEN_KEY);
   }
 
-  private listenRelay() {
-    // 1. Signal de déconnexion — dispatché en premier par le relay init
-    this.relay.on(LOGOUT_KEY, (value) => {
-      if (!value) return;
-      const logoutAt = parseInt(value, 10);
-      const loginAt  = parseInt(localStorage.getItem(LOGIN_AT_KEY) ?? '0', 10);
-      if (logoutAt > loginAt) {
-        this.logoutSignaledAt = logoutAt;
-        localStorage.setItem(LOGOUT_KEY, value); // persiste localement pour les prochains reloads
-        this.clearSession();
-      }
-    });
-
-    // 2. Timestamp du dernier login — dispatché en deuxième par le relay init
-    //    Si un nouveau login a eu lieu après le logout, on réinitialise le flag
-    this.relay.on(LOGIN_AT_KEY, (value) => {
-      if (!value) return;
-      const loginAt = parseInt(value, 10);
-      if (loginAt > this.logoutSignaledAt) {
-        this.logoutSignaledAt = 0;
-      }
-    });
-
-    // 3. Token — traité en dernier ; bloqué si logoutSignaledAt est toujours actif
-    this.relay.on(TOKEN_KEY, (token) => {
-      if (token === '') {
+  private listenSso() {
+    this.sso.on('token', (token) => {
+      if (!token) {
+        // Token effacé sur un autre site → déconnexion
         this.clearSession();
         return;
       }
-      if (!token || this.logoutSignaledAt > 0) return;
       if (localStorage.getItem(TOKEN_KEY) === token) return;
       localStorage.setItem(TOKEN_KEY, token);
       this.reconnectWithToken(token);
-    });
-
-    this.relay.on(USER_KEY, (json) => {
-      if (!json || this.logoutSignaledAt > 0) return;
-      try {
-        const u: ITyroUiUser = JSON.parse(json);
-        if (u?.email && !this.user()) {
-          this.user.set(u);
-          localStorage.setItem(USER_KEY, json);
-        }
-      } catch { /* json malformé */ }
     });
   }
 
   private translateLoginError(why?: string): string {
     const fr: Record<string, string> = {
-      'bad password':        'Mot de passe incorrect.',
+      'bad password':         'Mot de passe incorrect.',
       'non-existent account': 'Aucun compte ne correspond à cet identifiant.',
-      'indefinite fields':   'Veuillez remplir tous les champs.',
+      'indefinite fields':    'Veuillez remplir tous les champs.',
     };
     const en: Record<string, string> = {
-      'bad password':        'Incorrect password.',
+      'bad password':         'Incorrect password.',
       'non-existent account': 'No account matches this identifier.',
-      'indefinite fields':   'Please fill in all fields.',
+      'indefinite fields':    'Please fill in all fields.',
     };
     const map = this.lang() === 'en' ? en : fr;
     return map[why ?? ''] ?? (this.lang() === 'en' ? 'An error occurred.' : 'Une erreur est survenue.');
   }
 
-  private storeSession(token: string, user: ITyroUiUser) {
-    const loginAt = Date.now().toString();
-    const json = JSON.stringify(user);
+  /**
+   * @param syncSso false lors d'un reconnect déclenché par SSO (token déjà connu du serveur)
+   */
+  private storeSession(token: string, user: ITyroUiUser, syncSso = true) {
     localStorage.setItem(TOKEN_KEY, token);
-    localStorage.setItem(USER_KEY, json);
-    localStorage.setItem(LOGIN_AT_KEY, loginAt);
-    localStorage.removeItem(LOGOUT_KEY); // un nouveau login annule l'ancien signal de déco
-    this.logoutSignaledAt = 0;
-    this.relay.send(TOKEN_KEY, token);
-    this.relay.send(USER_KEY, json);
-    this.relay.send(LOGIN_AT_KEY, loginAt);
+    localStorage.setItem(USER_KEY, JSON.stringify(user));
+    if (syncSso) this.sso.post('token', token);
     this.user.set(user);
   }
 
@@ -208,15 +156,6 @@ export class TyroUiAuthService {
     const token = localStorage.getItem(TOKEN_KEY);
     if (!token) return;
 
-    // Vérifie le signal de déco local avant de tenter une reconnexion
-    const logoutAt = parseInt(localStorage.getItem(LOGOUT_KEY) ?? '0', 10);
-    const loginAt  = parseInt(localStorage.getItem(LOGIN_AT_KEY) ?? '0', 10);
-    if (logoutAt > loginAt) {
-      this.clearSession();
-      return;
-    }
-
-    // Affiche le cache immédiatement pour l'UX, puis valide côté serveur
     const json = localStorage.getItem(USER_KEY);
     if (json) {
       try { this.user.set(JSON.parse(json)); } catch { /* json corrompu */ }
