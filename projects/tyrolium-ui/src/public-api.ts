@@ -10,6 +10,7 @@ export * from './lib/components/tyro-ui-footer/tyro-ui-footer';
 export * from './lib/components/tyro-ui-cta/tyro-ui-cta';
 export * from './lib/components/tyro-ui-auth-modal/tyro-ui-auth-modal';
 export * from './lib/components/tyro-ui-not-found/tyro-ui-not-found';
+export * from './lib/components/tyro-ui-forbidden/tyro-ui-forbidden';
 export * from './lib/components/tyro-ui-easter-egg/tyro-ui-easter-egg';
 
 /* Interface */

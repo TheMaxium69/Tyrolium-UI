@@ -5,7 +5,7 @@ import { TyroUiLangService } from './tyro-ui-lang.service';
 
 export const TYRO_AUTH_API = new InjectionToken<string>('TYRO_AUTH_API', {
   providedIn: 'root',
-  factory: () => 'https://useritium.fr/api-externe',
+  factory: () => 'https://api.useritium.fr',
 });
 
 const TOKEN_KEY = 'tyrolium-token';
