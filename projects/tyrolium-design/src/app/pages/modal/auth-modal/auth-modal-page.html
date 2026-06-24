@@ -1,0 +1,70 @@
+<div class="ds-page">
+  <div class="ds-block">
+    <span class="ds-tag">&lt;tyro-ui-auth-modal&gt;</span>
+    <h1 class="ds-name">Auth Modal</h1>
+    <p class="ds-desc">
+      Modal de connexion et d'inscription. Entièrement piloté par <code>TyroUiAuthService</code> —
+      aucun <code>@Input()</code>. Il suffit de placer le composant une fois dans le template racine.
+    </p>
+  </div>
+
+  <hr class="ds-divider">
+
+  <div class="ds-block">
+    <span class="ds-label">Démo</span>
+    <div class="ds-preview">
+      <div class="ds-preview-label">Déclencher la modale via TyroUiAuthService</div>
+      <div class="ds-preview-body ds-trigger-area">
+        <button class="ds-trigger-btn" (click)="auth.openModal('login')">
+          <i class="ri-login-box-line"></i> Ouvrir — Connexion
+        </button>
+      </div>
+    </div>
+    <tyro-ui-auth-modal></tyro-ui-auth-modal>
+  </div>
+
+  <hr class="ds-divider">
+
+  <div class="ds-block">
+    <span class="ds-label">TyroUiAuthService — API publique</span>
+    <div class="ds-preview">
+      <div class="ds-preview-label">Méthodes et signals</div>
+      <div class="ds-preview-body">
+        <table class="ds-props-table">
+          <thead><tr><th>Membre</th><th>Type</th><th>Description</th></tr></thead>
+          <tbody>
+            <tr><td><code>openModal(mode)</code></td><td><code>'login' | 'register'</code></td><td>Ouvre la modale dans le mode choisi</td></tr>
+            <tr><td><code>closeModal()</code></td><td>void</td><td>Ferme la modale (aussi déclenché par clic sur l'overlay ou <kbd>Escape</kbd>)</td></tr>
+            <tr><td><code>login(login, password)</code></td><td>Promise&lt;void&gt;</td><td>Soumet le formulaire de connexion à l'API Useritium</td></tr>
+            <tr><td><code>logout()</code></td><td>void</td><td>Déconnecte l'utilisateur et efface la session</td></tr>
+            <tr><td><code>user()</code></td><td>Signal&lt;ITyroUiUser | null&gt;</td><td>Signal de l'utilisateur connecté — <code>null</code> si non connecté</td></tr>
+            <tr><td><code>modalOpen()</code></td><td>Signal&lt;boolean&gt;</td><td>Signal d'état d'ouverture de la modale</td></tr>
+            <tr><td><code>modalMode()</code></td><td>Signal&lt;'login' | 'register'&gt;</td><td>Signal du mode actuel de la modale</td></tr>
+            <tr><td><code>error()</code></td><td>Signal&lt;string&gt;</td><td>Message d'erreur de la dernière tentative de connexion</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <div class="ds-block">
+    <span class="ds-label">Usage</span>
+    <div class="ds-preview">
+      <div class="ds-preview-label">Intégration minimale</div>
+      <div class="ds-preview-body">
+        <pre class="ds-code">// app.html — placer une seule fois
+&lt;tyro-ui-auth-modal&gt;&lt;/tyro-ui-auth-modal&gt;
+
+// n'importe quel composant
+readonly auth = inject(TyroUiAuthService);
+
+// ouvrir
+this.auth.openModal('login');
+this.auth.openModal('register');
+
+// lire l'utilisateur
+const user = this.auth.user(); // ITyroUiUser | null</pre>
+      </div>
+    </div>
+  </div>
+</div>

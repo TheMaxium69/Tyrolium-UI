@@ -1,0 +1,48 @@
+<div class="ds-page">
+  <div class="ds-block">
+    <span class="ds-tag">&lt;tyro-ui-forbidden&gt;</span>
+    <h1 class="ds-name">Forbidden</h1>
+    <p class="ds-desc">Page d'erreur 403 — affichée quand l'utilisateur est authentifié mais n'a pas les droits d'accès à la ressource demandée.</p>
+  </div>
+
+  <hr class="ds-divider">
+
+  <div class="ds-block">
+    <span class="ds-label">Aperçu</span>
+    <div class="ds-preview">
+      <div class="ds-preview-label"><code>[homeLink]="'/'"</code></div>
+      <div class="ds-preview-frame ds-preview-frame--page">
+        <tyro-ui-forbidden homeLink="/"></tyro-ui-forbidden>
+      </div>
+    </div>
+  </div>
+
+  <hr class="ds-divider">
+
+  <div class="ds-block">
+    <span class="ds-label">Inputs</span>
+    <div class="ds-preview">
+      <div class="ds-preview-label">@Input()</div>
+      <div class="ds-preview-body">
+        <table class="ds-props-table">
+          <thead><tr><th>Propriété</th><th>Type</th><th>Défaut</th><th>Description</th></tr></thead>
+          <tbody>
+            <tr><td><code>[homeLink]</code></td><td>string</td><td><code>'/'</code></td><td>Route du bouton "Retour à l'accueil"</td></tr>
+            <tr><td><code>[homeLabel]</code></td><td>string</td><td><code>"Retour à l'accueil"</code></td><td>Texte du bouton (fr)</td></tr>
+            <tr><td><code>[homeLabelEn]</code></td><td>string</td><td><code>'Back to home'</code></td><td>Texte du bouton (en)</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <div class="ds-block">
+    <span class="ds-label">Usage</span>
+    <div class="ds-preview">
+      <div class="ds-preview-label">Exemple de guard Angular</div>
+      <div class="ds-preview-body">
+        <pre class="ds-code">{{ guardCode }}</pre>
+      </div>
+    </div>
+  </div>
+</div>

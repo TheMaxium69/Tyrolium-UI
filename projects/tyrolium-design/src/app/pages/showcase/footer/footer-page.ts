@@ -1,0 +1,68 @@
+import {Component, computed, inject} from '@angular/core';
+import {ITyroUiNavbarPages, TyroUiFooter, TyroUiLangService} from 'tyrolium-ui';
+
+@Component({
+  selector: 'app-footer-page',
+  imports: [TyroUiFooter],
+  templateUrl: './footer-page.html',
+})
+export class FooterPage {
+
+  private readonly langService = inject(TyroUiLangService);
+
+  readonly pages = computed<ITyroUiNavbarPages[]>(() =>
+      this.langService.lang() === 'en'
+      ? [
+        { label: 'Home',     labelEn: 'Home',     link: '/',        icon: 'ri-home-line' },
+        { label: 'Subsidiaries', labelEn: 'Subsidiaries', link: '/project', icon: 'ri-stack-line' },
+        {
+          label: 'Services', labelEn: 'Services',
+          icon: 'ri-briefcase-line',
+          children: [
+            { label: 'Website',    labelEn: 'Website',   link: '/prestation/web',        icon: 'ri-global-line' },
+            { label: 'Server',     labelEn: 'Server',    link: '/prestation/server',     icon: 'ri-server-line' },
+            { label: 'Training',   labelEn: 'Training',  link: '/prestation/formation',  icon: 'ri-graduation-cap-line' },
+            { label: 'Incubator',  labelEn: 'Incubator', link: '/prestation/incubateur', icon: 'ri-rocket-2-line' },
+            { label: 'Minecraft',  labelEn: 'Minecraft', link: '/prestation/minecraft',  icon: 'ri-gamepad-line' },
+          ],
+        },
+      ]
+      : [
+        { label: 'Accueil',    link: '/',        icon: 'ri-home-line' },
+        { label: 'Filiales',     link: '/project', icon: 'ri-stack-line' },
+        {
+          label: 'Prestation',
+          icon: 'ri-briefcase-line',
+          link: '/prestation',
+          children: [
+            { label: 'Site Web',   link: '/prestation/web',        icon: 'ri-global-line' },
+            { label: 'Serveur',    link: '/prestation/server',     icon: 'ri-server-line' },
+            { label: 'Formation',  link: '/prestation/formation',  icon: 'ri-graduation-cap-line' },
+            { label: 'Incubateur', link: '/prestation/incubateur', icon: 'ri-rocket-2-line' },
+            { label: 'Minecraft',  link: '/prestation/minecraft',  icon: 'ri-gamepad-line' },
+          ],
+        },
+      ]
+  );
+
+  public socials: ITyroUiNavbarPages[] = [
+    { label: 'facebook',  link: 'https://www.facebook.com/tyrolium/',              icon: 'ri-facebook-fill' },
+    { label: 'instagram', link: 'https://www.instagram.com/tyroliumentertainment/', icon: 'ri-instagram-line' },
+    { label: 'x',         link: 'https://x.com/TyroliumE',                         icon: 'ri-twitter-x-fill' },
+    { label: 'youtube',   link: 'https://www.youtube.com/@tyrolium',               icon: 'ri-youtube-fill' },
+    { label: 'discord',   link: 'https://discord.com/invite/km8h5jHezt',           icon: 'ri-discord-fill' },
+    { label: 'linkedin',  link: 'https://www.linkedin.com/company/tyrolium/',      icon: 'ri-linkedin-fill' },
+    { label: 'tiktok',    link: 'https://www.tiktok.com/@tyrolium',                icon: 'ri-tiktok-fill' },
+    { label: 'twitch',    link: 'https://www.twitch.tv/tyrolium',                  icon: 'ri-twitch-fill' },
+    { label: 'github',    link: 'https://github.com/tyrolium',                     icon: 'ri-github-fill' },
+    { label: 'telegram',  link: 'https://t.me/tyrolium',                           icon: 'ri-telegram-fill' },
+    { label: 'thread',    link: 'https://www.threads.com/@tyroliumentertainment',  icon: 'ri-threads-fill' },
+  ];
+
+  public content = computed(() =>
+      this.langService.lang() === 'en'
+          ? `<strong>Tyrolium</strong> is a <strong>French tech holding company</strong> founded in <strong>2017</strong> by digital enthusiasts. From <strong>web development</strong> to <strong>cloud infrastructure</strong>, we support every project with expertise and passion. In parallel, we build our <strong>own ecosystem of projects</strong>: from hosting to gaming, CRM and social networks. <em>Founded by Maxime Tournier</em>`
+          : `<strong>Tyrolium</strong> est une <strong>holding technologique française</strong> fondée en <strong>2017</strong> par des passionnés du numérique. De la <strong>conception web</strong> à l'<strong>infrastructure cloud</strong>, nous accompagnons chaque projet avec expertise et passion. En parallèle, nous développons notre <strong>propre écosystème de projets</strong> : de l'hébergement au gaming, en passant par le CRM et les réseaux sociaux. <em>Fondé par Maxime Tournier</em>`
+  );
+
+}

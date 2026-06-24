@@ -1,0 +1,57 @@
+<div class="ds-page">
+  <div class="ds-block">
+    <span class="ds-tag">&lt;tyro-ui-cta&gt;</span>
+    <h1 class="ds-name">CTA</h1>
+    <p class="ds-desc">Section call-to-action destinée aux pages marketing. Supporte un bouton principal et un bouton secondaire, avec navigation par <code>routerLink</code>, <code>href</code> ou ancre.</p>
+  </div>
+
+  <hr class="ds-divider">
+
+  <div class="ds-block">
+    <span class="ds-label">Aperçu</span>
+    <div class="ds-preview">
+      <div class="ds-preview-label">Exemple avec bouton principal + secondaire</div>
+      <div class="ds-preview-frame ds-preview-frame--full">
+        <tyro-ui-cta
+          title="Rejoignez l'écosystème Tyrolium"
+          label="Tyrolium"
+          content="Découvrez tous nos projets et services — hébergement, jeux, médias et bien plus encore."
+          btn="Créer un compte"
+          btnIcon="ri-user-add-line"
+          btnLink="https://useritium.fr"
+          subbtn="En savoir plus"
+          subLink="https://tyrolium.fr">
+        </tyro-ui-cta>
+      </div>
+    </div>
+  </div>
+
+  <hr class="ds-divider">
+
+  <div class="ds-block">
+    <span class="ds-label">Inputs</span>
+    <div class="ds-preview">
+      <div class="ds-preview-label">@Input()</div>
+      <div class="ds-preview-body">
+        <table class="ds-props-table">
+          <thead><tr><th>Propriété</th><th>Type</th><th>Défaut</th><th>Description</th></tr></thead>
+          <tbody>
+            <tr><td><code>[title]</code></td><td>string</td><td><code>''</code></td><td>Titre principal de la section</td></tr>
+            <tr><td><code>[label]</code></td><td>string</td><td><code>''</code></td><td>Label affiché au-dessus du titre (surtitre)</td></tr>
+            <tr><td><code>[content]</code></td><td>string</td><td><code>''</code></td><td>Texte descriptif sous le titre</td></tr>
+            <tr><td><code>[btn]</code></td><td>string</td><td><code>''</code></td><td>Texte du bouton principal</td></tr>
+            <tr><td><code>[btnIcon]</code></td><td>string</td><td><code>''</code></td><td>Classe remix-icon du bouton principal</td></tr>
+            <tr><td><code>[btnLink]</code></td><td>string</td><td><code>''</code></td><td>Lien externe (<code>href</code>) du bouton principal</td></tr>
+            <tr><td><code>[btnRouterLink]</code></td><td>string</td><td><code>''</code></td><td>Route Angular du bouton principal</td></tr>
+            <tr><td><code>[subbtn]</code></td><td>string</td><td><code>''</code></td><td>Texte du bouton secondaire</td></tr>
+            <tr><td><code>[subLink]</code></td><td>string</td><td><code>''</code></td><td>Lien externe du bouton secondaire</td></tr>
+            <tr><td><code>[subRouterLink]</code></td><td>string</td><td><code>''</code></td><td>Route Angular du bouton secondaire</td></tr>
+            <tr><td><code>[subAncreLink]</code></td><td>string</td><td><code>''</code></td><td>ID ancre vers lequel scroller (bouton secondaire)</td></tr>
+            <tr><td><code>[notBack]</code></td><td>boolean</td><td><code>false</code></td><td>Supprime l'image de fond / arrière-plan décoratif</td></tr>
+            <tr><td><code>[vturias]</code></td><td>boolean</td><td><code>false</code></td><td>Active le thème visuel Vturias</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

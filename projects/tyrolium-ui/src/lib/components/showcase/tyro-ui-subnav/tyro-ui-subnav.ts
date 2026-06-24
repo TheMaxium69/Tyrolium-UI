@@ -1,5 +1,6 @@
 import { Component, Input } from '@angular/core';
-import { ITyroUiNavbarPages, TyroUiGloss } from 'tyrolium-ui';
+import { ITyroUiNavbarPages } from '../../../interface/ityro-ui-navbar-pages';
+import { TyroUiGloss } from '../../../directive/tyro-ui-gloss';
 import { RouterLink, RouterLinkActive } from '@angular/router';
 
 @Component({

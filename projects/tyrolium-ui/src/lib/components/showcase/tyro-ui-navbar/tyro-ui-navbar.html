@@ -5,7 +5,9 @@
 }
 
 <div class="nav-right" routerLink="." (click)="mobileMenuOpen = false">
-    <img [src]="logo" alt="Logo" class="nav-logo">
+    @if (logo) {
+      <img [src]="logo" alt="Logo" class="nav-logo">
+    }
     <div class="nav-info">
       @if (project == "Tyrolium") {
         <span class="nav-name-main title nav-hide-mobile">Tyrolium</span>

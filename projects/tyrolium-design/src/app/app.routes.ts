@@ -1,13 +1,53 @@
 import { Routes } from '@angular/router';
-import { TyroUiNotFound } from 'tyrolium-ui';
+import { TyroUiForbidden, TyroUiNotFound } from 'tyrolium-ui';
+
+import { Layout }              from './layout/layout';
+import { PublicLayout }        from './public-layout/public-layout';
 
 import { Home }                from './pages/home/home';
-import { NavbarPage }          from './pages/components/navbar/navbar-page';
-import { DashboardLayoutPage } from './pages/components/dashboard-layout/dashboard-layout-page';
+
+import { NavbarPage }          from './pages/showcase/navbar/navbar-page';
+import { SubnavPage }          from './pages/showcase/subnav/subnav-page';
+import { FooterPage }          from './pages/showcase/footer/footer-page';
+import { CtaPage }             from './pages/showcase/cta/cta-page';
+
+import { DashboardLayoutPage } from './pages/dashboard/dashboard-layout/dashboard-layout-page';
+
+import { AuthModalPage }       from './pages/modal/auth-modal/auth-modal-page';
+
+import { NotFoundPage }        from './pages/page/not-found/not-found-page';
+import { ForbiddenPage }       from './pages/page/forbidden/forbidden-page';
+import { EasterEggPage }       from './pages/other/easter-egg/easter-egg-page';
 
 export const routes: Routes = [
-  { path: '',                            component: Home },
-  { path: 'components/navbar',           component: NavbarPage },
-  { path: 'components/dashboard-layout', component: DashboardLayoutPage },
-  { path: '**',                          component: TyroUiNotFound },
+  {
+    path: '',
+    component: Layout,
+    children: [
+      { path: '',                            component: Home },
+
+      { path: 'showcase/navbar',             component: NavbarPage },
+      { path: 'showcase/subnav',             component: SubnavPage },
+      { path: 'showcase/footer',             component: FooterPage },
+      { path: 'showcase/cta',               component: CtaPage },
+
+      { path: 'dashboard/dashboard-layout', component: DashboardLayoutPage },
+
+      { path: 'modal/auth-modal',           component: AuthModalPage },
+
+      { path: 'page/not-found',             component: NotFoundPage },
+      { path: 'page/forbidden',             component: ForbiddenPage },
+
+      { path: 'other/easter-egg',           component: EasterEggPage },
+    ],
+  },
+
+  {
+    path: '',
+    component: PublicLayout,
+    children: [
+      { path: '403', component: TyroUiForbidden },
+      { path: '**',  component: TyroUiNotFound  },
+    ],
+  },
 ];

@@ -1,0 +1,62 @@
+<div class="ds-page">
+  <div class="ds-block">
+    <span class="ds-tag">&lt;tyro-ui-easter-egg&gt;</span>
+    <h1 class="ds-name">Easter Egg</h1>
+    <p class="ds-desc">
+      Mini-jeux cachés déclenchés par le code Konami
+      (<kbd>↑</kbd><kbd>↑</kbd><kbd>↓</kbd><kbd>↓</kbd><kbd>←</kbd><kbd>→</kbd><kbd>←</kbd><kbd>→</kbd><kbd>B</kbd><kbd>A</kbd>).
+      Aucun <code>@Input()</code> — il suffit de placer le composant dans le template racine.
+    </p>
+  </div>
+
+  <hr class="ds-divider">
+
+  <div class="ds-block">
+    <span class="ds-label">Jeux disponibles</span>
+    <div class="ds-preview">
+      <div class="ds-preview-label">Mini-jeux accessibles</div>
+      <div class="ds-preview-body">
+        <table class="ds-props-table">
+          <thead><tr><th>Jeu</th><th>URL</th><th>Description</th></tr></thead>
+          <tbody>
+            <tr><td>Échec-ium</td><td><code>themaxium69.github.io/Echec-ium/</code></td><td>Jeu d'échecs aux couleurs Tyrolium</td></tr>
+            <tr><td>Flappium</td><td><code>themaxium69.github.io/Flappium/</code></td><td>Clone de Flappy Bird façon Tyrolium</td></tr>
+            <tr><td>Clavium</td><td><code>themaxium69.github.io/Clavium/</code></td><td>Jeu de rythme au clavier</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <div class="ds-block">
+    <span class="ds-label">Comportement</span>
+    <div class="ds-preview">
+      <div class="ds-preview-label">Logique interne</div>
+      <div class="ds-preview-body">
+        <table class="ds-props-table">
+          <thead><tr><th>Élément</th><th>Valeur</th></tr></thead>
+          <tbody>
+            <tr><td>Déclencheur</td><td>Code Konami complet (10 touches dans l'ordre)</td></tr>
+            <tr><td>Fermeture</td><td><kbd>Escape</kbd> ou clic sur l'overlay</td></tr>
+            <tr><td>Ouverture jeu</td><td><code>window.open(url, '_blank', 'noopener')</code></td></tr>
+            <tr><td>State</td><td>Signal <code>isOpen</code> — <code>false</code> par défaut</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <div class="ds-block">
+    <span class="ds-label">Usage</span>
+    <div class="ds-preview">
+      <div class="ds-preview-label">Intégration minimale</div>
+      <div class="ds-preview-body">
+        <pre class="ds-code">// app.html — placer une seule fois à la racine
+&lt;tyro-ui-easter-egg&gt;&lt;/tyro-ui-easter-egg&gt;</pre>
+      </div>
+    </div>
+  </div>
+
+  <!-- Le composant est présent mais invisible tant que le code Konami n'est pas saisi -->
+  <tyro-ui-easter-egg></tyro-ui-easter-egg>
+</div>

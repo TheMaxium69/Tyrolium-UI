@@ -1,0 +1,98 @@
+<div class="ds-page">
+  <div class="ds-block">
+    <span class="ds-tag">&lt;tyro-ui-footer&gt;</span>
+    <h1 class="ds-name">Footer</h1>
+    <p class="ds-desc">
+      Pied de page commun à tous les projets Tyrolium. Affiche les logos des filiales, les liens corporate,
+      services et internes. Les colonnes sont alimentées automatiquement depuis <code>menu-footer.ts</code>.
+    </p>
+  </div>
+
+  <hr class="ds-divider">
+
+  <div class="ds-block">
+    <span class="ds-label">Aperçu</span>
+    <div class="ds-preview">
+      <div class="ds-preview-label"><code>project="Tyrolium"</code></div>
+      <div class="ds-preview-frame ds-preview-frame--full">
+        <tyro-ui-footer
+          project="Tyrolium"
+          logo="assets/tyrolium-ui/projects/Tyrolium.png"
+          [content]="content()"
+          [pages]="pages()"
+          [socials]="socials">
+        </tyro-ui-footer>
+      </div>
+    </div>
+  </div>
+
+  <hr class="ds-divider">
+
+  <div class="ds-block">
+    <span class="ds-label">Inputs</span>
+    <div class="ds-preview">
+      <div class="ds-preview-label">@Input()</div>
+      <div class="ds-preview-body">
+        <table class="ds-props-table">
+          <thead><tr><th>Propriété</th><th>Type</th><th>Défaut</th><th>Description</th></tr></thead>
+          <tbody>
+            <tr>
+              <td><code>[project]</code></td><td>string</td><td><code>''</code></td>
+              <td>Identifiant du projet (ex : <em>"tyrolium"</em>, <em>"solidserv"</em>) — influence le contenu affiché</td>
+            </tr>
+            <tr>
+              <td><code>[logo]</code></td><td>string</td><td><code>''</code></td>
+              <td>URL du logo affiché en haut du footer</td>
+            </tr>
+            <tr>
+              <td><code>[content]</code></td><td>string</td><td><code>''</code></td>
+              <td>Texte de description affiché sous le logo</td>
+            </tr>
+            <tr>
+              <td><code>[pages]</code></td><td>ITyroUiNavbarPages[]</td><td><code>[]</code></td>
+              <td>Liens spécifiques au projet (colonne de gauche)</td>
+            </tr>
+            <tr>
+              <td><code>[socials]</code></td><td>ITyroUiNavbarPages[]</td><td><code>[]</code></td>
+              <td>Liens réseaux sociaux du projet</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <div class="ds-block">
+    <span class="ds-label">Config — menu-footer.ts</span>
+    <p class="ds-desc">Les 4 colonnes du footer sont alimentées automatiquement par des constantes importées par le composant — aucune prop à passer.</p>
+    <div class="ds-preview">
+      <div class="ds-preview-label">Constantes exportées</div>
+      <div class="ds-preview-body">
+        <table class="ds-props-table">
+          <thead><tr><th>Constante</th><th>Contenu</th></tr></thead>
+          <tbody>
+            <tr><td><code>FooterProjectPage</code></td><td>Logos de toutes les filiales Tyrolium (9 projets)</td></tr>
+            <tr><td><code>FooterCorpoLink</code></td><td>Liens corporate : RSE, Partenaires, Recrutements, Labs, Chronologie, Équipe, Media Kit, Boutique</td></tr>
+            <tr><td><code>FooterServiceLink</code></td><td>Liens service : Contact, Serveurs, Uptime Robot</td></tr>
+            <tr><td><code>FooterInternalLink</code></td><td>Liens internes (ERP, Repo) — visibles uniquement en interne</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="ds-preview">
+      <div class="ds-preview-label">Interface ITyroUiFooterPage</div>
+      <div class="ds-preview-body">
+        <table class="ds-props-table">
+          <thead><tr><th>Champ</th><th>Type</th><th>Description</th></tr></thead>
+          <tbody>
+            <tr><td><code>label</code></td><td>string</td><td>Texte du lien (fr)</td></tr>
+            <tr><td><code>labelEn?</code></td><td>string</td><td>Texte du lien (en)</td></tr>
+            <tr><td><code>link</code></td><td>string</td><td>URL de destination (absolue ou relative)</td></tr>
+            <tr><td><code>icon?</code></td><td>string</td><td>URL logo ou classe remix-icon</td></tr>
+            <tr><td><code>host?</code></td><td>string</td><td>Domaine hôte si lien relatif (ex : <em>"https://tyrolium.fr"</em>)</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,225 @@
+<div class="ds-page">
+
+  <!-- ── En-tête ──────────────────────────────────────────── -->
+  <div class="ds-block">
+    <span class="ds-tag">&lt;tyro-ui-navbar&gt;</span>
+    <h1 class="ds-name">Navbar</h1>
+    <p class="ds-desc">
+      Barre de navigation principale commune à tous les projets Tyrolium.
+      Gère le menu apps, la recherche, la langue, le thème, l'utilisateur connecté et le burger mobile.
+    </p>
+  </div>
+
+  <hr class="ds-divider">
+
+  <!-- ── Aperçu standalone ─────────────────────────────────── -->
+  <div class="ds-block">
+    <span class="ds-label">Aperçu — standalone</span>
+    <div class="ds-preview">
+      <div class="ds-preview-label"><code>project="Tyrolium"</code></div>
+      <div class="ds-preview-frame">
+        <tyro-ui-navbar project="Tyrolium" logo="assets/tyrolium-ui/projects/Tyrolium.png" [placeholder]="false"></tyro-ui-navbar>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── Aperçu sidebar ────────────────────────────────────── -->
+  <div class="ds-block">
+    <span class="ds-label">Aperçu — mode sidebar</span>
+    <div class="ds-preview">
+      <div class="ds-preview-label"><code>project="Useritium"&nbsp;&nbsp;subtitle="Dashboard"&nbsp;&nbsp;[sidebar]="true"</code></div>
+      <div class="ds-preview-frame">
+        <tyro-ui-navbar project="Useritium" subtitle="Dashboard" logo="assets/tyrolium-ui/projects/Useritium.png" [sidebar]="true" [placeholder]="false"></tyro-ui-navbar>
+      </div>
+    </div>
+  </div>
+
+  <hr class="ds-divider">
+
+  <!-- ── Inputs ────────────────────────────────────────────── -->
+  <div class="ds-block">
+    <span class="ds-label">Inputs</span>
+    <div class="ds-preview">
+      <div class="ds-preview-label">@Input()</div>
+      <div class="ds-preview-body">
+        <table class="ds-props-table">
+          <thead>
+            <tr><th>Propriété</th><th>Type</th><th>Défaut</th><th>Description</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><code>[project]</code></td>
+              <td>string</td>
+              <td><code>''</code></td>
+              <td>Nom du projet affiché dans la navbar (ex : <em>"Tyrolium"</em>, <em>"Useritium"</em>)</td>
+            </tr>
+            <tr>
+              <td><code>[logo]</code></td>
+              <td>string</td>
+              <td><code>''</code></td>
+              <td>URL du logo affiché à gauche — si vide, aucun logo</td>
+            </tr>
+            <tr>
+              <td><code>[subtitle]</code></td>
+              <td>string</td>
+              <td><code>''</code></td>
+              <td>Label utilitaire affiché sous le projet en mode sidebar (ex : <em>"Dashboard"</em>)</td>
+            </tr>
+            <tr>
+              <td><code>[pages]</code></td>
+              <td>ITyroUiNavbarPages[]</td>
+              <td><code>[]</code></td>
+              <td>Liens de navigation affichés dans la barre (voir interface ci-dessous)</td>
+            </tr>
+            <tr>
+              <td><code>[placeholder]</code></td>
+              <td>boolean</td>
+              <td><code>true</code></td>
+              <td>Affiche un bloc vide sous la navbar pour compenser son <code>position: fixed</code></td>
+            </tr>
+            <tr>
+              <td><code>[sidebar]</code></td>
+              <td>boolean</td>
+              <td><code>false</code></td>
+              <td>Mode dashboard — passe la navbar en <code>position: relative</code> et affiche un burger qui émet <code>sidebarBurgerClick</code></td>
+            </tr>
+            <tr class="ds-row-deprecated">
+              <td><code>[currentUser]</code></td>
+              <td>any[]</td>
+              <td><code>[]</code></td>
+              <td><span class="ds-badge-deprecated">Déprécié</span> Utiliser <code>TyroUiAuthService</code> à la place</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── Outputs ───────────────────────────────────────────── -->
+  <div class="ds-block">
+    <span class="ds-label">Outputs</span>
+    <div class="ds-preview">
+      <div class="ds-preview-label">@Output()</div>
+      <div class="ds-preview-body">
+        <table class="ds-props-table">
+          <thead>
+            <tr><th>Événement</th><th>Payload</th><th>Description</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><code>(sidebarBurgerClick)</code></td>
+              <td>void</td>
+              <td>Émis quand le burger est cliqué en mode <code>[sidebar]="true"</code> — utilisé par <code>tyro-ui-dashboard-layout</code> pour ouvrir la sidebar mobile</td>
+            </tr>
+            <tr>
+              <td><code>(loginClick)</code></td>
+              <td>void</td>
+              <td>Émis après l'ouverture de la modale login (pour usage externe)</td>
+            </tr>
+            <tr>
+              <td><code>(registerClick)</code></td>
+              <td>void</td>
+              <td>Émis après l'ouverture de la modale inscription</td>
+            </tr>
+            <tr>
+              <td><code>(logoutClick)</code></td>
+              <td>void</td>
+              <td>Émis après la déconnexion via <code>TyroUiAuthService.logout()</code></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <hr class="ds-divider">
+
+  <!-- ── Interface ITyroUiNavbarPages ──────────────────────── -->
+  <div class="ds-block">
+    <span class="ds-label">Interface — ITyroUiNavbarPages</span>
+    <div class="ds-preview">
+      <div class="ds-preview-label">Liens de navigation passés via <code>[pages]</code></div>
+      <div class="ds-preview-body">
+        <table class="ds-props-table">
+          <thead>
+            <tr><th>Champ</th><th>Type</th><th>Description</th></tr>
+          </thead>
+          <tbody>
+            <tr><td><code>label</code></td><td>string</td><td>Texte affiché (fr)</td></tr>
+            <tr><td><code>labelEn?</code></td><td>string</td><td>Texte affiché (en)</td></tr>
+            <tr><td><code>link?</code></td><td>string</td><td>Route Angular (<code>routerLink</code>)</td></tr>
+            <tr><td><code>href?</code></td><td>string</td><td>Lien externe (<code>window.location.href</code>)</td></tr>
+            <tr><td><code>ancre?</code></td><td>string</td><td>ID de l'élément vers lequel scroller</td></tr>
+            <tr><td><code>ancreHost?</code></td><td>string</td><td>Domaine hôte du scroll (si cross-domaine)</td></tr>
+            <tr><td><code>icon?</code></td><td>string</td><td>Classe icône remix-icon</td></tr>
+            <tr><td><code>children?</code></td><td>ITyroUiNavbarPages[]</td><td>Sous-liens (dropdown)</td></tr>
+            <tr><td><code>childrenOpen?</code></td><td>boolean</td><td>État ouvert/fermé du dropdown</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <hr class="ds-divider">
+
+  <!-- ── Menu apps (config) ─────────────────────────────────── -->
+  <div class="ds-block">
+    <span class="ds-label">Config — menu-navbar.ts</span>
+    <p class="ds-desc">
+      Le menu "apps" (icône grille) est alimenté par deux constantes exportées depuis
+      <code>menu-navbar.ts</code>, importées automatiquement par le composant.
+    </p>
+
+    <div class="ds-preview">
+      <div class="ds-preview-label">NavbarMenuPinned — app épinglée (Tyrolium)</div>
+      <div class="ds-preview-body">
+        <table class="ds-props-table">
+          <thead>
+            <tr><th>Champ</th><th>Type</th><th>Description</th></tr>
+          </thead>
+          <tbody>
+            <tr><td><code>name</code></td><td>string</td><td>Nom affiché</td></tr>
+            <tr><td><code>nameEn?</code></td><td>string</td><td>Nom en anglais</td></tr>
+            <tr><td><code>description</code></td><td>string</td><td>Sous-titre (fr)</td></tr>
+            <tr><td><code>descriptionEn?</code></td><td>string</td><td>Sous-titre (en)</td></tr>
+            <tr><td><code>image?</code></td><td>string</td><td>URL logo couleur</td></tr>
+            <tr><td><code>imageLight?</code></td><td>string</td><td>URL logo version dark</td></tr>
+            <tr><td><code>icon?</code></td><td>string</td><td>Classe remix-icon (si pas d'image)</td></tr>
+            <tr><td><code>link</code></td><td>string</td><td>URL de destination</td></tr>
+            <tr><td><code>host?</code></td><td>string</td><td>Domaine hôte si lien relatif</td></tr>
+            <tr><td><code>subItems?</code></td><td>ITyroUiNavbarMenuItem[]</td><td>Sous-entrées (niveau 2)</td></tr>
+            <tr><td><code>subOpen?</code></td><td>boolean</td><td>État ouvert des sous-entrées</td></tr>
+            <tr><td><code>isSubItem?</code></td><td>boolean</td><td>Marque visuellement un sous-item</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="ds-preview">
+      <div class="ds-preview-label">NavbarMenuCategory — catégories du menu apps</div>
+      <div class="ds-preview-body">
+        <table class="ds-props-table">
+          <thead>
+            <tr><th>Champ</th><th>Type</th><th>Description</th></tr>
+          </thead>
+          <tbody>
+            <tr><td><code>label</code></td><td>string</td><td>Titre de la catégorie (fr)</td></tr>
+            <tr><td><code>labelEn?</code></td><td>string</td><td>Titre de la catégorie (en)</td></tr>
+            <tr><td><code>open</code></td><td>boolean</td><td>Catégorie dépliée par défaut</td></tr>
+            <tr><td><code>items</code></td><td>ITyroUiNavbarMenuItem[]</td><td>Liste des apps dans cette catégorie</td></tr>
+          </tbody>
+        </table>
+        <div class="ds-cat-list">
+          <span class="ds-label" style="margin-bottom:8px">Catégories actuelles</span>
+          <div class="ds-cat-chips">
+            <span class="ds-chip">Filiales <em>(open: true)</em></span>
+            <span class="ds-chip">Corporate <em>(open: false)</em></span>
+            <span class="ds-chip">Service &amp; Info <em>(open: false)</em></span>
+            <span class="ds-chip">Interne <em>(open: false)</em></span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>

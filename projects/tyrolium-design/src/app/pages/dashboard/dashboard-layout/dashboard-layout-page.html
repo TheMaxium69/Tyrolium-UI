@@ -1,0 +1,121 @@
+<div class="ds-page">
+  <div class="ds-block">
+    <span class="ds-tag">&lt;tyro-ui-dashboard-layout&gt;</span>
+    <h1 class="ds-name">Dashboard Layout</h1>
+    <p class="ds-desc">
+      Layout complet avec sidebar collapsible, navbar intégrée et gestion mobile.
+      Encapsule <code>tyro-ui-navbar</code> et projette le contenu des pages via <code>&lt;ng-content&gt;</code>.
+    </p>
+  </div>
+
+  <hr class="ds-divider">
+
+  <div class="ds-block">
+    <span class="ds-label">Inputs</span>
+    <div class="ds-preview">
+      <div class="ds-preview-label">@Input()</div>
+      <div class="ds-preview-body">
+        <table class="ds-props-table">
+          <thead><tr><th>Propriété</th><th>Type</th><th>Défaut</th><th>Description</th></tr></thead>
+          <tbody>
+            <tr><td><code>[project]</code></td><td>string</td><td><code>''</code></td><td>Nom du projet — affiché dans la navbar et la sidebar</td></tr>
+            <tr><td><code>[utility]</code></td><td>string</td><td><code>''</code></td><td>Label utilitaire (ex : <em>"Dashboard"</em>, <em>"Hub"</em>) — texte secondaire dans sidebar et navbar mobile</td></tr>
+            <tr><td><code>[logo]</code></td><td>string</td><td><code>''</code></td><td>URL du logo couleur (barre de titre navbar)</td></tr>
+            <tr><td><code>[logoWhite]</code></td><td>string</td><td><code>''</code></td><td>URL du logo blanc (sidebar mobile)</td></tr>
+            <tr><td><code>[navItems]</code></td><td>ITyroUiDashNavItem[]</td><td><code>[]</code></td><td>Arborescence de navigation (voir interfaces ci-dessous)</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <hr class="ds-divider">
+
+  <div class="ds-block">
+    <span class="ds-label">Interface — ITyroUiDashNavItem</span>
+    <div class="ds-preview">
+      <div class="ds-preview-label">Item de navigation (niveau 1)</div>
+      <div class="ds-preview-body">
+        <table class="ds-props-table">
+          <thead><tr><th>Champ</th><th>Type</th><th>Description</th></tr></thead>
+          <tbody>
+            <tr><td><code>label</code></td><td>string</td><td>Texte affiché dans la sidebar</td></tr>
+            <tr><td><code>icon</code></td><td>string</td><td>Classe remix-icon (utilisée si <code>iconImg</code> absent)</td></tr>
+            <tr><td><code>iconImg?</code></td><td>string</td><td>URL d'image remplaçant l'icône (logos projets, etc.)</td></tr>
+            <tr><td><code>link?</code></td><td>string</td><td>Route Angular — absent si groupe ou catégorie</td></tr>
+            <tr><td><code>category?</code></td><td>boolean</td><td>Transforme l'item en section collapsible (pas un lien, style header réduit)</td></tr>
+            <tr><td><code>children?</code></td><td>ITyroUiDashNavChild[]</td><td>Sous-items (niveau 2)</td></tr>
+            <tr><td><code>open?</code></td><td>boolean</td><td>État ouvert/fermé du groupe ou de la catégorie</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="ds-preview">
+      <div class="ds-preview-label">ITyroUiDashNavChild (niveau 2)</div>
+      <div class="ds-preview-body">
+        <table class="ds-props-table">
+          <thead><tr><th>Champ</th><th>Type</th><th>Description</th></tr></thead>
+          <tbody>
+            <tr><td><code>label</code></td><td>string</td><td>Texte affiché</td></tr>
+            <tr><td><code>icon</code></td><td>string</td><td>Classe remix-icon</td></tr>
+            <tr><td><code>iconImg?</code></td><td>string</td><td>URL image à la place de l'icône</td></tr>
+            <tr><td><code>link?</code></td><td>string</td><td>Route — absent si sous-groupe</td></tr>
+            <tr><td><code>children?</code></td><td>ITyroUiDashNavSubItem[]</td><td>Sous-sous-items (niveau 3)</td></tr>
+            <tr><td><code>open?</code></td><td>boolean</td><td>État du sous-groupe</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="ds-preview">
+      <div class="ds-preview-label">ITyroUiDashNavSubItem (niveau 3)</div>
+      <div class="ds-preview-body">
+        <table class="ds-props-table">
+          <thead><tr><th>Champ</th><th>Type</th><th>Description</th></tr></thead>
+          <tbody>
+            <tr><td><code>label</code></td><td>string</td><td>Texte affiché</td></tr>
+            <tr><td><code>icon</code></td><td>string</td><td>Classe remix-icon</td></tr>
+            <tr><td><code>iconImg?</code></td><td>string</td><td>URL image à la place de l'icône</td></tr>
+            <tr><td><code>link</code></td><td>string</td><td>Route Angular (obligatoire au niveau 3)</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <hr class="ds-divider">
+
+  <div class="ds-block">
+    <span class="ds-label">Comportement sidebar</span>
+    <div class="ds-preview">
+      <div class="ds-preview-label">États et transitions</div>
+      <div class="ds-preview-body">
+        <table class="ds-props-table">
+          <thead><tr><th>État</th><th>Déclencheur</th><th>Effet</th></tr></thead>
+          <tbody>
+            <tr><td>Expanded (desktop)</td><td>Par défaut</td><td>Sidebar 240px, labels visibles</td></tr>
+            <tr><td>Collapsed (desktop)</td><td>Bouton chevron haut de sidebar</td><td>Sidebar 60px, icônes seules + tooltip au survol</td></tr>
+            <tr><td>Open (mobile)</td><td>Burger navbar</td><td>Sidebar en overlay (<code>z-index: 1002</code>) par-dessus le contenu</td></tr>
+            <tr><td>Close (mobile)</td><td>Clic overlay / lien / bouton fermer / <kbd>Escape</kbd></td><td>Sidebar repasse en <code>translateX(-100%)</code></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <div class="ds-block">
+    <span class="ds-label">Usage</span>
+    <div class="ds-preview">
+      <div class="ds-preview-label">app.html</div>
+      <div class="ds-preview-body">
+        <pre class="ds-code">&lt;tyro-ui-dashboard-layout
+  [project]="'Useritium'"
+  [utility]="'Dashboard'"
+  [logo]="'assets/tyrolium-ui/projects/Useritium.png'"
+  [logoWhite]="'assets/tyrolium-ui/projects/Useritium-White.png'"
+  [navItems]="navItems"&gt;
+  &lt;router-outlet /&gt;
+&lt;/tyro-ui-dashboard-layout&gt;</pre>
+      </div>
+    </div>
+  </div>
+</div>
