@@ -228,6 +228,14 @@
   flex-shrink: 0;
 }
 
+.dl-item-icon-img {
+  width: 20px;
+  height: 20px;
+  object-fit: contain;
+  flex-shrink: 0;
+  /*border-radius: 4px;*/
+}
+
 .dl-item-label { flex: 1; text-align: left; }
 
 .dl-item-chevron {
@@ -323,14 +331,43 @@
 /* ─── Sidebar footer ─────────────────────────────────────── */
 
 .dl-sidebar-footer {
-  padding: 12px 14px;
   border-top: 1px solid var(--dl-sb-border);
-  min-height: 44px;
   display: flex;
-  align-items: center;
+  flex-direction: column;
+  flex-shrink: 0;
 }
 
-.dl-footer-copy { font-size: 11px; color: var(--dl-sb-text-dim); }
+.dl-logout-btn {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  height: 44px;
+  padding: 0 14px;
+  color: #ef4444;
+  background: none;
+  border: none;
+  border-left: 3px solid transparent;
+  width: 100%;
+  font-size: 14px;
+  font-family: 'Inter', sans-serif;
+  cursor: pointer;
+  transition: background 0.15s, border-left-color 0.15s;
+  box-sizing: border-box;
+  text-align: left;
+}
+
+.dl-logout-btn:hover {
+  background: rgba(239, 68, 68, 0.1);
+  border-left-color: #ef4444;
+}
+
+.dl-sidebar.collapsed .dl-logout-btn {
+  padding: 0;
+  justify-content: center;
+  border-left-color: transparent;
+}
+
+.dl-footer-copy { font-size: 11px; color: var(--dl-sb-text-dim); padding: 6px 14px 10px; }
 .dl-footer-copy a { color: var(--dl-sb-text-dim); text-decoration: none; }
 .dl-footer-copy a:hover { color: var(--dl-sb-text); }
 

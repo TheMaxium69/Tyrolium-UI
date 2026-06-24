@@ -43,7 +43,11 @@
            class="dl-item"
            (click)="closeMobile()"
            [title]="sidebarCollapsed() ? item.label : ''">
-          <i [class]="item.icon + ' dl-item-icon'"></i>
+          @if (item.iconImg) {
+            <img [src]="item.iconImg" [alt]="item.label" class="dl-item-icon-img">
+          } @else {
+            <i [class]="item.icon + ' dl-item-icon'"></i>
+          }
           @if (!sidebarCollapsed()) {
             <span class="dl-item-label">{{ item.label }}</span>
           }
@@ -53,7 +57,11 @@
                 [class.open]="item.open"
                 (click)="toggleGroup(item)"
                 [title]="sidebarCollapsed() ? item.label : ''">
-          <i [class]="item.icon + ' dl-item-icon'"></i>
+          @if (item.iconImg) {
+            <img [src]="item.iconImg" [alt]="item.label" class="dl-item-icon-img">
+          } @else {
+            <i [class]="item.icon + ' dl-item-icon'"></i>
+          }
           @if (!sidebarCollapsed()) {
             <span class="dl-item-label">{{ item.label }}</span>
             <i class="ri-arrow-down-s-line dl-item-chevron" [class.open]="item.open"></i>
@@ -66,7 +74,11 @@
                  routerLinkActive="active"
                  class="dl-item dl-item-child"
                  (click)="closeMobile()">
-                <i [class]="child.icon + ' dl-item-icon'"></i>
+                @if (child.iconImg) {
+                  <img [src]="child.iconImg" [alt]="child.label" class="dl-item-icon-img">
+                } @else {
+                  <i [class]="child.icon + ' dl-item-icon'"></i>
+                }
                 <span class="dl-item-label">{{ child.label }}</span>
               </a>
             }
@@ -130,6 +142,12 @@
 
   <!-- Footer -->
   <div class="dl-sidebar-footer">
+    <button class="dl-logout-btn" (click)="onLogoutClick()" [title]="sidebarCollapsed() ? 'Déconnexion' : ''">
+      <i class="ri-logout-box-r-line dl-item-icon"></i>
+      @if (!sidebarCollapsed()) {
+        <span class="dl-item-label">{{ langService.lang() === 'fr' ? 'Déconnexion' : 'Logout' }}</span>
+      }
+    </button>
     @if (!sidebarCollapsed()) {
       <span class="dl-footer-copy">&copy; {{currentYear}} <a href="https://tyrolium.fr" target="_blank">Tyrolium</a></span>
     }
