@@ -1,0 +1,62 @@
+<div class="ds-page">
+  <div class="ds-block">
+    <span class="ds-tag">&lt;tyro-ui-dashboard-layout&gt;</span>
+    <h1 class="ds-name">Dashboard Layout</h1>
+    <p class="ds-desc">
+      Layout complet avec sidebar collapsible, navbar intégrée et gestion mobile.
+      Reçoit les nav items, le logo, le projet et l'utilitaire en Input.
+    </p>
+  </div>
+
+  <hr class="ds-divider">
+
+  <div class="ds-block">
+    <span class="ds-label">Inputs</span>
+    <div class="ds-preview">
+      <div class="ds-preview-label">Propriétés disponibles</div>
+      <div class="ds-preview-body">
+        <table class="ds-props-table">
+          <thead>
+            <tr>
+              <th>Input</th>
+              <th>Type</th>
+              <th>Description</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td><code>[project]</code></td><td>string</td><td>Nom du projet affiché dans la navbar et la sidebar</td></tr>
+            <tr><td><code>[utility]</code></td><td>string</td><td>Label utilitaire (ex : "Dashboard", "Hub")</td></tr>
+            <tr><td><code>[logo]</code></td><td>string</td><td>URL du logo couleur (navbar)</td></tr>
+            <tr><td><code>[logoWhite]</code></td><td>string</td><td>URL du logo blanc (sidebar mobile)</td></tr>
+            <tr><td><code>[navItems]</code></td><td>ITyroUiDashNavItem[]</td><td>Items de navigation (liens, groupes, catégories)</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <div class="ds-block">
+    <span class="ds-label">Interface ITyroUiDashNavItem</span>
+    <div class="ds-preview">
+      <div class="ds-preview-label">Structure des nav items</div>
+      <div class="ds-preview-body">
+        <pre class="ds-code">&#123;
+  label:     string
+  icon:      string           // classe remix-icon
+  iconImg?:  string           // URL image (remplace l'icône)
+  link?:     string           // routerLink — absent si groupe/catégorie
+  category?: boolean          // section collapsible (pas un lien)
+  children?: &#123;
+    label:    string
+    icon:     string
+    iconImg?: string
+    link?:    string
+    children?: &#123; label, icon, iconImg?, link &#125;[]
+    open?:    boolean
+  &#125;[]
+  open?:     boolean
+&#125;</pre>
+      </div>
+    </div>
+  </div>
+</div>

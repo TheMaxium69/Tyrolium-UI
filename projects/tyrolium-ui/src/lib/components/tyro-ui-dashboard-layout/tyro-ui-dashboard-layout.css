@@ -474,10 +474,15 @@
   .dl-sidebar-project { font-size: 0.875rem; letter-spacing: 2px; }
   .dl-sidebar-utility { font-size: 0.52rem; }
 
+  :host {
+    height: 100dvh;
+  }
+
   .dl-sidebar {
     transform: translateX(-100%);
     width: var(--dl-sidebar-w) !important;
     z-index: 1002;
+    height: 100dvh;
   }
 
   .dl-sidebar.mobile-open {
@@ -485,7 +490,13 @@
   }
 
   .dl-main,
-  .dl-main.collapsed { margin-left: 0; }
+  .dl-main.collapsed {
+    margin-left: 0;
+    height: 100dvh;
+  }
 
-  .dl-content { padding: 20px 16px; }
+  .dl-content {
+    padding: 20px 16px;
+    padding-bottom: calc(20px + env(safe-area-inset-bottom));
+  }
 }

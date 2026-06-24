@@ -800,6 +800,60 @@
         }
       }
     },
+    "tyrolium-design": {
+      "projectType": "application",
+      "schematics": {},
+      "root": "projects/tyrolium-design",
+      "sourceRoot": "projects/tyrolium-design/src",
+      "prefix": "app",
+      "architect": {
+        "build": {
+          "builder": "@angular/build:application",
+          "options": {
+            "browser": "projects/tyrolium-design/src/main.ts",
+            "tsConfig": "projects/tyrolium-design/tsconfig.app.json",
+            "assets": [
+              {
+                "glob": "**/*",
+                "input": "projects/tyrolium-ui/src/styles/assets",
+                "output": "assets/tyrolium-ui"
+              }
+            ],
+            "styles": [
+              "projects/tyrolium-ui/src/styles/tyrolium-ui.css",
+              "projects/tyrolium-design/src/styles.css"
+            ]
+          },
+          "configurations": {
+            "production": {
+              "budgets": [
+                { "type": "initial", "maximumWarning": "1MB", "maximumError": "2MB" },
+                { "type": "anyComponentStyle", "maximumWarning": "16kB", "maximumError": "32kB" }
+              ],
+              "outputHashing": "all"
+            },
+            "development": {
+              "optimization": false,
+              "extractLicenses": false,
+              "sourceMap": true,
+              "budgets": []
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "serve": {
+          "builder": "@angular/build:dev-server",
+          "configurations": {
+            "production": { "buildTarget": "tyrolium-design:build:production" },
+            "development": { "buildTarget": "tyrolium-design:build:development" }
+          },
+          "defaultConfiguration": "development"
+        },
+        "test": {
+          "builder": "@angular/build:unit-test"
+        }
+      }
+    },
     "tyrolium-hub": {
       "projectType": "application",
       "schematics": {},
