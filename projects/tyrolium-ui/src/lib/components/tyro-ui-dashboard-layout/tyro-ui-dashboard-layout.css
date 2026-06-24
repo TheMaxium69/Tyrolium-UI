@@ -8,16 +8,19 @@
   /* Layout dimensions */
   --dl-sidebar-w:   240px;
   --dl-sidebar-col: 60px;
-  --dl-topbar-h:    60px;
+  --dl-topbar-h:    63px;
 
   /* Sidebar (dark) */
-  --dl-sb-bg:         #1e2235;
-  --dl-sb-text:       #b3b8d4;
-  --dl-sb-text-hov:   #dee2ec;
-  --dl-sb-text-dim:   #6b7280;
-  --dl-sb-active-bg:  rgba(5, 51, 200, 0.35);
+  --dl-sb-bg:         #13182a;
+  --dl-sb-text:       #a8b0cc;
+  --dl-sb-text-hov:   #e2e6f0;
+  --dl-sb-text-dim:   #5a6480;
+  --dl-sb-active-bg:  rgba(5, 51, 200, 0.28);
   --dl-sb-active-bar: #0533c8;
-  --dl-sb-border:     rgba(255,255,255,0.08);
+  --dl-sb-border:     rgba(255,255,255,0.07);
+
+  /* Gradient brand Tyrolium */
+  --dl-brand-gradient: linear-gradient(135deg, #0400d4 0%, #6600cc 40%, #cc0000 100%);
 
   /* Topbar (light) — reprend les variables de la navbar */
   --dl-tb-bg:     #ffffff;
@@ -29,7 +32,7 @@
 }
 
 :host-context([data-theme="dark"]) {
-  --dl-sb-bg:     #0d1117;
+  --dl-sb-bg:     #0b0f1c;
   --dl-sb-border: rgba(255,255,255,0.06);
   --dl-tb-bg:     #111827;
   --dl-tb-border: #374151;
@@ -45,7 +48,7 @@
   position: fixed;
   inset: 0;
   background: rgba(0,0,0,0.45);
-  z-index: 199;
+  z-index: 1001;
 }
 
 /* ══════════════════════════════════════════════════════════ */
@@ -75,9 +78,21 @@
   align-items: center;
   justify-content: space-between;
   padding: 0 14px;
-  border-bottom: 1px solid var(--dl-sb-border);
+  /*border-bottom: 1px solid rgba(255,255,255,0.06);*/
+  background: var(--dl-brand-gradient);
   gap: 8px;
   overflow: hidden;
+  position: relative;
+}
+
+.dl-sidebar-header::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.06'/%3E%3C/svg%3E");
+  background-size: 200px;
+  opacity: 0.35;
+  pointer-events: none;
 }
 
 .dl-sidebar.collapsed .dl-sidebar-header {
@@ -92,28 +107,32 @@
   overflow: hidden;
   min-width: 0;
   flex: 1;
+  position: relative;
+  z-index: 1;
 }
 
-/* Projet = grand, bold, uppercase — reprend .nav-name */
+/* Projet = même style que nav-name */
 .dl-sidebar-project {
+  font-family: 'Inter', sans-serif;
   font-size: 1.125rem;
-  color: var(--dl-sb-text-hov);
   font-weight: 600;
-  font-family: "Inter", sans-serif;
+  color: #fff;
   text-transform: uppercase;
   letter-spacing: 3px;
   white-space: nowrap;
   line-height: 1.1;
 }
 
-/* Utilitaire = petit, estompé — reprend .nav-group */
+/* Utilitaire = même style que nav-group */
 .dl-sidebar-utility {
+  font-family: 'Inter', sans-serif;
   font-size: 0.65rem;
-  color: var(--dl-sb-text-dim);
+  color: rgba(255, 255, 255, 0.6);
   font-weight: 500;
   text-transform: uppercase;
   letter-spacing: 0.05em;
   white-space: nowrap;
+  line-height: 1.2;
 }
 
 .dl-collapse-btn {
@@ -122,8 +141,8 @@
   min-width: 32px;
   border-radius: 7px;
   border: none;
-  background: rgba(255,255,255,0.06);
-  color: var(--dl-sb-text-dim);
+  background: rgba(255,255,255,0.15);
+  color: rgba(255,255,255,0.75);
   cursor: pointer;
   display: flex;
   align-items: center;
@@ -131,11 +150,13 @@
   font-size: 1rem;
   transition: background 0.15s, color 0.15s;
   flex-shrink: 0;
+  position: relative;
+  z-index: 1;
 }
 
 .dl-collapse-btn:hover {
-  background: rgba(255,255,255,0.12);
-  color: var(--dl-sb-text-hov);
+  background: rgba(255,255,255,0.28);
+  color: #fff;
 }
 
 /* ─── Sidebar nav ────────────────────────────────────────── */
@@ -163,7 +184,7 @@
   font-family: 'Inter', sans-serif;
   transition: background 0.15s, color 0.15s;
   white-space: nowrap;
-  border-right: 3px solid transparent;
+  border-left: 3px solid transparent;
   box-sizing: border-box;
 }
 
@@ -175,7 +196,7 @@
 .dl-item.active {
   color: #fff;
   background: var(--dl-sb-active-bg);
-  border-right-color: var(--dl-sb-active-bar);
+  border-left-color: var(--dl-sb-active-bar);
 }
 
 .dl-sidebar.collapsed .dl-item {
@@ -206,12 +227,12 @@
   height: 38px;
   font-size: 13px;
   background: rgba(0,0,0,0.15);
-  border-right: 3px solid transparent;
+  border-left: 3px solid transparent;
 }
 .dl-item-child:hover  { background: rgba(255,255,255,0.05); }
 .dl-item-child.active {
   background: rgba(5,51,200,0.25);
-  border-right-color: rgba(5,51,200,0.7);
+  border-left-color: rgba(5,51,200,0.7);
 }
 
 /* ─── Sidebar footer ─────────────────────────────────────── */
@@ -280,7 +301,7 @@
 /* MOBILE                                                     */
 /* ══════════════════════════════════════════════════════════ */
 
-@media (max-width: 768px) {
+@media (max-width: 1024px) {
   .dl-sidebar {
     transform: translateX(-100%);
     width: var(--dl-sidebar-w) !important;
@@ -300,7 +321,7 @@
   display: none;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 1024px) {
   .dl-mobile-panel {
     display: flex;
     flex-direction: column;
@@ -310,7 +331,7 @@
     bottom: 0;
     width: min(300px, 85vw);
     background: var(--dl-sb-bg);
-    z-index: 201;
+    z-index: 1002;
     transform: translateX(-100%);
     transition: transform 0.25s ease;
     overflow: hidden;
@@ -324,36 +345,59 @@
 /* ─── Header bleu ────────────────────────────────────────── */
 
 .dl-mp-header {
-  background: linear-gradient(135deg, #0533c8 0%, #1d4ed8 100%);
-  padding: 20px 16px;
+  background: var(--dl-brand-gradient);
+  padding: 0 14px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  min-height: 80px;
+  height: var(--dl-topbar-h);
+  min-height: var(--dl-topbar-h);
   flex-shrink: 0;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Noise overlay léger comme le hero media kit */
+.dl-mp-header::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.06'/%3E%3C/svg%3E");
+  background-size: 200px;
+  opacity: 0.35;
+  pointer-events: none;
 }
 
 .dl-mp-brand {
   display: flex;
   flex-direction: column;
   gap: 2px;
+  position: relative;
+  z-index: 1;
 }
 
 .dl-mp-project {
+  font-family: 'Inter', sans-serif;
   font-size: 1.125rem;
-  font-weight: 700;
+  font-weight: 600;
   color: #fff;
   text-transform: uppercase;
   letter-spacing: 3px;
   line-height: 1.1;
+  position: relative;
+  z-index: 1;
 }
 
 .dl-mp-utility {
+  font-family: 'Inter', sans-serif;
   font-size: 0.65rem;
   color: rgba(255, 255, 255, 0.6);
   font-weight: 500;
   text-transform: uppercase;
   letter-spacing: 0.05em;
+  line-height: 1.2;
+  position: relative;
+  z-index: 1;
 }
 
 .dl-mp-close {
@@ -370,6 +414,8 @@
   font-size: 1.1rem;
   flex-shrink: 0;
   transition: background 0.15s;
+  position: relative;
+  z-index: 1;
 }
 
 .dl-mp-close:hover { background: rgba(255, 255, 255, 0.28); }

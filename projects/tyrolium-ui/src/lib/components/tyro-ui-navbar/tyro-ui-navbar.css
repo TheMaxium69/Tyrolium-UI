@@ -65,7 +65,8 @@ nav {
 }
 
 #sidebar {
-  position: unset!important;
+  position: relative !important;
+  z-index: 1000;
 }
 
 .nav-placeholder {
@@ -261,7 +262,8 @@ nav {
 
 /* ─── RESPONSIVE ─────────────────────────────────────────── */
 
-.nav-burger {
+.nav-burger,
+.nav-sidebar-burger {
   display: none;
 }
 
@@ -286,6 +288,12 @@ nav {
 
   .nav-burger {
     display: flex;
+  }
+
+  .nav-sidebar-burger {
+    display: flex;
+    cursor: pointer;
+    order: -1;
   }
 }
 
@@ -624,6 +632,15 @@ nav {
     overflow-y: auto;
     padding-top: 63px;
     z-index: -1;
+  }
+
+  /* En mode sidebar : démarre sous la navbar, pas de conflit z-index */
+  #sidebar .app-menu {
+    top: 63px;
+    padding-top: 0;
+    z-index: 999;
+    border: none;
+    box-shadow: none;
   }
 
   .app-menu-section-body {

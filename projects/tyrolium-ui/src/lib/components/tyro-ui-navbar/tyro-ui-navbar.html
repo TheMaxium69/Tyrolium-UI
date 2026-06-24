@@ -1,4 +1,9 @@
 <nav [id]="sidebar ? 'sidebar' : (project === 'Vturias' ? 'vturias' : '')">
+
+@if (sidebar) {
+  <i class="nav-icon nav-sidebar-burger ri-menu-line" (click)="toggleMobileMenu()"></i>
+}
+
 <div class="nav-right" routerLink="." (click)="mobileMenuOpen = false">
     <img [src]="logo" alt="Logo" class="nav-logo">
     <div class="nav-info">
@@ -216,14 +221,16 @@
       </div>
     </div>
 
-    <!-- Burger mobile -->
-    <i class="nav-icon nav-burger"
-       [class]="mobileMenuOpen ? 'nav-icon nav-burger ri-close-line' : 'nav-icon nav-burger ri-menu-line'"
-       (click)="toggleMobileMenu()"></i>
+    <!-- Burger mobile (mode site web uniquement) -->
+    @if (!sidebar) {
+      <i class="nav-icon nav-burger"
+         [class]="mobileMenuOpen ? 'nav-icon nav-burger ri-close-line' : 'nav-icon nav-burger ri-menu-line'"
+         (click)="toggleMobileMenu()"></i>
+    }
 
     <!-- Wrapper app menu -->
     <div class="nav-menu-wrapper" (mouseenter)="menuOpen = true" (mouseleave)="onMenuMouseLeave()">
-      <i class="nav-icon ri-function-fill nav-hide-mobile" [class.active]="menuPinned" (click)="toggleMenu()" TyroUiGloss></i>
+      <i class="nav-icon ri-function-fill" [class.nav-hide-mobile]="!sidebar" [class.active]="menuPinned" (click)="toggleMenu()" TyroUiGloss></i>
 
       <div class="app-menu" [class.open]="menuOpen">
         <div class="app-menu-pinned">
