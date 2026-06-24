@@ -36,7 +36,63 @@
   <!-- Navigation -->
   <nav class="dl-nav">
     @for (item of navItems; track item.label) {
-      @if (item.link && !item.children?.length) {
+
+      @if (item.category) {
+        <!-- ── Catégorie (section collapsible, pas un lien) ── -->
+        <button class="dl-category" [class.open]="item.open" (click)="toggleGroup(item)" [title]="sidebarCollapsed() ? item.label : ''">
+          @if (item.iconImg) {
+            <img [src]="item.iconImg" [alt]="item.label" class="dl-item-icon-img">
+          } @else {
+            <i [class]="item.icon + ' dl-item-icon'"></i>
+          }
+          @if (!sidebarCollapsed()) {
+            <span class="dl-category-label">{{ item.label }}</span>
+            <i class="ri-arrow-down-s-line dl-item-chevron" [class.open]="item.open"></i>
+          }
+        </button>
+        @if (item.open && !sidebarCollapsed()) {
+          <div class="dl-cat-children">
+            @for (child of item.children ?? []; track child.label) {
+              @if (child.link && !child.children?.length) {
+                <a [routerLink]="child.link" routerLinkActive="active" class="dl-item dl-cat-item" (click)="closeMobile()">
+                  @if (child.iconImg) {
+                    <img [src]="child.iconImg" [alt]="child.label" class="dl-item-icon-img">
+                  } @else {
+                    <i [class]="child.icon + ' dl-item-icon'"></i>
+                  }
+                  <span class="dl-item-label">{{ child.label }}</span>
+                </a>
+              } @else if (child.children?.length) {
+                <button class="dl-item dl-cat-item" [class.open]="child.open" (click)="toggleChild(child)">
+                  @if (child.iconImg) {
+                    <img [src]="child.iconImg" [alt]="child.label" class="dl-item-icon-img">
+                  } @else {
+                    <i [class]="child.icon + ' dl-item-icon'"></i>
+                  }
+                  <span class="dl-item-label">{{ child.label }}</span>
+                  <i class="ri-arrow-down-s-line dl-item-chevron" [class.open]="child.open"></i>
+                </button>
+                @if (child.open) {
+                  <div class="dl-children">
+                    @for (sub of child.children ?? []; track sub.link) {
+                      <a [routerLink]="sub.link" routerLinkActive="active" class="dl-item dl-item-child dl-cat-subitem" (click)="closeMobile()">
+                        @if (sub.iconImg) {
+                          <img [src]="sub.iconImg" [alt]="sub.label" class="dl-item-icon-img">
+                        } @else {
+                          <i [class]="sub.icon + ' dl-item-icon'"></i>
+                        }
+                        <span class="dl-item-label">{{ sub.label }}</span>
+                      </a>
+                    }
+                  </div>
+                }
+              }
+            }
+          </div>
+        }
+
+      } @else if (item.link && !item.children?.length) {
+        <!-- ── Item simple (lien) ── -->
         <a [routerLink]="item.link"
            routerLinkActive="active"
            [routerLinkActiveOptions]="{ exact: item.link === '/' }"
@@ -52,7 +108,9 @@
             <span class="dl-item-label">{{ item.label }}</span>
           }
         </a>
+
       } @else if (item.children?.length) {
+        <!-- ── Groupe collapsible (avec lien optionnel) ── -->
         <button class="dl-item"
                 [class.open]="item.open"
                 (click)="toggleGroup(item)"

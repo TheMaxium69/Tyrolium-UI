@@ -1,8 +1,17 @@
-export interface ITyroUiDashNavChild {
+export interface ITyroUiDashNavSubItem {
   label: string;
   icon: string;
   iconImg?: string;
   link: string;
+}
+
+export interface ITyroUiDashNavChild {
+  label: string;
+  icon: string;
+  iconImg?: string;
+  link?: string;
+  children?: ITyroUiDashNavSubItem[];
+  open?: boolean;
 }
 
 export interface ITyroUiDashNavItem {
@@ -10,6 +19,7 @@ export interface ITyroUiDashNavItem {
   icon: string;
   iconImg?: string;
   link?: string;
+  category?: boolean;
   children?: ITyroUiDashNavChild[];
   open?: boolean;
 }

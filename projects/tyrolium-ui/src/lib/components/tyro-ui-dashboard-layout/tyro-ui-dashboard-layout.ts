@@ -2,7 +2,7 @@ import {
   Component, computed, HostListener, inject, Input, signal,
 } from '@angular/core';
 import { RouterLink, RouterLinkActive } from '@angular/router';
-import { ITyroUiDashNavItem } from '../../interface/ityro-ui-dash-nav-item';
+import { ITyroUiDashNavItem, ITyroUiDashNavChild } from '../../interface/ityro-ui-dash-nav-item';
 import { TyroUiThemeService } from '../../services/tyro-ui-theme.service';
 import { TyroUiAuthService } from '../../services/tyro-ui-auth.service';
 import { TyroUiLangService } from '../../services/tyro-ui-lang.service';
@@ -60,6 +60,7 @@ export class TyroUiDashboardLayout {
   toggleLang()     { this.langDropdownOpen = !this.langDropdownOpen; }
   setLang(lang: 'fr' | 'en') { this.langService.set(lang); this.langDropdownOpen = false; }
   toggleGroup(item: ITyroUiDashNavItem) { item.open = !item.open; }
+  toggleChild(child: ITyroUiDashNavChild) { child.open = !child.open; }
 
   onLogoutClick() {
     this.authService.logout();
