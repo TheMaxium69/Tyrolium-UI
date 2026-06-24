@@ -1,0 +1,86 @@
+<!-- Mobile overlay -->
+@if (mobileOpen()) {
+  <div class="dl-overlay" (click)="closeMobile()"></div>
+}
+
+<!-- ─── Sidebar ─────────────────────────────────────────── -->
+<aside class="dl-sidebar dl-scroll"
+       [class.collapsed]="sidebarCollapsed()"
+       [class.mobile-open]="mobileOpen()">
+
+  <!-- Header -->
+  <div class="dl-sidebar-header">
+    @if (!sidebarCollapsed()) {
+      <div class="dl-brand-info">
+        <span class="dl-sidebar-project title">{{ project }}</span>
+        @if (utility) {
+          <span class="dl-sidebar-utility title-second">{{ utility }}</span>
+        }
+      </div>
+    }
+    <button class="dl-collapse-btn" (click)="toggleSidebar()" [title]="sidebarCollapsed() ? 'Ouvrir' : 'Réduire'">
+      <i [class]="sidebarCollapsed() ? 'ri-menu-unfold-line' : 'ri-menu-fold-line'"></i>
+    </button>
+  </div>
+
+  <!-- Navigation -->
+  <nav class="dl-nav">
+    @for (item of navItems; track item.label) {
+      @if (item.link && !item.children?.length) {
+        <a [routerLink]="item.link"
+           routerLinkActive="active"
+           [routerLinkActiveOptions]="{ exact: item.link === '/' }"
+           class="dl-item"
+           (click)="closeMobile()"
+           [title]="sidebarCollapsed() ? item.label : ''">
+          <i [class]="item.icon + ' dl-item-icon'"></i>
+          @if (!sidebarCollapsed()) {
+            <span class="dl-item-label">{{ item.label }}</span>
+          }
+        </a>
+      } @else if (item.children?.length) {
+        <button class="dl-item"
+                [class.open]="item.open"
+                (click)="toggleGroup(item)"
+                [title]="sidebarCollapsed() ? item.label : ''">
+          <i [class]="item.icon + ' dl-item-icon'"></i>
+          @if (!sidebarCollapsed()) {
+            <span class="dl-item-label">{{ item.label }}</span>
+            <i class="ri-arrow-down-s-line dl-item-chevron" [class.open]="item.open"></i>
+          }
+        </button>
+        @if (item.open && !sidebarCollapsed()) {
+          <div class="dl-children">
+            @for (child of item.children; track child.link) {
+              <a [routerLink]="child.link"
+                 routerLinkActive="active"
+                 class="dl-item dl-item-child"
+                 (click)="closeMobile()">
+                <i [class]="child.icon + ' dl-item-icon'"></i>
+                <span class="dl-item-label">{{ child.label }}</span>
+              </a>
+            }
+          </div>
+        }
+      }
+    }
+  </nav>
+
+  <!-- Footer -->
+  <div class="dl-sidebar-footer">
+    @if (!sidebarCollapsed()) {
+      <span class="dl-footer-copy">&copy; 2025 <a href="https://tyrolium.fr" target="_blank">Tyrolium</a></span>
+    }
+  </div>
+</aside>
+
+<!-- ─── Main wrapper ─────────────────────────────────────── -->
+<div class="dl-main" [class.collapsed]="sidebarCollapsed()">
+
+  <tyro-ui-navbar [project]="project" [logo]="logo" [placeholder]="false" [sidebar]="true"></tyro-ui-navbar>
+
+  <!-- Page content -->
+  <main class="dl-content dl-scroll">
+    <ng-content></ng-content>
+  </main>
+</div>

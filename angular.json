@@ -799,6 +799,76 @@
           "builder": "@angular/build:unit-test"
         }
       }
+    },
+    "useritium-dashboard": {
+      "projectType": "application",
+      "schematics": {},
+      "root": "projects/useritium-dashboard",
+      "sourceRoot": "projects/useritium-dashboard/src",
+      "prefix": "app",
+      "architect": {
+        "build": {
+          "builder": "@angular/build:application",
+          "options": {
+            "browser": "projects/useritium-dashboard/src/main.ts",
+            "tsConfig": "projects/useritium-dashboard/tsconfig.app.json",
+            "assets": [
+              {
+                "glob": "**/*",
+                "input": "projects/useritium-dashboard/public"
+              },
+              {
+                "glob": "**/*",
+                "input": "projects/tyrolium-ui/src/styles/assets",
+                "output": "assets/tyrolium-ui"
+              }
+            ],
+            "styles": [
+              "projects/tyrolium-ui/src/styles/tyrolium-ui.css",
+              "projects/useritium-dashboard/src/styles.css"
+            ]
+          },
+          "configurations": {
+            "production": {
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "1MB",
+                  "maximumError": "2MB"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "16kB",
+                  "maximumError": "32kB"
+                }
+              ],
+              "outputHashing": "all"
+            },
+            "development": {
+              "optimization": false,
+              "extractLicenses": false,
+              "sourceMap": true,
+              "budgets": []
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "serve": {
+          "builder": "@angular/build:dev-server",
+          "configurations": {
+            "production": {
+              "buildTarget": "useritium-dashboard:build:production"
+            },
+            "development": {
+              "buildTarget": "useritium-dashboard:build:development"
+            }
+          },
+          "defaultConfiguration": "development"
+        },
+        "test": {
+          "builder": "@angular/build:unit-test"
+        }
+      }
     }
   }
 }

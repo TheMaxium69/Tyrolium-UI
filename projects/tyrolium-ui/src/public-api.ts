@@ -12,6 +12,7 @@ export * from './lib/components/tyro-ui-auth-modal/tyro-ui-auth-modal';
 export * from './lib/components/tyro-ui-not-found/tyro-ui-not-found';
 export * from './lib/components/tyro-ui-forbidden/tyro-ui-forbidden';
 export * from './lib/components/tyro-ui-easter-egg/tyro-ui-easter-egg';
+export * from './lib/components/tyro-ui-dashboard-layout/tyro-ui-dashboard-layout';
 
 /* Interface */
 export * from './lib/interface/ityro-ui-user'
@@ -19,6 +20,7 @@ export * from './lib/interface/ityro-ui-navbar-pages'
 export * from './lib/interface/ityro-ui-subnav-pages'
 export * from './lib/interface/ityro-ui-navbar-menu-item'
 export * from './lib/interface/ityro-ui-navbar-menu-category'
+export * from './lib/interface/ityro-ui-dash-nav-item'
 
 /* Configs */
 export * from './lib/configs/menu-navbar'

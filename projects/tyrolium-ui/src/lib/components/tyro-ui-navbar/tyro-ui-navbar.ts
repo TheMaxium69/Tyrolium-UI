@@ -21,6 +21,7 @@ export class TyroUiNavbar {
   @Input() logo: string = '';
   @Input() pages: ITyroUiNavbarPages[] = [];
   @Input() placeholder: boolean = true;
+  @Input() sidebar: boolean = false;
   /** @deprecated La session est gérée par TyroUiAuthService. Conserver pour rétrocompatibilité. */
   @Input() currentUser: any[] = [];
 

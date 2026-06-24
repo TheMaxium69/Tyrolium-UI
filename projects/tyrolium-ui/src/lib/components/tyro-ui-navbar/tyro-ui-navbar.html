@@ -1,4 +1,4 @@
-<nav [id]="project === 'Vturias' ? 'vturias' : ''">
+<nav [id]="sidebar ? 'sidebar' : (project === 'Vturias' ? 'vturias' : '')">
 <div class="nav-right" routerLink="." (click)="mobileMenuOpen = false">
     <img [src]="logo" alt="Logo" class="nav-logo">
     <div class="nav-info">

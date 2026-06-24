@@ -92,6 +92,9 @@
     },
     {
       "path": "./projects/tyrolium-uptime/tsconfig.spec.json"
+    },
+    {
+      "path": "./projects/useritium-dashboard/tsconfig.app.json"
     }
   ]
 }
