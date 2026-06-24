@@ -74,6 +74,8 @@ nav {
   height: 63px;
 }
 
+.nav-show-mobile { display: none; }
+
 /* ─── Gauche — logo + nom ─────────────────────────────────── */
 
 .nav-right {
@@ -285,6 +287,8 @@ nav {
   .nav-hide-mobile {
     display: none !important;
   }
+
+  .nav-show-mobile { display: block; }
 
   .nav-burger {
     display: flex;

@@ -12,6 +12,7 @@ projects/gamenium-website
 projects/tyrolium-uptime
 projects/tyroserv-website
 projects/useritium-dashboard
+projects/useritium-hub
 
 # Compiled output
 /dist
@@ -56,3 +57,4 @@ __screenshots__/
 # System files
 .DS_Store
 Thumbs.db
+/projects/tyrolium-hub

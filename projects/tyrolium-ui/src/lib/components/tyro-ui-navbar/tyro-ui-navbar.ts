@@ -19,6 +19,7 @@ import { TyroUiAuthModal } from '../tyro-ui-auth-modal/tyro-ui-auth-modal';
 export class TyroUiNavbar {
   @Input() project: string = '';
   @Input() logo: string = '';
+  @Input() subtitle: string = '';
   @Input() pages: ITyroUiNavbarPages[] = [];
   @Input() placeholder: boolean = true;
   @Input() sidebar: boolean = false;

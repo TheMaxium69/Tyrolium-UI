@@ -8,10 +8,20 @@
     <img [src]="logo" alt="Logo" class="nav-logo">
     <div class="nav-info">
       @if (project == "Tyrolium") {
-        <span class="nav-name-main title">Tyrolium</span>
+        <span class="nav-name-main title nav-hide-mobile">Tyrolium</span>
+        @if (sidebar && subtitle) {
+          <span class="nav-group title-second nav-show-mobile">{{ subtitle }}</span>
+          <span class="nav-name title nav-show-mobile">Tyrolium</span>
+        } @else {
+          <span class="nav-name-main title nav-show-mobile">Tyrolium</span>
+        }
       } @else {
-        <span class="nav-group title-second">Tyrolium</span>
-        <span class="nav-name title">{{ project || 'Tyrolium' }}</span>
+        <!-- Desktop : Tyrolium / project -->
+        <span class="nav-group title-second nav-hide-mobile">Tyrolium</span>
+        <span class="nav-name title nav-hide-mobile">{{ project || 'Tyrolium' }}</span>
+        <!-- Mobile : subtitle / project (subtitle = utility si sidebar) -->
+        <span class="nav-group title-second nav-show-mobile">{{ (sidebar && subtitle) ? subtitle : 'Tyrolium' }}</span>
+        <span class="nav-name title nav-show-mobile">{{ project }}</span>
       }
     </div>
   </div>

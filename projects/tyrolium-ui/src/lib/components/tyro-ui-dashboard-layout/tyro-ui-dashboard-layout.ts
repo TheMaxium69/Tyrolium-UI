@@ -17,11 +17,14 @@ import {TyroUiNavbar} from "../tyro-ui-navbar/tyro-ui-navbar";
 export class TyroUiDashboardLayout {
   /** Nom du projet affiché dans la topbar et la sidebar (ex : "Useritium"). */
   @Input() project = '';
-  /** Logo utilisé dans la topbar uniquement. */
+  /** Logo affiché dans la sidebar et la topbar. */
   @Input() logo    = '';
+  @Input() logoWhite    = '';
   /** Libellé utilitaire affiché sous le projet dans la sidebar (ex : "Dashboard", "Panel"). */
   @Input() utility = '';
   @Input() navItems: ITyroUiDashNavItem[] = [];
+
+  currentYear: number = new Date().getFullYear();
 
   readonly themeService = inject(TyroUiThemeService);
   readonly authService  = inject(TyroUiAuthService);
