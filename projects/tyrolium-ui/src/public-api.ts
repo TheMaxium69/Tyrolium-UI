@@ -10,6 +10,8 @@ export * from './lib/components/showcase/tyro-ui-cta/tyro-ui-cta';
 
 /* Components — dashboard */
 export * from './lib/components/dashboard/tyro-ui-dashboard-layout/tyro-ui-dashboard-layout';
+export * from './lib/components/dashboard/tyro-ui-button-bento/tyro-ui-button-bento';
+export * from './lib/components/dashboard/tyro-ui-page-header/tyro-ui-page-header';
 
 /* Components — modal */
 export * from './lib/components/modal/tyro-ui-auth-modal/tyro-ui-auth-modal';

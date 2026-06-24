@@ -1,0 +1,128 @@
+@property --bb-border-angle {
+  syntax: '<angle>';
+  initial-value: 0deg;
+  inherits: false;
+}
+
+@keyframes bb-rotate-border {
+  to { --bb-border-angle: 360deg; }
+}
+
+:host {
+  display: contents;
+}
+
+/* ─── Card ────────────────────────────────────────────────── */
+
+.bb-card {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
+  padding: 24px 20px;
+  background: linear-gradient(var(--page-card-bg, #ffffff), var(--page-card-bg, #ffffff)) padding-box,
+              linear-gradient(var(--page-border, #e5e7eb), var(--page-border, #e5e7eb)) border-box;
+  border: 2px solid transparent;
+  border-radius: 18px;
+  box-shadow: none;
+  text-decoration: none;
+  cursor: pointer;
+  transition: box-shadow 0.24s ease, transform 0.2s ease;
+}
+
+.bb-card:hover {
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.10);
+  transform: translateY(-2px);
+}
+
+:host-context([data-theme="dark"]) .bb-card:hover {
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+}
+
+.bb-card--short {
+  align-items: center;
+  text-align: center;
+  padding: 32px 24px;
+  gap: 6px;
+}
+
+/* ─── Gradient border variant ─────────────────────────────── */
+
+.bb-card--gradient:hover {
+  background:
+    linear-gradient(var(--page-card-bg, #ffffff), var(--page-card-bg, #ffffff)) padding-box,
+    conic-gradient(
+      from var(--bb-border-angle),
+      #001a6e 0%, #4055dd 30%, #ee2b2b 55%, #a80303 70%, #001a6e 100%
+    ) border-box;
+  animation: bb-rotate-border 3s linear infinite;
+  box-shadow: 0 8px 32px rgba(0, 26, 110, 0.14);
+}
+
+:host-context([data-theme="dark"]) .bb-card--gradient:hover {
+  box-shadow: 0 8px 32px rgba(0, 26, 110, 0.3);
+}
+
+/* ─── Icon ────────────────────────────────────────────────── */
+
+.bb-icon {
+  font-size: 1.4rem;
+  color: #0533c8;
+  margin-bottom: 4px;
+}
+
+.bb-icon--lg {
+  font-size: 2.4rem;
+  margin-bottom: 6px;
+}
+
+:host-context([data-theme="dark"]) .bb-icon {
+  color: #60a5fa;
+}
+
+/* ─── Icon image ──────────────────────────────────────────── */
+
+.bb-icon-img {
+  width: 28px;
+  height: 28px;
+  object-fit: contain;
+  margin-bottom: 4px;
+}
+
+.bb-icon-img--lg {
+  width: 56px;
+  height: 56px;
+  margin-bottom: 6px;
+}
+
+/* ─── Tag ─────────────────────────────────────────────────── */
+
+.bb-tag {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  color: var(--page-text-muted, #9ca3af);
+}
+
+/* ─── Label ───────────────────────────────────────────────── */
+
+.bb-label {
+  font-family: 'Syne', sans-serif;
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--page-text, #111827);
+}
+
+.bb-label--lg {
+  font-size: 1.2rem;
+}
+
+/* ─── Sublabel ────────────────────────────────────────────── */
+
+.bb-sublabel {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.8rem;
+  font-weight: 400;
+  color: var(--page-text-muted, #9ca3af);
+}

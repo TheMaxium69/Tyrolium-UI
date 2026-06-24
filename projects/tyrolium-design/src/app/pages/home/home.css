@@ -1,42 +1,76 @@
-.ds-home-grid {
+/* ─── Page ────────────────────────────────────────────────── */
+
+.home-page {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+/* ─── Header ──────────────────────────────────────────────── */
+
+.home-header {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.home-header-label {
+  font-family: 'Inter', sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--dash-text-muted, #9ca3af);
+  margin: 0;
+}
+
+.home-header-name {
+  font-family: 'Inter', sans-serif;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--dash-text, #212529);
+  margin: 0;
+  line-height: 1.2;
+}
+
+.home-header-desc {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.9rem;
+  color: var(--dash-text-2, #5a5f6e);
+  margin: 0;
+  line-height: 1.6;
+  max-width: 560px;
+}
+
+/* ─── Divider ─────────────────────────────────────────────── */
+
+.home-divider {
+  border: none;
+  border-top: 1px solid var(--dash-border, #d6d8e0);
+  margin: 0;
+}
+
+/* ─── Section ─────────────────────────────────────────────── */
+
+.home-section {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.home-section-label {
+  font-family: 'Inter', sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--dash-text-muted, #9ca3af);
+}
+
+/* ─── Grid ────────────────────────────────────────────────── */
+
+.home-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
   gap: 20px;
-}
-
-.ds-home-card {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 8px;
-  padding: 24px 20px;
-  text-decoration: none;
-  cursor: pointer;
-  transition: box-shadow 0.2s, transform 0.15s;
-}
-
-.ds-home-card:hover {
-  transform: translateY(-2px);
-  box-shadow: var(--shadow-card-hover);
-}
-
-.ds-home-icon {
-  font-size: 1.6rem;
-  color: var(--dash-accent);
-  margin-bottom: 4px;
-}
-
-[data-theme="dark"] .ds-home-icon { color: #60a5fa; }
-
-.ds-home-card-tag {
-  font-family: 'Noto Sans Mono', 'Fira Code', monospace;
-  font-size: 11px;
-  color: var(--dash-text-muted);
-}
-
-.ds-home-card-name {
-  font-family: 'Inter', sans-serif;
-  font-size: 1rem;
-  font-weight: 600;
-  color: var(--dash-text);
 }

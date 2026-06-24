@@ -1,0 +1,37 @@
+<ng-template #inner>
+  @if (!short) {
+    @if (iconImg) {
+      <img [src]="iconImg" alt="" class="bb-icon-img">
+    } @else if (icon) {
+      <i [class]="icon + ' bb-icon'"></i>
+    }
+    @if (tag) {
+      <span class="bb-tag">{{ tag }}</span>
+    }
+    <span class="bb-label">{{ label }}</span>
+  } @else {
+    @if (iconImg) {
+      <img [src]="iconImg" alt="" class="bb-icon-img bb-icon-img--lg">
+    } @else if (icon) {
+      <i [class]="icon + ' bb-icon bb-icon--lg'"></i>
+    }
+    <span class="bb-label bb-label--lg">{{ label }}</span>
+    @if (sublabel) {
+      <span class="bb-sublabel">{{ sublabel }}</span>
+    }
+  }
+</ng-template>
+
+@if (link) {
+  <a [routerLink]="link" class="bb-card" [class.bb-card--short]="short" [class.bb-card--gradient]="gradient">
+    <ng-container [ngTemplateOutlet]="inner"></ng-container>
+  </a>
+} @else if (href) {
+  <a [href]="href" class="bb-card" [class.bb-card--short]="short" [class.bb-card--gradient]="gradient">
+    <ng-container [ngTemplateOutlet]="inner"></ng-container>
+  </a>
+} @else {
+  <div class="bb-card" [class.bb-card--short]="short" [class.bb-card--gradient]="gradient">
+    <ng-container [ngTemplateOutlet]="inner"></ng-container>
+  </div>
+}
