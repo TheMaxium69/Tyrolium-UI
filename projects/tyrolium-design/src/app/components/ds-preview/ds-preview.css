@@ -7,7 +7,6 @@
   border-radius: 14px;
   overflow: hidden;
   background: var(--page-card-bg, #ffffff);
-  transform: translateZ(0);
 }
 
 .dsp-label {
@@ -23,5 +22,6 @@
 }
 
 .dsp-content {
-  display: contents;
+  display: block;
+  transform: translateZ(0);
 }

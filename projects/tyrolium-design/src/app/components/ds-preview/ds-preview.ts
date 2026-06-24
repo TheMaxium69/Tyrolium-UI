@@ -7,4 +7,5 @@ import { Component, Input } from '@angular/core';
 })
 export class DsPreview {
   @Input() label?: string;
+  @Input() minHeight?: string;
 }

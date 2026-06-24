@@ -2,7 +2,7 @@
   @if (label) {
     <div class="dsp-label">{{ label }}</div>
   }
-  <div class="dsp-content">
+  <div class="dsp-content" [style.min-height]="minHeight">
     <ng-content></ng-content>
   </div>
 </div>
