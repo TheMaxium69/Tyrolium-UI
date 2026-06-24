@@ -28,9 +28,10 @@ export class TyroUiNavbar {
   public navbarMenuPinned: ITyroUiNavbarMenuItem = NavbarMenuPinned;
   public navbarMenuCategory: ITyroUiNavbarMenuCategory[] = NavbarMenuCategory;
 
-  @Output() loginClick    = new EventEmitter<void>();
-  @Output() registerClick = new EventEmitter<void>();
-  @Output() logoutClick   = new EventEmitter<void>();
+  @Output() loginClick         = new EventEmitter<void>();
+  @Output() registerClick      = new EventEmitter<void>();
+  @Output() logoutClick        = new EventEmitter<void>();
+  @Output() sidebarBurgerClick = new EventEmitter<void>();
 
   public menuOpen      = false;
   public menuPinned    = false;
@@ -94,7 +95,10 @@ export class TyroUiNavbar {
     return result;
   }
 
-  toggleMobileMenu() { this.mobileMenuOpen = !this.mobileMenuOpen; }
+  toggleMobileMenu() {
+    if (this.sidebar) { this.sidebarBurgerClick.emit(); return; }
+    this.mobileMenuOpen = !this.mobileMenuOpen;
+  }
 
   openAppsFromMobile() {
     this.mobileMenuOpen = false;

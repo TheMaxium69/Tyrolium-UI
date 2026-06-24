@@ -354,7 +354,7 @@
 
 
 <!-- Menu mobile déroulant -->
-@if (mobileMenuOpen) {
+@if (!sidebar && mobileMenuOpen) {
   <div class="nav-mobile-menu">
     <div class="nav-mobile-head">
       <button class="nav-mobile-action" (click)="openAppsFromMobile()">
