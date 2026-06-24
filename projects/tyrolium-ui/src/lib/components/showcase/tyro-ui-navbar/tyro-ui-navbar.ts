@@ -1,14 +1,14 @@
 import { Component, computed, HostListener, Input, Output, EventEmitter, inject } from '@angular/core';
-import { ITyroUiNavbarPages } from '../../interface/ityro-ui-navbar-pages';
+import { ITyroUiNavbarPages } from '../../../interface/ityro-ui-navbar-pages';
 import { RouterLink } from '@angular/router';
-import { ITyroUiNavbarMenuItem } from '../../interface/ityro-ui-navbar-menu-item';
-import { ITyroUiNavbarMenuCategory } from '../../interface/ityro-ui-navbar-menu-category';
-import { NavbarMenuCategory, NavbarMenuPinned } from '../../configs/menu-navbar';
-import { TyroUiGloss } from '../../directive/tyro-ui-gloss';
-import { TyroUiThemeService } from '../../services/tyro-ui-theme.service';
-import { TyroUiLangService } from '../../services/tyro-ui-lang.service';
-import { TyroUiAuthService } from '../../services/tyro-ui-auth.service';
-import { TyroUiAuthModal } from '../tyro-ui-auth-modal/tyro-ui-auth-modal';
+import { ITyroUiNavbarMenuItem } from '../../../interface/ityro-ui-navbar-menu-item';
+import { ITyroUiNavbarMenuCategory } from '../../../interface/ityro-ui-navbar-menu-category';
+import { NavbarMenuCategory, NavbarMenuPinned } from '../../../configs/menu-navbar';
+import { TyroUiGloss } from '../../../directive/tyro-ui-gloss';
+import { TyroUiThemeService } from '../../../services/tyro-ui-theme.service';
+import { TyroUiLangService } from '../../../services/tyro-ui-lang.service';
+import { TyroUiAuthService } from '../../../services/tyro-ui-auth.service';
+import { TyroUiAuthModal } from '../../modal/tyro-ui-auth-modal/tyro-ui-auth-modal';
 
 @Component({
   selector: 'tyro-ui-navbar',

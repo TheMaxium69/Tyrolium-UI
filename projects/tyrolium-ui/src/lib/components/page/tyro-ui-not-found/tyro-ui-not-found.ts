@@ -1,6 +1,6 @@
 import { Component, Input, inject } from '@angular/core';
 import { RouterLink } from '@angular/router';
-import { TyroUiLangService } from '../../services/tyro-ui-lang.service';
+import { TyroUiLangService } from '../../../services/tyro-ui-lang.service';
 
 @Component({
   selector: 'tyro-ui-not-found',

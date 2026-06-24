@@ -3,7 +3,7 @@ import { RouterOutlet } from '@angular/router';
 import {
     ITyroUiNavbarPages,
     ITyroUiSubnavPages,
-    TyroUiButtom, TyroUiCTA,
+    TyroUiCTA,
     TyroUiFooter,
     TyroUiNavbar,
     TyroUiSubnav
@@ -11,7 +11,7 @@ import {
 
 @Component({
   selector: 'app-root',
-    imports: [RouterOutlet, TyroUiButtom, TyroUiNavbar, TyroUiSubnav, TyroUiFooter, TyroUiCTA],
+    imports: [RouterOutlet, TyroUiNavbar, TyroUiSubnav, TyroUiFooter, TyroUiCTA],
   templateUrl: './app.html',
   styleUrl: './app.css',
 })

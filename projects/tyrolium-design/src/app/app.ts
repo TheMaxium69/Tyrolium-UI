@@ -23,7 +23,6 @@ export class App {
       children: [
         { label: 'Navbar',          icon: 'ri-layout-top-line',  link: '/components/navbar' },
         { label: 'Dashboard Layout',icon: 'ri-layout-left-line', link: '/components/dashboard-layout' },
-        { label: 'App Switcher',    icon: 'ri-apps-2-line',      link: '/components/app-switcher' },
       ],
     },
   ];

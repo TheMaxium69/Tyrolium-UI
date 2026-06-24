@@ -1,7 +1,7 @@
 import { Component, inject } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { TyroUiAuthService } from '../../services/tyro-ui-auth.service';
-import { TyroUiLangService } from '../../services/tyro-ui-lang.service';
+import { TyroUiAuthService } from '../../../services/tyro-ui-auth.service';
+import { TyroUiLangService } from '../../../services/tyro-ui-lang.service';
 
 @Component({
   selector: 'tyro-ui-auth-modal',

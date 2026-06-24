@@ -2,11 +2,11 @@ import {
   Component, computed, HostListener, inject, Input, signal,
 } from '@angular/core';
 import { RouterLink, RouterLinkActive } from '@angular/router';
-import { ITyroUiDashNavItem, ITyroUiDashNavChild } from '../../interface/ityro-ui-dash-nav-item';
-import { TyroUiThemeService } from '../../services/tyro-ui-theme.service';
-import { TyroUiAuthService } from '../../services/tyro-ui-auth.service';
-import { TyroUiLangService } from '../../services/tyro-ui-lang.service';
-import {TyroUiNavbar} from "../tyro-ui-navbar/tyro-ui-navbar";
+import { ITyroUiDashNavItem, ITyroUiDashNavChild } from '../../../interface/ityro-ui-dash-nav-item';
+import { TyroUiThemeService } from '../../../services/tyro-ui-theme.service';
+import { TyroUiAuthService } from '../../../services/tyro-ui-auth.service';
+import { TyroUiLangService } from '../../../services/tyro-ui-lang.service';
+import {TyroUiNavbar} from "../../showcase/tyro-ui-navbar/tyro-ui-navbar";
 
 @Component({
   selector: 'tyro-ui-dashboard-layout',
