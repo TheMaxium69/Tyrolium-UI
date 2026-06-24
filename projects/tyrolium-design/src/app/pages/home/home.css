@@ -1,56 +1,10 @@
 /* ─── Page ────────────────────────────────────────────────── */
 
-.home-page {
+section#home {
   display: flex;
   flex-direction: column;
   gap: 32px;
 }
-
-/* ─── Header ──────────────────────────────────────────────── */
-
-.home-header {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-}
-
-.home-header-label {
-  font-family: 'Inter', sans-serif;
-  font-size: 11px;
-  font-weight: 700;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: var(--dash-text-muted, #9ca3af);
-  margin: 0;
-}
-
-.home-header-name {
-  font-family: 'Inter', sans-serif;
-  font-size: 1.5rem;
-  font-weight: 700;
-  color: var(--dash-text, #212529);
-  margin: 0;
-  line-height: 1.2;
-}
-
-.home-header-desc {
-  font-family: 'Inter', sans-serif;
-  font-size: 0.9rem;
-  color: var(--dash-text-2, #5a5f6e);
-  margin: 0;
-  line-height: 1.6;
-  max-width: 560px;
-}
-
-/* ─── Divider ─────────────────────────────────────────────── */
-
-.home-divider {
-  border: none;
-  border-top: 1px solid var(--dash-border, #d6d8e0);
-  margin: 0;
-}
-
-/* ─── Section ─────────────────────────────────────────────── */
 
 .home-section {
   display: flex;

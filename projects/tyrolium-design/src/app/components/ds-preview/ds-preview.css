@@ -1,0 +1,27 @@
+:host {
+  display: block;
+}
+
+.dsp-card {
+  border: 1px solid var(--page-border, #e5e7eb);
+  border-radius: 14px;
+  overflow: hidden;
+  background: var(--page-card-bg, #ffffff);
+  transform: translateZ(0);
+}
+
+.dsp-label {
+  padding: 10px 18px;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--page-text-muted, #9ca3af);
+  border-bottom: 1px solid var(--page-border, #e5e7eb);
+  background: var(--page-bg-light, #f6f7fb);
+}
+
+.dsp-content {
+  display: contents;
+}

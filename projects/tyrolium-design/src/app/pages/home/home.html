@@ -1,58 +1,57 @@
-<div class="home-page">
+<tyro-ui-page-header
+[label]="lang() === 'en' ? 'Design System' : 'Système de Design'"
+title="Tyrolium UI">
+@if (lang() === 'en') {
+  Catalogue of components from the <strong>tyrolium-ui</strong> library.
+  Each page presents a component with its tag name, properties and an interactive preview.
+} @else {
+  Catalogue des composants de la bibliothèque <strong>tyrolium-ui</strong>.
+  Chaque page présente un composant avec son nom de balise, ses propriétés et un aperçu interactif.
+}
+</tyro-ui-page-header>
 
-  <tyro-ui-page-header
-    [label]="lang() === 'en' ? 'Design System' : 'Système de Design'"
-    title="Tyrolium UI">
-    @if (lang() === 'en') {
-      Catalogue of components from the <strong>tyrolium-ui</strong> library.
-      Each page presents a component with its tag name, properties and an interactive preview.
-    } @else {
-      Catalogue des composants de la bibliothèque <strong>tyrolium-ui</strong>.
-      Chaque page présente un composant avec son nom de balise, ses propriétés et un aperçu interactif.
-    }
-  </tyro-ui-page-header>
+<section id="home">
 
-  <hr class="home-divider">
-
-  <div class="home-section">
-    <span class="home-section-label">{{ lang() === 'en' ? 'Showcase' : 'Vitrine' }}</span>
-    <div class="home-grid">
-      <tyro-ui-button-bento icon="ri-layout-top-line"      tag="&lt;tyro-ui-navbar&gt;"   label="Navbar"  link="/showcase/navbar"></tyro-ui-button-bento>
-      <tyro-ui-button-bento icon="ri-layout-bottom-line"   tag="&lt;tyro-ui-subnav&gt;"   label="Subnav"  link="/showcase/subnav"></tyro-ui-button-bento>
-      <tyro-ui-button-bento icon="ri-layout-bottom-2-line" tag="&lt;tyro-ui-footer&gt;"   label="Footer"  link="/showcase/footer"></tyro-ui-button-bento>
-      <tyro-ui-button-bento icon="ri-cursor-line"          tag="&lt;tyro-ui-cta&gt;"      label="CTA"     link="/showcase/cta"></tyro-ui-button-bento>
+    <div class="home-section">
+        <span class="home-section-label">{{ lang() === 'en' ? 'Showcase' : 'Vitrine' }}</span>
+        <div class="home-grid">
+            <tyro-ui-button-bento icon="ri-layout-top-line"      tag="&lt;tyro-ui-navbar&gt;"   label="Navbar"  link="/showcase/navbar"></tyro-ui-button-bento>
+            <tyro-ui-button-bento icon="ri-layout-bottom-line"   tag="&lt;tyro-ui-subnav&gt;"   label="Subnav"  link="/showcase/subnav"></tyro-ui-button-bento>
+            <tyro-ui-button-bento icon="ri-layout-bottom-2-line" tag="&lt;tyro-ui-footer&gt;"   label="Footer"  link="/showcase/footer"></tyro-ui-button-bento>
+            <tyro-ui-button-bento icon="ri-cursor-line"          tag="&lt;tyro-ui-cta&gt;"      label="CTA"     link="/showcase/cta"></tyro-ui-button-bento>
+        </div>
     </div>
-  </div>
 
-  <div class="home-section">
-    <span class="home-section-label">Dashboard</span>
-    <div class="home-grid">
-      <tyro-ui-button-bento icon="ri-layout-left-line" tag="&lt;tyro-ui-dashboard-layout&gt;" label="Dashboard Layout" link="/dashboard/dashboard-layout"></tyro-ui-button-bento>
-      <tyro-ui-button-bento icon="ri-grid-line"        tag="&lt;tyro-ui-button-bento&gt;"     label="Button Bento"></tyro-ui-button-bento>
-      <tyro-ui-button-bento icon="ri-heading"          tag="&lt;tyro-ui-page-header&gt;"      label="Page Header"></tyro-ui-button-bento>
+    <div class="home-section">
+        <span class="home-section-label">Dashboard</span>
+        <div class="home-grid">
+            <tyro-ui-button-bento icon="ri-layout-left-line" tag="&lt;tyro-ui-dashboard-layout&gt;" label="Dashboard Layout" link="/dashboard/dashboard-layout"></tyro-ui-button-bento>
+            <tyro-ui-button-bento icon="ri-grid-line"        tag="&lt;tyro-ui-button-bento&gt;"     label="Button Bento"></tyro-ui-button-bento>
+            <tyro-ui-button-bento icon="ri-heading"          tag="&lt;tyro-ui-page-header&gt;"      label="Page Header"></tyro-ui-button-bento>
+        </div>
     </div>
-  </div>
 
-  <div class="home-section">
-    <span class="home-section-label">Modal</span>
-    <div class="home-grid">
-      <tyro-ui-button-bento icon="ri-door-lock-line" tag="&lt;tyro-ui-auth-modal&gt;" label="Auth Modal" link="/modal/auth-modal"></tyro-ui-button-bento>
+    <div class="home-section">
+        <span class="home-section-label">Modal</span>
+        <div class="home-grid">
+            <tyro-ui-button-bento icon="ri-door-lock-line" tag="&lt;tyro-ui-auth-modal&gt;" label="Auth Modal" link="/modal/auth-modal"></tyro-ui-button-bento>
+        </div>
     </div>
-  </div>
 
-  <div class="home-section">
-    <span class="home-section-label">{{ lang() === 'en' ? 'Page' : 'Page' }}</span>
-    <div class="home-grid">
-      <tyro-ui-button-bento icon="ri-question-mark"  tag="&lt;tyro-ui-not-found&gt;" label="Not Found" link="/page/not-found"></tyro-ui-button-bento>
-      <tyro-ui-button-bento icon="ri-forbid-2-line"  tag="&lt;tyro-ui-forbidden&gt;" label="Forbidden" link="/page/forbidden"></tyro-ui-button-bento>
+    <div class="home-section">
+        <span class="home-section-label">{{ lang() === 'en' ? 'Page' : 'Page' }}</span>
+        <div class="home-grid">
+            <tyro-ui-button-bento icon="ri-question-mark"  tag="&lt;tyro-ui-not-found&gt;" label="Not Found" link="/page/not-found"></tyro-ui-button-bento>
+            <tyro-ui-button-bento icon="ri-forbid-2-line"  tag="&lt;tyro-ui-forbidden&gt;" label="Forbidden" link="/page/forbidden"></tyro-ui-button-bento>
+        </div>
     </div>
-  </div>
 
-  <div class="home-section">
-    <span class="home-section-label">{{ lang() === 'en' ? 'Other' : 'Autre' }}</span>
-    <div class="home-grid">
-      <tyro-ui-button-bento icon="ri-gamepad-line" tag="&lt;tyro-ui-easter-egg&gt;" label="Easter Egg" link="/other/easter-egg"></tyro-ui-button-bento>
+    <div class="home-section">
+        <span class="home-section-label">{{ lang() === 'en' ? 'Other' : 'Autre' }}</span>
+        <div class="home-grid">
+            <tyro-ui-button-bento icon="ri-gamepad-line" tag="&lt;tyro-ui-easter-egg&gt;" label="Easter Egg" link="/other/easter-egg"></tyro-ui-button-bento>
+        </div>
     </div>
-  </div>
 
-</div>
+</section>
+

@@ -1,37 +1,29 @@
-<div class="ds-page">
-
-  <!-- ── En-tête ──────────────────────────────────────────── -->
-  <div class="ds-block">
-    <span class="ds-tag">&lt;tyro-ui-navbar&gt;</span>
-    <h1 class="ds-name">Navbar</h1>
-    <p class="ds-desc">
+<tyro-ui-page-header label="&lt;tyro-ui-navbar&gt;" title="Navbar">
+    @if (lang() === 'en') {
+      Main navigation bar shared across all Tyrolium projects.
+      Handles the app menu, search, language, theme, connected user and mobile burger.
+    } @else {
       Barre de navigation principale commune à tous les projets Tyrolium.
       Gère le menu apps, la recherche, la langue, le thème, l'utilisateur connecté et le burger mobile.
-    </p>
-  </div>
+    }
+</tyro-ui-page-header>
 
-  <hr class="ds-divider">
+<section id="navbar-page">
 
   <!-- ── Aperçu standalone ─────────────────────────────────── -->
   <div class="ds-block">
-    <span class="ds-label">Aperçu — standalone</span>
-    <div class="ds-preview">
-      <div class="ds-preview-label"><code>project="Tyrolium"</code></div>
-      <div class="ds-preview-frame">
-        <tyro-ui-navbar project="Tyrolium" logo="assets/tyrolium-ui/projects/Tyrolium.png" [placeholder]="false"></tyro-ui-navbar>
-      </div>
-    </div>
+    <span class="ds-label">{{ lang() === 'en' ? 'Preview — standalone' : 'Aperçu — standalone' }}</span>
+    <app-ds-preview label='project="Tyrolium"'>
+      <tyro-ui-navbar project="Tyrolium" logo="assets/tyrolium-ui/projects/Tyrolium.png" [placeholder]="false"></tyro-ui-navbar>
+    </app-ds-preview>
   </div>
 
   <!-- ── Aperçu sidebar ────────────────────────────────────── -->
   <div class="ds-block">
-    <span class="ds-label">Aperçu — mode sidebar</span>
-    <div class="ds-preview">
-      <div class="ds-preview-label"><code>project="Useritium"&nbsp;&nbsp;subtitle="Dashboard"&nbsp;&nbsp;[sidebar]="true"</code></div>
-      <div class="ds-preview-frame">
-        <tyro-ui-navbar project="Useritium" subtitle="Dashboard" logo="assets/tyrolium-ui/projects/Useritium.png" [sidebar]="true" [placeholder]="false"></tyro-ui-navbar>
-      </div>
-    </div>
+    <span class="ds-label">{{ lang() === 'en' ? 'Preview — sidebar mode' : 'Aperçu — mode sidebar' }}</span>
+    <app-ds-preview label='project="Useritium"  subtitle="Dashboard"  [sidebar]="true"'>
+      <tyro-ui-navbar project="Useritium" subtitle="Dashboard" logo="assets/tyrolium-ui/projects/Useritium.png" [sidebar]="true" [placeholder]="false"></tyro-ui-navbar>
+    </app-ds-preview>
   </div>
 
   <hr class="ds-divider">
@@ -222,4 +214,4 @@
     </div>
   </div>
 
-</div>
+</section>

@@ -1,1 +1,5 @@
-.ds-preview-frame { height: 63px; }
+hr{
+    border: none;
+    border-top: 1px solid var(--dash-border, #d6d8e0);
+    margin: 32px 0;
+}
