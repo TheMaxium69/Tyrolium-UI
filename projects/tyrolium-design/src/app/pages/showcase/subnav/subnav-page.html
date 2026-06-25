@@ -1,68 +1,67 @@
-<div class="ds-page">
-  <div class="ds-block">
-    <span class="ds-tag">&lt;tyro-ui-subnav&gt;</span>
-    <h1 class="ds-name">Subnav</h1>
-    <p class="ds-desc">Barre de navigation secondaire — onglets internes à une page ou section. Fonctionne avec <code>routerLink</code> et supporte le mode fixed.</p>
-  </div>
+<tyro-ui-page-header label="&lt;tyro-ui-subnav&gt;" title="Subnav">
+  @if (lang() === 'en') {
+    Secondary navigation bar — internal tabs for a page or section.
+    Works with <code class="ds-code">routerLink</code> and supports fixed mode.
+  } @else {
+    Barre de navigation secondaire — onglets internes à une page ou section.
+    Fonctionne avec <code class="ds-code">routerLink</code> et supporte le mode fixed.
+  }
+</tyro-ui-page-header>
+
+<section id="subnav-page">
+
+  <!-- ── Aperçu ────────────────────────────────────────────── -->
+  <h3 class="ds-title">{{ lang() === 'en' ? 'Preview' : 'Aperçu' }}</h3>
+  <app-ds-preview label='[pages]="samplePages"' minHeight="48px">
+    <tyro-ui-subnav [pages]="samplePages()" [havePlaceholder]="false"></tyro-ui-subnav>
+  </app-ds-preview>
 
   <hr class="ds-divider">
 
-  <div class="ds-block">
-    <span class="ds-label">Aperçu</span>
-    <div class="ds-preview">
-      <div class="ds-preview-label"><code>[pages]="samplePages"</code></div>
-      <div class="ds-preview-frame ds-preview-frame--full">
-        <tyro-ui-subnav [pages]="samplePages" [havePlaceholder]="false"></tyro-ui-subnav>
-      </div>
-    </div>
-  </div>
+  <!-- ── Inputs ────────────────────────────────────────────── -->
+  <tyro-ui-bento-card title="Inputs">
+    <tyro-ui-data-table [columns]="propCols" [data]="inputsData">
+
+      <ng-template tyroCol="prop" let-row>
+        <code class="ds-code">{{ $any(row).prop }}</code>
+      </ng-template>
+
+      <ng-template tyroCol="default" let-row>
+        <code class="ds-code">{{ $any(row).default }}</code>
+      </ng-template>
+
+      <ng-template tyroCol="description" let-row>
+        <span class="ds-desc" [innerHTML]="lang() === 'en' ? ($any(row).descriptionEn || $any(row).description) : $any(row).description"></span>
+      </ng-template>
+
+    </tyro-ui-data-table>
+  </tyro-ui-bento-card>
 
   <hr class="ds-divider">
 
-  <div class="ds-block">
-    <span class="ds-label">Inputs</span>
-    <div class="ds-preview">
-      <div class="ds-preview-label">@Input()</div>
-      <div class="ds-preview-body">
-        <table class="ds-props-table">
-          <thead><tr><th>Propriété</th><th>Type</th><th>Défaut</th><th>Description</th></tr></thead>
-          <tbody>
-            <tr>
-              <td><code>[pages]</code></td><td>ITyroUiNavbarPages[]</td><td><code>[]</code></td>
-              <td>Liste des onglets de navigation (même interface que <code>tyro-ui-navbar</code>)</td>
-            </tr>
-            <tr>
-              <td><code>[isFixed]</code></td><td>boolean</td><td><code>false</code></td>
-              <td>Passe la subnav en <code>position: fixed</code> pour rester collée sous la navbar principale</td>
-            </tr>
-            <tr>
-              <td><code>[havePlaceholder]</code></td><td>boolean</td><td><code>true</code></td>
-              <td>Affiche un placeholder pour compenser la hauteur quand <code>[isFixed]="true"</code></td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
-  </div>
+  <!-- ── Interface ITyroUiNavbarPages ──────────────────────── -->
+  <tyro-ui-bento-card title="Interface — ITyroUiNavbarPages">
+    <p class="ds-desc">
+      {{ lang() === 'en'
+        ? 'Shared with'
+        : 'Partagée avec' }}
+      <code class="ds-code">tyro-ui-navbar</code> —
+      {{ lang() === 'en'
+        ? 'navigation tabs passed via'
+        : 'onglets de navigation passés via' }}
+      <code class="ds-code">[pages]</code>
+    </p>
+    <tyro-ui-data-table [columns]="fieldCols" [data]="pagesInterfaceData">
 
-  <div class="ds-block">
-    <span class="ds-label">Interface — ITyroUiNavbarPages</span>
-    <div class="ds-preview">
-      <div class="ds-preview-label">Structure des pages passées via <code>[pages]</code></div>
-      <div class="ds-preview-body">
-        <table class="ds-props-table">
-          <thead><tr><th>Champ</th><th>Type</th><th>Description</th></tr></thead>
-          <tbody>
-            <tr><td><code>label</code></td><td>string</td><td>Texte de l'onglet (fr)</td></tr>
-            <tr><td><code>labelEn?</code></td><td>string</td><td>Texte de l'onglet (en)</td></tr>
-            <tr><td><code>link?</code></td><td>string</td><td>Route Angular (<code>routerLink</code> + <code>routerLinkActive</code>)</td></tr>
-            <tr><td><code>href?</code></td><td>string</td><td>Lien externe</td></tr>
-            <tr><td><code>ancre?</code></td><td>string</td><td>ID de l'élément vers lequel scroller</td></tr>
-            <tr><td><code>icon?</code></td><td>string</td><td>Classe remix-icon affichée avant le label</td></tr>
-            <tr><td><code>children?</code></td><td>ITyroUiNavbarPages[]</td><td>Sous-onglets (dropdown)</td></tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
-  </div>
-</div>
+      <ng-template tyroCol="field" let-row>
+        <code class="ds-code">{{ $any(row).field }}</code>
+      </ng-template>
+
+      <ng-template tyroCol="description" let-row>
+        <span class="ds-desc" [innerHTML]="lang() === 'en' ? ($any(row).descriptionEn || $any(row).description) : $any(row).description"></span>
+      </ng-template>
+
+    </tyro-ui-data-table>
+  </tyro-ui-bento-card>
+
+</section>
