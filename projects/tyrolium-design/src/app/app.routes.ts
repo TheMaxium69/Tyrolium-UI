@@ -16,6 +16,7 @@ import { ButtonBentoPage }     from './pages/dashboard/button-bento/button-bento
 import { PageHeaderPage }      from './pages/dashboard/page-header/page-header-page';
 import { BentoCardPage }       from './pages/dashboard/bento-card/bento-card-page';
 import { DataTablePage }       from './pages/dashboard/data-table/data-table-page';
+import { ChipPage }           from './pages/dashboard/chip/chip-page';
 
 import { AuthModalPage }       from './pages/modal/auth-modal/auth-modal-page';
 
@@ -40,6 +41,7 @@ export const routes: Routes = [
       { path: 'dashboard/page-header',      component: PageHeaderPage },
       { path: 'dashboard/bento-card',       component: BentoCardPage },
       { path: 'dashboard/data-table',       component: DataTablePage },
+      { path: 'dashboard/chip',             component: ChipPage },
 
       { path: 'modal/auth-modal',           component: AuthModalPage },
 

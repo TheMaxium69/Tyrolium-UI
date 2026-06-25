@@ -48,6 +48,7 @@ export class Layout {
           { label: 'Page Header',      icon: 'ri-heading',            link: '/dashboard/page-header' },
           { label: 'Bento Card',       icon: 'ri-layout-cards-line',  link: '/dashboard/bento-card' },
           { label: 'Data Table',       icon: 'ri-table-line',         link: '/dashboard/data-table' },
+          { label: 'Chip',             icon: 'ri-price-tag-3-line',   link: '/dashboard/chip' },
         ],
       },
       {

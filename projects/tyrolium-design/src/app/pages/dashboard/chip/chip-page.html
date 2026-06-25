@@ -1,0 +1,125 @@
+<tyro-ui-page-header label="&lt;tyro-ui-chip&gt;" title="Chip">
+  @if (lang() === 'en') {
+    Semantic badge component with 5 variants, 2 sizes, optional icon and optional remove button.
+    Content is projected via <code class="ds-code">ng-content</code>.
+  } @else {
+    Composant badge sémantique avec 5 variantes, 2 tailles, icône optionnelle et bouton de suppression optionnel.
+    Le contenu est projeté via <code class="ds-code">ng-content</code>.
+  }
+</tyro-ui-page-header>
+
+<section id="chip-page">
+
+  <!-- ── Variantes ─────────────────────────────────────── -->
+  <h3 class="ds-title">{{ lang() === 'en' ? 'Variants' : 'Variantes' }}</h3>
+  <app-ds-preview [label]="lang() === 'en' ? 'All variants (md)' : 'Toutes les variantes (md)'">
+    <div class="ds-flex">
+      <tyro-ui-chip variant="default">Default</tyro-ui-chip>
+      <tyro-ui-chip variant="accent">Accent</tyro-ui-chip>
+      <tyro-ui-chip variant="success">Success</tyro-ui-chip>
+      <tyro-ui-chip variant="warning">Warning</tyro-ui-chip>
+      <tyro-ui-chip variant="danger">Danger</tyro-ui-chip>
+    </div>
+  </app-ds-preview>
+
+  <!-- ── Tailles ──────────────────────────────────────── -->
+  <h3 class="ds-title">{{ lang() === 'en' ? 'Sizes' : 'Tailles' }}</h3>
+  <app-ds-preview [label]="lang() === 'en' ? 'sm vs md' : 'sm et md'">
+    <div class="ds-flex">
+      <tyro-ui-chip variant="accent" size="sm">sm</tyro-ui-chip>
+      <tyro-ui-chip variant="accent" size="md">md</tyro-ui-chip>
+    </div>
+  </app-ds-preview>
+
+  <!-- ── Avec icône ──────────────────────────────────── -->
+  <h3 class="ds-title">{{ lang() === 'en' ? 'With icon' : 'Avec icône' }}</h3>
+  <app-ds-preview [label]="lang() === 'en' ? 'Remix Icon class via [icon]' : 'Classe Remix Icon via [icon]'">
+    <div class="ds-flex">
+      <tyro-ui-chip variant="success" icon="ri-check-line">{{ lang() === 'en' ? 'Active' : 'Actif' }}</tyro-ui-chip>
+      <tyro-ui-chip variant="warning" icon="ri-time-line">{{ lang() === 'en' ? 'Pending' : 'En attente' }}</tyro-ui-chip>
+      <tyro-ui-chip variant="danger"  icon="ri-close-circle-line">{{ lang() === 'en' ? 'Blocked' : 'Bloqué' }}</tyro-ui-chip>
+      <tyro-ui-chip variant="accent"  icon="ri-shield-user-line">Admin</tyro-ui-chip>
+    </div>
+  </app-ds-preview>
+
+  <!-- ── Supprimable ─────────────────────────────────── -->
+  <h3 class="ds-title">{{ lang() === 'en' ? 'Removable' : 'Supprimable' }}</h3>
+  <app-ds-preview [label]="lang() === 'en' ? '[removable] + (removed) event' : '[removable] + événement (removed)'">
+    <div class="ds-flex">
+      <tyro-ui-chip variant="default" [removable]="true">Tag 1</tyro-ui-chip>
+      <tyro-ui-chip variant="accent"  [removable]="true">Tag 2</tyro-ui-chip>
+      <tyro-ui-chip variant="success" icon="ri-check-line" [removable]="true">{{ lang() === 'en' ? 'Active' : 'Actif' }}</tyro-ui-chip>
+    </div>
+  </app-ds-preview>
+
+  <hr class="ds-divider">
+
+  <!-- ── Inputs ────────────────────────────────────────── -->
+  <tyro-ui-bento-card title="Inputs">
+    <tyro-ui-data-table [columns]="propCols" [data]="inputsData">
+
+      <ng-template tyroCol="prop" let-row>
+        <code class="ds-code">{{ $any(row).prop }}</code>
+      </ng-template>
+
+      <ng-template tyroCol="type" let-row>
+        <code class="ds-code">{{ $any(row).type }}</code>
+      </ng-template>
+
+      <ng-template tyroCol="default" let-row>
+        <code class="ds-code">{{ $any(row).default }}</code>
+      </ng-template>
+
+      <ng-template tyroCol="description" let-row>
+        <span class="ds-desc" [innerHTML]="lang() === 'en' ? ($any(row).descriptionEn || $any(row).description) : $any(row).description"></span>
+      </ng-template>
+
+    </tyro-ui-data-table>
+  </tyro-ui-bento-card>
+
+  <!-- ── Outputs ───────────────────────────────────────── -->
+  <tyro-ui-bento-card title="Outputs">
+    <tyro-ui-data-table [columns]="eventCols" [data]="outputsData">
+
+      <ng-template tyroCol="event" let-row>
+        <code class="ds-code">{{ $any(row).event }}</code>
+      </ng-template>
+
+      <ng-template tyroCol="payload" let-row>
+        <code class="ds-code">{{ $any(row).payload }}</code>
+      </ng-template>
+
+      <ng-template tyroCol="description" let-row>
+        <span class="ds-desc" [innerHTML]="lang() === 'en' ? ($any(row).descriptionEn || $any(row).description) : $any(row).description"></span>
+      </ng-template>
+
+    </tyro-ui-data-table>
+  </tyro-ui-bento-card>
+
+  <!-- ── Sémantique des variantes ──────────────────────── -->
+  <tyro-ui-bento-card [title]="lang() === 'en' ? 'Variant semantics' : 'Sémantique des variantes'">
+    <tyro-ui-data-table [columns]="variantCols" [data]="variantsData">
+
+      <ng-template tyroCol="variant" let-row>
+        <tyro-ui-chip [variant]="$any(row).variant">{{ $any(row).variant }}</tyro-ui-chip>
+      </ng-template>
+
+      <ng-template tyroCol="usage" let-row>
+        <span class="ds-desc" [innerHTML]="lang() === 'en' ? ($any(row).usageEn || $any(row).usage) : $any(row).usage"></span>
+      </ng-template>
+
+    </tyro-ui-data-table>
+  </tyro-ui-bento-card>
+
+  <!-- ── Usage ─────────────────────────────────────────── -->
+  <tyro-ui-bento-card [title]="lang() === 'en' ? 'Usage' : 'Utilisation'">
+    <pre class="ds-pre">&lt;tyro-ui-chip variant="success" icon="ri-check-line"&gt;
+  {{ lang() === 'en' ? 'Active' : 'Actif' }}
+&lt;/tyro-ui-chip&gt;
+
+&lt;tyro-ui-chip variant="danger" [removable]="true" (removed)="onRemove()"&gt;
+  Tag
+&lt;/tyro-ui-chip&gt;</pre>
+  </tyro-ui-bento-card>
+
+</section>
