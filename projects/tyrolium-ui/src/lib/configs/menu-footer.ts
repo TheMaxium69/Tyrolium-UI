@@ -31,7 +31,7 @@ export const FooterServiceLink: ITyroUiFooterPage[] = [
 ];
 
 export const FooterInternalLink: ITyroUiFooterPage[] = [
-    // { label: 'Tyrolium Hub',          labelEn: 'Tyrolium Hub',      link: 'https://hub.tyrolium.fr' },
-    { label: 'ERP Interne',           labelEn: 'Internal ERP',      link: 'https://app.tyrolium.fr' },
+    // { label: 'Hub Interne',          labelEn: 'Internal Hub',      link: 'https://hub.tyrolium.fr' },
+    { label: 'Portail ERP',           labelEn: 'ERP Portal',      link: 'https://app.tyrolium.fr' },
     { label: 'Serveur de Repository', labelEn: 'Repository server', link: 'http://repo.tyrolium.fr' },
 ];

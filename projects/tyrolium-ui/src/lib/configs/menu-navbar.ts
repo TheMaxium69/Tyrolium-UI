@@ -247,9 +247,10 @@ export const NavbarMenuCategory: ITyroUiNavbarMenuCategory[] = [
     open: false,
     items: [
       // {
-      //   name: 'Tyrolium Hub',
-      //   description: 'Centralise tous les backoffices',
-      //   descriptionEn: 'All platform management in one place',
+      //   name: 'Hub Interne',
+      //   nameEn: 'Internal Hub',
+      //   description: 'Pilotage central du groupe',
+      //   descriptionEn: 'Central group control panel',
       //   icon: 'ri-dashboard-fill',
       //   link: 'https://hub.tyrolium.fr',
       // },
