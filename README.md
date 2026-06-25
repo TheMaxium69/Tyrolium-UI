@@ -1,14 +1,14 @@
 # 🎨 Tyrolium-UI : Documentation Technique & Design System
 
-**Framework :** Angular (Workspace mono-repo)  
-**Iconographie :** RemixIcon  
+**Framework :** Angular (Workspace mono-repo)
+**Iconographie :** RemixIcon
 **Documentation interactive :** [design.tyrolium.fr](https://design.tyrolium.fr)
 
 ---
 
 ## 📖 1. Présentation
 
-**Tyrolium-UI** est la librairie de composants officielle du Design System de Tyrolium.  
+**Tyrolium-UI** est la librairie de composants officielle du Design System de Tyrolium.
 Elle centralise l'identité visuelle pour l'ensemble des projets du groupe.
 
 ### Projets du workspace
@@ -27,7 +27,7 @@ Elle centralise l'identité visuelle pour l'ensemble des projets du groupe.
 | `gamenium-website` | gamenium.fr | Actualités jeu-vidéo |
 | `useritium-website` | useritium.fr | Gestion de compte SSO |
 | `nexiumiacrm-website` | nexiumiacrm.fr | CRM |
-| `useritium-dashboard` | — | Dashboard Useritium |
+| `useritium-dashboard` | dashboard.useritium.fr | Dashboard Useritium |
 | `tyrolium-hub` | hub.tyrolium.fr | Hub backoffice interne |
 
 ---
