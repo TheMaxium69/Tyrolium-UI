@@ -1,0 +1,19 @@
+<button
+  type="button"
+  role="checkbox"
+  class="cb-box"
+  [class.cb-box--checked]="value"
+  [class.cb-box--disabled]="disabled"
+  [attr.aria-checked]="value"
+  [attr.aria-labelledby]="label ? inputId : null"
+  [disabled]="disabled"
+  (click)="toggle()">
+  @if (value) {
+    <i class="ri-check-line cb-check"></i>
+  }
+</button>
+@if (label) {
+  <span [id]="inputId" class="cb-label" [class.cb-label--disabled]="disabled" (click)="toggle()">
+    {{ label }}
+  </span>
+}

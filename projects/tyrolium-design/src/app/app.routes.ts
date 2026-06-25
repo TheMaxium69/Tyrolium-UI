@@ -22,6 +22,10 @@ import { ButtonGroupPage }    from './pages/dashboard/button-group/button-group-
 import { SwitchPage }         from './pages/dashboard/switch/switch-page';
 import { SelectPage }         from './pages/dashboard/select/select-page';
 import { TextFieldPage }      from './pages/dashboard/text-field/text-field-page';
+import { AlertPage }          from './pages/dashboard/alert/alert-page';
+import { CheckboxPage }       from './pages/dashboard/checkbox/checkbox-page';
+import { ProgressBarPage }    from './pages/dashboard/progress-bar/progress-bar-page';
+import { SnackbarPage }       from './pages/dashboard/snackbar/snackbar-page';
 
 import { AuthModalPage }       from './pages/modal/auth-modal/auth-modal-page';
 
@@ -52,6 +56,10 @@ export const routes: Routes = [
       { path: 'dashboard/switch',           component: SwitchPage },
       { path: 'dashboard/select',           component: SelectPage },
       { path: 'dashboard/text-field',       component: TextFieldPage },
+      { path: 'dashboard/alert',            component: AlertPage },
+      { path: 'dashboard/checkbox',         component: CheckboxPage },
+      { path: 'dashboard/progress-bar',     component: ProgressBarPage },
+      { path: 'dashboard/snackbar',         component: SnackbarPage },
 
       { path: 'modal/auth-modal',           component: AuthModalPage },
 

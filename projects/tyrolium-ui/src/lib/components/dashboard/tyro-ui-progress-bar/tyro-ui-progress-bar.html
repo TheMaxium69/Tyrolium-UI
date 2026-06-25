@@ -1,0 +1,18 @@
+<div class="pb-header" [class.pb-header--visible]="label || showLabel">
+  @if (label) {
+    <span class="pb-label">{{ label }}</span>
+  }
+  @if (showLabel) {
+    <span class="pb-percent">{{ clampedValue }}%</span>
+  }
+</div>
+
+<div class="pb-track" [class]="'pb-track--' + variant" [style]="trackStyle">
+  <div
+    class="pb-fill"
+    [class]="'pb-fill--' + variant"
+    [style.width.%]="clampedValue"
+    [style.background]="fillBackground"
+    [style.box-shadow]="fillGlow">
+  </div>
+</div>

@@ -1,10 +1,10 @@
 import { Component, computed, inject } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { ITyroUiDashNavItem, TyroUiDashboardLayout, TyroUiLangService } from 'tyrolium-ui';
+import { ITyroUiDashNavItem, TyroUiDashboardLayout, TyroUiLangService, TyroUiSnackbar } from 'tyrolium-ui';
 
 @Component({
   selector: 'app-layout',
-  imports: [RouterOutlet, TyroUiDashboardLayout],
+  imports: [RouterOutlet, TyroUiDashboardLayout, TyroUiSnackbar],
   template: `
     <tyro-ui-dashboard-layout
       [project]="PROJECT_NAME"
@@ -15,6 +15,7 @@ import { ITyroUiDashNavItem, TyroUiDashboardLayout, TyroUiLangService } from 'ty
       [navItems]="navItems()">
       <router-outlet />
     </tyro-ui-dashboard-layout>
+    <tyro-ui-snackbar></tyro-ui-snackbar>
   `,
 })
 export class Layout {
@@ -54,6 +55,10 @@ export class Layout {
           { label: 'Switch',           icon: 'ri-toggle-line',          link: '/dashboard/switch' },
           { label: 'Select',           icon: 'ri-arrow-down-s-line',   link: '/dashboard/select' },
           { label: 'Text Field',       icon: 'ri-input-method-line',   link: '/dashboard/text-field' },
+          { label: 'Alert',            icon: 'ri-alarm-warning-line',  link: '/dashboard/alert' },
+          { label: 'Checkbox',         icon: 'ri-checkbox-line',        link: '/dashboard/checkbox' },
+          { label: 'Progress Bar',     icon: 'ri-progress-3-line',      link: '/dashboard/progress-bar' },
+          { label: 'Snackbar',         icon: 'ri-notification-3-line',  link: '/dashboard/snackbar' },
         ],
       },
       {

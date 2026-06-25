@@ -20,6 +20,11 @@ export * from './lib/components/dashboard/tyro-ui-button-group/tyro-ui-button-gr
 export * from './lib/components/dashboard/tyro-ui-switch/tyro-ui-switch';
 export * from './lib/components/dashboard/tyro-ui-select/tyro-ui-select';
 export * from './lib/components/dashboard/tyro-ui-text-field/tyro-ui-text-field';
+export * from './lib/components/dashboard/tyro-ui-alert/tyro-ui-alert';
+export * from './lib/components/dashboard/tyro-ui-checkbox/tyro-ui-checkbox';
+export * from './lib/components/dashboard/tyro-ui-progress-bar/tyro-ui-progress-bar';
+export * from './lib/components/dashboard/tyro-ui-snackbar/tyro-ui-snackbar';
+export * from './lib/components/dashboard/tyro-ui-snackbar/tyro-ui-snackbar.service';
 
 /* Components — modal */
 export * from './lib/components/modal/tyro-ui-auth-modal/tyro-ui-auth-modal';
@@ -36,6 +41,7 @@ export * from './lib/components/other/tyro-ui-easter-egg/tyro-ui-easter-egg';
 export * from './lib/interface/ityro-ui-data-table-column';
 export * from './lib/interface/ityro-ui-button-group-item';
 export * from './lib/interface/ityro-ui-select-item';
+export * from './lib/interface/ityro-ui-snackbar-config';
 export * from './lib/interface/ityro-ui-user';
 export * from './lib/interface/ityro-ui-navbar-pages';
 export * from './lib/interface/ityro-ui-subnav-pages';
