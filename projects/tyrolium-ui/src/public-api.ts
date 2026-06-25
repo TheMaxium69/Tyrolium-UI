@@ -25,9 +25,14 @@ export * from './lib/components/dashboard/tyro-ui-checkbox/tyro-ui-checkbox';
 export * from './lib/components/dashboard/tyro-ui-progress-bar/tyro-ui-progress-bar';
 export * from './lib/components/dashboard/tyro-ui-snackbar/tyro-ui-snackbar';
 export * from './lib/components/dashboard/tyro-ui-snackbar/tyro-ui-snackbar.service';
+export * from './lib/components/dashboard/tyro-ui-skeleton/tyro-ui-skeleton';
+export * from './lib/components/dashboard/tyro-ui-avatar/tyro-ui-avatar';
+export * from './lib/components/dashboard/tyro-ui-avatar-group/tyro-ui-avatar-group';
 
 /* Components — modal */
 export * from './lib/components/modal/tyro-ui-auth-modal/tyro-ui-auth-modal';
+export * from './lib/components/modal/tyro-ui-confirm-modal/tyro-ui-confirm-modal';
+export * from './lib/components/modal/tyro-ui-confirm-modal/tyro-ui-confirm.service';
 
 /* Components — page */
 export * from './lib/components/page/tyro-ui-not-found/tyro-ui-not-found';
@@ -42,6 +47,8 @@ export * from './lib/interface/ityro-ui-data-table-column';
 export * from './lib/interface/ityro-ui-button-group-item';
 export * from './lib/interface/ityro-ui-select-item';
 export * from './lib/interface/ityro-ui-snackbar-config';
+export * from './lib/interface/ityro-ui-confirm-config';
+export * from './lib/interface/ityro-ui-avatar-item';
 export * from './lib/interface/ityro-ui-user';
 export * from './lib/interface/ityro-ui-navbar-pages';
 export * from './lib/interface/ityro-ui-subnav-pages';

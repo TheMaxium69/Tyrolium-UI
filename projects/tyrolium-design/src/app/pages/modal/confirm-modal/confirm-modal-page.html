@@ -1,0 +1,81 @@
+<tyro-ui-page-header label="TyroUiConfirmService" title="Confirm Modal">
+  @if (lang() === 'en') {
+    Confirmation modal with yes/no and close. Returns a <code class="ds-code">Promise&lt;boolean&gt;</code>.
+    Trigger via <code class="ds-code">TyroUiConfirmService.confirm(config)</code>.
+    Place <code class="ds-code">&lt;tyro-ui-confirm-modal&gt;</code> once in the root layout.
+  } @else {
+    Modale de confirmation oui/non avec fermeture. Retourne une <code class="ds-code">Promise&lt;boolean&gt;</code>.
+    Déclencher via <code class="ds-code">TyroUiConfirmService.confirm(config)</code>.
+    Placer <code class="ds-code">&lt;tyro-ui-confirm-modal&gt;</code> une fois dans le layout racine.
+  }
+</tyro-ui-page-header>
+
+<section id="confirm-modal-page">
+
+  <h3 class="ds-title">{{ lang() === 'en' ? 'Demo' : 'Démo' }}</h3>
+  <app-ds-preview [label]="lang() === 'en' ? 'Click a button and see the returned value' : 'Cliquer un bouton et voir la valeur retournée'">
+    <div style="display:flex;flex-wrap:wrap;gap:10px;align-items:center;">
+
+      <tyro-ui-button variant="classic" icon="ri-question-line" (clicked)="ask('default')">
+        {{ lang() === 'en' ? 'Default confirm' : 'Confirmation par défaut' }}
+      </tyro-ui-button>
+
+      <tyro-ui-button variant="lite" icon="ri-delete-bin-line" (clicked)="ask('danger')">
+        {{ lang() === 'en' ? 'Danger confirm' : 'Confirmation danger' }}
+      </tyro-ui-button>
+
+    </div>
+
+    @if (lastResult !== null) {
+      <div style="margin-top:14px;">
+        <tyro-ui-alert
+          [type]="lastResult ? 'success' : 'warning'"
+          [closable]="false"
+          [title]="lastResult ? (lang() === 'en' ? 'Confirmed' : 'Confirmé') : (lang() === 'en' ? 'Cancelled' : 'Annulé')"
+          [message]="lastResult ? (lang() === 'en' ? 'confirm() resolved true.' : 'confirm() a retourné true.') : (lang() === 'en' ? 'confirm() resolved false.' : 'confirm() a retourné false.')">
+        </tyro-ui-alert>
+      </div>
+    }
+  </app-ds-preview>
+
+  <hr class="ds-divider">
+
+  <tyro-ui-bento-card [title]="lang() === 'en' ? 'ITyroUiConfirmConfig' : 'ITyroUiConfirmConfig'">
+    <tyro-ui-data-table [columns]="propCols" [data]="configData">
+      <ng-template tyroCol="prop"    let-row><code class="ds-code">{{ $any(row).prop }}</code></ng-template>
+      <ng-template tyroCol="type"    let-row><code class="ds-code">{{ $any(row).type }}</code></ng-template>
+      <ng-template tyroCol="default" let-row><code class="ds-code">{{ $any(row).default }}</code></ng-template>
+      <ng-template tyroCol="description" let-row>
+        <span class="ds-desc" [innerHTML]="lang() === 'en' ? ($any(row).descriptionEn || $any(row).description) : $any(row).description"></span>
+      </ng-template>
+    </tyro-ui-data-table>
+  </tyro-ui-bento-card>
+
+  <h3 class="ds-title">Setup</h3>
+  <tyro-ui-bento-card [title]="lang() === 'en' ? 'Root layout — add once' : 'Layout racine — à ajouter une fois'">
+    <pre class="ds-pre"><code>{{ '<' }}tyro-ui-dashboard-layout {{ '[' }}...{{ ']' }}>
+  {{ '<' }}router-outlet />
+{{ '<' }}/tyro-ui-dashboard-layout>
+{{ '<' }}tyro-ui-confirm-modal>{{ '<' }}/tyro-ui-confirm-modal></code></pre>
+  </tyro-ui-bento-card>
+
+  <tyro-ui-bento-card [title]="lang() === 'en' ? 'Usage — async/await' : 'Utilisation — async/await'">
+    <pre class="ds-pre"><code>private readonly confirm = inject(TyroUiConfirmService);
+
+async deleteItem(): Promise{{ '<' }}void> {{ '{' }}
+  const ok = await this.confirm.confirm({{ '{' }}
+    type:         'danger',
+    icon:         'ri-delete-bin-line',
+    title:        'Supprimer cet élément ?',
+    message:      'Cette action est irréversible.',
+    confirmLabel: 'Supprimer',
+    cancelLabel:  'Annuler',
+  {{ '}' }});
+
+  if (ok) {{ '{' }}
+    // l'utilisateur a confirmé
+  {{ '}' }}
+{{ '}' }}</code></pre>
+  </tyro-ui-bento-card>
+
+</section>

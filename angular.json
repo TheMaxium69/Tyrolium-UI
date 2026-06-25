@@ -815,6 +815,10 @@
             "assets": [
               {
                 "glob": "**/*",
+                "input": "projects/tyrolium-uptime/public"
+              },
+              {
+                "glob": "**/*",
                 "input": "projects/tyrolium-ui/src/styles/assets",
                 "output": "assets/tyrolium-ui"
               }
@@ -827,8 +831,16 @@
           "configurations": {
             "production": {
               "budgets": [
-                { "type": "initial", "maximumWarning": "1MB", "maximumError": "2MB" },
-                { "type": "anyComponentStyle", "maximumWarning": "16kB", "maximumError": "32kB" }
+                {
+                  "type": "initial",
+                  "maximumWarning": "1MB",
+                  "maximumError": "2MB"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "16kB",
+                  "maximumError": "32kB"
+                }
               ],
               "outputHashing": "all"
             },

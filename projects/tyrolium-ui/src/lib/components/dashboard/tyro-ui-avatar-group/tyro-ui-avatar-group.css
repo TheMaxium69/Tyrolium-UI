@@ -1,0 +1,66 @@
+:host { display: inline-flex; }
+
+/* ─── Groupe ──────────────────────────────────────────────── */
+
+.ag-group {
+  display: flex;
+  align-items: center;
+}
+
+/* ─── Chaque avatar — décalé vers la gauche ───────────────── */
+
+.ag-item {
+  display: inline-flex;
+  margin-left: -8px;
+  transition: transform 0.15s;
+}
+
+.ag-item:first-child { margin-left: 0; }
+
+.ag-item:hover { transform: translateY(-3px); z-index: 10; }
+
+/* Tailles des offsets */
+.ag-item--xs { margin-left: -6px; }
+.ag-item--sm { margin-left: -8px; }
+.ag-item--md { margin-left: -10px; }
+.ag-item--lg { margin-left: -14px; }
+
+.ag-item--xs:first-child,
+.ag-item--sm:first-child,
+.ag-item--md:first-child,
+.ag-item--lg:first-child { margin-left: 0; }
+
+/* ─── Overflow "+N" ───────────────────────────────────────── */
+
+.ag-overflow {
+  border-radius: 50%;
+  border: 2px solid transparent;
+  padding: 2px;
+  box-sizing: border-box;
+  background-image:
+    linear-gradient(var(--page-card-bg, #ffffff), var(--page-card-bg, #ffffff)),
+    conic-gradient(from -45deg, #0400d4, #cc0000, #0400d4);
+  background-origin: padding-box, border-box;
+  background-clip: padding-box, border-box;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Inter', sans-serif;
+  font-weight: 700;
+  color: var(--page-text, #111827);
+  flex-shrink: 0;
+  margin-left: -10px;
+}
+
+:host-context([data-theme="dark"]) .ag-overflow {
+  background-image:
+    linear-gradient(#1e2535, #1e2535),
+    conic-gradient(from -45deg, #0400d4, #cc0000, #0400d4);
+  color: #f9fafb;
+}
+
+/* Tailles overflow */
+.ag-overflow--xs { width: 24px; height: 24px; font-size: 8px;  margin-left: -6px; }
+.ag-overflow--sm { width: 32px; height: 32px; font-size: 10px; margin-left: -8px; }
+.ag-overflow--md { width: 40px; height: 40px; font-size: 12px; margin-left: -10px; }
+.ag-overflow--lg { width: 56px; height: 56px; font-size: 16px; margin-left: -14px; }

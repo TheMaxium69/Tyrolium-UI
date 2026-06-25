@@ -1,10 +1,10 @@
 import { Component, computed, inject } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { ITyroUiDashNavItem, TyroUiDashboardLayout, TyroUiLangService, TyroUiSnackbar } from 'tyrolium-ui';
+import { ITyroUiDashNavItem, TyroUiDashboardLayout, TyroUiLangService, TyroUiSnackbar, TyroUiConfirmModal } from 'tyrolium-ui';
 
 @Component({
   selector: 'app-layout',
-  imports: [RouterOutlet, TyroUiDashboardLayout, TyroUiSnackbar],
+  imports: [RouterOutlet, TyroUiDashboardLayout, TyroUiSnackbar, TyroUiConfirmModal],
   template: `
     <tyro-ui-dashboard-layout
       [project]="PROJECT_NAME"
@@ -16,6 +16,7 @@ import { ITyroUiDashNavItem, TyroUiDashboardLayout, TyroUiLangService, TyroUiSna
       <router-outlet />
     </tyro-ui-dashboard-layout>
     <tyro-ui-snackbar></tyro-ui-snackbar>
+    <tyro-ui-confirm-modal></tyro-ui-confirm-modal>
   `,
 })
 export class Layout {
@@ -59,13 +60,17 @@ export class Layout {
           { label: 'Checkbox',         icon: 'ri-checkbox-line',        link: '/dashboard/checkbox' },
           { label: 'Progress Bar',     icon: 'ri-progress-3-line',      link: '/dashboard/progress-bar' },
           { label: 'Snackbar',         icon: 'ri-notification-3-line',  link: '/dashboard/snackbar' },
+          { label: 'Skeleton',         icon: 'ri-loader-4-line',         link: '/dashboard/skeleton' },
+          { label: 'Avatar',           icon: 'ri-user-3-line',           link: '/dashboard/avatar' },
+          { label: 'Avatar Group',     icon: 'ri-group-line',            link: '/dashboard/avatar-group' },
         ],
       },
       {
         label: 'Modal', icon: 'ri-window-line',
         category: true, open: true,
         children: [
-          { label: 'Auth Modal', icon: 'ri-door-lock-line', link: '/modal/auth-modal' },
+          { label: 'Auth Modal',    icon: 'ri-door-lock-line',   link: '/modal/auth-modal' },
+          { label: 'Confirm Modal', icon: 'ri-question-line',   link: '/modal/confirm-modal' },
         ],
       },
       {

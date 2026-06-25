@@ -1,0 +1,76 @@
+<tyro-ui-page-header label="&lt;tyro-ui-skeleton&gt;" title="Skeleton">
+  @if (lang() === 'en') {
+    Loading placeholder with shimmer animation — 3 variants: <code class="ds-code">rect</code>,
+    <code class="ds-code">text</code>, <code class="ds-code">circle</code>. Supports <code class="ds-code">[count]</code> to repeat rows.
+  } @else {
+    Placeholder de chargement animé (shimmer) — 3 variantes : <code class="ds-code">rect</code>,
+    <code class="ds-code">text</code>, <code class="ds-code">circle</code>. Supporte <code class="ds-code">[count]</code> pour répéter les lignes.
+  }
+</tyro-ui-page-header>
+
+<section id="skeleton-page">
+
+  <!-- ── Text ────────────────────────────────────────────────── -->
+  <h3 class="ds-title">Text</h3>
+  <app-ds-preview [label]="lang() === 'en' ? 'Multiple text lines — [count]' : 'Lignes de texte multiples — [count]'">
+    <div style="width:100%;max-width:400px;display:flex;flex-direction:column;gap:8px;">
+      <tyro-ui-skeleton variant="text" width="60%" height="20px"></tyro-ui-skeleton>
+      <tyro-ui-skeleton variant="text" [count]="3" height="14px"></tyro-ui-skeleton>
+      <tyro-ui-skeleton variant="text" width="40%" height="14px"></tyro-ui-skeleton>
+    </div>
+  </app-ds-preview>
+
+  <!-- ── Card skeleton ────────────────────────────────────────── -->
+  <h3 class="ds-title">{{ lang() === 'en' ? 'Card skeleton' : 'Carte skeleton' }}</h3>
+  <app-ds-preview [label]="lang() === 'en' ? 'Avatar + content composition' : 'Composition avatar + contenu'">
+    <div style="width:100%;max-width:420px;">
+      <div style="display:flex;gap:14px;align-items:flex-start;">
+        <tyro-ui-skeleton variant="circle" width="48px" height="48px"></tyro-ui-skeleton>
+        <div style="flex:1;display:flex;flex-direction:column;gap:8px;padding-top:4px;">
+          <tyro-ui-skeleton variant="text" width="45%" height="16px"></tyro-ui-skeleton>
+          <tyro-ui-skeleton variant="text" width="30%" height="12px"></tyro-ui-skeleton>
+        </div>
+      </div>
+      <div style="margin-top:16px;display:flex;flex-direction:column;gap:8px;">
+        <tyro-ui-skeleton variant="rect" width="100%" height="120px"></tyro-ui-skeleton>
+        <tyro-ui-skeleton variant="text" [count]="2" height="13px"></tyro-ui-skeleton>
+        <tyro-ui-skeleton variant="text" width="55%" height="13px"></tyro-ui-skeleton>
+      </div>
+    </div>
+  </app-ds-preview>
+
+  <!-- ── Rect ────────────────────────────────────────────────── -->
+  <h3 class="ds-title">Rect</h3>
+  <app-ds-preview [label]="lang() === 'en' ? 'Image / block placeholder' : 'Placeholder image / bloc'">
+    <div style="display:flex;gap:14px;flex-wrap:wrap;">
+      <tyro-ui-skeleton variant="rect" width="120px" height="80px"></tyro-ui-skeleton>
+      <tyro-ui-skeleton variant="rect" width="200px" height="80px"></tyro-ui-skeleton>
+      <tyro-ui-skeleton variant="rect" width="80px"  height="80px" borderRadius="50%"></tyro-ui-skeleton>
+    </div>
+  </app-ds-preview>
+
+  <!-- ── Circle ───────────────────────────────────────────────── -->
+  <h3 class="ds-title">Circle</h3>
+  <app-ds-preview [label]="lang() === 'en' ? 'Avatar placeholder — multiple sizes' : 'Placeholder avatar — tailles multiples'">
+    <div style="display:flex;gap:12px;align-items:center;">
+      <tyro-ui-skeleton variant="circle" width="24px"  height="24px"></tyro-ui-skeleton>
+      <tyro-ui-skeleton variant="circle" width="32px"  height="32px"></tyro-ui-skeleton>
+      <tyro-ui-skeleton variant="circle" width="40px"  height="40px"></tyro-ui-skeleton>
+      <tyro-ui-skeleton variant="circle" width="56px"  height="56px"></tyro-ui-skeleton>
+    </div>
+  </app-ds-preview>
+
+  <hr class="ds-divider">
+
+  <tyro-ui-bento-card title="Inputs">
+    <tyro-ui-data-table [columns]="propCols" [data]="inputsData">
+      <ng-template tyroCol="prop"    let-row><code class="ds-code">{{ $any(row).prop }}</code></ng-template>
+      <ng-template tyroCol="type"    let-row><code class="ds-code">{{ $any(row).type }}</code></ng-template>
+      <ng-template tyroCol="default" let-row><code class="ds-code">{{ $any(row).default }}</code></ng-template>
+      <ng-template tyroCol="description" let-row>
+        <span class="ds-desc" [innerHTML]="lang() === 'en' ? ($any(row).descriptionEn || $any(row).description) : $any(row).description"></span>
+      </ng-template>
+    </tyro-ui-data-table>
+  </tyro-ui-bento-card>
+
+</section>

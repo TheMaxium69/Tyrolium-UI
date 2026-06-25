@@ -1,0 +1,43 @@
+:host { display: inline-flex; flex-shrink: 0; }
+
+/* ─── Ring (reprend exactement le design navbar) ──────────── */
+
+.av-ring {
+  border-radius: 50%;
+  border: 2px solid transparent;
+  padding: 2px;
+  box-sizing: border-box;
+  background-image:
+    linear-gradient(var(--page-card-bg, #ffffff), var(--page-card-bg, #ffffff)),
+    conic-gradient(from -45deg, #0400d4, #cc0000, #0400d4);
+  background-origin: padding-box, border-box;
+  background-clip: padding-box, border-box;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+:host-context([data-theme="dark"]) .av-ring {
+  background-image:
+    linear-gradient(#1e2535, #1e2535),
+    conic-gradient(from -45deg, #0400d4, #cc0000, #0400d4);
+}
+
+/* ─── Tailles ─────────────────────────────────────────────── */
+
+.av-ring--xs { width: 24px; height: 24px; }
+.av-ring--sm { width: 32px; height: 32px; }
+.av-ring--md { width: 40px; height: 40px; }
+.av-ring--lg { width: 56px; height: 56px; }
+
+/* ─── Image ───────────────────────────────────────────────── */
+
+.av-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+  display: block;
+}

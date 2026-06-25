@@ -26,6 +26,11 @@ import { AlertPage }          from './pages/dashboard/alert/alert-page';
 import { CheckboxPage }       from './pages/dashboard/checkbox/checkbox-page';
 import { ProgressBarPage }    from './pages/dashboard/progress-bar/progress-bar-page';
 import { SnackbarPage }       from './pages/dashboard/snackbar/snackbar-page';
+import { SkeletonPage }       from './pages/dashboard/skeleton/skeleton-page';
+import { AvatarPage }         from './pages/dashboard/avatar/avatar-page';
+import { AvatarGroupPage }    from './pages/dashboard/avatar-group/avatar-group-page';
+
+import { ConfirmModalPage }   from './pages/modal/confirm-modal/confirm-modal-page';
 
 import { AuthModalPage }       from './pages/modal/auth-modal/auth-modal-page';
 
@@ -60,8 +65,12 @@ export const routes: Routes = [
       { path: 'dashboard/checkbox',         component: CheckboxPage },
       { path: 'dashboard/progress-bar',     component: ProgressBarPage },
       { path: 'dashboard/snackbar',         component: SnackbarPage },
+      { path: 'dashboard/skeleton',         component: SkeletonPage },
+      { path: 'dashboard/avatar',           component: AvatarPage },
+      { path: 'dashboard/avatar-group',     component: AvatarGroupPage },
 
       { path: 'modal/auth-modal',           component: AuthModalPage },
+      { path: 'modal/confirm-modal',        component: ConfirmModalPage },
 
       { path: 'page/not-found',             component: NotFoundPage },
       { path: 'page/forbidden',             component: ForbiddenPage },

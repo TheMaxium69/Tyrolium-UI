@@ -19,16 +19,6 @@
         {{ lang() === 'en' ? 'Open modal' : 'Ouvrir la modale' }}
       </tyro-ui-button>
 
-      @if (auth.user()) {
-        <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;">
-          <tyro-ui-chip icon="ri-user-line">{{ lang() === 'en' ? 'Connected as' : 'Connecté en tant que' }}</tyro-ui-chip>
-          <tyro-ui-chip variant="success">{{ auth.user()!.username || auth.user()!.email }}</tyro-ui-chip>
-          <tyro-ui-button variant="ghost" icon="ri-logout-box-line" (clicked)="auth.logout()">
-            {{ lang() === 'en' ? 'Logout' : 'Déconnexion' }}
-          </tyro-ui-button>
-        </div>
-      }
-
     </div>
   </app-ds-preview>
 

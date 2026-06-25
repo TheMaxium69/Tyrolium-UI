@@ -1,0 +1,46 @@
+<tyro-ui-page-header label="&lt;tyro-ui-avatar-group&gt;" title="Avatar Group">
+  @if (lang() === 'en') {
+    Overlapping avatar stack. Shows up to <code class="ds-code">[max]</code> avatars then a
+    <code class="ds-code">+N</code> bubble for the rest.
+  } @else {
+    Pile d'avatars se chevauchant. Affiche jusqu'à <code class="ds-code">[max]</code> avatars puis une bulle
+    <code class="ds-code">+N</code> pour le reste.
+  }
+</tyro-ui-page-header>
+
+<section id="avatar-group-page">
+
+  <h3 class="ds-title">{{ lang() === 'en' ? 'Default — max 4' : 'Par défaut — max 4' }}</h3>
+  <app-ds-preview [label]="lang() === 'en' ? '6 avatars, [max]: 4 → shows +2' : '6 avatars, [max]: 4 → affiche +2'">
+    <tyro-ui-avatar-group [avatars]="team" [max]="4"></tyro-ui-avatar-group>
+  </app-ds-preview>
+
+  <h3 class="ds-title">{{ lang() === 'en' ? 'Sizes' : 'Tailles' }}</h3>
+  <app-ds-preview [label]="lang() === 'en' ? 'xs / sm / md / lg' : 'xs / sm / md / lg'">
+    <div style="display:flex;flex-direction:column;gap:16px;">
+      <tyro-ui-avatar-group [avatars]="team" [max]="4" size="xs"></tyro-ui-avatar-group>
+      <tyro-ui-avatar-group [avatars]="team" [max]="4" size="sm"></tyro-ui-avatar-group>
+      <tyro-ui-avatar-group [avatars]="team" [max]="4" size="md"></tyro-ui-avatar-group>
+      <tyro-ui-avatar-group [avatars]="team" [max]="4" size="lg"></tyro-ui-avatar-group>
+    </div>
+  </app-ds-preview>
+
+  <h3 class="ds-title">{{ lang() === 'en' ? 'All shown (max > count)' : 'Tous affichés (max > count)' }}</h3>
+  <app-ds-preview [label]="lang() === 'en' ? '[max]: 10 — no overflow bubble' : '[max]: 10 — pas de bulle overflow'">
+    <tyro-ui-avatar-group [avatars]="team" [max]="10"></tyro-ui-avatar-group>
+  </app-ds-preview>
+
+  <hr class="ds-divider">
+
+  <tyro-ui-bento-card title="Inputs">
+    <tyro-ui-data-table [columns]="propCols" [data]="inputsData">
+      <ng-template tyroCol="prop"    let-row><code class="ds-code">{{ $any(row).prop }}</code></ng-template>
+      <ng-template tyroCol="type"    let-row><code class="ds-code">{{ $any(row).type }}</code></ng-template>
+      <ng-template tyroCol="default" let-row><code class="ds-code">{{ $any(row).default }}</code></ng-template>
+      <ng-template tyroCol="description" let-row>
+        <span class="ds-desc" [innerHTML]="lang() === 'en' ? ($any(row).descriptionEn || $any(row).description) : $any(row).description"></span>
+      </ng-template>
+    </tyro-ui-data-table>
+  </tyro-ui-bento-card>
+
+</section>

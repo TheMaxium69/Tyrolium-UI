@@ -1,0 +1,66 @@
+<tyro-ui-page-header label="&lt;tyro-ui-avatar&gt;" title="Avatar">
+  @if (lang() === 'en') {
+    Profile avatar matching the navbar design — gradient border ring.
+    <code class="ds-code">[src]</code> takes priority, otherwise <code class="ds-code">tyrolium.fr/generate-pp</code> is used from <code class="ds-code">[name]</code>. Nothing is rendered if both are absent.
+  } @else {
+    Avatar de profil reprenant le design de la navbar — anneau en dégradé.
+    <code class="ds-code">[src]</code> prioritaire, sinon <code class="ds-code">tyrolium.fr/generate-pp</code> généré depuis <code class="ds-code">[name]</code>. Rien n'est rendu si les deux sont absents.
+  }
+</tyro-ui-page-header>
+
+<section id="avatar-page">
+
+  <!-- ── generate-pp (name sans src) ────────────────────────── -->
+  <h3 class="ds-title">{{ lang() === 'en' ? 'Generated from name' : 'Généré depuis le nom' }}</h3>
+  <app-ds-preview [label]="lang() === 'en' ? '[name] → tyrolium.fr/generate-pp?l=X&c=HEXCOLOR' : '[name] → tyrolium.fr/generate-pp?l=X&c=HEXCOLOR'">
+    <div style="display:flex;gap:14px;align-items:center;flex-wrap:wrap;">
+      <tyro-ui-avatar size="md" name="Alice Martin"></tyro-ui-avatar>
+      <tyro-ui-avatar size="md" name="Bob Dupont"></tyro-ui-avatar>
+      <tyro-ui-avatar size="md" name="Charlie Lee"></tyro-ui-avatar>
+      <tyro-ui-avatar size="md" name="Diana Prince"></tyro-ui-avatar>
+      <tyro-ui-avatar size="md" name="Maxime Tournier"></tyro-ui-avatar>
+    </div>
+  </app-ds-preview>
+
+  <!-- ── Photo directe ────────────────────────────────────────── -->
+  <h3 class="ds-title">{{ lang() === 'en' ? 'With [src]' : 'Avec [src]' }}</h3>
+  <app-ds-preview [label]="lang() === 'en' ? 'Direct image URL — gradient ring' : 'URL image directe — anneau dégradé'">
+    <div style="display:flex;gap:16px;align-items:center;">
+      <tyro-ui-avatar size="xs" src="/assets/exemple-avatar.jpg"></tyro-ui-avatar>
+      <tyro-ui-avatar size="sm" src="/assets/exemple-avatar.jpg"></tyro-ui-avatar>
+      <tyro-ui-avatar size="md" src="/assets/exemple-avatar.jpg"></tyro-ui-avatar>
+      <tyro-ui-avatar size="lg" src="/assets/exemple-avatar.jpg"></tyro-ui-avatar>
+    </div>
+  </app-ds-preview>
+
+  <!-- ── Tailles ───────────────────────────────────────────────── -->
+  <h3 class="ds-title">{{ lang() === 'en' ? 'Sizes' : 'Tailles' }}</h3>
+  <app-ds-preview [label]="lang() === 'en' ? 'xs=24px / sm=32px / md=40px / lg=56px' : 'xs=24px / sm=32px / md=40px / lg=56px'">
+    <div style="display:flex;gap:16px;align-items:center;">
+      <tyro-ui-avatar size="xs" name="Maxime Tournier"></tyro-ui-avatar>
+      <tyro-ui-avatar size="sm" name="Maxime Tournier"></tyro-ui-avatar>
+      <tyro-ui-avatar size="md" name="Maxime Tournier"></tyro-ui-avatar>
+      <tyro-ui-avatar size="lg" name="Maxime Tournier"></tyro-ui-avatar>
+    </div>
+  </app-ds-preview>
+
+  <hr class="ds-divider">
+
+  <tyro-ui-bento-card title="Inputs">
+    <tyro-ui-data-table [columns]="propCols" [data]="inputsData">
+      <ng-template tyroCol="prop"    let-row><code class="ds-code">{{ $any(row).prop }}</code></ng-template>
+      <ng-template tyroCol="type"    let-row><code class="ds-code">{{ $any(row).type }}</code></ng-template>
+      <ng-template tyroCol="default" let-row><code class="ds-code">{{ $any(row).default }}</code></ng-template>
+      <ng-template tyroCol="description" let-row>
+        <span class="ds-desc" [innerHTML]="lang() === 'en' ? ($any(row).descriptionEn || $any(row).description) : $any(row).description"></span>
+      </ng-template>
+    </tyro-ui-data-table>
+  </tyro-ui-bento-card>
+
+  <tyro-ui-bento-card [title]="lang() === 'en' ? 'Image resolution order' : 'Ordre de résolution de l\'image'">
+    <pre class="ds-pre"><code>1. [src]  fourni   → image directe
+2. [name] fourni   → https://tyrolium.fr/generate-pp/?l={{ '{' }}1ère lettre{{ '}' }}&c=183153
+3. rien             → rien n'est rendu</code></pre>
+  </tyro-ui-bento-card>
+
+</section>

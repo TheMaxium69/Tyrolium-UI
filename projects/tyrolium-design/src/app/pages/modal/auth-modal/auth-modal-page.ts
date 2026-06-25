@@ -3,7 +3,7 @@ import {
   TyroUiAuthModal, TyroUiAuthService,
   TyroUiButton, TyroUiPageHeader, TyroUiLangService,
   TyroUiDataTable, TyroUiDataTableColDef, ITyroUiDataTableColumn,
-  TyroUiBentoCard, TyroUiChip,
+  TyroUiBentoCard,
 } from 'tyrolium-ui';
 import { DsPreview } from '../../../components/ds-preview/ds-preview';
 
@@ -12,7 +12,7 @@ interface ApiRow { member: string; type: string; description: string; descriptio
 @Component({
   selector: 'app-auth-modal-page',
   imports: [
-    TyroUiAuthModal, TyroUiButton, TyroUiChip,
+    TyroUiAuthModal, TyroUiButton,
     TyroUiPageHeader, DsPreview,
     TyroUiDataTable, TyroUiDataTableColDef, TyroUiBentoCard,
   ],
