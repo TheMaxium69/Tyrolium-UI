@@ -38,7 +38,7 @@ export class Layout {
           { label: 'Navbar',  icon: 'ri-layout-top-line',      link: '/showcase/navbar' },
           { label: 'Subnav', icon: 'ri-layout-bottom-line',    link: '/showcase/subnav' },
           { label: 'Footer', icon: 'ri-layout-bottom-2-line',  link: '/showcase/footer' },
-          { label: 'CTA',    icon: 'ri-cursor-line',           link: '/showcase/cta' },
+          { label: 'CTA',    icon: 'ri-megaphone-line',        link: '/showcase/cta' },
         ],
       },
       {
