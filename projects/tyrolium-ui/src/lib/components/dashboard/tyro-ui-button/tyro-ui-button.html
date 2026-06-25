@@ -1,0 +1,26 @@
+<!--
+  .tb-wrapper reçoit TyroUiGlossBorder (pas d'overflow:hidden → le border glow s'étend hors du wrapper).
+  .tb-btn reçoit TyroUiGloss (overflow:hidden → shimmer interne clippé proprement).
+  glossBorderColor = 'transparent' sur les variantes non-lite → effet invisible mais directive présente.
+-->
+<span class="tb-wrapper"
+      TyroUiGlossBorder
+      [glossColor]="glossBorderColor"
+      [borderWidth]="1"
+      [glossSize]="90">
+  <button [class]="btnClass"
+          [type]="type"
+          [disabled]="disabled"
+          (click)="!disabled && clicked.emit()"
+          TyroUiGloss
+          [glossColor]="glossColor"
+          [glossSize]="90">
+    @if (icon) {
+      <i [class]="icon + ' tb-icon'"></i>
+    }
+    <ng-content></ng-content>
+    @if (iconRight) {
+      <i [class]="iconRight + ' tb-icon'"></i>
+    }
+  </button>
+</span>

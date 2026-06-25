@@ -46,9 +46,11 @@ export class Layout {
           { label: 'Dashboard Layout', icon: 'ri-layout-left-line',  link: '/dashboard/dashboard-layout' },
           { label: 'Button Bento',     icon: 'ri-grid-line',          link: '/dashboard/button-bento' },
           { label: 'Page Header',      icon: 'ri-heading',            link: '/dashboard/page-header' },
-          { label: 'Bento Card',       icon: 'ri-layout-cards-line',  link: '/dashboard/bento-card' },
+          { label: 'Bento Card',       icon: 'ri-layout-grid-line',  link: '/dashboard/bento-card' },
           { label: 'Data Table',       icon: 'ri-table-line',         link: '/dashboard/data-table' },
           { label: 'Chip',             icon: 'ri-price-tag-3-line',   link: '/dashboard/chip' },
+          { label: 'Button',           icon: 'ri-cursor-line',         link: '/dashboard/button' },
+          { label: 'Button Group',     icon: 'ri-layout-row-line',     link: '/dashboard/button-group' },
         ],
       },
       {

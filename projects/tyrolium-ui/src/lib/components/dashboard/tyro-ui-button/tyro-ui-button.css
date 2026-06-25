@@ -1,0 +1,128 @@
+/* ─── Host ────────────────────────────────────────────── */
+
+:host {
+  display: inline-flex;
+}
+
+/* ─── Wrapper (reçoit TyroUiGlossBorder) ─────────────── */
+
+.tb-wrapper {
+  display: inline-flex;
+  border-radius: 11px; /* légèrement plus que le bouton pour aligner le border glow */
+  line-height: 0;
+}
+
+/* ─── Base button ─────────────────────────────────────── */
+
+.tb-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  font-family: 'Inter', sans-serif;
+  font-weight: 600;
+  border-radius: 10px;
+  border: 1.5px solid transparent;
+  cursor: pointer;
+  line-height: 1;
+  white-space: nowrap;
+  transition:
+    background     0.18s ease,
+    box-shadow     0.18s ease,
+    transform      0.15s ease,
+    opacity        0.15s ease,
+    filter         0.18s ease;
+  text-decoration: none;
+  /* overflow:hidden est positionné par TyroUiGloss en inline style */
+}
+
+.tb-btn:active:not(:disabled) {
+  transform: scale(0.97);
+}
+
+.tb-btn:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+/* ─── Sizes ───────────────────────────────────────────── */
+
+.tb-btn--sm { font-size: 0.77rem; padding:  6px 14px; }
+.tb-btn--md { font-size: 0.85rem; padding: 10px 20px; }
+.tb-btn--lg { font-size: 0.95rem; padding: 13px 28px; }
+
+/* ─── Variante : classic ──────────────────────────────── */
+
+.tb-btn--classic {
+  background: #0533c8;
+  border-color: #0533c8;
+  color: #ffffff;
+}
+
+.tb-btn--classic:hover:not(:disabled) {
+  background: #0428a8;
+  box-shadow: 0 4px 18px rgba(5, 51, 200, 0.38);
+}
+
+/* ─── Variante : lite ─────────────────────────────────── */
+
+.tb-btn--lite {
+  background: var(--page-bg-light, #f6f7fb);
+  border-color: var(--page-border, #e5e7eb);
+  color: var(--page-text, #111827);
+}
+
+.tb-btn--lite:hover:not(:disabled) {
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+}
+
+:host-context([data-theme="dark"]) .tb-btn--lite {
+  background: rgba(255, 255, 255, 0.04);
+  border-color: rgba(255, 255, 255, 0.10);
+  color: #f9fafb;
+}
+
+:host-context([data-theme="dark"]) .tb-btn--lite:hover:not(:disabled) {
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.35);
+}
+
+/* ─── Variante : gradient ─────────────────────────────── */
+
+.tb-btn--gradient {
+  background: linear-gradient(135deg, #0400d4 0%, #6600cc 40%, #cc0000 100%);
+  border: none;
+  color: #ffffff;
+}
+
+.tb-btn--gradient:hover:not(:disabled) {
+  box-shadow: 0 4px 22px rgba(4, 0, 212, 0.45);
+  filter: brightness(1.08);
+}
+
+/* ─── Variante : ghost ────────────────────────────────── */
+
+.tb-btn--ghost {
+  background: transparent;
+  border-color: transparent;
+  color: #0533c8;
+}
+
+.tb-btn--ghost:hover:not(:disabled) {
+  background: rgba(5, 51, 200, 0.07);
+}
+
+:host-context([data-theme="dark"]) .tb-btn--ghost {
+  color: #60a5fa;
+}
+
+:host-context([data-theme="dark"]) .tb-btn--ghost:hover:not(:disabled) {
+  background: rgba(96, 165, 250, 0.09);
+}
+
+/* ─── Icônes ──────────────────────────────────────────── */
+
+.tb-icon {
+  font-size: 1em;
+  line-height: 1;
+  flex-shrink: 0;
+}
