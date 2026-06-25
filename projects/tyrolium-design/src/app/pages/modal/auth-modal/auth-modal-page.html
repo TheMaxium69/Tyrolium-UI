@@ -1,70 +1,84 @@
-<div class="ds-page">
-  <div class="ds-block">
-    <span class="ds-tag">&lt;tyro-ui-auth-modal&gt;</span>
-    <h1 class="ds-name">Auth Modal</h1>
-    <p class="ds-desc">
-      Modal de connexion et d'inscription. Entièrement piloté par <code>TyroUiAuthService</code> —
-      aucun <code>@Input()</code>. Il suffit de placer le composant une fois dans le template racine.
-    </p>
-  </div>
+<tyro-ui-page-header label="&lt;tyro-ui-auth-modal&gt;" title="Auth Modal">
+  @if (lang() === 'en') {
+    Login modal, fully driven by <code class="ds-code">TyroUiAuthService</code>.
+    No <code class="ds-code">&#64;Input()</code> — place the component once in the root layout.
+  } @else {
+    Modale de connexion, entièrement pilotée par <code class="ds-code">TyroUiAuthService</code>.
+    Aucun <code class="ds-code">&#64;Input()</code> — placer le composant une fois dans le layout racine.
+  }
+</tyro-ui-page-header>
+
+<section id="auth-modal-page">
+
+  <!-- ── Démo ────────────────────────────────────────────────── -->
+  <h3 class="ds-title">{{ lang() === 'en' ? 'Demo' : 'Démo' }}</h3>
+  <app-ds-preview [label]="lang() === 'en' ? 'Open the login modal' : 'Ouvrir la modale de connexion'">
+    <div style="display:flex;flex-direction:column;gap:16px;align-items:flex-start;">
+
+      <tyro-ui-button variant="classic" icon="ri-door-open-line" (clicked)="auth.openModal('login')">
+        {{ lang() === 'en' ? 'Open modal' : 'Ouvrir la modale' }}
+      </tyro-ui-button>
+
+      @if (auth.user()) {
+        <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;">
+          <tyro-ui-chip icon="ri-user-line">{{ lang() === 'en' ? 'Connected as' : 'Connecté en tant que' }}</tyro-ui-chip>
+          <tyro-ui-chip variant="success">{{ auth.user()!.username || auth.user()!.email }}</tyro-ui-chip>
+          <tyro-ui-button variant="ghost" icon="ri-logout-box-line" (clicked)="auth.logout()">
+            {{ lang() === 'en' ? 'Logout' : 'Déconnexion' }}
+          </tyro-ui-button>
+        </div>
+      }
+
+    </div>
+  </app-ds-preview>
+
+  <!-- Instance de la modale — une seule fois dans la page de démo -->
+  <tyro-ui-auth-modal></tyro-ui-auth-modal>
 
   <hr class="ds-divider">
 
-  <div class="ds-block">
-    <span class="ds-label">Démo</span>
-    <div class="ds-preview">
-      <div class="ds-preview-label">Déclencher la modale via TyroUiAuthService</div>
-      <div class="ds-preview-body ds-trigger-area">
-        <button class="ds-trigger-btn" (click)="auth.openModal('login')">
-          <i class="ri-login-box-line"></i> Ouvrir — Connexion
-        </button>
-      </div>
-    </div>
-    <tyro-ui-auth-modal></tyro-ui-auth-modal>
-  </div>
+  <!-- ── Signals ──────────────────────────────────────────────── -->
+  <tyro-ui-bento-card [title]="lang() === 'en' ? 'Signals (read)' : 'Signals (lecture)'">
+    <tyro-ui-data-table [columns]="apiCols" [data]="signalsData">
+      <ng-template tyroCol="member"      let-row><code class="ds-code">{{ $any(row).member }}</code></ng-template>
+      <ng-template tyroCol="type"        let-row><code class="ds-code">{{ $any(row).type }}</code></ng-template>
+      <ng-template tyroCol="description" let-row>
+        <span class="ds-desc" [innerHTML]="lang() === 'en' ? ($any(row).descriptionEn || $any(row).description) : $any(row).description"></span>
+      </ng-template>
+    </tyro-ui-data-table>
+  </tyro-ui-bento-card>
 
-  <hr class="ds-divider">
+  <!-- ── Méthodes ─────────────────────────────────────────────── -->
+  <tyro-ui-bento-card [title]="lang() === 'en' ? 'Methods' : 'Méthodes'">
+    <tyro-ui-data-table [columns]="apiCols" [data]="methodsData">
+      <ng-template tyroCol="member"      let-row><code class="ds-code">{{ $any(row).member }}</code></ng-template>
+      <ng-template tyroCol="type"        let-row><code class="ds-code">{{ $any(row).type }}</code></ng-template>
+      <ng-template tyroCol="description" let-row>
+        <span class="ds-desc" [innerHTML]="lang() === 'en' ? ($any(row).descriptionEn || $any(row).description) : $any(row).description"></span>
+      </ng-template>
+    </tyro-ui-data-table>
+  </tyro-ui-bento-card>
 
-  <div class="ds-block">
-    <span class="ds-label">TyroUiAuthService — API publique</span>
-    <div class="ds-preview">
-      <div class="ds-preview-label">Méthodes et signals</div>
-      <div class="ds-preview-body">
-        <table class="ds-props-table">
-          <thead><tr><th>Membre</th><th>Type</th><th>Description</th></tr></thead>
-          <tbody>
-            <tr><td><code>openModal(mode)</code></td><td><code>'login' | 'register'</code></td><td>Ouvre la modale dans le mode choisi</td></tr>
-            <tr><td><code>closeModal()</code></td><td>void</td><td>Ferme la modale (aussi déclenché par clic sur l'overlay ou <kbd>Escape</kbd>)</td></tr>
-            <tr><td><code>login(login, password)</code></td><td>Promise&lt;void&gt;</td><td>Soumet le formulaire de connexion à l'API Useritium</td></tr>
-            <tr><td><code>logout()</code></td><td>void</td><td>Déconnecte l'utilisateur et efface la session</td></tr>
-            <tr><td><code>user()</code></td><td>Signal&lt;ITyroUiUser | null&gt;</td><td>Signal de l'utilisateur connecté — <code>null</code> si non connecté</td></tr>
-            <tr><td><code>modalOpen()</code></td><td>Signal&lt;boolean&gt;</td><td>Signal d'état d'ouverture de la modale</td></tr>
-            <tr><td><code>modalMode()</code></td><td>Signal&lt;'login' | 'register'&gt;</td><td>Signal du mode actuel de la modale</td></tr>
-            <tr><td><code>error()</code></td><td>Signal&lt;string&gt;</td><td>Message d'erreur de la dernière tentative de connexion</td></tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
-  </div>
+  <!-- ── Setup ────────────────────────────────────────────────── -->
+  <h3 class="ds-title">Setup</h3>
+  <tyro-ui-bento-card [title]="lang() === 'en' ? 'Root layout — add once' : 'Layout racine — à ajouter une fois'">
+    <pre class="ds-pre"><code>{{ '<' }}tyro-ui-dashboard-layout {{ '[' }}...{{ ']' }}>
+  {{ '<' }}router-outlet />
+{{ '<' }}/tyro-ui-dashboard-layout>
+{{ '<' }}tyro-ui-auth-modal>{{ '<' }}/tyro-ui-auth-modal></code></pre>
+  </tyro-ui-bento-card>
 
-  <div class="ds-block">
-    <span class="ds-label">Usage</span>
-    <div class="ds-preview">
-      <div class="ds-preview-label">Intégration minimale</div>
-      <div class="ds-preview-body">
-        <pre class="ds-code">// app.html — placer une seule fois
-&lt;tyro-ui-auth-modal&gt;&lt;/tyro-ui-auth-modal&gt;
+  <tyro-ui-bento-card [title]="lang() === 'en' ? 'Usage in a component' : 'Utilisation dans un composant'">
+    <pre class="ds-pre"><code>readonly auth = inject(TyroUiAuthService);
 
-// n'importe quel composant
-readonly auth = inject(TyroUiAuthService);
+// Ouvrir la modale
+this.auth.openModal();
 
-// ouvrir
-this.auth.openModal('login');
-this.auth.openModal('register');
+// Lire l'utilisateur (signal)
+const user = this.auth.user(); // ITyroUiUser | null
 
-// lire l'utilisateur
-const user = this.auth.user(); // ITyroUiUser | null</pre>
-      </div>
-    </div>
-  </div>
-</div>
+// Déconnexion
+this.auth.logout();</code></pre>
+  </tyro-ui-bento-card>
+
+</section>
