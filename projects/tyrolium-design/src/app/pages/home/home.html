@@ -12,6 +12,14 @@ title="Tyrolium UI">
 
 <section id="home">
 
+  <!-- ── Brand ──────────────────────────────────────────────── -->
+  <div class="home-section">
+    <span class="home-section-label">{{ lang() === 'en' ? 'Brand' : 'Charte' }}</span>
+    <div class="home-grid">
+      <tyro-ui-button-bento icon="ri-palette-line" tag="Brand" [label]="lang() === 'en' ? 'Typography &amp; Colours' : 'Typo &amp; Couleurs'" link="/brand"></tyro-ui-button-bento>
+    </div>
+  </div>
+
   <!-- ── Showcase ────────────────────────────────────────────── -->
   <div class="home-section">
     <span class="home-section-label">{{ lang() === 'en' ? 'Showcase' : 'Vitrine' }}</span>

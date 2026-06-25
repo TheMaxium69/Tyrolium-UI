@@ -1,0 +1,74 @@
+<tyro-ui-page-header
+  [label]="lang() === 'en' ? 'Brand Guidelines' : 'Charte graphique'"
+  title="Brand">
+  @if (lang() === 'en') {
+    Official typography and colours of the Tyrolium design system.
+  } @else {
+    Typographies et couleurs officielles du système de design Tyrolium.
+  }
+</tyro-ui-page-header>
+
+<section id="brand-page">
+
+  <!-- ── Typographies ────────────────────────────────────────── -->
+  <tyro-ui-bento-card [title]="lang() === 'en' ? 'Typography' : 'Typographies'">
+    <div class="br-fonts">
+      @for (f of fonts; track f.name) {
+        <div class="br-font-card">
+          <div class="br-font-sample" [style.fontFamily]="f.family">{{ f.sample }}</div>
+          <div class="br-font-info">
+            <div class="br-font-meta">
+              <span class="br-font-name">{{ f.name }}</span>
+              <tyro-ui-chip>{{ lang() === 'en' ? f.roleEn : f.role }}</tyro-ui-chip>
+            </div>
+            <span class="br-font-weight">{{ f.weight }}</span>
+            <p class="br-font-desc">{{ lang() === 'en' ? f.descEn : f.desc }}</p>
+          </div>
+        </div>
+      }
+    </div>
+  </tyro-ui-bento-card>
+
+  <!-- ── Couleurs UI ─────────────────────────────────────────── -->
+  <tyro-ui-bento-card [title]="lang() === 'en' ? 'UI Colours' : 'Couleurs UI'">
+    <div class="br-colors">
+      @for (c of uiColors; track c.hex) {
+        <button class="br-color-swatch" [style.background]="c.hex" (click)="copyHex(c.hex)">
+          <span class="br-swatch-info" [class.br-swatch-info--dark]="c.light">
+            <span class="br-swatch-hex">{{ copied() === c.hex ? (lang() === 'en' ? 'Copied ✓' : 'Copié ✓') : c.hex }}</span>
+            <span class="br-swatch-name">{{ lang() === 'en' ? c.nameEn : c.name }}</span>
+            <span class="br-swatch-role">{{ c.role }}</span>
+          </span>
+        </button>
+      }
+    </div>
+  </tyro-ui-bento-card>
+
+  <!-- ── Dégradé ─────────────────────────────────────────────── -->
+  <tyro-ui-bento-card [title]="lang() === 'en' ? 'Brand Gradient' : 'Dégradé de marque'">
+    <div class="br-gradient-wrap">
+      <div class="br-gradient-swatch" [style.background]="brandGradient">
+        <span class="br-gradient-label">135° — #0400d4 → #6600cc → #cc0000</span>
+      </div>
+    </div>
+    <p class="br-gradient-desc">
+      @if (lang() === 'en') {
+        Applied to rings, active states, buttons and any accent element requiring brand recognition.
+      } @else {
+        Appliqué aux anneaux, états actifs, boutons et tout élément accentué nécessitant une reconnaissance de marque.
+      }
+    </p>
+    <div class="br-colors br-colors--gap">
+      @for (c of gradientColors; track c.hex) {
+        <button class="br-color-swatch" [style.background]="c.hex" (click)="copyHex(c.hex)">
+          <span class="br-swatch-info">
+            <span class="br-swatch-hex">{{ copied() === c.hex ? (lang() === 'en' ? 'Copied ✓' : 'Copié ✓') : c.hex }}</span>
+            <span class="br-swatch-name">{{ lang() === 'en' ? c.nameEn : c.name }}</span>
+            <span class="br-swatch-role">{{ lang() === 'en' ? c.roleEn : c.role }}</span>
+          </span>
+        </button>
+      }
+    </div>
+  </tyro-ui-bento-card>
+
+</section>

@@ -30,7 +30,8 @@ export class Layout {
   readonly navItems = computed<ITyroUiDashNavItem[]>(() => {
     const fr = this.lang() === 'fr';
     return [
-      { label: fr ? 'Accueil' : 'Home', icon: 'ri-home-4-line', link: '/' },
+      { label: fr ? 'Accueil' : 'Home',   icon: 'ri-home-4-line',    link: '/' },
+      { label: fr ? 'Charte' : 'Brand',  icon: 'ri-palette-line',   link: '/brand' },
       {
         label: fr ? 'Vitrine' : 'Showcase', icon: 'ri-layout-line',
         category: true, open: true,

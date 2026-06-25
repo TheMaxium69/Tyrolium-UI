@@ -5,6 +5,7 @@ import { Layout }              from './layout/layout';
 import { PublicLayout }        from './public-layout/public-layout';
 
 import { Home }                from './pages/home/home';
+import { BrandPage }           from './pages/brand/brand-page';
 
 import { NavbarPage }          from './pages/showcase/navbar/navbar-page';
 import { SubnavPage }          from './pages/showcase/subnav/subnav-page';
@@ -44,6 +45,7 @@ export const routes: Routes = [
     component: Layout,
     children: [
       { path: '',                            component: Home },
+      { path: 'brand',                       component: BrandPage },
 
       { path: 'showcase/navbar',             component: NavbarPage },
       { path: 'showcase/subnav',             component: SubnavPage },
