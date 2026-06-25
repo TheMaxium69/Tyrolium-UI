@@ -238,6 +238,12 @@
 
 .dl-item-label { flex: 1; text-align: left; }
 
+/* Espacement entre un groupe/catégorie et un item simple qui suit */
+.dl-category + .dl-item,
+.dl-category + a,
+.dl-cat-children + .dl-item,
+.dl-cat-children + a { margin-top: 8px; }
+
 .dl-item-external {
   font-size: 0.8rem;
   opacity: 0.45;
