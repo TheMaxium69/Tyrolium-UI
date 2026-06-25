@@ -191,6 +191,13 @@ export const NavbarMenuCategory: ITyroUiNavbarMenuCategory[] = [
         link: 'https://stats.uptimerobot.com/7z9o3SEnWX',
       },
       {
+        name: 'Design System',
+        description: 'Système de design',
+        descriptionEn: 'UI Components',
+        icon: 'ri-layout-fill',
+        link: 'https://design.tyrolium.fr',
+      },
+      {
         name: 'Légal',
         nameEn: 'Legal',
         description: 'Mentions légales',
