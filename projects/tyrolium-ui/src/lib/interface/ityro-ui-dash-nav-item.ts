@@ -16,9 +16,10 @@ export interface ITyroUiDashNavChild {
 
 export interface ITyroUiDashNavItem {
   label: string;
-  icon: string;
+  icon?: string;
   iconImg?: string;
   link?: string;
+  href?: string;
   category?: boolean;
   children?: ITyroUiDashNavChild[];
   open?: boolean;

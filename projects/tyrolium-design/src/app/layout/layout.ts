@@ -31,7 +31,8 @@ export class Layout {
     const fr = this.lang() === 'fr';
     return [
       { label: fr ? 'Accueil' : 'Home',   icon: 'ri-home-4-line',    link: '/' },
-      { label: fr ? 'Charte' : 'Brand',  icon: 'ri-palette-line',   link: '/brand' },
+      { label: fr ? 'Typo & Couleurs' : 'Typography & Colours',    icon: 'ri-font-size',        link: '/typo' },
+      { label: 'Media Kit',               icon: 'ri-palette-line',  href: 'https://tyrolium.fr/mediakit' },
       {
         label: fr ? 'Vitrine' : 'Showcase', icon: 'ri-layout-line',
         category: true, open: true,
@@ -93,6 +94,7 @@ export class Layout {
           { label: 'Easter Egg', icon: 'ri-gamepad-line', link: '/other/easter-egg' },
         ],
       },
+      { label: 'Tyrolium.fr', iconImg: 'assets/tyrolium-ui/projects/Tyrolium.png', href: 'https://tyrolium.fr' }
     ];
   });
 }

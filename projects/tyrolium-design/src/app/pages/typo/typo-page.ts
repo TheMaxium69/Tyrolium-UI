@@ -7,12 +7,12 @@ import {
 } from 'tyrolium-ui';
 
 @Component({
-  selector: 'app-brand-page',
+  selector: 'app-typo-page',
   imports: [TyroUiPageHeader, TyroUiBentoCard, TyroUiChip],
-  templateUrl: './brand-page.html',
-  styleUrl: './brand-page.css',
+  templateUrl: './typo-page.html',
+  styleUrl: './typo-page.css',
 })
-export class BrandPage {
+export class TypoPage {
   readonly lang = inject(TyroUiLangService).lang;
 
   readonly fonts = [

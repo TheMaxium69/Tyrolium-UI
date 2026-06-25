@@ -91,23 +91,42 @@
           </div>
         }
 
-      } @else if (item.link && !item.children?.length) {
-        <!-- ── Item simple (lien) ── -->
-        <a [routerLink]="item.link"
-           routerLinkActive="active"
-           [routerLinkActiveOptions]="{ exact: item.link === '/' }"
-           class="dl-item"
-           (click)="closeMobile()"
-           [title]="sidebarCollapsed() ? item.label : ''">
-          @if (item.iconImg) {
-            <img [src]="item.iconImg" [alt]="item.label" class="dl-item-icon-img">
-          } @else {
-            <i [class]="item.icon + ' dl-item-icon'"></i>
-          }
-          @if (!sidebarCollapsed()) {
-            <span class="dl-item-label">{{ item.label }}</span>
-          }
-        </a>
+      } @else if ((item.link || item.href) && !item.children?.length) {
+        <!-- ── Item simple (lien interne ou externe) ── -->
+        @if (item.href) {
+          <a [href]="item.href"
+             target="_blank"
+             rel="noopener noreferrer"
+             class="dl-item"
+             (click)="closeMobile()"
+             [title]="sidebarCollapsed() ? item.label : ''">
+            @if (item.iconImg) {
+              <img [src]="item.iconImg" [alt]="item.label" class="dl-item-icon-img">
+            } @else {
+              <i [class]="item.icon + ' dl-item-icon'"></i>
+            }
+            @if (!sidebarCollapsed()) {
+              <span class="dl-item-label">{{ item.label }}</span>
+              <i class="ri-external-link-line dl-item-external"></i>
+            }
+          </a>
+        } @else {
+          <a [routerLink]="item.link"
+             routerLinkActive="active"
+             [routerLinkActiveOptions]="{ exact: item.link === '/' }"
+             class="dl-item"
+             (click)="closeMobile()"
+             [title]="sidebarCollapsed() ? item.label : ''">
+            @if (item.iconImg) {
+              <img [src]="item.iconImg" [alt]="item.label" class="dl-item-icon-img">
+            } @else {
+              <i [class]="item.icon + ' dl-item-icon'"></i>
+            }
+            @if (!sidebarCollapsed()) {
+              <span class="dl-item-label">{{ item.label }}</span>
+            }
+          </a>
+        }
 
       } @else if (item.children?.length) {
         <!-- ── Groupe collapsible (avec lien optionnel) ── -->
