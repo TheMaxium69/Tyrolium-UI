@@ -815,7 +815,7 @@
             "assets": [
               {
                 "glob": "**/*",
-                "input": "projects/tyrolium-uptime/public"
+                "input": "projects/tyrolium-design/public"
               },
               {
                 "glob": "**/*",

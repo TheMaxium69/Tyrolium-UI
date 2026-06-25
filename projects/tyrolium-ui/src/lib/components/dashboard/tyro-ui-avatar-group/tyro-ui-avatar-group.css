@@ -12,12 +12,9 @@
 .ag-item {
   display: inline-flex;
   margin-left: -8px;
-  transition: transform 0.15s;
 }
 
 .ag-item:first-child { margin-left: 0; }
-
-.ag-item:hover { transform: translateY(-3px); z-index: 10; }
 
 /* Tailles des offsets */
 .ag-item--xs { margin-left: -6px; }
