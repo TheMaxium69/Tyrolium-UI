@@ -246,14 +246,13 @@ export const NavbarMenuCategory: ITyroUiNavbarMenuCategory[] = [
     labelEn: 'Internal',
     open: false,
     items: [
-      {
-        name: 'Hub Interne',
-        nameEn: 'Internal Hub',
-        description: 'Centralise tous les backoffices',
-        descriptionEn: 'All platform management in one place',
-        icon: 'ri-dashboard-fill',
-        link: 'https://hub.tyrolium.fr',
-      },
+      // {
+      //   name: 'Tyrolium Hub',
+      //   description: 'Centralise tous les backoffices',
+      //   descriptionEn: 'All platform management in one place',
+      //   icon: 'ri-dashboard-fill',
+      //   link: 'https://hub.tyrolium.fr',
+      // },
       {
         name: 'ERP',
         description: "Gestion d'entreprise",
