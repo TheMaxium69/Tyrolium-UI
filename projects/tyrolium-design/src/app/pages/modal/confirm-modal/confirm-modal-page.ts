@@ -45,12 +45,12 @@ export class ConfirmModalPage {
   ];
 
   readonly configData: ApiRow[] = [
-    { prop: 'title',         type: 'string',   default: '—',
+    { prop: 'title',         type: 'string',   default: '-',
       description: 'Titre de la modale', descriptionEn: 'Modal title' },
-    { prop: 'message',       type: 'string',   default: '—',
+    { prop: 'message',       type: 'string',   default: '-',
       description: 'Corps du message', descriptionEn: 'Message body' },
-    { prop: 'icon',          type: 'string (Remix Icon)', default: '—',
-      description: 'Icône — défaut selon type', descriptionEn: 'Icon — defaults by type' },
+    { prop: 'icon',          type: 'string (Remix Icon)', default: '-',
+      description: 'Icône - défaut selon type', descriptionEn: 'Icon - defaults by type' },
     { prop: 'type',          type: "'default' | 'danger'", default: "'default'",
       description: 'Couleur du bouton confirmer et de l\'icône', descriptionEn: 'Color of confirm button and icon' },
     { prop: 'confirmLabel',  type: 'string',   default: "'Confirmer'",

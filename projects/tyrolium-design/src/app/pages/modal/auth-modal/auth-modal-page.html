@@ -1,10 +1,10 @@
 <tyro-ui-page-header label="&lt;tyro-ui-auth-modal&gt;" title="Auth Modal">
   @if (lang() === 'en') {
     Login modal, fully driven by <code class="ds-code">TyroUiAuthService</code>.
-    No <code class="ds-code">&#64;Input()</code> — place the component once in the root layout.
+    No <code class="ds-code">&#64;Input()</code> - place the component once in the root layout.
   } @else {
     Modale de connexion, entièrement pilotée par <code class="ds-code">TyroUiAuthService</code>.
-    Aucun <code class="ds-code">&#64;Input()</code> — placer le composant une fois dans le layout racine.
+    Aucun <code class="ds-code">&#64;Input()</code> - placer le composant une fois dans le layout racine.
   }
 </tyro-ui-page-header>
 
@@ -22,7 +22,7 @@
     </div>
   </app-ds-preview>
 
-  <!-- Instance de la modale — une seule fois dans la page de démo -->
+  <!-- Instance de la modale - une seule fois dans la page de démo -->
   <tyro-ui-auth-modal></tyro-ui-auth-modal>
 
   <hr class="ds-divider">
@@ -51,7 +51,7 @@
 
   <!-- ── Setup ────────────────────────────────────────────────── -->
   <h3 class="ds-title">Setup</h3>
-  <tyro-ui-bento-card [title]="lang() === 'en' ? 'Root layout — add once' : 'Layout racine — à ajouter une fois'">
+  <tyro-ui-bento-card [title]="lang() === 'en' ? 'Root layout - add once' : 'Layout racine - à ajouter une fois'">
     <pre class="ds-pre"><code>{{ '<' }}tyro-ui-dashboard-layout {{ '[' }}...{{ ']' }}>
   {{ '<' }}router-outlet />
 {{ '<' }}/tyro-ui-dashboard-layout>

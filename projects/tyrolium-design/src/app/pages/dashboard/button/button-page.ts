@@ -46,12 +46,12 @@ export class ButtonPage {
       descriptionEn: 'Size of the button',
     },
     {
-      prop: '[icon]', type: 'string', default: '—',
+      prop: '[icon]', type: 'string', default: '-',
       description:   'Classe Remix Icon affichée à gauche du texte',
       descriptionEn: 'Remix Icon class displayed to the left of the label',
     },
     {
-      prop: '[iconRight]', type: 'string', default: '—',
+      prop: '[iconRight]', type: 'string', default: '-',
       description:   'Classe Remix Icon affichée à droite du texte',
       descriptionEn: 'Remix Icon class displayed to the right of the label',
     },

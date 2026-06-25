@@ -11,7 +11,7 @@
 <section id="data-table-page">
 
   <!-- ── Aperçu complet ────────────────────────────────────── -->
-  <h3 class="ds-title">{{ lang() === 'en' ? 'Preview — full features' : 'Aperçu — fonctionnalités complètes' }}</h3>
+  <h3 class="ds-title">{{ lang() === 'en' ? 'Preview - full features' : 'Aperçu - fonctionnalités complètes' }}</h3>
   <app-ds-preview [label]="lang() === 'en' ? '[searchable] [filterable] [paginated] + custom cells' : '[searchable] [filterable] [paginated] + cellules personnalisées'">
     <tyro-ui-bento-card>
       <tyro-ui-data-table
@@ -64,7 +64,7 @@
   <hr class="ds-divider">
 
   <!-- ── Interface ITyroUiDataTableColumn ──────────────────── -->
-  <tyro-ui-bento-card title="Interface — ITyroUiDataTableColumn">
+  <tyro-ui-bento-card title="Interface - ITyroUiDataTableColumn">
     <tyro-ui-data-table [columns]="fieldCols" [data]="columnInterfaceData">
 
       <ng-template tyroCol="field" let-row>
@@ -79,7 +79,7 @@
   </tyro-ui-bento-card>
 
   <!-- ── Directive tyroCol ─────────────────────────────────── -->
-  <tyro-ui-bento-card [title]="lang() === 'en' ? 'Custom cells — [tyroCol] directive' : 'Cellules personnalisées — directive [tyroCol]'">
+  <tyro-ui-bento-card [title]="lang() === 'en' ? 'Custom cells - [tyroCol] directive' : 'Cellules personnalisées - directive [tyroCol]'">
     <p class="ds-desc">
       {{ lang() === 'en'
         ? 'Add'

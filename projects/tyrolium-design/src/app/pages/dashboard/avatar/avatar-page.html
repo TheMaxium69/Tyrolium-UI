@@ -1,9 +1,9 @@
 <tyro-ui-page-header label="&lt;tyro-ui-avatar&gt;" title="Avatar">
   @if (lang() === 'en') {
-    Profile avatar matching the navbar design — gradient border ring.
+    Profile avatar matching the navbar design - gradient border ring.
     <code class="ds-code">[src]</code> takes priority, otherwise <code class="ds-code">tyrolium.fr/generate-pp</code> is used from <code class="ds-code">[name]</code>. Nothing is rendered if both are absent.
   } @else {
-    Avatar de profil reprenant le design de la navbar — anneau en dégradé.
+    Avatar de profil reprenant le design de la navbar - anneau en dégradé.
     <code class="ds-code">[src]</code> prioritaire, sinon <code class="ds-code">tyrolium.fr/generate-pp</code> généré depuis <code class="ds-code">[name]</code>. Rien n'est rendu si les deux sont absents.
   }
 </tyro-ui-page-header>
@@ -24,7 +24,7 @@
 
   <!-- ── Photo directe ────────────────────────────────────────── -->
   <h3 class="ds-title">{{ lang() === 'en' ? 'With [src]' : 'Avec [src]' }}</h3>
-  <app-ds-preview [label]="lang() === 'en' ? 'Direct image URL — gradient ring' : 'URL image directe — anneau dégradé'">
+  <app-ds-preview [label]="lang() === 'en' ? 'Direct image URL - gradient ring' : 'URL image directe - anneau dégradé'">
     <div style="display:flex;gap:16px;align-items:center;">
       <tyro-ui-avatar size="xs" src="/assets/exemple-avatar.jpg"></tyro-ui-avatar>
       <tyro-ui-avatar size="sm" src="/assets/exemple-avatar.jpg"></tyro-ui-avatar>

@@ -10,22 +10,22 @@
 
 <section id="bento-card-page">
 
-  <!-- ── Aperçu — tailles ──────────────────────────────────── -->
-  <h3 class="ds-title">{{ lang() === 'en' ? 'Preview — sizes' : 'Aperçu — tailles' }}</h3>
+  <!-- ── Aperçu - tailles ──────────────────────────────────── -->
+  <h3 class="ds-title">{{ lang() === 'en' ? 'Preview - sizes' : 'Aperçu - tailles' }}</h3>
   <app-ds-preview label="size='small' | 'medium' | 'large'">
     <tyro-ui-bento-card size="small"  icon="ri-flashlight-line"   [label]="lang() === 'en' ? 'SMALL' : 'PETIT'"  [title]="lang() === 'en' ? 'Compact card' : 'Carte compacte'">
       <p class="ds-desc">{{ lang() === 'en' ? 'Reduced padding for dense layouts.' : 'Padding réduit pour les layouts denses.' }}</p>
     </tyro-ui-bento-card>
     <tyro-ui-bento-card size="medium" icon="ri-layout-2-line"     [label]="lang() === 'en' ? 'MEDIUM' : 'MOYEN'" [title]="lang() === 'en' ? 'Default card' : 'Carte par défaut'">
-      <p class="ds-desc">{{ lang() === 'en' ? 'Standard padding — default size.' : 'Padding standard — taille par défaut.' }}</p>
+      <p class="ds-desc">{{ lang() === 'en' ? 'Standard padding - default size.' : 'Padding standard - taille par défaut.' }}</p>
     </tyro-ui-bento-card>
     <tyro-ui-bento-card size="large"  icon="ri-expand-width-line" [label]="lang() === 'en' ? 'LARGE' : 'GRAND'"  [title]="lang() === 'en' ? 'Spacious card' : 'Carte spacieuse'">
       <p class="ds-desc">{{ lang() === 'en' ? 'More padding for airy content.' : 'Plus de padding pour du contenu aéré.' }}</p>
     </tyro-ui-bento-card>
   </app-ds-preview>
 
-  <!-- ── Aperçu — effets ───────────────────────────────────── -->
-  <h3 class="ds-title">{{ lang() === 'en' ? 'Preview — effects' : 'Aperçu — effets' }}</h3>
+  <!-- ── Aperçu - effets ───────────────────────────────────── -->
+  <h3 class="ds-title">{{ lang() === 'en' ? 'Preview - effects' : 'Aperçu - effets' }}</h3>
   <app-ds-preview label="[hoverable] | [gradient]">
     <div class="ds-flex">
       <tyro-ui-bento-card [hoverable]="true" icon="ri-cursor-line" [title]="lang() === 'en' ? 'Hoverable' : 'Hoverable'">
@@ -37,8 +37,8 @@
     </div>
   </app-ds-preview>
 
-  <!-- ── Aperçu — slot action ──────────────────────────────── -->
-  <h3 class="ds-title">{{ lang() === 'en' ? 'Preview — header action slot' : 'Aperçu — slot action header' }}</h3>
+  <!-- ── Aperçu - slot action ──────────────────────────────── -->
+  <h3 class="ds-title">{{ lang() === 'en' ? 'Preview - header action slot' : 'Aperçu - slot action header' }}</h3>
   <app-ds-preview label="[tyro-header-action]">
     <tyro-ui-bento-card icon="ri-bar-chart-2-line" [title]="lang() === 'en' ? 'Analytics' : 'Analytiques'" [label]="lang() === 'en' ? 'OVERVIEW' : 'VUE D\'ENSEMBLE'">
       <button tyro-header-action style="background:none;border:1px solid var(--page-border,#e5e7eb);border-radius:8px;padding:4px 10px;cursor:pointer;font-size:0.8rem;color:var(--page-text-2,#6b7280)">
@@ -74,7 +74,7 @@
     <tyro-ui-data-table
       [columns]="[{ key: 'slot', label: 'Slot', width: '260px' }, { key: 'description', label: 'Description' }]"
       [data]="[
-        { slot: 'ng-content (défaut)', slotEn: 'ng-content (default)', description: 'Corps de la carte — accepte n\'importe quel contenu', descriptionEn: 'Card body — accepts any content' },
+        { slot: 'ng-content (défaut)', slotEn: 'ng-content (default)', description: 'Corps de la carte - accepte n\'importe quel contenu', descriptionEn: 'Card body - accepts any content' },
         { slot: '[tyro-header-action]', slotEn: '[tyro-header-action]', description: 'Contenu projeté en haut à droite du header (bouton, badge, etc.)', descriptionEn: 'Content projected to the top right of the header (button, badge, etc.)' }
       ]">
 

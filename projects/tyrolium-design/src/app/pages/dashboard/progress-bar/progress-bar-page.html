@@ -1,9 +1,9 @@
 <tyro-ui-page-header label="&lt;tyro-ui-progress-bar&gt;" title="Progress Bar">
   @if (lang() === 'en') {
-    Stylish progress bar — 3 variants: <code class="ds-code">simple</code>, <code class="ds-code">lite</code>, <code class="ds-code">gradient</code>.
+    Stylish progress bar - 3 variants: <code class="ds-code">simple</code>, <code class="ds-code">lite</code>, <code class="ds-code">gradient</code>.
     Custom hex color on simple &amp; lite. Animated fill &amp; shimmer.
   } @else {
-    Barre de progression stylisée — 3 variantes : <code class="ds-code">simple</code>, <code class="ds-code">lite</code>, <code class="ds-code">gradient</code>.
+    Barre de progression stylisée - 3 variantes : <code class="ds-code">simple</code>, <code class="ds-code">lite</code>, <code class="ds-code">gradient</code>.
     Couleur hex personnalisable sur simple &amp; lite. Remplissage animé avec effet brillant.
   }
 </tyro-ui-page-header>
@@ -50,7 +50,7 @@
 
   <!-- ── Custom height ──────────────────────────────────────── -->
   <h3 class="ds-title">{{ lang() === 'en' ? 'Custom height' : 'Hauteur personnalisée' }}</h3>
-  <app-ds-preview [label]="lang() === 'en' ? '[height] input — thin / normal / large' : 'Input [height] — fin / normal / large'">
+  <app-ds-preview [label]="lang() === 'en' ? '[height] input - thin / normal / large' : 'Input [height] - fin / normal / large'">
     <div style="display:flex;flex-direction:column;gap:16px;width:100%;">
       <tyro-ui-progress-bar variant="simple"   [value]="60" height="4px"  [showLabel]="true" [label]="lang() === 'en' ? 'Thin (4px)' : 'Fin (4px)'"></tyro-ui-progress-bar>
       <tyro-ui-progress-bar variant="lite"     [value]="60" height="8px"  [showLabel]="true" [label]="lang() === 'en' ? 'Normal (8px)' : 'Normal (8px)'"></tyro-ui-progress-bar>

@@ -23,10 +23,10 @@ export class AvatarPage {
   ];
 
   readonly inputsData: PropRow[] = [
-    { prop: '[src]',  type: 'string (URL)', default: '—',
+    { prop: '[src]',  type: 'string (URL)', default: '-',
       description: 'URL de la photo de profil', descriptionEn: 'Profile picture URL' },
-    { prop: '[name]', type: 'string',       default: '—',
-      description: 'Nom complet — initiales calculées si pas de src', descriptionEn: 'Full name — initials computed when no src' },
+    { prop: '[name]', type: 'string',       default: '-',
+      description: 'Nom complet - initiales calculées si pas de src', descriptionEn: 'Full name - initials computed when no src' },
     { prop: '[size]', type: "'xs' | 'sm' | 'md' | 'lg'", default: "'md'",
       description: 'Taille : xs=24px, sm=32px, md=40px, lg=56px', descriptionEn: 'Size: xs=24px, sm=32px, md=40px, lg=56px' },
   ];

@@ -71,8 +71,8 @@ export class DataTablePage {
     },
     {
       prop: '[data]', type: 'unknown[]', default: '[]',
-      description:   'Données à afficher — accepte n\'importe quel tableau d\'objets',
-      descriptionEn: 'Data to display — accepts any array of objects',
+      description:   'Données à afficher - accepte n\'importe quel tableau d\'objets',
+      descriptionEn: 'Data to display - accepts any array of objects',
     },
     {
       prop: '[searchable]', type: 'boolean', default: 'false',

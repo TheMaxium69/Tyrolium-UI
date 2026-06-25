@@ -102,8 +102,8 @@ export class FooterPage {
   readonly inputsData: PropRow[] = [
     {
       prop: '[project]', type: 'string', default: "''",
-      description:   "Identifiant du projet (ex : <em>\"tyrolium\"</em>, <em>\"solidserv\"</em>) — influence le contenu affiché",
-      descriptionEn: 'Project identifier (e.g. <em>"tyrolium"</em>, <em>"solidserv"</em>) — affects the displayed content',
+      description:   "Identifiant du projet (ex : <em>\"tyrolium\"</em>, <em>\"solidserv\"</em>) - influence le contenu affiché",
+      descriptionEn: 'Project identifier (e.g. <em>"tyrolium"</em>, <em>"solidserv"</em>) - affects the displayed content',
     },
     {
       prop: '[logo]', type: 'string', default: "''",
@@ -147,8 +147,8 @@ export class FooterPage {
     },
     {
       constant: 'FooterInternalLink',
-      content:   'Liens internes (ERP, Repo) — visibles uniquement en interne',
-      contentEn: 'Internal links (ERP, Repo) — visible internally only',
+      content:   'Liens internes (ERP, Repo) - visibles uniquement en interne',
+      contentEn: 'Internal links (ERP, Repo) - visible internally only',
     },
   ];
 

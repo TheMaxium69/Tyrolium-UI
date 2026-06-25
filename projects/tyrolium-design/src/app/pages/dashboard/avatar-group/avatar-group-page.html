@@ -10,7 +10,7 @@
 
 <section id="avatar-group-page">
 
-  <h3 class="ds-title">{{ lang() === 'en' ? 'Default — max 4' : 'Par défaut — max 4' }}</h3>
+  <h3 class="ds-title">{{ lang() === 'en' ? 'Default - max 4' : 'Par défaut - max 4' }}</h3>
   <app-ds-preview [label]="lang() === 'en' ? '6 avatars, [max]: 4 → shows +2' : '6 avatars, [max]: 4 → affiche +2'">
     <tyro-ui-avatar-group [avatars]="team" [max]="4"></tyro-ui-avatar-group>
   </app-ds-preview>
@@ -26,7 +26,7 @@
   </app-ds-preview>
 
   <h3 class="ds-title">{{ lang() === 'en' ? 'All shown (max > count)' : 'Tous affichés (max > count)' }}</h3>
-  <app-ds-preview [label]="lang() === 'en' ? '[max]: 10 — no overflow bubble' : '[max]: 10 — pas de bulle overflow'">
+  <app-ds-preview [label]="lang() === 'en' ? '[max]: 10 - no overflow bubble' : '[max]: 10 - pas de bulle overflow'">
     <tyro-ui-avatar-group [avatars]="team" [max]="10"></tyro-ui-avatar-group>
   </app-ds-preview>
 

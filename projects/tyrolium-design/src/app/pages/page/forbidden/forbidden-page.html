@@ -1,8 +1,8 @@
 <tyro-ui-page-header label="&lt;tyro-ui-forbidden&gt;" title="Forbidden">
   @if (lang() === 'en') {
-    403 error page — displayed when the user is authenticated but does not have the rights to access the requested resource.
+    403 error page - displayed when the user is authenticated but does not have the rights to access the requested resource.
   } @else {
-    Page d'erreur 403 — affichée quand l'utilisateur est authentifié mais n'a pas les droits d'accès à la ressource demandée.
+    Page d'erreur 403 - affichée quand l'utilisateur est authentifié mais n'a pas les droits d'accès à la ressource demandée.
   }
 </tyro-ui-page-header>
 
@@ -36,7 +36,7 @@
   </tyro-ui-bento-card>
 
   <!-- ── Usage ─────────────────────────────────────────────── -->
-  <tyro-ui-bento-card [title]="lang() === 'en' ? 'Usage — Angular guard' : 'Utilisation — guard Angular'">
+  <tyro-ui-bento-card [title]="lang() === 'en' ? 'Usage - Angular guard' : 'Utilisation - guard Angular'">
     <p class="ds-desc">
       {{ lang() === 'en'
         ? 'Redirect to this component when an auth guard denies access.'

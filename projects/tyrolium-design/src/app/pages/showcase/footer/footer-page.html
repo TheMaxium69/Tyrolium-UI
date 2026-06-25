@@ -48,14 +48,14 @@
   <hr class="ds-divider">
 
   <!-- ── Config menu-footer.ts ─────────────────────────────── -->
-  <h3 class="ds-title">Config — menu-footer.ts</h3>
+  <h3 class="ds-title">Config - menu-footer.ts</h3>
 
   <!-- Constantes -->
   <tyro-ui-bento-card [title]="lang() === 'en' ? 'Exported constants' : 'Constantes exportées'">
     <p class="ds-desc">
       {{ lang() === 'en'
-        ? 'The 4 footer columns are automatically fed by constants imported by the component — no prop needed.'
-        : 'Les 4 colonnes du footer sont alimentées automatiquement par des constantes importées par le composant — aucune prop à passer.' }}
+        ? 'The 4 footer columns are automatically fed by constants imported by the component - no prop needed.'
+        : 'Les 4 colonnes du footer sont alimentées automatiquement par des constantes importées par le composant - aucune prop à passer.' }}
     </p>
     <tyro-ui-data-table [columns]="constantCols" [data]="constantsData">
 
@@ -71,7 +71,7 @@
   </tyro-ui-bento-card>
 
   <!-- Interface ITyroUiFooterPage -->
-  <tyro-ui-bento-card title="Interface — ITyroUiFooterPage">
+  <tyro-ui-bento-card title="Interface - ITyroUiFooterPage">
     <tyro-ui-data-table [columns]="fieldCols" [data]="footerPageInterfaceData">
 
       <ng-template tyroCol="field" let-row>

@@ -1,9 +1,9 @@
 <tyro-ui-page-header label="&lt;tyro-ui-alert&gt;" title="Alert">
   @if (lang() === 'en') {
-    Inline notification banner — 4 types: <code class="ds-code">info</code>, <code class="ds-code">success</code>,
+    Inline notification banner - 4 types: <code class="ds-code">info</code>, <code class="ds-code">success</code>,
     <code class="ds-code">warning</code>, <code class="ds-code">danger</code>. Closable via <code class="ds-code">[(isClosed)]</code>.
   } @else {
-    Bannière de notification inline — 4 types : <code class="ds-code">info</code>, <code class="ds-code">success</code>,
+    Bannière de notification inline - 4 types : <code class="ds-code">info</code>, <code class="ds-code">success</code>,
     <code class="ds-code">warning</code>, <code class="ds-code">danger</code>. Fermable via <code class="ds-code">[(isClosed)]</code>.
   }
 </tyro-ui-page-header>
@@ -11,7 +11,7 @@
 <section id="alert-page">
 
   <h3 class="ds-title">{{ lang() === 'en' ? 'Types' : 'Types' }}</h3>
-  <app-ds-preview [label]="lang() === 'en' ? 'All types — with title + message' : 'Tous les types — avec titre + message'">
+  <app-ds-preview [label]="lang() === 'en' ? 'All types - with title + message' : 'Tous les types - avec titre + message'">
     <div style="display:flex;flex-direction:column;gap:10px;width:100%;">
       <tyro-ui-alert type="info"
         [title]="lang() === 'en' ? 'Information' : 'Information'"

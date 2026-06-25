@@ -28,13 +28,13 @@ export class AlertPage {
   readonly inputsData: PropRow[] = [
     { prop: '[type]',      type: "'info' | 'success' | 'warning' | 'danger'", default: "'info'",
       description: 'Style sémantique de l\'alerte', descriptionEn: 'Semantic style of the alert' },
-    { prop: '[title]',     type: 'string', default: '—',
+    { prop: '[title]',     type: 'string', default: '-',
       description: 'Titre affiché en gras', descriptionEn: 'Bold title displayed' },
-    { prop: '[message]',   type: 'string', default: '—',
+    { prop: '[message]',   type: 'string', default: '-',
       description: 'Message principal', descriptionEn: 'Main message text' },
     { prop: '[closable]',  type: 'boolean', default: 'true',
       description: 'Affiche le bouton ×', descriptionEn: 'Shows the × button' },
     { prop: '[(isClosed)]', type: 'boolean', default: 'false',
-      description: 'État de fermeture — two-way binding', descriptionEn: 'Closed state — two-way binding' },
+      description: 'État de fermeture - two-way binding', descriptionEn: 'Closed state - two-way binding' },
   ];
 }

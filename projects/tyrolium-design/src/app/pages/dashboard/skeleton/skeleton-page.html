@@ -1,9 +1,9 @@
 <tyro-ui-page-header label="&lt;tyro-ui-skeleton&gt;" title="Skeleton">
   @if (lang() === 'en') {
-    Loading placeholder with shimmer animation — 3 variants: <code class="ds-code">rect</code>,
+    Loading placeholder with shimmer animation - 3 variants: <code class="ds-code">rect</code>,
     <code class="ds-code">text</code>, <code class="ds-code">circle</code>. Supports <code class="ds-code">[count]</code> to repeat rows.
   } @else {
-    Placeholder de chargement animé (shimmer) — 3 variantes : <code class="ds-code">rect</code>,
+    Placeholder de chargement animé (shimmer) - 3 variantes : <code class="ds-code">rect</code>,
     <code class="ds-code">text</code>, <code class="ds-code">circle</code>. Supporte <code class="ds-code">[count]</code> pour répéter les lignes.
   }
 </tyro-ui-page-header>
@@ -12,7 +12,7 @@
 
   <!-- ── Text ────────────────────────────────────────────────── -->
   <h3 class="ds-title">Text</h3>
-  <app-ds-preview [label]="lang() === 'en' ? 'Multiple text lines — [count]' : 'Lignes de texte multiples — [count]'">
+  <app-ds-preview [label]="lang() === 'en' ? 'Multiple text lines - [count]' : 'Lignes de texte multiples - [count]'">
     <div style="width:100%;max-width:400px;display:flex;flex-direction:column;gap:8px;">
       <tyro-ui-skeleton variant="text" width="60%" height="20px"></tyro-ui-skeleton>
       <tyro-ui-skeleton variant="text" [count]="3" height="14px"></tyro-ui-skeleton>
@@ -51,7 +51,7 @@
 
   <!-- ── Circle ───────────────────────────────────────────────── -->
   <h3 class="ds-title">Circle</h3>
-  <app-ds-preview [label]="lang() === 'en' ? 'Avatar placeholder — multiple sizes' : 'Avatar placeholder — tailles multiples'">
+  <app-ds-preview [label]="lang() === 'en' ? 'Avatar placeholder - multiple sizes' : 'Avatar placeholder - tailles multiples'">
     <div style="display:flex;gap:12px;align-items:center;">
       <tyro-ui-skeleton variant="circle" width="24px"  height="24px"></tyro-ui-skeleton>
       <tyro-ui-skeleton variant="circle" width="32px"  height="32px"></tyro-ui-skeleton>

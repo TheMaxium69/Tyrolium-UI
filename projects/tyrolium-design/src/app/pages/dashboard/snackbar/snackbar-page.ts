@@ -41,12 +41,12 @@ export class SnackbarPage {
   ];
 
   readonly inputsData: PropRow[] = [
-    { prop: 'message',   type: 'string',   default: '—',
+    { prop: 'message',   type: 'string',   default: '-',
       description: 'Texte principal (obligatoire)', descriptionEn: 'Main text (required)' },
-    { prop: 'title',     type: 'string',   default: '—',
+    { prop: 'title',     type: 'string',   default: '-',
       description: 'Titre affiché en gras', descriptionEn: 'Bold title' },
-    { prop: 'icon',      type: 'string (Remix Icon)', default: '—',
-      description: 'Icône — si vide, icône par défaut selon le type', descriptionEn: 'Icon — defaults to type icon if empty' },
+    { prop: 'icon',      type: 'string (Remix Icon)', default: '-',
+      description: 'Icône - si vide, icône par défaut selon le type', descriptionEn: 'Icon - defaults to type icon if empty' },
     { prop: 'type',      type: "'default' | 'success' | 'warning' | 'danger'", default: "'default'",
       description: 'Couleur accentuée du bandeau et de l\'icône', descriptionEn: 'Accent color for the left border and icon' },
     { prop: 'position',  type: "'top-left' | 'top-right' | 'bottom-left' | 'bottom-right'", default: "'bottom-right'",

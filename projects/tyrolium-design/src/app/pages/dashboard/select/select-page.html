@@ -1,16 +1,16 @@
 <tyro-ui-page-header label="&lt;tyro-ui-select&gt;" title="Select">
   @if (lang() === 'en') {
-    Custom dropdown select — supports optional icons per option, a placeholder when nothing is selected,
+    Custom dropdown select - supports optional icons per option, a placeholder when nothing is selected,
     and two variants: <code class="ds-code">normal</code> and <code class="ds-code">lite</code>.
   } @else {
-    Select déroulant personnalisé — supporte des icônes par option, un placeholder quand rien n'est sélectionné,
+    Select déroulant personnalisé - supporte des icônes par option, un placeholder quand rien n'est sélectionné,
     et deux variantes : <code class="ds-code">normal</code> et <code class="ds-code">lite</code>.
   }
 </tyro-ui-page-header>
 
 <section id="select-page">
 
-  <!-- ── Normal — sans pré-sélection ───────────────────── -->
+  <!-- ── Normal - sans pré-sélection ───────────────────── -->
   <h3 class="ds-title">Normal</h3>
   <app-ds-preview [label]="lang() === 'en' ? 'No default selection (placeholder)' : 'Sans sélection par défaut (placeholder)'">
     <div style="width: 240px;">
@@ -23,7 +23,7 @@
     </div>
   </app-ds-preview>
 
-  <!-- ── Lite — avec pré-sélection ─────────────────────── -->
+  <!-- ── Lite - avec pré-sélection ─────────────────────── -->
   <h3 class="ds-title">Lite</h3>
   <app-ds-preview [label]="lang() === 'en' ? 'Pre-selected value' : 'Valeur pré-sélectionnée'">
     <div style="width: 220px;">

@@ -41,8 +41,8 @@ export class SwitchPage {
   readonly inputsData: PropRow[] = [
     {
       prop: '[(value)]', type: 'boolean', default: 'false',
-      description:   'État du switch — two-way binding disponible',
-      descriptionEn: 'Switch state — two-way binding available',
+      description:   'État du switch - two-way binding disponible',
+      descriptionEn: 'Switch state - two-way binding available',
     },
     {
       prop: '[disabled]', type: 'boolean', default: 'false',
@@ -50,7 +50,7 @@ export class SwitchPage {
       descriptionEn: 'Disables the switch',
     },
     {
-      prop: '[label]', type: 'string', default: '—',
+      prop: '[label]', type: 'string', default: '-',
       description:   'Texte affiché à droite du switch',
       descriptionEn: 'Text displayed to the right of the switch',
     },

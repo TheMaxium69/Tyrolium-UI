@@ -92,9 +92,9 @@ export class ButtonGroupPage {
       descriptionEn: 'List of buttons to display (value, label, icon?, disabled?)',
     },
     {
-      prop: '[(value)]', type: 'string', default: '—',
-      description:   'Valeur du bouton actif — two-way binding disponible',
-      descriptionEn: 'Active button value — two-way binding available',
+      prop: '[(value)]', type: 'string', default: '-',
+      description:   'Valeur du bouton actif - two-way binding disponible',
+      descriptionEn: 'Active button value - two-way binding available',
     },
     {
       prop: '[variant]', type: "'lite' | 'classic' | 'gradient'", default: "'lite'",
@@ -111,8 +111,8 @@ export class ButtonGroupPage {
   readonly outputsData: EventRow[] = [
     {
       event: '(valueChange)', payload: 'string',
-      description:   'Émis quand l\'utilisateur sélectionne un bouton — fournit la value de l\'item',
-      descriptionEn: 'Emitted when the user selects a button — provides the item\'s value',
+      description:   'Émis quand l\'utilisateur sélectionne un bouton - fournit la value de l\'item',
+      descriptionEn: 'Emitted when the user selects a button - provides the item\'s value',
     },
   ];
 }

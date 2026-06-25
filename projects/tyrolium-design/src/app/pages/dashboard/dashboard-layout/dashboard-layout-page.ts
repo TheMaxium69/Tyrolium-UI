@@ -83,7 +83,7 @@ export class DashboardLayoutPage {
     { field: 'label',      type: 'string',               description: 'Texte affiché dans la sidebar',                                    descriptionEn: 'Text displayed in the sidebar' },
     { field: 'icon',       type: 'string',               description: 'Classe remix-icon (utilisée si <code>iconImg</code> absent)',       descriptionEn: 'Remix-icon class (used if <code>iconImg</code> is absent)' },
     { field: 'iconImg?',   type: 'string',               description: 'URL image remplaçant l\'icône (logos projets, etc.)',               descriptionEn: 'Image URL replacing the icon (project logos, etc.)' },
-    { field: 'link?',      type: 'string',               description: 'Route Angular — absent si groupe ou catégorie',                     descriptionEn: 'Angular route — omitted if group or category' },
+    { field: 'link?',      type: 'string',               description: 'Route Angular - absent si groupe ou catégorie',                     descriptionEn: 'Angular route - omitted if group or category' },
     { field: 'category?',  type: 'boolean',              description: 'Transforme l\'item en section collapsible (pas un lien)',           descriptionEn: 'Turns the item into a collapsible section (not a link)' },
     { field: 'children?',  type: 'ITyroUiDashNavChild[]', description: 'Sous-items (niveau 2)',                                           descriptionEn: 'Sub-items (level 2)' },
     { field: 'open?',      type: 'boolean',              description: 'État ouvert/fermé du groupe ou de la catégorie',                    descriptionEn: 'Open/closed state of the group or category' },
@@ -95,7 +95,7 @@ export class DashboardLayoutPage {
     { field: 'label',     type: 'string',                  description: 'Texte affiché',                               descriptionEn: 'Displayed text' },
     { field: 'icon',      type: 'string',                  description: 'Classe remix-icon',                            descriptionEn: 'Remix-icon class' },
     { field: 'iconImg?',  type: 'string',                  description: 'URL image à la place de l\'icône',             descriptionEn: 'Image URL replacing the icon' },
-    { field: 'link?',     type: 'string',                  description: 'Route — absent si sous-groupe',                descriptionEn: 'Route — omitted if sub-group' },
+    { field: 'link?',     type: 'string',                  description: 'Route - absent si sous-groupe',                descriptionEn: 'Route - omitted if sub-group' },
     { field: 'children?', type: 'ITyroUiDashNavSubItem[]', description: 'Sous-sous-items (niveau 3)',                   descriptionEn: 'Sub-sub-items (level 3)' },
     { field: 'open?',     type: 'boolean',                 description: 'État du sous-groupe',                          descriptionEn: 'Sub-group open state' },
   ];

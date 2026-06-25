@@ -32,29 +32,29 @@ export class BentoCardPage {
 
   readonly inputsData: PropRow[] = [
     {
-      prop: '[title?]', type: 'string', default: '—',
+      prop: '[title?]', type: 'string', default: '-',
       description:   'Titre affiché dans le header de la carte',
       descriptionEn: 'Title displayed in the card header',
     },
     {
-      prop: '[label?]', type: 'string', default: '—',
+      prop: '[label?]', type: 'string', default: '-',
       description:   'Surtitre affiché au-dessus du titre (en majuscules)',
       descriptionEn: 'Eyebrow label displayed above the title (uppercase)',
     },
     {
-      prop: '[icon?]', type: 'string', default: '—',
+      prop: '[icon?]', type: 'string', default: '-',
       description:   'Classe remix-icon affichée dans le header',
       descriptionEn: 'Remix-icon class displayed in the header',
     },
     {
-      prop: '[iconImg?]', type: 'string', default: '—',
+      prop: '[iconImg?]', type: 'string', default: '-',
       description:   'URL image remplaçant l\'icône dans le header',
       descriptionEn: 'Image URL replacing the icon in the header',
     },
     {
       prop: '[size]', type: "'small' | 'medium' | 'large'", default: "'medium'",
-      description:   'Taille de la carte — affecte le padding et les gaps internes',
-      descriptionEn: 'Card size — affects padding and internal gaps',
+      description:   'Taille de la carte - affecte le padding et les gaps internes',
+      descriptionEn: 'Card size - affects padding and internal gaps',
     },
     {
       prop: '[hoverable]', type: 'boolean', default: 'false',

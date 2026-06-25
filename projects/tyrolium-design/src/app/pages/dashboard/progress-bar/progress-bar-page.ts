@@ -29,7 +29,7 @@ export class ProgressBarPage {
       description: 'Progression en pourcentage', descriptionEn: 'Progress percentage' },
     { prop: '[color]',      type: 'string (hex)', default: "'#0533c8'",
       description: 'Couleur de remplissage (simple + lite)', descriptionEn: 'Fill color (simple + lite)' },
-    { prop: '[label]',      type: 'string', default: '—',
+    { prop: '[label]',      type: 'string', default: '-',
       description: 'Texte affiché au-dessus', descriptionEn: 'Text displayed above' },
     { prop: '[showLabel]',  type: 'boolean', default: 'false',
       description: 'Affiche le pourcentage en haut à droite', descriptionEn: 'Shows percentage top-right' },

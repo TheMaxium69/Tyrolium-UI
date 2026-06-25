@@ -31,7 +31,7 @@ export class AuthModalPage {
 
   readonly signalsData: ApiRow[] = [
     { member: 'user()',      type: 'Signal<ITyroUiUser | null>',
-      description: 'Utilisateur connecté — null si déconnecté', descriptionEn: 'Logged-in user — null if disconnected' },
+      description: 'Utilisateur connecté - null si déconnecté', descriptionEn: 'Logged-in user - null if disconnected' },
     { member: 'modalOpen()', type: 'Signal<boolean>',
       description: 'Vrai si la modale est ouverte', descriptionEn: 'True while the modal is open' },
     { member: 'modalTab()',  type: "Signal<'login' | 'register'>",

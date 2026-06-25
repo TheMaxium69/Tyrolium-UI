@@ -38,7 +38,7 @@ export class ButtonBentoPage {
       descriptionEn: 'Main button title',
     },
     {
-      prop: '[sublabel?]', type: 'string', default: '—',
+      prop: '[sublabel?]', type: 'string', default: '-',
       description:   'Sous-titre affiché sous le label',
       descriptionEn: 'Subtitle displayed below the label',
     },
@@ -48,12 +48,12 @@ export class ButtonBentoPage {
       descriptionEn: 'Remix-icon class displayed in the button',
     },
     {
-      prop: '[iconImg?]', type: 'string', default: '—',
+      prop: '[iconImg?]', type: 'string', default: '-',
       description:   'URL image remplaçant l\'icône',
       descriptionEn: 'Image URL replacing the icon',
     },
     {
-      prop: '[tag?]', type: 'string', default: '—',
+      prop: '[tag?]', type: 'string', default: '-',
       description:   'Badge texte affiché en haut à droite du bouton',
       descriptionEn: 'Text badge displayed at the top right of the button',
     },
@@ -68,12 +68,12 @@ export class ButtonBentoPage {
       descriptionEn: 'Enables the animated Tyrolium gradient border on hover',
     },
     {
-      prop: '[link?]', type: 'string', default: '—',
+      prop: '[link?]', type: 'string', default: '-',
       description:   'Route Angular (<code>routerLink</code>)',
       descriptionEn: 'Angular route (<code>routerLink</code>)',
     },
     {
-      prop: '[href?]', type: 'string', default: '—',
+      prop: '[href?]', type: 'string', default: '-',
       description:   'Lien externe (ouvre dans le même onglet)',
       descriptionEn: 'External link (opens in the same tab)',
     },

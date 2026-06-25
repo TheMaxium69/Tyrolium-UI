@@ -56,7 +56,7 @@ export class ChipPage {
       descriptionEn: 'Size of the chip',
     },
     {
-      prop: '[icon]', type: 'string', default: '—',
+      prop: '[icon]', type: 'string', default: '-',
       description:   'Classe d\'icône Remix Icon affichée à gauche du texte',
       descriptionEn: 'Remix Icon class displayed to the left of the text',
     },

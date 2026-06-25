@@ -29,8 +29,8 @@ export class CheckboxPage {
 
   readonly inputsData: PropRow[] = [
     { prop: '[(value)]',  type: 'boolean', default: 'false',
-      description: 'État coché — two-way binding', descriptionEn: 'Checked state — two-way binding' },
-    { prop: '[label]',    type: 'string',  default: '—',
+      description: 'État coché - two-way binding', descriptionEn: 'Checked state - two-way binding' },
+    { prop: '[label]',    type: 'string',  default: '-',
       description: 'Texte affiché à droite', descriptionEn: 'Text displayed on the right' },
     { prop: '[disabled]', type: 'boolean', default: 'false',
       description: 'Désactive l\'interaction', descriptionEn: 'Disables interaction' },

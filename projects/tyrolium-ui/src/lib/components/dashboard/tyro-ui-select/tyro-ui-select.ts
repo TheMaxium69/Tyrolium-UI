@@ -11,7 +11,7 @@ export type TyroUiSelectVariant = 'normal' | 'lite';
 export class TyroUiSelect {
   @Input() items:       ITyroUiSelectItem[] = [];
   @Input() value?:      string;
-  @Input() placeholder  = '—';
+  @Input() placeholder  = '-';
   @Input() disabled     = false;
   @Input() variant:     TyroUiSelectVariant = 'normal';
 

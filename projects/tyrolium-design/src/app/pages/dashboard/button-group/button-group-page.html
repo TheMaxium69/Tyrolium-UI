@@ -1,9 +1,9 @@
 <tyro-ui-page-header label="&lt;tyro-ui-button-group&gt;" [title]="lang() === 'en' ? 'Button Group' : 'Groupe de boutons'">
   @if (lang() === 'en') {
-    A set of N buttons unified as a single visual control — segmented tabs, period filters, view switchers.
+    A set of N buttons unified as a single visual control - segmented tabs, period filters, view switchers.
     Items are passed as an array; the active item is tracked via two-way <code class="ds-code">[(value)]</code> binding.
   } @else {
-    N boutons réunis en un seul contrôle visuel — onglets segmentés, filtres de période, sélecteur de vue.
+    N boutons réunis en un seul contrôle visuel - onglets segmentés, filtres de période, sélecteur de vue.
     Les items sont passés en tableau ; l'item actif est géré via la liaison bidirectionnelle <code class="ds-code">[(value)]</code>.
   }
 </tyro-ui-page-header>
@@ -56,7 +56,7 @@
 
   <!-- ── Icônes seules ──────────────────────────────────── -->
   <h3 class="ds-title">{{ lang() === 'en' ? 'Icon-only' : 'Icônes seules' }}</h3>
-  <app-ds-preview [label]="lang() === 'en' ? 'View switcher — icon-only items' : 'Sélecteur de vue — items icônes seules'">
+  <app-ds-preview [label]="lang() === 'en' ? 'View switcher - icon-only items' : 'Sélecteur de vue - items icônes seules'">
     <div class="ds-flex">
       <tyro-ui-button-group
         variant="lite"

@@ -61,7 +61,7 @@ export class EasterEggPage {
   readonly behaviorData: BehaviorRow[] = [
     {
       element: 'Déclencheur',   elementEn: 'Trigger',
-      value:   'Code Konami complet — 10 touches dans l\'ordre', valueEn: 'Full Konami Code — 10 keys in order',
+      value:   'Code Konami complet - 10 touches dans l\'ordre', valueEn: 'Full Konami Code - 10 keys in order',
     },
     {
       element: 'Fermeture',     elementEn: 'Close',
@@ -73,7 +73,7 @@ export class EasterEggPage {
     },
     {
       element: 'State',         elementEn: 'State',
-      value:   'Signal <code>isOpen</code> — <code>false</code> par défaut', valueEn: 'Signal <code>isOpen</code> — <code>false</code> by default',
+      value:   'Signal <code>isOpen</code> - <code>false</code> par défaut', valueEn: 'Signal <code>isOpen</code> - <code>false</code> by default',
     },
   ];
 }

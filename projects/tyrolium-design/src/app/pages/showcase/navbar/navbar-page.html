@@ -11,13 +11,13 @@
 <section id="navbar-page">
 
   <!-- ── Aperçu standalone ─────────────────────────────────── -->
-    <h3 class="ds-title">{{ lang() === 'en' ? 'Preview — standalone' : 'Aperçu — standalone' }}</h3>
+    <h3 class="ds-title">{{ lang() === 'en' ? 'Preview - standalone' : 'Aperçu - standalone' }}</h3>
     <app-ds-preview label='project="Tyrolium"' minHeight="63px">
       <tyro-ui-navbar project="Tyrolium" logo="assets/tyrolium-ui/projects/Tyrolium.png" [placeholder]="false"></tyro-ui-navbar>
     </app-ds-preview>
 
   <!-- ── Aperçu sidebar ────────────────────────────────────── -->
-    <h3 class="ds-title">{{ lang() === 'en' ? 'Preview — sidebar mode' : 'Aperçu — mode sidebar' }}</h3>
+    <h3 class="ds-title">{{ lang() === 'en' ? 'Preview - sidebar mode' : 'Aperçu - mode sidebar' }}</h3>
     <app-ds-preview label='project="Useritium"  subtitle="Dashboard"  [sidebar]="true"'>
       <tyro-ui-navbar project="Useritium" subtitle="Dashboard" logo="assets/tyrolium-ui/projects/Useritium.png" [sidebar]="true" [placeholder]="false"></tyro-ui-navbar>
     </app-ds-preview>
@@ -65,7 +65,7 @@
 
   <!-- ── Interface ITyroUiNavbarPages ──────────────────────── -->
 
-    <tyro-ui-bento-card title="Interface — ITyroUiNavbarPages">
+    <tyro-ui-bento-card title="Interface - ITyroUiNavbarPages">
         <p class="ds-desc">
             {{ lang() === 'en' ? 'Navigation links passed via' : 'Liens de navigation passés via' }}
             <code class="ds-code">[pages]</code>
@@ -86,10 +86,10 @@
   <hr class="ds-divider">
 
   <!-- ── Menu apps (config) ─────────────────────────────────── -->
-    <h3 class="ds-title">Config — menu-navbar.ts</h3>
+    <h3 class="ds-title">Config - menu-navbar.ts</h3>
 
   <!-- NavbarMenuPinned -->
-    <tyro-ui-bento-card [title]="lang() === 'en' ? 'NavbarMenuPinned — pinned app (Tyrolium)' : 'NavbarMenuPinned — app épinglée (Tyrolium)'">
+    <tyro-ui-bento-card [title]="lang() === 'en' ? 'NavbarMenuPinned - pinned app (Tyrolium)' : 'NavbarMenuPinned - app épinglée (Tyrolium)'">
         <p class="ds-desc">
             {{ lang() === 'en'
             ? 'The "apps" menu is powered by two constants exported from'
@@ -111,7 +111,7 @@
     </tyro-ui-bento-card>
 
   <!-- NavbarMenuCategory -->
-    <tyro-ui-bento-card [title]="lang() === 'en' ? 'NavbarMenuCategory — app menu categories' : 'NavbarMenuCategory — catégories du menu apps'">
+    <tyro-ui-bento-card [title]="lang() === 'en' ? 'NavbarMenuCategory - app menu categories' : 'NavbarMenuCategory - catégories du menu apps'">
       <tyro-ui-data-table [columns]="fieldCols" [data]="menuCategoryData">
 
         <ng-template tyroCol="field" let-row>

@@ -29,8 +29,8 @@ export class SkeletonPage {
       description: 'Largeur de l\'élément', descriptionEn: 'Element width' },
     { prop: '[height]',       type: 'string (CSS)',  default: "'16px'",
       description: 'Hauteur de l\'élément', descriptionEn: 'Element height' },
-    { prop: '[borderRadius]', type: 'string (CSS)',  default: '—',
-      description: 'Border radius — surcharge le variant', descriptionEn: 'Border radius — overrides variant default' },
+    { prop: '[borderRadius]', type: 'string (CSS)',  default: '-',
+      description: 'Border radius - surcharge le variant', descriptionEn: 'Border radius - overrides variant default' },
     { prop: '[count]',        type: 'number',        default: '1',
       description: 'Nombre de lignes répétées', descriptionEn: 'Number of repeated rows' },
   ];

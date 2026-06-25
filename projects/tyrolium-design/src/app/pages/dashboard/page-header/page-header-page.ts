@@ -37,7 +37,7 @@ export class PageHeaderPage {
       descriptionEn: 'Main title displayed in large font',
     },
     {
-      prop: '[label?]', type: 'string', default: '—',
+      prop: '[label?]', type: 'string', default: '-',
       description:   'Surtitre affiché au-dessus du titre (ex : <em>"&lt;tyro-ui-navbar&gt;"</em>)',
       descriptionEn: 'Eyebrow label displayed above the title (e.g. <em>"&lt;tyro-ui-navbar&gt;"</em>)',
     },

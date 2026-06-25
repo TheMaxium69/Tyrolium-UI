@@ -77,11 +77,11 @@ export class SelectPage {
     },
     {
       prop: '[(value)]', type: 'string | undefined', default: 'undefined',
-      description:   'Valeur sélectionnée — undefined = aucune sélection (placeholder)',
-      descriptionEn: 'Selected value — undefined = no selection (placeholder shown)',
+      description:   'Valeur sélectionnée - undefined = aucune sélection (placeholder)',
+      descriptionEn: 'Selected value - undefined = no selection (placeholder shown)',
     },
     {
-      prop: '[placeholder]', type: 'string', default: "'—'",
+      prop: '[placeholder]', type: 'string', default: "'-'",
       description:   'Texte affiché quand aucune option n\'est sélectionnée',
       descriptionEn: 'Text shown when no option is selected',
     },

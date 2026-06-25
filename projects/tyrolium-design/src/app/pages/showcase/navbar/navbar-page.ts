@@ -55,8 +55,8 @@ export class NavbarPage {
     },
     {
       prop: '[logo]', type: 'string', default: "''",
-      description:   'URL du logo affiché à gauche — si vide, aucun logo',
-      descriptionEn: 'Logo URL displayed on the left — if empty, no logo is shown',
+      description:   'URL du logo affiché à gauche - si vide, aucun logo',
+      descriptionEn: 'Logo URL displayed on the left - if empty, no logo is shown',
     },
     {
       prop: '[subtitle]', type: 'string', default: "''",
@@ -75,8 +75,8 @@ export class NavbarPage {
     },
     {
       prop: '[sidebar]', type: 'boolean', default: 'false',
-      description:   'Mode dashboard — passe la navbar en <code>position: relative</code> et affiche un burger qui émet <code>sidebarBurgerClick</code>',
-      descriptionEn: 'Dashboard mode — switches the navbar to <code>position: relative</code> and shows a burger button that emits <code>sidebarBurgerClick</code>',
+      description:   'Mode dashboard - passe la navbar en <code>position: relative</code> et affiche un burger qui émet <code>sidebarBurgerClick</code>',
+      descriptionEn: 'Dashboard mode - switches the navbar to <code>position: relative</code> and shows a burger button that emits <code>sidebarBurgerClick</code>',
     },
     {
       prop: '[currentUser]', type: 'any[]', default: '[]',
@@ -91,8 +91,8 @@ export class NavbarPage {
   readonly outputsData: EventRow[] = [
     {
       event: '(sidebarBurgerClick)', payload: 'void',
-      description:   'Émis quand le burger est cliqué en mode <code>[sidebar]="true"</code> — utilisé par <code>tyro-ui-dashboard-layout</code> pour ouvrir la sidebar mobile',
-      descriptionEn: 'Emitted when the burger is clicked in <code>[sidebar]="true"</code> mode — used by <code>tyro-ui-dashboard-layout</code> to open the mobile sidebar',
+      description:   'Émis quand le burger est cliqué en mode <code>[sidebar]="true"</code> - utilisé par <code>tyro-ui-dashboard-layout</code> pour ouvrir la sidebar mobile',
+      descriptionEn: 'Emitted when the burger is clicked in <code>[sidebar]="true"</code> mode - used by <code>tyro-ui-dashboard-layout</code> to open the mobile sidebar',
     },
     {
       event: '(loginClick)', payload: 'void',

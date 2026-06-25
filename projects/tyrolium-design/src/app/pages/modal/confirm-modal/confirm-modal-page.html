@@ -52,14 +52,14 @@
   </tyro-ui-bento-card>
 
   <h3 class="ds-title">Setup</h3>
-  <tyro-ui-bento-card [title]="lang() === 'en' ? 'Root layout — add once' : 'Layout racine — à ajouter une fois'">
+  <tyro-ui-bento-card [title]="lang() === 'en' ? 'Root layout - add once' : 'Layout racine - à ajouter une fois'">
     <pre class="ds-pre"><code>{{ '<' }}tyro-ui-dashboard-layout {{ '[' }}...{{ ']' }}>
   {{ '<' }}router-outlet />
 {{ '<' }}/tyro-ui-dashboard-layout>
 {{ '<' }}tyro-ui-confirm-modal>{{ '<' }}/tyro-ui-confirm-modal></code></pre>
   </tyro-ui-bento-card>
 
-  <tyro-ui-bento-card [title]="lang() === 'en' ? 'Usage — async/await' : 'Utilisation — async/await'">
+  <tyro-ui-bento-card [title]="lang() === 'en' ? 'Usage - async/await' : 'Utilisation - async/await'">
     <pre class="ds-pre"><code>private readonly confirm = inject(TyroUiConfirmService);
 
 async deleteItem(): Promise{{ '<' }}void> {{ '{' }}
