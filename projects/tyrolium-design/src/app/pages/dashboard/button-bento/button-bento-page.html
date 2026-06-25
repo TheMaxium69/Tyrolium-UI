@@ -1,0 +1,77 @@
+<tyro-ui-page-header label="&lt;tyro-ui-button-bento&gt;" title="Button Bento">
+  @if (lang() === 'en') {
+    Navigation shortcut card for dashboards. Displays an icon, a title, an optional subtitle and an optional badge.
+    Supports <code class="ds-code">routerLink</code>, <code class="ds-code">href</code> and an animated gradient border.
+  } @else {
+    Carte de raccourci de navigation pour les dashboards. Affiche une icône, un titre, un sous-titre optionnel et un badge optionnel.
+    Supporte <code class="ds-code">routerLink</code>, <code class="ds-code">href</code> et une bordure gradient animée.
+  }
+</tyro-ui-page-header>
+
+<section id="button-bento-page">
+
+  <!-- ── Aperçu — défaut ───────────────────────────────────── -->
+  <h3 class="ds-title">{{ lang() === 'en' ? 'Preview — default' : 'Aperçu — défaut' }}</h3>
+  <app-ds-preview label="icon + label + sublabel + tag">
+    <div class="ds-flex">
+      <tyro-ui-button-bento
+        icon="ri-dashboard-line"
+        [label]="lang() === 'en' ? 'Dashboard' : 'Tableau de bord'"
+        [sublabel]="lang() === 'en' ? 'Main overview' : 'Vue principale'"
+        tag="New">
+      </tyro-ui-button-bento>
+      <tyro-ui-button-bento
+        icon="ri-user-line"
+        [label]="lang() === 'en' ? 'Users' : 'Utilisateurs'"
+        [sublabel]="lang() === 'en' ? 'Manage accounts' : 'Gérer les comptes'">
+      </tyro-ui-button-bento>
+      <tyro-ui-button-bento
+        icon="ri-settings-3-line"
+        [label]="lang() === 'en' ? 'Settings' : 'Paramètres'">
+      </tyro-ui-button-bento>
+    </div>
+  </app-ds-preview>
+
+  <!-- ── Aperçu — short ────────────────────────────────────── -->
+  <h3 class="ds-title">{{ lang() === 'en' ? 'Preview — short mode' : 'Aperçu — mode court' }}</h3>
+  <app-ds-preview label="[short]='true'">
+    <div class="ds-flex">
+      <tyro-ui-button-bento [short]="true" icon="ri-home-4-line"   [label]="lang() === 'en' ? 'Home' : 'Accueil'"></tyro-ui-button-bento>
+      <tyro-ui-button-bento [short]="true" icon="ri-bar-chart-line" [label]="lang() === 'en' ? 'Analytics' : 'Analytiques'"></tyro-ui-button-bento>
+      <tyro-ui-button-bento [short]="true" icon="ri-file-line"      [label]="lang() === 'en' ? 'Reports' : 'Rapports'"></tyro-ui-button-bento>
+    </div>
+  </app-ds-preview>
+
+  <!-- ── Aperçu — gradient ─────────────────────────────────── -->
+  <h3 class="ds-title">{{ lang() === 'en' ? 'Preview — gradient border' : 'Aperçu — bordure gradient' }}</h3>
+  <app-ds-preview label="[gradient]='true'">
+    <tyro-ui-button-bento
+      [gradient]="true"
+      icon="ri-vip-crown-line"
+      [label]="lang() === 'en' ? 'Premium' : 'Premium'"
+      [sublabel]="lang() === 'en' ? 'Hover to see the effect' : 'Survolez pour voir l\'effet'">
+    </tyro-ui-button-bento>
+  </app-ds-preview>
+
+  <hr class="ds-divider">
+
+  <!-- ── Inputs ────────────────────────────────────────────── -->
+  <tyro-ui-bento-card title="Inputs">
+    <tyro-ui-data-table [columns]="propCols" [data]="inputsData">
+
+      <ng-template tyroCol="prop" let-row>
+        <code class="ds-code">{{ $any(row).prop }}</code>
+      </ng-template>
+
+      <ng-template tyroCol="default" let-row>
+        <code class="ds-code">{{ $any(row).default }}</code>
+      </ng-template>
+
+      <ng-template tyroCol="description" let-row>
+        <span class="ds-desc" [innerHTML]="lang() === 'en' ? ($any(row).descriptionEn || $any(row).description) : $any(row).description"></span>
+      </ng-template>
+
+    </tyro-ui-data-table>
+  </tyro-ui-bento-card>
+
+</section>

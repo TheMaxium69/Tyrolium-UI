@@ -1,62 +1,63 @@
-<div class="ds-page">
-  <div class="ds-block">
-    <span class="ds-tag">&lt;tyro-ui-easter-egg&gt;</span>
-    <h1 class="ds-name">Easter Egg</h1>
-    <p class="ds-desc">
-      Mini-jeux cachés déclenchés par le code Konami
-      (<kbd>↑</kbd><kbd>↑</kbd><kbd>↓</kbd><kbd>↓</kbd><kbd>←</kbd><kbd>→</kbd><kbd>←</kbd><kbd>→</kbd><kbd>B</kbd><kbd>A</kbd>).
-      Aucun <code>@Input()</code> — il suffit de placer le composant dans le template racine.
-    </p>
-  </div>
+<tyro-ui-page-header label="&lt;tyro-ui-easter-egg&gt;" title="Easter Egg">
+  @if (lang() === 'en') {
+    Hidden mini-games triggered by the Konami Code
+    (<kbd>↑</kbd><kbd>↑</kbd><kbd>↓</kbd><kbd>↓</kbd><kbd>←</kbd><kbd>→</kbd><kbd>←</kbd><kbd>→</kbd><kbd>B</kbd><kbd>A</kbd>).
+    No <code class="ds-code">&#64;Input()</code> — just place the component once in the root template.
+  } @else {
+    Mini-jeux cachés déclenchés par le code Konami
+    (<kbd>↑</kbd><kbd>↑</kbd><kbd>↓</kbd><kbd>↓</kbd><kbd>←</kbd><kbd>→</kbd><kbd>←</kbd><kbd>→</kbd><kbd>B</kbd><kbd>A</kbd>).
+    Aucun <code class="ds-code">&#64;Input()</code> — il suffit de placer le composant une fois dans le template racine.
+  }
+</tyro-ui-page-header>
+
+<section id="easter-egg-page">
+
+  <!-- ── Jeux disponibles ──────────────────────────────────── -->
+  <tyro-ui-bento-card [title]="lang() === 'en' ? 'Available games' : 'Jeux disponibles'">
+    <tyro-ui-data-table [columns]="gameCols" [data]="gamesData">
+
+      <ng-template tyroCol="url" let-row>
+        <code class="ds-code">{{ $any(row).url }}</code>
+      </ng-template>
+
+      <ng-template tyroCol="description" let-row>
+        <span class="ds-desc" [innerHTML]="lang() === 'en' ? ($any(row).descriptionEn || $any(row).description) : $any(row).description"></span>
+      </ng-template>
+
+    </tyro-ui-data-table>
+  </tyro-ui-bento-card>
 
   <hr class="ds-divider">
 
-  <div class="ds-block">
-    <span class="ds-label">Jeux disponibles</span>
-    <div class="ds-preview">
-      <div class="ds-preview-label">Mini-jeux accessibles</div>
-      <div class="ds-preview-body">
-        <table class="ds-props-table">
-          <thead><tr><th>Jeu</th><th>URL</th><th>Description</th></tr></thead>
-          <tbody>
-            <tr><td>Échec-ium</td><td><code>themaxium69.github.io/Echec-ium/</code></td><td>Jeu d'échecs aux couleurs Tyrolium</td></tr>
-            <tr><td>Flappium</td><td><code>themaxium69.github.io/Flappium/</code></td><td>Clone de Flappy Bird façon Tyrolium</td></tr>
-            <tr><td>Clavium</td><td><code>themaxium69.github.io/Clavium/</code></td><td>Jeu de rythme au clavier</td></tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
-  </div>
+  <!-- ── Comportement ──────────────────────────────────────── -->
+  <tyro-ui-bento-card [title]="lang() === 'en' ? 'Behaviour' : 'Comportement'">
+    <tyro-ui-data-table [columns]="behaviorCols" [data]="behaviorData">
 
-  <div class="ds-block">
-    <span class="ds-label">Comportement</span>
-    <div class="ds-preview">
-      <div class="ds-preview-label">Logique interne</div>
-      <div class="ds-preview-body">
-        <table class="ds-props-table">
-          <thead><tr><th>Élément</th><th>Valeur</th></tr></thead>
-          <tbody>
-            <tr><td>Déclencheur</td><td>Code Konami complet (10 touches dans l'ordre)</td></tr>
-            <tr><td>Fermeture</td><td><kbd>Escape</kbd> ou clic sur l'overlay</td></tr>
-            <tr><td>Ouverture jeu</td><td><code>window.open(url, '_blank', 'noopener')</code></td></tr>
-            <tr><td>State</td><td>Signal <code>isOpen</code> — <code>false</code> par défaut</td></tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
-  </div>
+      <ng-template tyroCol="element" let-row>
+        <span class="ds-desc" [innerHTML]="lang() === 'en' ? ($any(row).elementEn || $any(row).element) : $any(row).element"></span>
+      </ng-template>
 
-  <div class="ds-block">
-    <span class="ds-label">Usage</span>
-    <div class="ds-preview">
-      <div class="ds-preview-label">Intégration minimale</div>
-      <div class="ds-preview-body">
-        <pre class="ds-code">// app.html — placer une seule fois à la racine
+      <ng-template tyroCol="value" let-row>
+        <span class="ds-desc" [innerHTML]="lang() === 'en' ? ($any(row).valueEn || $any(row).value) : $any(row).value"></span>
+      </ng-template>
+
+    </tyro-ui-data-table>
+  </tyro-ui-bento-card>
+
+  <hr class="ds-divider">
+
+  <!-- ── Usage ─────────────────────────────────────────────── -->
+  <tyro-ui-bento-card [title]="lang() === 'en' ? 'Usage' : 'Utilisation'">
+    <p class="ds-desc">
+      {{ lang() === 'en'
+        ? 'Place the component once in your root template — it listens to keyboard events globally.'
+        : 'Placez le composant une fois dans votre template racine — il écoute les événements clavier globalement.' }}
+    </p>
+    <pre class="ds-pre">// app.html
 &lt;tyro-ui-easter-egg&gt;&lt;/tyro-ui-easter-egg&gt;</pre>
-      </div>
-    </div>
-  </div>
+  </tyro-ui-bento-card>
 
-  <!-- Le composant est présent mais invisible tant que le code Konami n'est pas saisi -->
-  <tyro-ui-easter-egg></tyro-ui-easter-egg>
-</div>
+</section>
+
+<!-- Composant actif sur cette page — essayez le code Konami ! -->
+<tyro-ui-easter-egg></tyro-ui-easter-egg>

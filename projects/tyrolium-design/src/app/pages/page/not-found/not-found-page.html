@@ -1,48 +1,45 @@
-<div class="ds-page">
-  <div class="ds-block">
-    <span class="ds-tag">&lt;tyro-ui-not-found&gt;</span>
-    <h1 class="ds-name">Not Found</h1>
-    <p class="ds-desc">Page d'erreur 404 — utilisée comme composant de la wildcard route <code>{{ inlineDesc }}</code> dans tous les projets.</p>
-  </div>
+<tyro-ui-page-header label="&lt;tyro-ui-not-found&gt;" title="Not Found">
+  @if (lang() === 'en') {
+    404 error page — used as the wildcard route component
+    <code class="ds-code">{{ '{' }} path: '**', component: TyroUiNotFound {{ '}' }}</code> across all projects.
+  } @else {
+    Page d'erreur 404 — utilisée comme composant de la wildcard route
+    <code class="ds-code">{{ '{' }} path: '**', component: TyroUiNotFound {{ '}' }}</code> dans tous les projets.
+  }
+</tyro-ui-page-header>
+
+<section id="not-found-page">
+
+  <!-- ── Aperçu ────────────────────────────────────────────── -->
+  <h3 class="ds-title">{{ lang() === 'en' ? 'Preview' : 'Aperçu' }}</h3>
+  <app-ds-preview label='[homeLink]="/"' minHeight="360px">
+    <tyro-ui-not-found homeLink="/"></tyro-ui-not-found>
+  </app-ds-preview>
 
   <hr class="ds-divider">
 
-  <div class="ds-block">
-    <span class="ds-label">Aperçu</span>
-    <div class="ds-preview">
-      <div class="ds-preview-label"><code>[homeLink]="'/'"</code></div>
-      <div class="ds-preview-frame ds-preview-frame--page">
-        <tyro-ui-not-found homeLink="/"></tyro-ui-not-found>
-      </div>
-    </div>
-  </div>
+  <!-- ── Inputs ────────────────────────────────────────────── -->
+  <tyro-ui-bento-card title="Inputs">
+    <tyro-ui-data-table [columns]="propCols" [data]="inputsData">
 
-  <hr class="ds-divider">
+      <ng-template tyroCol="prop" let-row>
+        <code class="ds-code">{{ $any(row).prop }}</code>
+      </ng-template>
 
-  <div class="ds-block">
-    <span class="ds-label">Inputs</span>
-    <div class="ds-preview">
-      <div class="ds-preview-label">@Input()</div>
-      <div class="ds-preview-body">
-        <table class="ds-props-table">
-          <thead><tr><th>Propriété</th><th>Type</th><th>Défaut</th><th>Description</th></tr></thead>
-          <tbody>
-            <tr><td><code>[homeLink]</code></td><td>string</td><td><code>'/'</code></td><td>Route du bouton "Retour à l'accueil"</td></tr>
-            <tr><td><code>[homeLabel]</code></td><td>string</td><td><code>"Retour à l'accueil"</code></td><td>Texte du bouton (fr)</td></tr>
-            <tr><td><code>[homeLabelEn]</code></td><td>string</td><td><code>'Back to home'</code></td><td>Texte du bouton (en)</td></tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
-  </div>
+      <ng-template tyroCol="default" let-row>
+        <code class="ds-code">{{ $any(row).default }}</code>
+      </ng-template>
 
-  <div class="ds-block">
-    <span class="ds-label">Usage</span>
-    <div class="ds-preview">
-      <div class="ds-preview-label">app.routes.ts</div>
-      <div class="ds-preview-body">
-        <pre class="ds-code">{{ routeCode }}</pre>
-      </div>
-    </div>
-  </div>
-</div>
+      <ng-template tyroCol="description" let-row>
+        <span class="ds-desc" [innerHTML]="lang() === 'en' ? ($any(row).descriptionEn || $any(row).description) : $any(row).description"></span>
+      </ng-template>
+
+    </tyro-ui-data-table>
+  </tyro-ui-bento-card>
+
+  <!-- ── Usage ─────────────────────────────────────────────── -->
+  <tyro-ui-bento-card [title]="lang() === 'en' ? 'Usage — app.routes.ts' : 'Utilisation — app.routes.ts'">
+    <pre class="ds-pre">{{ routeCode }}</pre>
+  </tyro-ui-bento-card>
+
+</section>

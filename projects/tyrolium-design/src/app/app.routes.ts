@@ -32,6 +32,10 @@ export const routes: Routes = [
       { path: 'showcase/cta',               component: CtaPage },
 
       { path: 'dashboard/dashboard-layout', component: DashboardLayoutPage },
+      { path: 'dashboard/button-bento',     component: ButtonBentoPage },
+      { path: 'dashboard/page-header',      component: PageHeaderPage },
+      { path: 'dashboard/bento-card',       component: BentoCardPage },
+      { path: 'dashboard/data-table',       component: DataTablePage },
 
       { path: 'modal/auth-modal',           component: AuthModalPage },
 

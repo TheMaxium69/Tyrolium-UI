@@ -43,9 +43,11 @@ export class Layout {
         label: 'Dashboard', icon: 'ri-layout-left-line',
         category: true, open: true,
         children: [
-          { label: 'Dashboard Layout', icon: 'ri-layout-left-line', link: '/dashboard/dashboard-layout' },
-          { label: 'Button Bento',     icon: 'ri-grid-line',         link: '/dashboard/button-bento' },
-          { label: 'Page Header',      icon: 'ri-heading',           link: '/dashboard/page-header' },
+          { label: 'Dashboard Layout', icon: 'ri-layout-left-line',  link: '/dashboard/dashboard-layout' },
+          { label: 'Button Bento',     icon: 'ri-grid-line',          link: '/dashboard/button-bento' },
+          { label: 'Page Header',      icon: 'ri-heading',            link: '/dashboard/page-header' },
+          { label: 'Bento Card',       icon: 'ri-layout-cards-line',  link: '/dashboard/bento-card' },
+          { label: 'Data Table',       icon: 'ri-table-line',         link: '/dashboard/data-table' },
         ],
       },
       {
