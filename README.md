@@ -1,82 +1,144 @@
 # 🎨 Tyrolium-UI : Documentation Technique & Design System
 
-**Version :** 1.0.0
-**Framework :** Angular (Workspace)  
+**Framework :** Angular (Workspace mono-repo)  
 **Iconographie :** RemixIcon  
+**Documentation interactive :** [design.tyrolium.fr](https://design.tyrolium.fr)
 
 ---
 
 ## 📖 1. Présentation
 
-**Tyrolium-UI** est la librairie de composants officielle du Design System de Tyrolium. 
-Elle centralise l'identité visuelle pour l'ensemble des projets du groupe (Tyrolium, SolidServ, etc.).
+**Tyrolium-UI** est la librairie de composants officielle du Design System de Tyrolium.  
+Elle centralise l'identité visuelle pour l'ensemble des projets du groupe.
+
+### Projets du workspace
+
+| Projet | URL | Description |
+|---|---|---|
+| `tyrolium-ui` | — | Librairie de composants (ce projet) |
+| `tyrolium-website` | tyrolium.fr | Site principal |
+| `tyrolium-design` | design.tyrolium.fr | Documentation du design system |
+| `tyrolium-uptime` | — | Page de statut des serveurs |
+| `solidserv-website` | solidserv.fr | Hébergeur de serveurs |
+| `tyrociel-website` | tyrociel.fr | Studio de jeu-vidéo |
+| `tyroserv-website` | tyroserv.fr | Serveur Minecraft |
+| `influnias-website` | influnias.fr | Agence d'influenceurs |
+| `vturias-website` | vturias.fr | Agence de VTubers |
+| `gamenium-website` | gamenium.fr | Actualités jeu-vidéo |
+| `useritium-website` | useritium.fr | Gestion de compte SSO |
+| `nexiumiacrm-website` | nexiumiacrm.fr | CRM |
+| `useritium-dashboard` | — | Dashboard Useritium |
+| `tyrolium-hub` | hub.tyrolium.fr | Hub backoffice interne |
+
+---
 
 ## ⚙️ 2. Dépendances et Installation
 
-La librairie s'appuie sur **RemixIcon** et des polices Google Fonts pour la gestion de ses icônes.
-
 ### A. Installation (à la racine du workspace)
-`npm install remixicon`
+```bash
+npm install remixicon
+```
 
-### B. Configuration de l'application cliente
-Dans le fichier de style global de l'application (ex: `styles.scss`), ajoutez l'import suivant tout en haut :
-`@import 'remixicon/fonts/remixicon.css';`
-`@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');;`
+### B. Polices (Google Fonts)
+Dans le `<head>` de chaque `index.html` :
+```html
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400..800&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Noto+Sans+Display:wght@100..900&display=swap" rel="stylesheet">
+```
 
-## 💅 3. Styles Globaux & Utilitaires
+| Famille | Usage |
+|---|---|
+| **Syne** | Titres et headings |
+| **Inter** | Corps de texte et UI |
+| **Noto Sans Display** | Sous-marques |
 
-La librairie embarque des classes CSS globales réutilisables (ex: couleurs, flexbox, etc.). 
-Pour que votre application puisse les utiliser, vous **ne devez pas** faire de `@import` dans vos fichiers CSS.
+### C. Meta theme-color
+Obligatoire dans chaque `index.html` pour que `TyroUiThemeService` mette à jour la couleur de l'onglet navigateur :
+```html
+<meta name="theme-color" content="#111827" />
+```
 
-Vous devez déclarer le fichier de style de la librairie directement dans le fichier **`angular.json`** à la racine du workspace, dans la section `architect > build > options > styles` de votre application :
+---
 
-`"styles": [`
-  `"projects/tyrolium-ui/src/styles/tyrolium-ui.css",`
-  `"projects/tyrolium-website/src/styles.css"`
-`]`
+## 💅 3. Styles Globaux
+
+Ne pas faire `@import` dans les CSS. Déclarer le fichier global dans `angular.json` :
+
+```json
+"styles": [
+  "node_modules/remixicon/fonts/remixicon.css",
+  "projects/tyrolium-ui/src/styles/tyrolium-ui.css",
+  "projects/mon-projet/src/styles.css"
+]
+```
+
+---
 
 ## 🏷️ 4. Conventions de nommage (Standard Tyrolium)
 
-Pour garantir la clarté entre les différents projets, nous utilisons le préfixe **"TyroUi"** (Tyrolium UI).
-
 ### A. Composants TypeScript
-* **Format :** PascalCase
-* **Convention :** `TyroUi[Nom]`
-* **Exemple :** `export class TyroUiButton`
+- **Format :** PascalCase
+- **Convention :** `TyroUi[Nom]`
+- **Exemple :** `export class TyroUiButton`
 
 ### B. Sélecteurs HTML
-* **Format :** kebab-case
-* **Convention :** `<tyro-ui-[nom]>`
-* **Exemple :** `<tyro-ui-button></tyro-ui-button>`
+- **Format :** kebab-case
+- **Convention :** `<tyro-ui-[nom]>`
+- **Exemple :** `<tyro-ui-button></tyro-ui-button>`
 
-## 🛠️ 5. Guide de développement (Ajouter un composant)
+---
+
+## 🛠️ 5. Ajouter un composant à la librairie
 
 ### A. Génération
-Utilisez toujours le flag `--project` pour cibler la librairie :
-`ng generate component components/nom-composant --project=tyrolium-ui`
+```bash
+ng generate component components/nom-composant --project=tyrolium-ui
+```
 
-### B. Exportation (Indispensable)
-Tout nouveau composant créé est privé par défaut. Il doit obligatoirement être déclaré dans le fichier `projects/tyrolium-ui/src/public-api.ts`.
+### B. Exportation
+Déclarer le composant dans `projects/tyrolium-ui/src/public-api.ts` :
+```ts
+export * from './lib/components/nom-composant/nom-composant';
+```
 
-**Exemple :**
-`export * from './lib/components/button/button';`
+---
 
-## 🚀 6. Configuration du Workspace (Développement)
+## 🚀 6. Développement (Hot Reload)
 
-Pour bénéficier du rechargement automatique (Hot Reload) sans avoir à compiler la librairie à chaque modification visuelle, assurez-vous que le fichier `tsconfig.json` à la racine pointe directement vers les sources de l'API publique :
+Le `tsconfig.json` racine pointe directement vers les sources pour éviter de rebuilder la lib à chaque modification :
 
-`"paths": {`
-  `"tyrolium-ui": [`
-    `"./projects/tyrolium-ui/src/public-api.ts"`
-  `]`
-`}`
+```json
+"paths": {
+  "tyrolium-ui": ["./projects/tyrolium-ui/src/public-api.ts"]
+}
+```
+
+---
 
 ## 💡 7. Utilisation dans une application
 
-1. **Importer** le composant dans le fichier `.ts` du site cible :
-   `import { TyroUiButton } from 'tyrolium-ui';`
-2. **Déclarer** le composant dans le tableau `imports` du décorateur `@Component`.
-3. **Utiliser** le sélecteur dans le template HTML : `<tyro-ui-button></tyro-ui-button>`.
+```ts
+import { TyroUiButton } from 'tyrolium-ui';
+
+@Component({
+  imports: [TyroUiButton],
+  template: `<tyro-ui-button>Valider</tyro-ui-button>`
+})
+```
 
 ---
-*Document créé et maintenu par Maxime Tournier.*
+
+## 🔨 8. Build
+
+```bash
+# Librairie
+ng build tyrolium-ui
+
+# Site
+ng build tyrolium-website
+```
+
+---
+
+*Document maintenu par Maxime Tournier — [design.tyrolium.fr](https://design.tyrolium.fr)*
