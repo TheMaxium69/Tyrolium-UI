@@ -52,11 +52,11 @@ export class DataTablePage {
     { name: 'Bob Dupont',      email: 'bob@solidserv.fr',    role: 'Viewer',     roleEn: 'Viewer',    status: 'Inactif',  statusEn: 'Inactive' },
     { name: 'Chloé Bernard',   email: 'chloe@influnias.fr',  role: 'Éditeur',    roleEn: 'Editor',    status: 'Actif',    statusEn: 'Active' },
     { name: 'David Chen',      email: 'david@tyrociel.fr',   role: 'Viewer',     roleEn: 'Viewer',    status: 'Suspendu', statusEn: 'Suspended' },
-    { name: 'Emma Leblanc',    email: 'emma@gamenium.fr',    role: 'Moderateur', roleEn: 'Moderator', status: 'Actif',    statusEn: 'Active' },
+    { name: 'Emma Leblanc',    email: 'emma@gamenium.fr',    role: 'Modérateur', roleEn: 'Moderator', status: 'Actif',    statusEn: 'Active' },
     { name: 'François Petit',  email: 'francois@tyrolium.fr', role: 'Admin',     roleEn: 'Admin',     status: 'Actif',    statusEn: 'Active' },
     { name: 'Giulia Romano',   email: 'giulia@useritium.fr', role: 'Éditeur',    roleEn: 'Editor',    status: 'Inactif',  statusEn: 'Inactive' },
     { name: 'Hugo Moreau',     email: 'hugo@vturias.fr',     role: 'Viewer',     roleEn: 'Viewer',    status: 'Actif',    statusEn: 'Active' },
-    { name: 'Inès Garnier',    email: 'ines@tyrolium.fr',    role: 'Moderateur', roleEn: 'Moderator', status: 'Actif',    statusEn: 'Active' },
+    { name: 'Inès Garnier',    email: 'ines@tyrolium.fr',    role: 'Modérateur', roleEn: 'Moderator', status: 'Actif',    statusEn: 'Active' },
     { name: 'Julien Faure',    email: 'julien@solidserv.fr', role: 'Viewer',     roleEn: 'Viewer',    status: 'Suspendu', statusEn: 'Suspended' },
     { name: 'Karim Amara',     email: 'karim@influnias.fr',  role: 'Éditeur',    roleEn: 'Editor',    status: 'Actif',    statusEn: 'Active' },
   ];

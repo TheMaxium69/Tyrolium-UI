@@ -119,7 +119,7 @@ export class NavbarPage {
     { field: 'link?',         type: 'string',               description: 'Route Angular (<code>routerLink</code>)',           descriptionEn: 'Angular route (<code>routerLink</code>)' },
     { field: 'href?',         type: 'string',               description: 'Lien externe (<code>window.location.href</code>)', descriptionEn: 'External link (<code>window.location.href</code>)' },
     { field: 'ancre?',        type: 'string',               description: "ID de l'élément vers lequel scroller",             descriptionEn: 'ID of the element to scroll to' },
-    { field: 'ancreHost?',    type: 'string',               description: 'Domaine hôte du scroll (si cross-domaine)',        descriptionEn: 'Host domain for cross-domain scroll' },
+    { field: 'ancreHost?',    type: 'string',               description: 'Domaine hôte pour le scroll cross-domaine',        descriptionEn: 'Host domain for cross-domain scroll' },
     { field: 'icon?',         type: 'string',               description: 'Classe icône remix-icon',                          descriptionEn: 'Remix-icon class' },
     { field: 'children?',     type: 'ITyroUiNavbarPages[]', description: 'Sous-liens (dropdown)',                            descriptionEn: 'Sub-links (dropdown)' },
     { field: 'childrenOpen?', type: 'boolean',              description: 'État ouvert/fermé du dropdown',                    descriptionEn: 'Dropdown open/closed state' },

@@ -4,7 +4,7 @@
     Floating label, error state, 6 types including auto eye toggle for <code class="ds-code">password</code>.
   } @else {
     Champ de saisie avec 3 variantes : <code class="ds-code">outlined</code>, <code class="ds-code">filled</code>, <code class="ds-code">standard</code>.
-    Label flottant, état erreur, 6 types dont le toggle œil automatique pour <code class="ds-code">password</code>.
+    Label flottant, état erreur, 6 types dont le basculement automatique de l'œil pour <code class="ds-code">password</code>.
   }
 </tyro-ui-page-header>
 
@@ -88,7 +88,7 @@
 
   <!-- ── Password ──────────────────────────────────────── -->
   <h3 class="ds-title">Password</h3>
-  <app-ds-preview [label]="lang() === 'en' ? 'Auto eye toggle — all variants' : 'Toggle œil automatique — toutes variantes'">
+  <app-ds-preview [label]="lang() === 'en' ? 'Auto eye toggle — all variants' : 'Basculement œil automatique — toutes variantes'">
     <div class="ds-flex" style="align-items: flex-start;">
       <div style="width: 220px;">
         <tyro-ui-text-field variant="outlined" type="password" [label]="lang() === 'en' ? 'Password' : 'Mot de passe'" [(value)]="valPassword"></tyro-ui-text-field>

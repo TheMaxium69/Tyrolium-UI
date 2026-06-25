@@ -37,7 +37,9 @@
   <nav class="dl-nav">
     @for (item of navItems; track item.label) {
 
-      @if (item.category) {
+      @if (item.spacer) {
+        <div class="dl-spacer"></div>
+      } @else if (item.category) {
         <!-- ── Catégorie (section collapsible, pas un lien) ── -->
         <button class="dl-category" [class.open]="item.open" (click)="toggleGroup(item)" [title]="sidebarCollapsed() ? item.label : ''">
           @if (item.iconImg) {

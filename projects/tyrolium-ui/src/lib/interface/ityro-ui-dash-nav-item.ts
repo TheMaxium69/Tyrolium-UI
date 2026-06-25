@@ -23,4 +23,5 @@ export interface ITyroUiDashNavItem {
   category?: boolean;
   children?: ITyroUiDashNavChild[];
   open?: boolean;
+  spacer?: boolean;
 }
