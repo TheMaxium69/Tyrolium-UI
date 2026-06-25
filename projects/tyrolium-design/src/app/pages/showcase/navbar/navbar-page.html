@@ -32,15 +32,15 @@
           @if ($any(row).deprecated) {
             <tyro-ui-chip variant="warning" size="sm">{{ lang() === 'en' ? 'Deprecated' : 'Déprécié' }}</tyro-ui-chip>
           }
-          <code class="nb-code">{{ $any(row).prop }}</code>
+          <code class="ds-code">{{ $any(row).prop }}</code>
         </ng-template>
 
         <ng-template tyroCol="default" let-row>
-          <code class="nb-code">{{ $any(row).default }}</code>
+          <code class="ds-code">{{ $any(row).default }}</code>
         </ng-template>
 
         <ng-template tyroCol="description" let-row>
-          <span class="nb-desc" [innerHTML]="$any(row).description"></span>
+          <span class="ds-desc" [innerHTML]="lang() === 'en' ? ($any(row).descriptionEn || $any(row).description) : $any(row).description"></span>
         </ng-template>
 
       </tyro-ui-data-table>
@@ -51,11 +51,11 @@
       <tyro-ui-data-table [columns]="eventCols" [data]="outputsData">
 
         <ng-template tyroCol="event" let-row>
-          <code class="nb-code">{{ $any(row).event }}</code>
+          <code class="ds-code">{{ $any(row).event }}</code>
         </ng-template>
 
         <ng-template tyroCol="description" let-row>
-          <span class="nb-desc" [innerHTML]="$any(row).description"></span>
+          <span class="ds-desc" [innerHTML]="lang() === 'en' ? ($any(row).descriptionEn || $any(row).description) : $any(row).description"></span>
         </ng-template>
 
       </tyro-ui-data-table>
@@ -68,16 +68,16 @@
     <tyro-ui-bento-card title="Interface — ITyroUiNavbarPages">
         <p class="ds-desc">
             {{ lang() === 'en' ? 'Navigation links passed via' : 'Liens de navigation passés via' }}
-            <code class="nb-code">[pages]</code>
+            <code class="ds-code">[pages]</code>
         </p>
       <tyro-ui-data-table [columns]="fieldCols" [data]="pagesInterfaceData">
 
         <ng-template tyroCol="field" let-row>
-          <code class="nb-code">{{ $any(row).field }}</code>
+          <code class="ds-code">{{ $any(row).field }}</code>
         </ng-template>
 
         <ng-template tyroCol="description" let-row>
-          <span class="nb-desc" [innerHTML]="$any(row).description"></span>
+          <span class="ds-desc" [innerHTML]="lang() === 'en' ? ($any(row).descriptionEn || $any(row).description) : $any(row).description"></span>
         </ng-template>
 
       </tyro-ui-data-table>
@@ -94,17 +94,17 @@
             {{ lang() === 'en'
             ? 'The "apps" menu is powered by two constants exported from'
             : 'Le menu "apps" (icône grille) est alimenté par deux constantes exportées depuis' }}
-            <code class="nb-code">menu-navbar.ts</code>{{ lang() === 'en' ? ', auto-imported by the component.' : ', importées automatiquement par le composant.' }}
+            <code class="ds-code">menu-navbar.ts</code>{{ lang() === 'en' ? ', auto-imported by the component.' : ', importées automatiquement par le composant.' }}
         </p>
 
       <tyro-ui-data-table [columns]="fieldCols" [data]="menuPinnedData">
 
         <ng-template tyroCol="field" let-row>
-          <code class="nb-code">{{ $any(row).field }}</code>
+          <code class="ds-code">{{ $any(row).field }}</code>
         </ng-template>
 
         <ng-template tyroCol="description" let-row>
-          <span class="nb-desc" [innerHTML]="$any(row).description"></span>
+          <span class="ds-desc" [innerHTML]="lang() === 'en' ? ($any(row).descriptionEn || $any(row).description) : $any(row).description"></span>
         </ng-template>
 
       </tyro-ui-data-table>
@@ -115,11 +115,11 @@
       <tyro-ui-data-table [columns]="fieldCols" [data]="menuCategoryData">
 
         <ng-template tyroCol="field" let-row>
-          <code class="nb-code">{{ $any(row).field }}</code>
+          <code class="ds-code">{{ $any(row).field }}</code>
         </ng-template>
 
         <ng-template tyroCol="description" let-row>
-          <span class="nb-desc" [innerHTML]="$any(row).description"></span>
+          <span class="ds-desc" [innerHTML]="lang() === 'en' ? ($any(row).descriptionEn || $any(row).description) : $any(row).description"></span>
         </ng-template>
 
       </tyro-ui-data-table>
@@ -127,10 +127,10 @@
       <div class="nb-cat-list">
         <span class="ds-label">{{ lang() === 'en' ? 'Current categories' : 'Catégories actuelles' }}</span>
         <div class="nb-chips">
-          <tyro-ui-chip>Filiales <em>(open: true)</em></tyro-ui-chip>
+          <tyro-ui-chip>{{ lang() === 'en' ? 'Subsidiaries' : 'Filiales' }} <em>(open: true)</em></tyro-ui-chip>
           <tyro-ui-chip>Corporate <em>(open: false)</em></tyro-ui-chip>
           <tyro-ui-chip>Service &amp; Info <em>(open: false)</em></tyro-ui-chip>
-          <tyro-ui-chip>Interne <em>(open: false)</em></tyro-ui-chip>
+          <tyro-ui-chip>{{ lang() === 'en' ? 'Internal' : 'Interne' }} <em>(open: false)</em></tyro-ui-chip>
         </div>
       </div>
     </tyro-ui-bento-card>
