@@ -1,0 +1,13 @@
+@if (icon) {
+  <i [class]="icon + ' ch-icon'"></i>
+}
+
+<span class="ch-content">
+  <ng-content></ng-content>
+</span>
+
+@if (removable) {
+  <button class="ch-remove" (click)="removed.emit()" type="button">
+    <i class="ri-close-line"></i>
+  </button>
+}

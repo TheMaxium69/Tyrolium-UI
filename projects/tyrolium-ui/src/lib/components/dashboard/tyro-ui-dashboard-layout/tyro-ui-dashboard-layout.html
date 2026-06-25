@@ -200,12 +200,14 @@
 
   <!-- Footer -->
   <div class="dl-sidebar-footer">
-    <button class="dl-logout-btn" (click)="onLogoutClick()" [title]="sidebarCollapsed() ? 'Déconnexion' : ''">
-      <i class="ri-logout-box-r-line dl-item-icon"></i>
-      @if (!sidebarCollapsed()) {
-        <span class="dl-item-label">{{ langService.lang() === 'fr' ? 'Déconnexion' : 'Logout' }}</span>
+      @if (requireLogin) {
+          <button class="dl-logout-btn" (click)="onLogoutClick()" [title]="sidebarCollapsed() ? 'Déconnexion' : ''">
+              <i class="ri-logout-box-r-line dl-item-icon"></i>
+              @if (!sidebarCollapsed()) {
+                  <span class="dl-item-label">{{ langService.lang() === 'fr' ? 'Déconnexion' : 'Logout' }}</span>
+              }
+          </button>
       }
-    </button>
     @if (!sidebarCollapsed()) {
       <span class="dl-footer-copy">&copy; {{currentYear}} <a href="https://tyrolium.fr" target="_blank">Tyrolium</a></span>
     }

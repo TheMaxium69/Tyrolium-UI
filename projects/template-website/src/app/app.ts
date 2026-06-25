@@ -1,17 +1,17 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import {
-  ITyroUiNavbarPages,
-  ITyroUiSubnavPages, TyroUiButtonBento,
-  TyroUiCTA,
-  TyroUiFooter,
-  TyroUiNavbar,
-  TyroUiSubnav
+    ITyroUiNavbarPages,
+    ITyroUiSubnavPages, TyroUiBentoCard, TyroUiButtonBento,
+    TyroUiCTA,
+    TyroUiFooter,
+    TyroUiNavbar,
+    TyroUiSubnav
 } from 'tyrolium-ui';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, TyroUiNavbar, TyroUiSubnav, TyroUiFooter, TyroUiCTA, TyroUiButtonBento],
+    imports: [RouterOutlet, TyroUiNavbar, TyroUiSubnav, TyroUiFooter, TyroUiCTA, TyroUiButtonBento, TyroUiBentoCard],
   templateUrl: './app.html',
   styleUrl: './app.css',
 })

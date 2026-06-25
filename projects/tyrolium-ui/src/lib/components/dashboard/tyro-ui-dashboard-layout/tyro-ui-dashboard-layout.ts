@@ -22,6 +22,7 @@ export class TyroUiDashboardLayout {
   @Input() logoWhite    = '';
   /** Libellé utilitaire affiché sous le projet dans la sidebar (ex : "Dashboard", "Panel"). */
   @Input() utility = '';
+  @Input() requireLogin = true;
   @Input() navItems: ITyroUiDashNavItem[] = [];
 
   currentYear: number = new Date().getFullYear();

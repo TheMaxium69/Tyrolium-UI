@@ -1,0 +1,131 @@
+@property --bc-border-angle {
+  syntax: '<angle>';
+  initial-value: 0deg;
+  inherits: false;
+}
+
+@keyframes bc-rotate-border {
+  to { --bc-border-angle: 360deg; }
+}
+
+:host {
+  display: contents;
+}
+
+/* ─── Card base ─────────────────────────────────────── */
+
+.bc-card {
+  background:
+    linear-gradient(var(--page-card-bg, #ffffff), var(--page-card-bg, #ffffff)) padding-box,
+    linear-gradient(var(--page-border, #e5e7eb), var(--page-border, #e5e7eb)) border-box;
+  border: 1px solid transparent;
+  border-radius: 18px;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  transition: box-shadow 0.2s ease, transform 0.2s ease;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+/* ─── Sizes ─────────────────────────────────────────── */
+
+.bc-card--small { padding: 16px; gap: 12px; }
+.bc-card--large { padding: 32px; gap: 20px; }
+
+/* ─── Hover ─────────────────────────────────────────── */
+
+.bc-card--hoverable:hover {
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.10);
+  transform: translateY(-2px);
+}
+
+:host-context([data-theme="dark"]) .bc-card--hoverable:hover {
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+}
+
+/* ─── Gradient border ───────────────────────────────── */
+
+.bc-card--gradient:hover {
+  background:
+    linear-gradient(var(--page-card-bg, #ffffff), var(--page-card-bg, #ffffff)) padding-box,
+    conic-gradient(
+      from var(--bc-border-angle),
+      #001a6e 0%, #4055dd 30%, #ee2b2b 55%, #a80303 70%, #001a6e 100%
+    ) border-box;
+  border-width: 2px;
+  animation: bc-rotate-border 3s linear infinite;
+  box-shadow: 0 8px 32px rgba(0, 26, 110, 0.14);
+}
+
+:host-context([data-theme="dark"]) .bc-card--gradient:hover {
+  box-shadow: 0 8px 32px rgba(0, 26, 110, 0.3);
+}
+
+/* ─── Header ────────────────────────────────────────── */
+
+.bc-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.bc-header-left {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.bc-icon {
+  font-size: 1.15rem;
+  color: #0533c8;
+  flex-shrink: 0;
+  line-height: 1;
+}
+
+:host-context([data-theme="dark"]) .bc-icon {
+  color: #60a5fa;
+}
+
+.bc-icon-img {
+  width: 22px;
+  height: 22px;
+  object-fit: contain;
+  flex-shrink: 0;
+}
+
+.bc-header-text {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.bc-label {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--page-text-muted, #9ca3af);
+}
+
+.bc-title {
+  font-family: 'Syne', sans-serif;
+  font-size: 1rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  color: var(--page-text, #111827);
+  margin: 0;
+  line-height: 1.2;
+}
+
+/* ─── Body ──────────────────────────────────────────── */
+
+.bc-body {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-height: 0;
+}

@@ -11,6 +11,7 @@ import { ITyroUiDashNavItem, TyroUiDashboardLayout, TyroUiLangService } from 'ty
       [logo]="PROJECT_LOGO"
       [logoWhite]="PROJECT_LOGO_WHITE"
       [utility]="PROJECT_UTILITY"
+      [requireLogin]="false"
       [navItems]="navItems()">
       <router-outlet />
     </tyro-ui-dashboard-layout>
