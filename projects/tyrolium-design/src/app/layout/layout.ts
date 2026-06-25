@@ -51,6 +51,9 @@ export class Layout {
           { label: 'Chip',             icon: 'ri-price-tag-3-line',   link: '/dashboard/chip' },
           { label: 'Button',           icon: 'ri-cursor-line',         link: '/dashboard/button' },
           { label: 'Button Group',     icon: 'ri-layout-row-line',     link: '/dashboard/button-group' },
+          { label: 'Switch',           icon: 'ri-toggle-line',          link: '/dashboard/switch' },
+          { label: 'Select',           icon: 'ri-arrow-down-s-line',   link: '/dashboard/select' },
+          { label: 'Text Field',       icon: 'ri-input-method-line',   link: '/dashboard/text-field' },
         ],
       },
       {

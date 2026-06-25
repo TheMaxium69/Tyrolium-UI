@@ -1,0 +1,178 @@
+<tyro-ui-page-header label="&lt;tyro-ui-text-field&gt;" [title]="lang() === 'en' ? 'Text Field' : 'Champ de saisie'">
+  @if (lang() === 'en') {
+    Input field with 3 variants: <code class="ds-code">outlined</code>, <code class="ds-code">filled</code>, <code class="ds-code">standard</code>.
+    Floating label, error state, 6 types including auto eye toggle for <code class="ds-code">password</code>.
+  } @else {
+    Champ de saisie avec 3 variantes : <code class="ds-code">outlined</code>, <code class="ds-code">filled</code>, <code class="ds-code">standard</code>.
+    Label flottant, état erreur, 6 types dont le toggle œil automatique pour <code class="ds-code">password</code>.
+  }
+</tyro-ui-page-header>
+
+<section id="text-field-page">
+
+  <!-- ── Outlined ──────────────────────────────────────── -->
+  <h3 class="ds-title">Outlined</h3>
+  <app-ds-preview [label]="lang() === 'en' ? 'Full border, floating label' : 'Bordure complète, label flottant'">
+    <div class="ds-flex" style="align-items: flex-start;">
+      <div style="width: 220px;">
+        <tyro-ui-text-field
+          variant="outlined"
+          [label]="lang() === 'en' ? 'First name' : 'Prénom'"
+          [(value)]="valOutlined">
+        </tyro-ui-text-field>
+      </div>
+      <div style="width: 220px;">
+        <tyro-ui-text-field
+          variant="outlined"
+          icon="ri-search-line"
+          [label]="lang() === 'en' ? 'Search' : 'Rechercher'"
+          [(value)]="valOutlined">
+        </tyro-ui-text-field>
+      </div>
+    </div>
+  </app-ds-preview>
+
+  <!-- ── Filled ──────────────────────────────────────── -->
+  <h3 class="ds-title">Filled</h3>
+  <app-ds-preview [label]="lang() === 'en' ? 'Filled background, bottom border only' : 'Fond coloré, bordure basse uniquement'">
+    <div class="ds-flex" style="align-items: flex-start;">
+      <div style="width: 220px;">
+        <tyro-ui-text-field
+          variant="filled"
+          [label]="lang() === 'en' ? 'Email' : 'Email'"
+          type="email"
+          [(value)]="valEmail">
+        </tyro-ui-text-field>
+      </div>
+      <div style="width: 220px;">
+        <tyro-ui-text-field
+          variant="filled"
+          icon="ri-phone-line"
+          [label]="lang() === 'en' ? 'Phone' : 'Téléphone'"
+          type="tel"
+          [(value)]="valFilled">
+        </tyro-ui-text-field>
+      </div>
+    </div>
+  </app-ds-preview>
+
+  <!-- ── Standard ──────────────────────────────────────── -->
+  <h3 class="ds-title">Standard</h3>
+  <app-ds-preview [label]="lang() === 'en' ? 'No background, bottom line only' : 'Sans fond, ligne basse uniquement'">
+    <div class="ds-flex" style="align-items: flex-start;">
+      <div style="width: 220px;">
+        <tyro-ui-text-field
+          variant="standard"
+          [label]="lang() === 'en' ? 'Username' : 'Nom d\'utilisateur'"
+          [(value)]="valStandard">
+        </tyro-ui-text-field>
+      </div>
+      <div style="width: 180px;">
+        <tyro-ui-text-field
+          variant="standard"
+          type="number"
+          [label]="lang() === 'en' ? 'Amount' : 'Montant'"
+          [(value)]="valStandard">
+        </tyro-ui-text-field>
+      </div>
+      <div style="width: 200px;">
+        <tyro-ui-text-field
+          variant="standard"
+          type="date"
+          [label]="lang() === 'en' ? 'Date' : 'Date'"
+          [(value)]="valStandard">
+        </tyro-ui-text-field>
+      </div>
+    </div>
+  </app-ds-preview>
+
+  <!-- ── Password ──────────────────────────────────────── -->
+  <h3 class="ds-title">Password</h3>
+  <app-ds-preview [label]="lang() === 'en' ? 'Auto eye toggle — all variants' : 'Toggle œil automatique — toutes variantes'">
+    <div class="ds-flex" style="align-items: flex-start;">
+      <div style="width: 220px;">
+        <tyro-ui-text-field variant="outlined" type="password" [label]="lang() === 'en' ? 'Password' : 'Mot de passe'" [(value)]="valPassword"></tyro-ui-text-field>
+      </div>
+      <div style="width: 220px;">
+        <tyro-ui-text-field variant="filled"   type="password" [label]="lang() === 'en' ? 'Password' : 'Mot de passe'" [(value)]="valPassword"></tyro-ui-text-field>
+      </div>
+      <div style="width: 220px;">
+        <tyro-ui-text-field variant="standard" type="password" [label]="lang() === 'en' ? 'Password' : 'Mot de passe'" [(value)]="valPassword"></tyro-ui-text-field>
+      </div>
+    </div>
+  </app-ds-preview>
+
+  <!-- ── Error ─────────────────────────────────────────── -->
+  <h3 class="ds-title">{{ lang() === 'en' ? 'Error state' : 'État erreur' }}</h3>
+  <app-ds-preview [label]="lang() === 'en' ? '[error] + [errorMessage] — all variants' : '[error] + [errorMessage] — toutes variantes'">
+    <div class="ds-flex" style="align-items: flex-start;">
+      <div style="width: 230px;">
+        <tyro-ui-text-field
+          variant="outlined"
+          [label]="lang() === 'en' ? 'Email' : 'Email'"
+          [value]="'invalid-email'"
+          [error]="true"
+          [errorMessage]="lang() === 'en' ? 'Invalid email address' : 'Adresse email invalide'">
+        </tyro-ui-text-field>
+      </div>
+      <div style="width: 230px;">
+        <tyro-ui-text-field
+          variant="filled"
+          [label]="lang() === 'en' ? 'Email' : 'Email'"
+          [value]="'invalid-email'"
+          [error]="true"
+          [errorMessage]="lang() === 'en' ? 'Invalid email address' : 'Adresse email invalide'">
+        </tyro-ui-text-field>
+      </div>
+      <div style="width: 230px;">
+        <tyro-ui-text-field
+          variant="standard"
+          [label]="lang() === 'en' ? 'Email' : 'Email'"
+          [value]="'invalid-email'"
+          [error]="true"
+          [errorMessage]="lang() === 'en' ? 'Invalid email address' : 'Adresse email invalide'">
+        </tyro-ui-text-field>
+      </div>
+    </div>
+  </app-ds-preview>
+
+  <!-- ── Disabled ──────────────────────────────────────── -->
+  <h3 class="ds-title">Disabled</h3>
+  <app-ds-preview [label]="lang() === 'en' ? 'Disabled — all variants' : 'Désactivé — toutes variantes'">
+    <div class="ds-flex" style="align-items: flex-start;">
+      <div style="width: 210px;">
+        <tyro-ui-text-field variant="outlined" [label]="lang() === 'en' ? 'Name' : 'Nom'" value="Jean Dupont" [disabled]="true"></tyro-ui-text-field>
+      </div>
+      <div style="width: 210px;">
+        <tyro-ui-text-field variant="filled"   [label]="lang() === 'en' ? 'Name' : 'Nom'" value="Jean Dupont" [disabled]="true"></tyro-ui-text-field>
+      </div>
+      <div style="width: 210px;">
+        <tyro-ui-text-field variant="standard" [label]="lang() === 'en' ? 'Name' : 'Nom'" value="Jean Dupont" [disabled]="true"></tyro-ui-text-field>
+      </div>
+    </div>
+  </app-ds-preview>
+
+  <hr class="ds-divider">
+
+  <tyro-ui-bento-card title="Inputs">
+    <tyro-ui-data-table [columns]="propCols" [data]="inputsData">
+      <ng-template tyroCol="prop"    let-row><code class="ds-code">{{ $any(row).prop }}</code></ng-template>
+      <ng-template tyroCol="type"    let-row><code class="ds-code">{{ $any(row).type }}</code></ng-template>
+      <ng-template tyroCol="default" let-row><code class="ds-code">{{ $any(row).default }}</code></ng-template>
+      <ng-template tyroCol="description" let-row>
+        <span class="ds-desc" [innerHTML]="lang() === 'en' ? ($any(row).descriptionEn || $any(row).description) : $any(row).description"></span>
+      </ng-template>
+    </tyro-ui-data-table>
+  </tyro-ui-bento-card>
+
+  <tyro-ui-bento-card title="Outputs">
+    <tyro-ui-data-table [columns]="eventCols" [data]="outputsData">
+      <ng-template tyroCol="event"   let-row><code class="ds-code">{{ $any(row).event }}</code></ng-template>
+      <ng-template tyroCol="payload" let-row><code class="ds-code">{{ $any(row).payload }}</code></ng-template>
+      <ng-template tyroCol="description" let-row>
+        <span class="ds-desc" [innerHTML]="lang() === 'en' ? ($any(row).descriptionEn || $any(row).description) : $any(row).description"></span>
+      </ng-template>
+    </tyro-ui-data-table>
+  </tyro-ui-bento-card>
+
+</section>

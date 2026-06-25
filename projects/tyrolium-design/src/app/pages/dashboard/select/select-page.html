@@ -1,0 +1,105 @@
+<tyro-ui-page-header label="&lt;tyro-ui-select&gt;" title="Select">
+  @if (lang() === 'en') {
+    Custom dropdown select — supports optional icons per option, a placeholder when nothing is selected,
+    and two variants: <code class="ds-code">normal</code> and <code class="ds-code">lite</code>.
+  } @else {
+    Select déroulant personnalisé — supporte des icônes par option, un placeholder quand rien n'est sélectionné,
+    et deux variantes : <code class="ds-code">normal</code> et <code class="ds-code">lite</code>.
+  }
+</tyro-ui-page-header>
+
+<section id="select-page">
+
+  <!-- ── Normal — sans pré-sélection ───────────────────── -->
+  <h3 class="ds-title">Normal</h3>
+  <app-ds-preview [label]="lang() === 'en' ? 'No default selection (placeholder)' : 'Sans sélection par défaut (placeholder)'">
+    <div style="width: 240px;">
+      <tyro-ui-select
+        variant="normal"
+        [items]="statusItems()"
+        [placeholder]="lang() === 'en' ? 'Choose a status' : 'Choisir un statut'"
+        [(value)]="valNormal">
+      </tyro-ui-select>
+    </div>
+  </app-ds-preview>
+
+  <!-- ── Lite — avec pré-sélection ─────────────────────── -->
+  <h3 class="ds-title">Lite</h3>
+  <app-ds-preview [label]="lang() === 'en' ? 'Pre-selected value' : 'Valeur pré-sélectionnée'">
+    <div style="width: 220px;">
+      <tyro-ui-select
+        variant="lite"
+        [items]="langItems()"
+        [(value)]="valLite">
+      </tyro-ui-select>
+    </div>
+  </app-ds-preview>
+
+  <!-- ── Avec icônes ──────────────────────────────────── -->
+  <h3 class="ds-title">{{ lang() === 'en' ? 'With icons' : 'Avec icônes' }}</h3>
+  <app-ds-preview [label]="lang() === 'en' ? 'Options with Remix Icon' : 'Options avec icône Remix Icon'">
+    <div class="ds-flex">
+      <div style="width: 240px;">
+        <tyro-ui-select
+          variant="normal"
+          [items]="iconItems"
+          [placeholder]="lang() === 'en' ? 'Choose a role' : 'Choisir un rôle'"
+          [(value)]="valIcons">
+        </tyro-ui-select>
+      </div>
+      <div style="width: 240px;">
+        <tyro-ui-select
+          variant="lite"
+          [items]="iconItems"
+          [placeholder]="lang() === 'en' ? 'Choose a role' : 'Choisir un rôle'"
+          [(value)]="valIcons">
+        </tyro-ui-select>
+      </div>
+    </div>
+  </app-ds-preview>
+
+  <!-- ── Disabled ──────────────────────────────────────── -->
+  <h3 class="ds-title">Disabled</h3>
+  <app-ds-preview [label]="lang() === 'en' ? 'Normal disabled / Lite disabled' : 'Normal désactivé / Lite désactivé'">
+    <div class="ds-flex">
+      <div style="width: 220px;">
+        <tyro-ui-select variant="normal" [items]="statusItems()" [value]="valPreset()" [disabled]="true"></tyro-ui-select>
+      </div>
+      <div style="width: 220px;">
+        <tyro-ui-select variant="lite"   [items]="statusItems()" [value]="valPreset()" [disabled]="true"></tyro-ui-select>
+      </div>
+    </div>
+  </app-ds-preview>
+
+  <hr class="ds-divider">
+
+  <tyro-ui-bento-card title="Inputs">
+    <tyro-ui-data-table [columns]="propCols" [data]="inputsData">
+      <ng-template tyroCol="prop"    let-row><code class="ds-code">{{ $any(row).prop }}</code></ng-template>
+      <ng-template tyroCol="type"    let-row><code class="ds-code">{{ $any(row).type }}</code></ng-template>
+      <ng-template tyroCol="default" let-row><code class="ds-code">{{ $any(row).default }}</code></ng-template>
+      <ng-template tyroCol="description" let-row>
+        <span class="ds-desc" [innerHTML]="lang() === 'en' ? ($any(row).descriptionEn || $any(row).description) : $any(row).description"></span>
+      </ng-template>
+    </tyro-ui-data-table>
+  </tyro-ui-bento-card>
+
+  <tyro-ui-bento-card title="Outputs">
+    <tyro-ui-data-table [columns]="eventCols" [data]="outputsData">
+      <ng-template tyroCol="event"   let-row><code class="ds-code">{{ $any(row).event }}</code></ng-template>
+      <ng-template tyroCol="payload" let-row><code class="ds-code">{{ $any(row).payload }}</code></ng-template>
+      <ng-template tyroCol="description" let-row>
+        <span class="ds-desc" [innerHTML]="lang() === 'en' ? ($any(row).descriptionEn || $any(row).description) : $any(row).description"></span>
+      </ng-template>
+    </tyro-ui-data-table>
+  </tyro-ui-bento-card>
+
+  <tyro-ui-bento-card title="ITyroUiSelectItem">
+    <pre class="ds-pre">export interface ITyroUiSelectItem {{ '{' }}
+  value: string;   // identifiant unique
+  label: string;   // texte affiché (gérer la langue dans le parent)
+  icon?:  string;  // classe Remix Icon (optionnel)
+{{ '}' }}</pre>
+  </tyro-ui-bento-card>
+
+</section>

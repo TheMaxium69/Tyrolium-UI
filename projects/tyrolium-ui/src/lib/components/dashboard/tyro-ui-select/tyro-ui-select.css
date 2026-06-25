@@ -1,0 +1,209 @@
+:host {
+  display: block;
+  position: relative;
+}
+
+/* ─── Wrapper ─────────────────────────────────────────── */
+
+.sl-wrapper {
+  position: relative;
+  width: 100%;
+}
+
+/* ─── Trigger ─────────────────────────────────────────── */
+
+.sl-trigger {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  width: 100%;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.85rem;
+  font-weight: 500;
+  border-radius: 10px;
+  padding: 10px 14px;
+  cursor: pointer;
+  text-align: left;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
+  line-height: 1.4;
+}
+
+/* Normal */
+.sl-trigger--normal {
+  background: var(--page-card-bg, #ffffff);
+  border: 1.5px solid var(--page-border, #e5e7eb);
+  color: var(--page-text, #111827);
+}
+
+.sl-trigger--normal:hover:not(.sl-trigger--disabled) {
+  border-color: #0533c8;
+}
+
+.sl-trigger--normal.sl-trigger--open {
+  border-color: #0533c8;
+  box-shadow: 0 0 0 3px rgba(5, 51, 200, 0.08);
+}
+
+/* Lite */
+.sl-trigger--lite {
+  background: var(--page-bg-light, #f6f7fb);
+  border: 1.5px solid var(--page-border, #e5e7eb);
+  color: var(--page-text, #111827);
+}
+
+.sl-trigger--lite:hover:not(.sl-trigger--disabled) {
+  background: var(--page-bg-light, #f0f1f5);
+  border-color: rgba(5, 51, 200, 0.25);
+}
+
+.sl-trigger--lite.sl-trigger--open {
+  border-color: rgba(5, 51, 200, 0.4);
+  box-shadow: 0 0 0 3px rgba(5, 51, 200, 0.06);
+}
+
+/* Disabled */
+.sl-trigger--disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+/* Dark mode */
+:host-context([data-theme="dark"]) .sl-trigger--normal {
+  background: rgba(255, 255, 255, 0.04);
+  border-color: rgba(255, 255, 255, 0.10);
+  color: #f9fafb;
+}
+
+:host-context([data-theme="dark"]) .sl-trigger--lite {
+  background: rgba(255, 255, 255, 0.06);
+  border-color: rgba(255, 255, 255, 0.10);
+  color: #f9fafb;
+}
+
+/* ─── Trigger content ─────────────────────────────────── */
+
+.sl-trigger-content {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-width: 0;
+  overflow: hidden;
+}
+
+.sl-trigger-label {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.sl-trigger-label--placeholder {
+  color: var(--page-text-muted, #9ca3af);
+}
+
+/* ─── Arrow ───────────────────────────────────────────── */
+
+.sl-arrow {
+  font-size: 1.1rem;
+  color: var(--page-text-2, #6b7280);
+  transition: transform 0.2s ease;
+  flex-shrink: 0;
+}
+
+.sl-arrow--open {
+  transform: rotate(180deg);
+}
+
+/* ─── Icon ────────────────────────────────────────────── */
+
+.sl-icon {
+  font-size: 1rem;
+  flex-shrink: 0;
+  color: #0533c8;
+}
+
+:host-context([data-theme="dark"]) .sl-icon {
+  color: #60a5fa;
+}
+
+/* ─── Dropdown ────────────────────────────────────────── */
+
+.sl-dropdown {
+  position: absolute;
+  top: calc(100% + 6px);
+  left: 0;
+  right: 0;
+  background: var(--page-card-bg, #ffffff);
+  border: 1.5px solid var(--page-border, #e5e7eb);
+  border-radius: 12px;
+  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.12);
+  z-index: 1000;
+  overflow: hidden;
+  padding: 4px;
+}
+
+:host-context([data-theme="dark"]) .sl-dropdown {
+  background: #1e2535;
+  border-color: rgba(255, 255, 255, 0.10);
+  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.45);
+}
+
+/* ─── Option ──────────────────────────────────────────── */
+
+.sl-option {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  width: 100%;
+  padding: 9px 12px;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--page-text, #111827);
+  background: transparent;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  text-align: left;
+  transition: background 0.12s ease;
+}
+
+.sl-option:hover {
+  background: var(--page-bg-light, #f6f7fb);
+}
+
+.sl-option--selected {
+  background: rgba(5, 51, 200, 0.07);
+  color: #0533c8;
+  font-weight: 600;
+}
+
+.sl-option--selected:hover {
+  background: rgba(5, 51, 200, 0.10);
+}
+
+:host-context([data-theme="dark"]) .sl-option {
+  color: #f9fafb;
+}
+
+:host-context([data-theme="dark"]) .sl-option:hover {
+  background: rgba(255, 255, 255, 0.06);
+}
+
+:host-context([data-theme="dark"]) .sl-option--selected {
+  background: rgba(96, 165, 250, 0.10);
+  color: #60a5fa;
+}
+
+/* ─── Check ───────────────────────────────────────────── */
+
+.sl-check {
+  margin-left: auto;
+  font-size: 0.95rem;
+  color: #0533c8;
+  flex-shrink: 0;
+}
+
+:host-context([data-theme="dark"]) .sl-check {
+  color: #60a5fa;
+}

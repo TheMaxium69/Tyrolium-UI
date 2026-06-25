@@ -1,0 +1,72 @@
+<tyro-ui-page-header label="&lt;tyro-ui-switch&gt;" title="Switch">
+  @if (lang() === 'en') {
+    Toggle component — on/off state, sliding left to right. Supports a label and a disabled variant.
+    Uses two-way <code class="ds-code">[(value)]</code> binding.
+  } @else {
+    Composant toggle — état activé/désactivé, glissière de gauche à droite. Supporte un label et une variante désactivée.
+    Utilise le binding two-way <code class="ds-code">[(value)]</code>.
+  }
+</tyro-ui-page-header>
+
+<section id="switch-page">
+
+  <!-- ── États ──────────────────────────────────────────── -->
+  <h3 class="ds-title">{{ lang() === 'en' ? 'States' : 'États' }}</h3>
+  <app-ds-preview [label]="lang() === 'en' ? 'Off / On / With label' : 'Désactivé / Activé / Avec label'">
+    <div class="ds-flex">
+      <tyro-ui-switch [(value)]="sw1"></tyro-ui-switch>
+      <tyro-ui-switch [(value)]="sw2"></tyro-ui-switch>
+      <tyro-ui-switch
+        [(value)]="sw3"
+        [label]="lang() === 'en' ? 'Enable notifications' : 'Activer les notifications'">
+      </tyro-ui-switch>
+    </div>
+  </app-ds-preview>
+
+  <!-- ── Disabled ──────────────────────────────────────── -->
+  <h3 class="ds-title">Disabled</h3>
+  <app-ds-preview [label]="lang() === 'en' ? 'Off disabled / On disabled' : 'Éteint désactivé / Allumé désactivé'">
+    <div class="ds-flex">
+      <tyro-ui-switch [value]="false" [disabled]="true"></tyro-ui-switch>
+      <tyro-ui-switch [value]="true"  [disabled]="true"></tyro-ui-switch>
+      <tyro-ui-switch
+        [value]="true"
+        [disabled]="true"
+        [label]="lang() === 'en' ? 'Always enabled (locked)' : 'Toujours actif (verrouillé)'">
+      </tyro-ui-switch>
+    </div>
+  </app-ds-preview>
+
+  <hr class="ds-divider">
+
+  <tyro-ui-bento-card title="Inputs">
+    <tyro-ui-data-table [columns]="propCols" [data]="inputsData">
+      <ng-template tyroCol="prop"    let-row><code class="ds-code">{{ $any(row).prop }}</code></ng-template>
+      <ng-template tyroCol="type"    let-row><code class="ds-code">{{ $any(row).type }}</code></ng-template>
+      <ng-template tyroCol="default" let-row><code class="ds-code">{{ $any(row).default }}</code></ng-template>
+      <ng-template tyroCol="description" let-row>
+        <span class="ds-desc" [innerHTML]="lang() === 'en' ? ($any(row).descriptionEn || $any(row).description) : $any(row).description"></span>
+      </ng-template>
+    </tyro-ui-data-table>
+  </tyro-ui-bento-card>
+
+  <tyro-ui-bento-card title="Outputs">
+    <tyro-ui-data-table [columns]="eventCols" [data]="outputsData">
+      <ng-template tyroCol="event"   let-row><code class="ds-code">{{ $any(row).event }}</code></ng-template>
+      <ng-template tyroCol="payload" let-row><code class="ds-code">{{ $any(row).payload }}</code></ng-template>
+      <ng-template tyroCol="description" let-row>
+        <span class="ds-desc" [innerHTML]="lang() === 'en' ? ($any(row).descriptionEn || $any(row).description) : $any(row).description"></span>
+      </ng-template>
+    </tyro-ui-data-table>
+  </tyro-ui-bento-card>
+
+  <tyro-ui-bento-card [title]="lang() === 'en' ? 'Usage' : 'Utilisation'">
+    <pre class="ds-pre">readonly darkMode = signal(false);
+
+&lt;tyro-ui-switch
+  [(value)]="darkMode"
+  [label]="lang() === 'en' ? 'Dark mode' : 'Mode sombre'"&gt;
+&lt;/tyro-ui-switch&gt;</pre>
+  </tyro-ui-bento-card>
+
+</section>

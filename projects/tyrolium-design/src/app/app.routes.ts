@@ -19,6 +19,9 @@ import { DataTablePage }       from './pages/dashboard/data-table/data-table-pag
 import { ChipPage }           from './pages/dashboard/chip/chip-page';
 import { ButtonPage }         from './pages/dashboard/button/button-page';
 import { ButtonGroupPage }    from './pages/dashboard/button-group/button-group-page';
+import { SwitchPage }         from './pages/dashboard/switch/switch-page';
+import { SelectPage }         from './pages/dashboard/select/select-page';
+import { TextFieldPage }      from './pages/dashboard/text-field/text-field-page';
 
 import { AuthModalPage }       from './pages/modal/auth-modal/auth-modal-page';
 
@@ -46,6 +49,9 @@ export const routes: Routes = [
       { path: 'dashboard/chip',             component: ChipPage },
       { path: 'dashboard/button',           component: ButtonPage },
       { path: 'dashboard/button-group',     component: ButtonGroupPage },
+      { path: 'dashboard/switch',           component: SwitchPage },
+      { path: 'dashboard/select',           component: SelectPage },
+      { path: 'dashboard/text-field',       component: TextFieldPage },
 
       { path: 'modal/auth-modal',           component: AuthModalPage },
 

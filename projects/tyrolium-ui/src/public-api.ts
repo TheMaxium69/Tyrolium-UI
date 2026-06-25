@@ -17,6 +17,9 @@ export * from './lib/components/dashboard/tyro-ui-data-table/tyro-ui-data-table'
 export * from './lib/components/dashboard/tyro-ui-chip/tyro-ui-chip';
 export * from './lib/components/dashboard/tyro-ui-button/tyro-ui-button';
 export * from './lib/components/dashboard/tyro-ui-button-group/tyro-ui-button-group';
+export * from './lib/components/dashboard/tyro-ui-switch/tyro-ui-switch';
+export * from './lib/components/dashboard/tyro-ui-select/tyro-ui-select';
+export * from './lib/components/dashboard/tyro-ui-text-field/tyro-ui-text-field';
 
 /* Components — modal */
 export * from './lib/components/modal/tyro-ui-auth-modal/tyro-ui-auth-modal';
@@ -32,6 +35,7 @@ export * from './lib/components/other/tyro-ui-easter-egg/tyro-ui-easter-egg';
 /* Interfaces */
 export * from './lib/interface/ityro-ui-data-table-column';
 export * from './lib/interface/ityro-ui-button-group-item';
+export * from './lib/interface/ityro-ui-select-item';
 export * from './lib/interface/ityro-ui-user';
 export * from './lib/interface/ityro-ui-navbar-pages';
 export * from './lib/interface/ityro-ui-subnav-pages';

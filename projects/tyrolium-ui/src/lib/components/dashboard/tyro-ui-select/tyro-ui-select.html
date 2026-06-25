@@ -1,0 +1,33 @@
+<div class="sl-wrapper">
+  <button type="button" [class]="triggerClass" (click)="toggle()">
+    <span class="sl-trigger-content">
+      @if (selectedItem?.icon) {
+        <i [class]="selectedItem!.icon + ' sl-icon'"></i>
+      }
+      <span class="sl-trigger-label" [class.sl-trigger-label--placeholder]="!selectedItem">
+        {{ selectedItem ? selectedItem.label : placeholder }}
+      </span>
+    </span>
+    <i class="ri-arrow-down-s-line sl-arrow" [class.sl-arrow--open]="isOpen()"></i>
+  </button>
+
+  @if (isOpen()) {
+    <div class="sl-dropdown">
+      @for (item of items; track item.value) {
+        <button
+          type="button"
+          class="sl-option"
+          [class.sl-option--selected]="item.value === value"
+          (click)="select(item)">
+          @if (item.icon) {
+            <i [class]="item.icon + ' sl-icon'"></i>
+          }
+          <span>{{ item.label }}</span>
+          @if (item.value === value) {
+            <i class="ri-check-line sl-check"></i>
+          }
+        </button>
+      }
+    </div>
+  }
+</div>
