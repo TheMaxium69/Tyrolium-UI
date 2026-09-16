@@ -27,11 +27,14 @@ export const FooterServiceLink: ITyroUiFooterPage[] = [
     { label: 'Contactez-nous',        labelEn: 'Contact',           link: '/contact',  host: 'https://tyrolium.fr' },
     { label: 'Liste des Serveurs',    labelEn: 'Server list',       link: '/server',   host: 'https://tyrolium.fr' },
     { label: 'Uptime Robot',          labelEn: 'Uptime Robot',      link: 'https://stats.uptimerobot.com/7z9o3SEnWX' },
+    { label: 'Mon adresse IP',        labelEn: 'My IP address',     link: 'https://ip.tyrolium.fr' },
+    { label: 'Speedtest',             labelEn: 'Speedtest',         link: 'https://speedtest.tyrolium.fr' },
     { label: 'Design System',         labelEn: 'Design System',     link: 'https://design.tyrolium.fr' },
 ];
 
 export const FooterInternalLink: ITyroUiFooterPage[] = [
     // { label: 'Hub Interne',          labelEn: 'Internal Hub',      link: 'https://hub.tyrolium.fr' },
-    { label: 'Portail ERP',           labelEn: 'ERP Portal',      link: 'https://app.tyrolium.fr' },
-    { label: 'Serveur de Repository', labelEn: 'Repository server', link: 'http://repo.tyrolium.fr' },
+    { label: 'Portail ERP',             labelEn: 'ERP Portal',        link: 'https://app.tyrolium.fr' },
+    { label: 'Serveur de Repository',   labelEn: 'Repository server', link: 'https://repo.tyrolium.fr' },
+    { label: 'Plateforme de Formation', labelEn: 'Training platform', link: 'https://formation.tyrolium.fr' },
 ];
