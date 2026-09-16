@@ -94,6 +94,12 @@
       "path": "./projects/tyrolium-uptime/tsconfig.spec.json"
     },
     {
+      "path": "./projects/tyrolium-ip/tsconfig.app.json"
+    },
+    {
+      "path": "./projects/tyrolium-ip/tsconfig.spec.json"
+    },
+    {
       "path": "./projects/useritium-dashboard/tsconfig.app.json"
     }
   ]

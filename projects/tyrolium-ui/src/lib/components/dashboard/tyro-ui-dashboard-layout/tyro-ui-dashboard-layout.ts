@@ -1,7 +1,9 @@
 import {
-  Component, computed, HostListener, inject, Input, signal,
+  Component, computed, ElementRef, HostListener, inject, Input, signal, ViewChild,
 } from '@angular/core';
-import { RouterLink, RouterLinkActive } from '@angular/router';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+import { NavigationEnd, Router, RouterLink, RouterLinkActive } from '@angular/router';
+import { filter } from 'rxjs';
 import { ITyroUiDashNavItem, ITyroUiDashNavChild } from '../../../interface/ityro-ui-dash-nav-item';
 import { TyroUiThemeService } from '../../../services/tyro-ui-theme.service';
 import { TyroUiAuthService } from '../../../services/tyro-ui-auth.service';
@@ -30,6 +32,23 @@ export class TyroUiDashboardLayout {
   readonly themeService = inject(TyroUiThemeService);
   readonly authService  = inject(TyroUiAuthService);
   readonly langService  = inject(TyroUiLangService);
+  private readonly router = inject(Router);
+
+  /** Zone de contenu défilable (.dl-content) - la fenêtre elle-même ne scrolle pas. */
+  @ViewChild('content') contentEl?: ElementRef<HTMLElement>;
+
+  constructor() {
+    // withInMemoryScrolling({scrollPositionRestoration:'top'}) ne remet à zéro
+    // que le scroll de `window`, or c'est ce conteneur interne qui défile ici.
+    this.router.events
+      .pipe(
+        filter((event) => event instanceof NavigationEnd),
+        takeUntilDestroyed(),
+      )
+      .subscribe(() => {
+        if (this.contentEl) this.contentEl.nativeElement.scrollTop = 0;
+      });
+  }
 
   sidebarCollapsed = signal(false);
   mobileOpen       = signal(false);
