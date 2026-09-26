@@ -134,6 +134,15 @@ export const NavbarMenuCategory: ITyroUiNavbarMenuCategory[] = [
         host: 'https://tyrolium.fr',
       },
       {
+        name: 'Études de cas',
+        nameEn: 'Case studies',
+        description: 'Nos projets en chiffres',
+        descriptionEn: 'Our projects in numbers',
+        icon: 'ri-file-chart-fill',
+        link: '/etudes-de-cas',
+        host: 'https://tyrolium.fr',
+      },
+      {
         name: 'Chronologie',
         nameEn: 'Timeline',
         description: 'Notre histoire',

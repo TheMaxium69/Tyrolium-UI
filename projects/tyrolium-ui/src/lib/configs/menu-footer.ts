@@ -18,6 +18,7 @@ export const FooterCorpoLink: ITyroUiFooterPage[] = [
     { label: 'Partenaires',   labelEn: 'Partners',      link: '/partenaires', host: 'https://tyrolium.fr' },
     { label: 'Recrutements',  labelEn: 'Jobs',          link: 'https://jobs.tyrolium.fr' },
     { label: 'Tyrolium Labs', labelEn: 'Tyrolium Labs', link: '/labs', host: 'https://tyrolium.fr', },
+    { label: 'Études de cas', labelEn: 'Case studies',  link: '/etudes-de-cas', host: 'https://tyrolium.fr' },
     { label: 'Chronologie',   labelEn: 'Timeline',      link: '/chronologie', host: 'https://tyrolium.fr' },
     { label: 'Équipe',        labelEn: 'Team',          link: '/equipe',      host: 'https://tyrolium.fr' },
     { label: 'Media Kit',     labelEn: 'Media Kit',     link: '/mediakit',   host: 'https://tyrolium.fr' },
