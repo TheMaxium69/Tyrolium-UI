@@ -13,6 +13,7 @@ export const FooterProjectPage: ITyroUiFooterPage[] = [
 ];
 
 export const FooterCorpoLink: ITyroUiFooterPage[] = [
+    { label: 'Vision',        labelEn: 'Vision',        link: '/vision', host: 'https://tyrolium.fr' },
     { label: 'RSE',           labelEn: 'CSR',           link: '/rse', host: 'https://tyrolium.fr' },
     { label: 'Partenaires',   labelEn: 'Partners',      link: '/partenaires', host: 'https://tyrolium.fr' },
     { label: 'Recrutements',  labelEn: 'Jobs',          link: 'https://jobs.tyrolium.fr' },

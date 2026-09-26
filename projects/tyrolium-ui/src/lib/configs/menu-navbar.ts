@@ -91,6 +91,15 @@ export const NavbarMenuCategory: ITyroUiNavbarMenuCategory[] = [
     open: false,
     items: [
       {
+        name: 'Vision',
+        nameEn: 'Vision',
+        description: 'Notre ambition',
+        descriptionEn: 'Our ambition',
+        icon: 'ri-compass-3-fill',
+        link: '/vision',
+        host: 'https://tyrolium.fr',
+      },
+      {
         name: 'RSE',
         nameEn: 'CSR',
         description: 'Responsabilité sociétale',
