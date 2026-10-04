@@ -1,0 +1,57 @@
+<tyro-ui-page-header label="&lt;tyro-ui-bar-chart&gt;" title="Bar Chart">
+  @if (lang() === 'en') {
+    Vertical bar chart for a single series (e.g. visits per day), with a subtle grid and a tooltip per bar.
+  } @else {
+    Diagramme en barres verticales pour une série (ex. visites par jour), avec grille discrète et infobulle par barre.
+  }
+</tyro-ui-page-header>
+
+<section id="bar-chart-page">
+
+  <h3 class="ds-title">{{ lang() === 'en' ? 'Visits per day (30 days)' : 'Visites par jour (30 jours)' }}</h3>
+  <app-ds-preview [label]="lang() === 'en' ? 'Hover a bar · days without visits = 0' : 'Survolez une barre · jours sans visite = 0'">
+    <div style="width:100%;padding-top:80px;">
+      <tyro-ui-bar-chart [items]="visits()" [valueLabel]="lang() === 'en' ? 'visits' : 'visites'"></tyro-ui-bar-chart>
+    </div>
+  </app-ds-preview>
+
+  <h3 class="ds-title">{{ lang() === 'en' ? 'Few bars' : 'Peu de barres' }}</h3>
+  <app-ds-preview [label]="lang() === 'en' ? '6 months · [height]=180' : '6 mois · [height]=180'">
+    <div style="width:100%;padding-top:60px;">
+      <tyro-ui-bar-chart [items]="months()" [height]="180" [valueLabel]="lang() === 'en' ? 'sales' : 'ventes'"></tyro-ui-bar-chart>
+    </div>
+  </app-ds-preview>
+
+  <h3 class="ds-title">{{ lang() === 'en' ? 'Empty' : 'Vide' }}</h3>
+  <app-ds-preview label="[items]=[]">
+    <div style="width:100%;">
+      <tyro-ui-bar-chart [items]="[]" [height]="140"></tyro-ui-bar-chart>
+    </div>
+  </app-ds-preview>
+
+  <hr class="ds-divider">
+
+  <tyro-ui-bento-card title="Inputs">
+    <tyro-ui-data-table [columns]="propCols" [data]="inputsData">
+      <ng-template tyroCol="prop"    let-row><code class="ds-code">{{ $any(row).prop }}</code></ng-template>
+      <ng-template tyroCol="type"    let-row><code class="ds-code">{{ $any(row).type }}</code></ng-template>
+      <ng-template tyroCol="default" let-row><code class="ds-code">{{ $any(row).default }}</code></ng-template>
+      <ng-template tyroCol="description" let-row>
+        <span class="ds-desc" [innerHTML]="lang() === 'en' ? ($any(row).descriptionEn || $any(row).description) : $any(row).description"></span>
+      </ng-template>
+    </tyro-ui-data-table>
+  </tyro-ui-bento-card>
+
+  <tyro-ui-bento-card [title]="lang() === 'en' ? 'Design rules' : 'Règles de design'">
+    <ul class="ds-desc">
+      @for (rule of (lang() === 'en' ? rulesEn : rulesFr); track rule) {
+        <li>{{ rule }}</li>
+      }
+    </ul>
+  </tyro-ui-bento-card>
+
+  <tyro-ui-bento-card [title]="lang() === 'en' ? 'Usage' : 'Utilisation'">
+    <pre class="ds-pre">{{ usageCode }}</pre>
+  </tyro-ui-bento-card>
+
+</section>

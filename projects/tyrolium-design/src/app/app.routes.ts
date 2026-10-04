@@ -30,6 +30,8 @@ import { SnackbarPage }       from './pages/dashboard/snackbar/snackbar-page';
 import { SkeletonPage }       from './pages/dashboard/skeleton/skeleton-page';
 import { AvatarPage }         from './pages/dashboard/avatar/avatar-page';
 import { AvatarGroupPage }    from './pages/dashboard/avatar-group/avatar-group-page';
+import { UserChipPage }       from './pages/dashboard/user-chip/user-chip-page';
+import { BarChartPage }       from './pages/dashboard/bar-chart/bar-chart-page';
 
 import { ConfirmModalPage }   from './pages/modal/confirm-modal/confirm-modal-page';
 
@@ -71,6 +73,8 @@ export const routes: Routes = [
       { path: 'dashboard/skeleton',         component: SkeletonPage },
       { path: 'dashboard/avatar',           component: AvatarPage },
       { path: 'dashboard/avatar-group',     component: AvatarGroupPage },
+      { path: 'dashboard/user-chip',        component: UserChipPage },
+      { path: 'dashboard/bar-chart',        component: BarChartPage },
 
       { path: 'modal/auth-modal',           component: AuthModalPage },
       { path: 'modal/confirm-modal',        component: ConfirmModalPage },

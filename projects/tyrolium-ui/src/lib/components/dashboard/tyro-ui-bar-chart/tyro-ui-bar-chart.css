@@ -1,0 +1,184 @@
+:host {
+  display: block;
+  font-family: 'Inter', sans-serif;
+
+  --bc-bar:        #0533c8;
+  --bc-bar-hover:  #2a55e0;
+  --bc-grid:       var(--page-border, #e5e7eb);
+  --bc-text:       var(--page-text-2, #6b7280);
+  --bc-slot-hover: rgba(5, 51, 200, 0.06);
+  --bc-tip-bg:     var(--page-card-bg, #ffffff);
+  --bc-tip-border: var(--page-border, #e5e7eb);
+  --bc-tip-text:   var(--page-text, #111827);
+}
+
+:host-context([data-theme="dark"]) {
+  --bc-bar:        #60a5fa;
+  --bc-bar-hover:  #93c5fd;
+  --bc-grid:       #2b3445;
+  --bc-text:       #9ca3af;
+  --bc-slot-hover: rgba(96, 165, 250, 0.08);
+  --bc-tip-bg:     #1e2535;
+  --bc-tip-border: #374151;
+  --bc-tip-text:   #f3f4f6;
+}
+
+.bc-chart {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+/* ─── Zone de tracé ──────────────────────────────────────── */
+
+.bc-plot {
+  position: relative;
+  margin-left: 2.5rem; /* place pour les graduations Y */
+}
+
+.bc-grid {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.bc-grid-line {
+  position: absolute;
+  left: 0;
+  right: 0;
+  border-top: 1px solid var(--bc-grid);
+}
+
+.bc-tick {
+  position: absolute;
+  right: calc(100% + 0.5rem);
+  top: -0.5rem;
+  font-size: 0.7rem;
+  line-height: 1;
+  color: var(--bc-text);
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+.bc-empty {
+  position: absolute;
+  inset: 0;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.85rem;
+  color: var(--bc-text);
+}
+
+.bc-bars {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: stretch;
+}
+
+/* Colonne entière = cible de survol (plus grande que la barre) ; 1px de chaque côté = 2px d'écart. */
+.bc-slot {
+  position: relative;
+  flex: 1 1 0;
+  min-width: 0;
+  padding: 0 1px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  border-radius: 6px 6px 0 0;
+  outline: none;
+  cursor: default;
+}
+
+.bc-slot--active { background: var(--bc-slot-hover); }
+
+.bc-slot:focus-visible { box-shadow: inset 0 0 0 2px var(--bc-bar); }
+
+.bc-bar {
+  width: 100%;
+  max-width: 24px;
+  min-height: 2px;
+  background: var(--bc-bar);
+  border-radius: 4px 4px 0 0;
+  transition: height 0.35s ease, background 0.15s;
+}
+
+.bc-bar--zero { opacity: 0.25; }
+
+.bc-slot--active .bc-bar { background: var(--bc-bar-hover); }
+
+/* ─── Infobulle ──────────────────────────────────────────── */
+
+/* Ancrée en haut de la colonne (donc au-dessus de la zone de tracé). */
+.bc-tooltip {
+  position: absolute;
+  top: 0;
+  transform: translateY(calc(-100% - 6px));
+  z-index: 5;
+  min-width: 120px;
+  padding: 0.5rem 0.65rem;
+  border-radius: 10px;
+  background: var(--bc-tip-bg);
+  border: 1px solid var(--bc-tip-border);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.14);
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  pointer-events: none;
+  white-space: nowrap;
+}
+
+.bc-tooltip--center { left: 50%; transform: translate(-50%, calc(-100% - 6px)); }
+.bc-tooltip--left   { left: 0; }
+.bc-tooltip--right  { right: 0; }
+
+.bc-tooltip-label {
+  font-size: 0.72rem;
+  color: var(--bc-text);
+  text-transform: capitalize;
+}
+
+.bc-tooltip-row {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.8rem;
+  color: var(--bc-text);
+}
+
+.bc-tooltip-row strong {
+  font-size: 0.95rem;
+  color: var(--bc-tip-text);
+  font-variant-numeric: tabular-nums;
+}
+
+.bc-tooltip-row--sub strong { font-size: 0.85rem; }
+.bc-tooltip-row--sub { padding-left: 1rem; }
+
+/* Clé de série : un court trait, pas un carré. */
+.bc-key {
+  width: 10px;
+  height: 3px;
+  border-radius: 2px;
+  background: var(--bc-bar);
+}
+
+/* ─── Axe X ──────────────────────────────────────────────── */
+
+.bc-xaxis {
+  display: flex;
+  margin-left: 2.5rem;
+}
+
+.bc-xlabel {
+  flex: 1 1 0;
+  min-width: 0;
+  overflow: visible;
+  text-align: center;
+  font-size: 0.7rem;
+  color: var(--bc-text);
+  white-space: nowrap;
+  text-transform: capitalize;
+}

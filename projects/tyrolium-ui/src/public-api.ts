@@ -28,6 +28,8 @@ export * from './lib/components/dashboard/tyro-ui-snackbar/tyro-ui-snackbar.serv
 export * from './lib/components/dashboard/tyro-ui-skeleton/tyro-ui-skeleton';
 export * from './lib/components/dashboard/tyro-ui-avatar/tyro-ui-avatar';
 export * from './lib/components/dashboard/tyro-ui-avatar-group/tyro-ui-avatar-group';
+export * from './lib/components/dashboard/tyro-ui-user-chip/tyro-ui-user-chip';
+export * from './lib/components/dashboard/tyro-ui-bar-chart/tyro-ui-bar-chart';
 
 /* Components — modal */
 export * from './lib/components/modal/tyro-ui-auth-modal/tyro-ui-auth-modal';
@@ -50,6 +52,8 @@ export * from './lib/interface/ityro-ui-select-item';
 export * from './lib/interface/ityro-ui-snackbar-config';
 export * from './lib/interface/ityro-ui-confirm-config';
 export * from './lib/interface/ityro-ui-avatar-item';
+export * from './lib/interface/ityro-ui-user-chip-detail';
+export * from './lib/interface/ityro-ui-bar-chart-item';
 export * from './lib/interface/ityro-ui-user';
 export * from './lib/interface/ityro-ui-navbar-pages';
 export * from './lib/interface/ityro-ui-subnav-pages';

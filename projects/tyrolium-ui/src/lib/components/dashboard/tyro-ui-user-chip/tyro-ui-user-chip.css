@@ -1,0 +1,144 @@
+:host {
+  display: inline-block;
+  vertical-align: middle;
+  font-family: 'Inter', sans-serif;
+}
+
+/* ─── Pilule ─────────────────────────────────────────────── */
+
+.uc-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+/* Padding compensé par une marge négative : alignée au repos,
+   le fond "déborde" autour de l'avatar et du nom au survol. */
+.uc-chip--clickable {
+  padding: 0.15rem 0.6rem 0.15rem 0.15rem;
+  margin: -0.15rem -0.6rem -0.15rem -0.15rem;
+  border: none;
+  border-radius: 100px;
+  background: transparent;
+  font: inherit;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+.uc-chip--clickable:hover,
+.uc-chip--open {
+  background: var(--page-border, #e5e7eb);
+}
+
+:host-context([data-theme="dark"]) .uc-chip--clickable:hover,
+:host-context([data-theme="dark"]) .uc-chip--open {
+  background: #374151;
+}
+
+.uc-chip--clickable:focus-visible {
+  outline: 2px solid #0533c8;
+  outline-offset: 2px;
+}
+
+.uc-name {
+  font-weight: 600;
+  color: var(--page-text, #111827);
+  white-space: nowrap;
+}
+
+:host-context([data-theme="dark"]) .uc-name { color: #f3f4f6; }
+
+/* ─── Bulle "Détail" ─────────────────────────────────────── */
+
+.uc-bubble {
+  position: fixed;
+  z-index: 1000;
+  width: 260px;
+  box-sizing: border-box;
+  padding: 0.9rem 1rem 1rem;
+  border-radius: 14px;
+  background: var(--page-card-bg, #ffffff);
+  border: 1px solid var(--page-border, #e5e7eb);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.14);
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  text-align: left;
+  white-space: normal;
+  animation: uc-pop 0.15s ease;
+}
+
+:host-context([data-theme="dark"]) .uc-bubble {
+  background: #1e2535;
+  border-color: #374151;
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.45);
+}
+
+@keyframes uc-pop {
+  from { opacity: 0; transform: translateY(-4px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.uc-bubble-label {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--page-text-2, #6b7280);
+}
+
+:host-context([data-theme="dark"]) .uc-bubble-label { color: #9ca3af; }
+
+.uc-bubble-head {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.uc-bubble-names {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.uc-bubble-names strong {
+  color: var(--page-text, #111827);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+:host-context([data-theme="dark"]) .uc-bubble-names strong { color: #f3f4f6; }
+
+.uc-bubble-names span,
+.uc-bubble-lines {
+  font-size: 0.8rem;
+  color: var(--page-text-2, #6b7280);
+}
+
+:host-context([data-theme="dark"]) .uc-bubble-names span,
+:host-context([data-theme="dark"]) .uc-bubble-lines { color: #9ca3af; }
+
+.uc-bubble-lines {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  word-break: break-all;
+}
+
+.uc-bubble-lines i { margin-right: 0.35rem; }
+
+.uc-bubble-badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+}
+
+.uc-bubble-error {
+  margin: 0;
+  font-size: 0.85rem;
+  color: #9ca3af;
+}

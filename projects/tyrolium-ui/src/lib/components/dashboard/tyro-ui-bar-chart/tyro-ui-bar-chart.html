@@ -1,0 +1,58 @@
+<div class="bc-chart" role="group" [attr.aria-label]="valueLabel">
+
+  <!-- Axe Y + grille -->
+  <div class="bc-plot" [style.height.px]="height">
+    <div class="bc-grid" aria-hidden="true">
+      @for (tick of ticks(); track $index) {
+        <div class="bc-grid-line" [style.top.%]="($index / (ticks().length - 1)) * 100">
+          <span class="bc-tick">{{ format(tick) }}</span>
+        </div>
+      }
+    </div>
+
+    @if (isEmpty()) {
+      <p class="bc-empty">{{ emptyLabel ?? (lang() === 'en' ? 'No data' : 'Aucune donnée') }}</p>
+    }
+
+    <!-- Barres : chaque colonne entière est la zone de survol -->
+    <div class="bc-bars">
+      @for (bar of bars(); track $index) {
+        <div class="bc-slot"
+             tabindex="0"
+             [class.bc-slot--active]="hovered() === $index"
+             [attr.aria-label]="ariaLabel(bar)"
+             (mouseenter)="hovered.set($index)"
+             (mouseleave)="hovered.set(null)"
+             (focus)="hovered.set($index)"
+             (blur)="hovered.set(null)">
+          <div class="bc-bar" [class.bc-bar--zero]="bar.value === 0" [style.height.%]="bar.percent"></div>
+
+          @if (hovered() === $index) {
+            <div [class]="'bc-tooltip bc-tooltip--' + tooltipSide($index)" role="tooltip">
+              <span class="bc-tooltip-label">{{ bar.label }}</span>
+              <span class="bc-tooltip-row">
+                <i class="bc-key" aria-hidden="true"></i>
+                <strong>{{ format(bar.value) }}</strong>
+                <span>{{ valueLabel }}</span>
+              </span>
+              @for (detail of bar.details ?? []; track detail.label) {
+                <span class="bc-tooltip-row bc-tooltip-row--sub">
+                  <strong>{{ format(detail.value) }}</strong>
+                  <span>{{ detail.label }}</span>
+                </span>
+              }
+            </div>
+          }
+        </div>
+      }
+    </div>
+  </div>
+
+  <!-- Axe X (un libellé sur N quand il y a beaucoup de barres) -->
+  <div class="bc-xaxis" aria-hidden="true">
+    @for (bar of bars(); track $index) {
+      <span class="bc-xlabel">{{ bar.showLabel ? bar.label : '' }}</span>
+    }
+  </div>
+
+</div>

@@ -1,0 +1,75 @@
+<tyro-ui-page-header label="&lt;tyro-ui-user-chip&gt;" title="User Chip">
+  @if (lang() === 'en') {
+    A user displayed as a pill - avatar + name. Clicking it opens a <strong>Details</strong> bubble (large avatar, name, @username, info lines, tags).
+    Presentational only: the app loads the details on <code class="ds-code">(opened)</code> if needed.
+  } @else {
+    Utilisateur affiché en pilule - avatar + nom. Un clic ouvre une bulle <strong>Détail</strong> (grand avatar, nom, @pseudo, lignes d'info, étiquettes).
+    Purement présentationnel : l'application charge le détail sur <code class="ds-code">(opened)</code> si besoin.
+  }
+</tyro-ui-page-header>
+
+<section id="user-chip-page">
+
+  <!-- ── Bulle détail ──────────────────────────────────────── -->
+  <h3 class="ds-title">{{ lang() === 'en' ? 'Details bubble' : 'Bulle détail' }}</h3>
+  <app-ds-preview [label]="lang() === 'en' ? 'Click a user' : 'Cliquez sur un utilisateur'">
+    <div style="display:flex;gap:28px;align-items:center;flex-wrap:wrap;">
+      <tyro-ui-user-chip name="Maxime Tournier" username="maxime" src="/assets/exemple-avatar.jpg" [badges]="staticBadges()"></tyro-ui-user-chip>
+      <tyro-ui-user-chip name="Bob Dupont" username="bob" [badges]="bannedBadges()"></tyro-ui-user-chip>
+      <tyro-ui-user-chip name="Boulangerie Dupont" [lines]="guestLines" [badges]="guestBadges()"></tyro-ui-user-chip>
+    </div>
+  </app-ds-preview>
+
+  <!-- ── Chargement à l'ouverture ──────────────────────────── -->
+  <h3 class="ds-title">{{ lang() === 'en' ? 'Loaded on open' : 'Chargé à l\'ouverture' }}</h3>
+  <app-ds-preview [label]="lang() === 'en' ? '(opened) → simulated API call → [badges]' : '(opened) → appel API simulé → [badges]'">
+    <tyro-ui-user-chip name="Alice Martin" username="alice"
+      [badges]="asyncBadges()" [detailLoading]="loading()" (opened)="onOpened()">
+    </tyro-ui-user-chip>
+  </app-ds-preview>
+
+  <!-- ── Tailles & non cliquable ───────────────────────────── -->
+  <h3 class="ds-title">{{ lang() === 'en' ? 'Sizes & display only' : 'Tailles et affichage seul' }}</h3>
+  <app-ds-preview [label]="lang() === 'en' ? 'xs / sm / md / lg - [clickable]=false' : 'xs / sm / md / lg - [clickable]=false'">
+    <div style="display:flex;gap:28px;align-items:center;flex-wrap:wrap;">
+      <tyro-ui-user-chip size="xs" name="Maxime Tournier" username="maxime"></tyro-ui-user-chip>
+      <tyro-ui-user-chip size="sm" name="Maxime Tournier" username="maxime"></tyro-ui-user-chip>
+      <tyro-ui-user-chip size="md" name="Maxime Tournier" username="maxime"></tyro-ui-user-chip>
+      <tyro-ui-user-chip size="lg" name="Maxime Tournier" username="maxime"></tyro-ui-user-chip>
+      <tyro-ui-user-chip name="Sans bulle" [clickable]="false"></tyro-ui-user-chip>
+    </div>
+  </app-ds-preview>
+
+  <hr class="ds-divider">
+
+  <tyro-ui-bento-card title="Inputs">
+    <tyro-ui-data-table [columns]="propCols" [data]="inputsData">
+      <ng-template tyroCol="prop"    let-row><code class="ds-code">{{ $any(row).prop }}</code></ng-template>
+      <ng-template tyroCol="type"    let-row><code class="ds-code">{{ $any(row).type }}</code></ng-template>
+      <ng-template tyroCol="default" let-row><code class="ds-code">{{ $any(row).default }}</code></ng-template>
+      <ng-template tyroCol="description" let-row>
+        <span class="ds-desc" [innerHTML]="lang() === 'en' ? ($any(row).descriptionEn || $any(row).description) : $any(row).description"></span>
+      </ng-template>
+    </tyro-ui-data-table>
+  </tyro-ui-bento-card>
+
+  <tyro-ui-bento-card title="Outputs">
+    <tyro-ui-data-table [columns]="propCols" [data]="outputsData">
+      <ng-template tyroCol="prop"    let-row><code class="ds-code">{{ $any(row).prop }}</code></ng-template>
+      <ng-template tyroCol="type"    let-row><code class="ds-code">{{ $any(row).type }}</code></ng-template>
+      <ng-template tyroCol="description" let-row>
+        <span class="ds-desc" [innerHTML]="lang() === 'en' ? ($any(row).descriptionEn || $any(row).description) : $any(row).description"></span>
+      </ng-template>
+    </tyro-ui-data-table>
+  </tyro-ui-bento-card>
+
+  <tyro-ui-bento-card [title]="lang() === 'en' ? 'Usage' : 'Utilisation'">
+    <p class="ds-desc">
+      {{ lang() === 'en'
+        ? 'The bubble is fixed-positioned: it is never clipped by a scrolling table, and closes on outside click, Escape or scroll.'
+        : 'La bulle est en position fixe : elle n\'est jamais coupée par un tableau qui défile, et se ferme au clic extérieur, avec Échap ou au défilement.' }}
+    </p>
+    <pre class="ds-pre">{{ usageCode }}</pre>
+  </tyro-ui-bento-card>
+
+</section>

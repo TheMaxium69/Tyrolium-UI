@@ -1,0 +1,55 @@
+@if (clickable) {
+  <button type="button" class="uc-chip uc-chip--clickable" [class.uc-chip--open]="open()" (click)="toggle($event)"
+          [attr.aria-expanded]="open()"
+          [attr.aria-label]="(lang() === 'en' ? 'Details of ' : 'Détail de ') + name">
+    <tyro-ui-avatar [src]="src" [name]="name" [size]="size"></tyro-ui-avatar>
+    <span class="uc-name">{{ name }}</span>
+  </button>
+} @else {
+  <span class="uc-chip" [title]="username ? '@' + username : name">
+    <tyro-ui-avatar [src]="src" [name]="name" [size]="size"></tyro-ui-avatar>
+    <span class="uc-name">{{ name }}</span>
+  </span>
+}
+
+@if (open()) {
+  <div #bubble class="uc-bubble" role="dialog" [style.top.px]="position().top" [style.left.px]="position().left">
+    <span class="uc-bubble-label">{{ bubbleLabel ?? (lang() === 'en' ? 'Details' : 'Détail') }}</span>
+
+    <div class="uc-bubble-head">
+      <tyro-ui-avatar [src]="src" [name]="name" size="lg"></tyro-ui-avatar>
+      <div class="uc-bubble-names">
+        <strong>{{ name }}</strong>
+        @if (username) {
+          <span>&#64;{{ username }}</span>
+        }
+      </div>
+    </div>
+
+    @if (detailLoading) {
+      <tyro-ui-skeleton height="22px" width="70%"></tyro-ui-skeleton>
+    } @else if (detailError) {
+      <p class="uc-bubble-error">{{ detailError }}</p>
+    } @else {
+      @if (lines.length) {
+        <ul class="uc-bubble-lines">
+          @for (line of lines; track line.text) {
+            <li>
+              @if (line.icon) { <i [class]="line.icon"></i> }
+              {{ line.text }}
+            </li>
+          }
+        </ul>
+      }
+      @if (badges.length) {
+        <div class="uc-bubble-badges">
+          @for (badge of badges; track badge.label) {
+            <tyro-ui-chip size="sm" [variant]="badge.variant ?? 'default'" [icon]="badge.icon">{{ badge.label }}</tyro-ui-chip>
+          }
+        </div>
+      }
+    }
+
+    <ng-content></ng-content>
+  </div>
+}

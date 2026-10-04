@@ -70,6 +70,8 @@ export class Layout {
           /* ─── Personnes ─── */
           { label: 'Avatar',           icon: 'ri-user-3-line',          link: '/dashboard/avatar' },
           { label: 'Avatar Group',     icon: 'ri-group-line',           link: '/dashboard/avatar-group' },
+          { label: 'User Chip',        icon: 'ri-user-smile-line',      link: '/dashboard/user-chip' },
+          { label: 'Bar Chart',        icon: 'ri-bar-chart-2-line',     link: '/dashboard/bar-chart' },
         ],
       },
       {
