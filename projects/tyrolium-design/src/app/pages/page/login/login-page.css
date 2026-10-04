@@ -1,0 +1,9 @@
+/* Le composant occupe 100dvh : dans l'aperçu, on le cale sur la hauteur du cadre. */
+.login-demo {
+  width: 100%;
+}
+
+.login-demo ::ng-deep .login-page {
+  min-height: 560px;
+  border-radius: 12px;
+}

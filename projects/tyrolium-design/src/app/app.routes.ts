@@ -37,6 +37,7 @@ import { AuthModalPage }       from './pages/modal/auth-modal/auth-modal-page';
 
 import { NotFoundPage }        from './pages/page/not-found/not-found-page';
 import { ForbiddenPage }       from './pages/page/forbidden/forbidden-page';
+import { LoginPage }           from './pages/page/login/login-page';
 import { EasterEggPage }       from './pages/other/easter-egg/easter-egg-page';
 
 export const routes: Routes = [
@@ -76,6 +77,7 @@ export const routes: Routes = [
 
       { path: 'page/not-found',             component: NotFoundPage },
       { path: 'page/forbidden',             component: ForbiddenPage },
+      { path: 'page/login',                 component: LoginPage },
 
       { path: 'other/easter-egg',           component: EasterEggPage },
     ],

@@ -86,6 +86,7 @@ export class Layout {
         children: [
           { label: 'Not Found', icon: 'ri-question-mark', link: '/page/not-found' },
           { label: 'Forbidden', icon: 'ri-forbid-2-line', link: '/page/forbidden' },
+          { label: 'Login',     icon: 'ri-login-box-line', link: '/page/login' },
         ],
       },
       {

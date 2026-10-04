@@ -1,0 +1,72 @@
+<div class="login-page">
+  <div class="auth-card">
+
+    <!-- Header -->
+    <div class="auth-header">
+      <div class="auth-logo">
+        <img [src]="logo" [alt]="title" class="auth-logo-img"
+             onerror="this.style.display='none'">
+        <span class="auth-logo-fallback">{{ title.charAt(0) }}</span>
+      </div>
+      <h2 class="auth-title">{{ title }}</h2>
+      <p class="auth-subtitle">
+        @if (appName) {
+          {{ lang() === 'en' ? 'Sign-in required by' : 'Connexion requise par' }} <strong>{{ appName }}</strong>
+        } @else {
+          {{ lang() === 'en' ? 'Your universal Tyrolium identity' : 'Votre identité universelle Tyrolium' }}
+        }
+      </p>
+    </div>
+
+    <!-- Form -->
+    <form class="auth-form" (submit)="submit($event)">
+
+      @if (error) {
+        <p class="auth-error">
+          <i class="ri-error-warning-line"></i>
+          {{ error }}
+        </p>
+      }
+
+      <div class="auth-field">
+        <label for="tyro-login-identifier">{{ lang() === 'en' ? 'E-mail or username' : 'E-mail ou nom d\'utilisateur' }}</label>
+        <input #identifierInput id="tyro-login-identifier" type="text" [(ngModel)]="identifier" name="identifier"
+               [placeholder]="lang() === 'en' ? 'you@example.com or username' : 'vous@exemple.fr ou nom d\'utilisateur'"
+               [disabled]="loading"
+               autocomplete="username" required>
+      </div>
+
+      <div class="auth-field">
+        <label for="tyro-login-password">{{ lang() === 'en' ? 'Password' : 'Mot de passe' }}</label>
+        <div class="auth-pass-wrap">
+          <input id="tyro-login-password" [type]="showPass ? 'text' : 'password'" [(ngModel)]="password" name="password"
+                 [placeholder]="lang() === 'en' ? 'Your password' : 'Votre mot de passe'"
+                 [disabled]="loading"
+                 autocomplete="current-password" required>
+          <button type="button" class="auth-pass-toggle" (click)="showPass = !showPass"
+                  [attr.aria-label]="lang() === 'en' ? 'Show password' : 'Afficher le mot de passe'">
+            <i [class]="showPass ? 'ri-eye-off-line' : 'ri-eye-line'"></i>
+          </button>
+        </div>
+      </div>
+
+      <button type="submit" class="auth-submit" [disabled]="loading">
+        @if (loading) {
+          <i class="ri-loader-4-line auth-spinner"></i>
+        }
+        {{ loading
+          ? (lang() === 'en' ? 'Signing in…' : 'Connexion…')
+          : (lang() === 'en' ? 'Sign in' : 'Se connecter') }}
+      </button>
+
+    </form>
+
+    <!-- Footer -->
+    <p class="auth-footer">
+      {{ lang() === 'en'
+        ? (footerEn ?? footer ?? 'Free · Hosted in France · Never sold')
+        : (footer ?? 'Gratuit · Hébergé en France · Jamais vendu') }}
+    </p>
+
+  </div>
+</div>

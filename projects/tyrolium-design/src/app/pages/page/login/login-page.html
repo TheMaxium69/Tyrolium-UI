@@ -1,0 +1,78 @@
+<tyro-ui-page-header label="&lt;tyro-ui-login&gt;" title="Login">
+  @if (lang() === 'en') {
+    Full-screen Useritium sign-in page, same design as the Useritium OAuth form.
+    Presentational only: the app makes the API call through <code class="ds-code">(submitted)</code> and passes back <code class="ds-code">[loading]</code> / <code class="ds-code">[error]</code>.
+  } @else {
+    Page de connexion Useritium plein écran, même design que le formulaire OAuth de Useritium.
+    Purement présentationnelle : l'application fait l'appel API via <code class="ds-code">(submitted)</code> et renvoie <code class="ds-code">[loading]</code> / <code class="ds-code">[error]</code>.
+  }
+</tyro-ui-page-header>
+
+<section id="login-page">
+
+  <!-- ── Aperçu ────────────────────────────────────────────── -->
+  <h3 class="ds-title">{{ lang() === 'en' ? 'Preview' : 'Aperçu' }}</h3>
+  <app-ds-preview
+    [label]="lang() === 'en' ? 'Submit to simulate a failed API call' : 'Valider pour simuler un appel API en échec'"
+    minHeight="560px">
+    <tyro-ui-login
+      class="login-demo"
+      appName="Tyrolium Design"
+      [autofocus]="false"
+      [loading]="loading()"
+      [error]="error()"
+      (submitted)="onSubmit($event)">
+    </tyro-ui-login>
+  </app-ds-preview>
+
+  <hr class="ds-divider">
+
+  <!-- ── Inputs ────────────────────────────────────────────── -->
+  <tyro-ui-bento-card title="Inputs">
+    <tyro-ui-data-table [columns]="propCols" [data]="inputsData">
+
+      <ng-template tyroCol="prop" let-row>
+        <code class="ds-code">{{ $any(row).prop }}</code>
+      </ng-template>
+
+      <ng-template tyroCol="default" let-row>
+        <code class="ds-code">{{ $any(row).default }}</code>
+      </ng-template>
+
+      <ng-template tyroCol="description" let-row>
+        <span class="ds-desc" [innerHTML]="lang() === 'en' ? ($any(row).descriptionEn || $any(row).description) : $any(row).description"></span>
+      </ng-template>
+
+    </tyro-ui-data-table>
+  </tyro-ui-bento-card>
+
+  <!-- ── Outputs ───────────────────────────────────────────── -->
+  <tyro-ui-bento-card title="Outputs">
+    <tyro-ui-data-table [columns]="propCols" [data]="outputsData">
+
+      <ng-template tyroCol="prop" let-row>
+        <code class="ds-code">{{ $any(row).prop }}</code>
+      </ng-template>
+
+      <ng-template tyroCol="type" let-row>
+        <code class="ds-code">{{ $any(row).type }}</code>
+      </ng-template>
+
+      <ng-template tyroCol="description" let-row>
+        <span class="ds-desc" [innerHTML]="lang() === 'en' ? ($any(row).descriptionEn || $any(row).description) : $any(row).description"></span>
+      </ng-template>
+
+    </tyro-ui-data-table>
+  </tyro-ui-bento-card>
+
+  <!-- ── Usage ─────────────────────────────────────────────── -->
+  <tyro-ui-bento-card [title]="lang() === 'en' ? 'Usage' : 'Utilisation'">
+    <p class="ds-desc">
+      {{ lang() === 'en'
+        ? 'Display it instead of the layout as long as there is no session.'
+        : 'L\'afficher à la place du layout tant qu\'il n\'y a pas de session.' }}
+    </p>
+    <pre class="ds-pre">{{ usageCode }}</pre>
+  </tyro-ui-bento-card>
+
+</section>
