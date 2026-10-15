@@ -39,6 +39,7 @@ export * from './lib/components/modal/tyro-ui-confirm-modal/tyro-ui-confirm.serv
 /* Components — page */
 export * from './lib/components/page/tyro-ui-not-found/tyro-ui-not-found';
 export * from './lib/components/page/tyro-ui-forbidden/tyro-ui-forbidden';
+export * from './lib/components/page/tyro-ui-auth-card/tyro-ui-auth-card';
 export * from './lib/components/page/tyro-ui-login/tyro-ui-login';
 
 /* Components — other */

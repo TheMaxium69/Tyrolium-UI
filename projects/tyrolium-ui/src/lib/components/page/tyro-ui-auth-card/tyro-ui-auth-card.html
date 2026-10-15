@@ -1,0 +1,29 @@
+<div class="tyro-auth login-page">
+  <div class="auth-card">
+
+    <!-- Header -->
+    <div class="auth-header">
+      <div class="auth-logo">
+        <img [src]="logo" [alt]="title" class="auth-logo-img"
+             onerror="this.style.display='none'">
+        <span class="auth-logo-fallback">{{ title.charAt(0) }}</span>
+      </div>
+      <h2 class="auth-title">{{ title }}</h2>
+      <p class="auth-subtitle">
+        <ng-content select="[authSubtitle]">
+          {{ lang() === 'en' ? 'Your universal Tyrolium identity' : 'Votre identité universelle Tyrolium' }}
+        </ng-content>
+      </p>
+    </div>
+
+    <ng-content></ng-content>
+
+    <!-- Footer -->
+    <p class="auth-footer">
+      {{ lang() === 'en'
+        ? (footerEn ?? footer ?? 'Free · Hosted in France · Never sold')
+        : (footer ?? 'Gratuit · Hébergé en France · Jamais vendu') }}
+    </p>
+
+  </div>
+</div>

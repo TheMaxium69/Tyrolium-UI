@@ -1,6 +1,8 @@
 import { AfterViewInit, Component, ElementRef, EventEmitter, inject, Input, Output, ViewChild } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { RouterLink } from '@angular/router';
 import { TyroUiLangService } from '../../../services/tyro-ui-lang.service';
+import { TyroUiAuthCard } from '../tyro-ui-auth-card/tyro-ui-auth-card';
 
 export interface ITyroUiLoginCredentials {
   identifier: string;
@@ -13,7 +15,7 @@ export interface ITyroUiLoginCredentials {
  */
 @Component({
   selector: 'tyro-ui-login',
-  imports: [FormsModule],
+  imports: [FormsModule, RouterLink, TyroUiAuthCard],
   templateUrl: './tyro-ui-login.html',
   styleUrl: './tyro-ui-login.css',
 })
@@ -24,11 +26,16 @@ export class TyroUiLogin implements AfterViewInit {
   @Input() logo    = 'assets/tyrolium-ui/projects/Useritium.png';
   @Input() loading = false;
   @Input() error: string | null = null;
+  /** Message d'information (ex. « Mot de passe modifié, reconnectez-vous »), affiché en vert. */
+  @Input() notice: string | null = null;
   /** Focus auto sur l'identifiant ; à désactiver si le composant n'est pas en haut de page. */
   @Input() autofocus = true;
   /** Pied de carte ; par défaut le slogan Useritium (FR/EN). */
   @Input() footer?:   string;
   @Input() footerEn?: string;
+  /** Liens optionnels sous le bouton (routes du site) ; masqués si absents. */
+  @Input() forgotLink?:   string;
+  @Input() registerLink?: string;
 
   @Output() submitted = new EventEmitter<ITyroUiLoginCredentials>();
 
