@@ -227,6 +227,13 @@ export const NavbarMenuCategory: ITyroUiNavbarMenuCategory[] = [
         link: 'https://design.tyrolium.fr',
       },
       {
+        name: 'TyroDraw',
+        description: 'Tableau blanc collaboratif',
+        descriptionEn: 'Collaborative whiteboard',
+        icon: 'ri-pencil-ruler-2-fill',
+        link: 'https://draw.tyrolium.fr',
+      },
+      {
         name: 'Légal',
         nameEn: 'Legal',
         description: 'Mentions légales',
