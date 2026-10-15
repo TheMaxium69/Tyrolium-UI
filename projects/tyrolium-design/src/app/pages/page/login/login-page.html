@@ -2,9 +2,11 @@
   @if (lang() === 'en') {
     Full-screen Useritium sign-in page, same design as the Useritium OAuth form.
     Presentational only: the app makes the API call through <code class="ds-code">(submitted)</code> and passes back <code class="ds-code">[loading]</code> / <code class="ds-code">[error]</code>.
+    Built on <code class="ds-code">&lt;tyro-ui-auth-card&gt;</code>, to be used for the other screens (sign-up, forgot password…).
   } @else {
     Page de connexion Useritium plein écran, même design que le formulaire OAuth de Useritium.
     Purement présentationnelle : l'application fait l'appel API via <code class="ds-code">(submitted)</code> et renvoie <code class="ds-code">[loading]</code> / <code class="ds-code">[error]</code>.
+    Construite sur <code class="ds-code">&lt;tyro-ui-auth-card&gt;</code>, à utiliser pour les autres écrans (inscription, mot de passe oublié…).
   }
 </tyro-ui-page-header>
 
@@ -21,6 +23,21 @@
       [autofocus]="false"
       [loading]="loading()"
       [error]="error()"
+      (submitted)="onSubmit($event)">
+    </tyro-ui-login>
+  </app-ds-preview>
+
+  <h3 class="ds-title">{{ lang() === 'en' ? 'With links and notice' : 'Avec liens et message' }}</h3>
+  <app-ds-preview
+    [label]="lang() === 'en' ? 'forgotLink, registerLink and notice (links open the Auth Card page)' : 'forgotLink, registerLink et notice (les liens ouvrent la page Auth Card)'"
+    minHeight="620px">
+    <tyro-ui-login
+      class="login-demo"
+      appName="Useritium Dashboard"
+      forgotLink="/page/auth-card"
+      registerLink="/page/auth-card"
+      [autofocus]="false"
+      [notice]="notice()"
       (submitted)="onSubmit($event)">
     </tyro-ui-login>
   </app-ds-preview>

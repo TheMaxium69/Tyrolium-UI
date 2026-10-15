@@ -1,0 +1,176 @@
+<tyro-ui-page-header label="&lt;tyro-ui-auth-card&gt;" title="Auth Card">
+  @if (lang() === 'en') {
+    Full-screen Useritium authentication card (logo, title, subtitle, footer) with free content.
+    It is the base of <code class="ds-code">&lt;tyro-ui-login&gt;</code> and of the other account screens: sign-up, forgot password, e-mail confirmation…
+    The projected content uses the card's <code class="ds-code">.auth-*</code> classes to get the same look as the sign-in form.
+  } @else {
+    Carte d'authentification Useritium plein écran (logo, titre, sous-titre, pied) avec un contenu libre.
+    C'est la base de <code class="ds-code">&lt;tyro-ui-login&gt;</code> et des autres écrans de compte : inscription, mot de passe oublié, confirmation d'email…
+    Le contenu projeté utilise les classes <code class="ds-code">.auth-*</code> de la carte pour avoir le même rendu que le formulaire de connexion.
+  }
+</tyro-ui-page-header>
+
+<section id="auth-card-page">
+
+  <!-- ── Aperçu : formulaire ───────────────────────────────── -->
+  <h3 class="ds-title">{{ lang() === 'en' ? 'Form' : 'Formulaire' }}</h3>
+  <app-ds-preview
+    [label]="lang() === 'en' ? 'Sign-up form: submit with a short username to see a field error' : 'Formulaire d\'inscription : valider avec un pseudo court pour voir une erreur de champ'"
+    minHeight="560px">
+    <tyro-ui-auth-card class="auth-demo">
+      <span authSubtitle>{{ lang() === 'en' ? 'Create your Useritium account' : 'Créez votre compte Useritium' }}</span>
+
+      @if (done()) {
+        <div class="auth-form">
+          <div class="auth-state-icon"><i class="ri-mail-send-line"></i></div>
+          <p class="auth-text">
+            {{ lang() === 'en'
+              ? 'Your account has been created. Confirm your e-mail address with the link we sent you.'
+              : 'Votre compte est créé. Confirmez votre adresse email grâce au lien envoyé.' }}
+          </p>
+          <button type="button" class="auth-secondary" (click)="reset()">
+            <i class="ri-arrow-go-back-line"></i>
+            {{ lang() === 'en' ? 'Restart the demo' : 'Relancer la démo' }}
+          </button>
+        </div>
+      } @else {
+        <form class="auth-form" (submit)="onSubmit($event)" novalidate>
+          <div class="auth-field">
+            <label for="ds-auth-username">{{ lang() === 'en' ? 'Username' : 'Nom d\'utilisateur' }}</label>
+            <input id="ds-auth-username" type="text" name="username" [(ngModel)]="username" [disabled]="loading()"
+                   [placeholder]="lang() === 'en' ? 'Your username' : 'Votre pseudo'">
+            @if (usernameError(); as m) { <p class="auth-hint is-error">{{ m }}</p> }
+          </div>
+
+          <div class="auth-field">
+            <label for="ds-auth-password">{{ lang() === 'en' ? 'Password' : 'Mot de passe' }}</label>
+            <div class="auth-pass-wrap">
+              <input id="ds-auth-password" [type]="showPass ? 'text' : 'password'" name="password" [(ngModel)]="password"
+                     [disabled]="loading()" [placeholder]="lang() === 'en' ? '8 characters minimum' : '8 caractères minimum'">
+              <button type="button" class="auth-pass-toggle" (click)="showPass = !showPass"
+                      [attr.aria-label]="lang() === 'en' ? 'Show password' : 'Afficher le mot de passe'">
+                <i [class]="showPass ? 'ri-eye-off-line' : 'ri-eye-line'"></i>
+              </button>
+            </div>
+            <p class="auth-hint">{{ lang() === 'en' ? '8 characters minimum.' : '8 caractères minimum.' }}</p>
+          </div>
+
+          <button type="submit" class="auth-submit" [disabled]="loading()">
+            @if (loading()) { <i class="ri-loader-4-line auth-spinner"></i> }
+            {{ lang() === 'en' ? 'Create my account' : 'Créer mon compte' }}
+          </button>
+
+          <div class="auth-links is-center">
+            <button type="button" class="auth-link">{{ lang() === 'en' ? 'Already have an account? Sign in' : 'Déjà un compte ? Se connecter' }}</button>
+          </div>
+        </form>
+      }
+    </tyro-ui-auth-card>
+  </app-ds-preview>
+
+  <!-- ── Aperçu : états ────────────────────────────────────── -->
+  <h3 class="ds-title">{{ lang() === 'en' ? 'States' : 'États' }}</h3>
+  <div class="auth-demo-grid">
+
+    <app-ds-preview [label]="lang() === 'en' ? 'Success' : 'Succès'" minHeight="420px">
+      <tyro-ui-auth-card class="auth-demo auth-demo--small">
+        <span authSubtitle>{{ lang() === 'en' ? 'E-mail confirmation' : 'Confirmation de l\'email' }}</span>
+        <div class="auth-form">
+          <div class="auth-state-icon is-success"><i class="ri-checkbox-circle-line"></i></div>
+          <p class="auth-text">{{ lang() === 'en' ? 'E-mail verified successfully.' : 'Email vérifié avec succès.' }}</p>
+          <button type="button" class="auth-submit">{{ lang() === 'en' ? 'Sign in' : 'Se connecter' }}</button>
+        </div>
+      </tyro-ui-auth-card>
+    </app-ds-preview>
+
+    <app-ds-preview [label]="lang() === 'en' ? 'Error' : 'Erreur'" minHeight="420px">
+      <tyro-ui-auth-card class="auth-demo auth-demo--small">
+        <span authSubtitle>{{ lang() === 'en' ? 'Choose a new password' : 'Choisir un nouveau mot de passe' }}</span>
+        <div class="auth-form">
+          <div class="auth-state-icon is-error"><i class="ri-link-unlink"></i></div>
+          <p class="auth-error">
+            <i class="ri-error-warning-line"></i>
+            {{ lang() === 'en' ? 'This link is invalid or expired.' : 'Ce lien est invalide ou expiré.' }}
+          </p>
+          <button type="button" class="auth-secondary">{{ lang() === 'en' ? 'Request a new link' : 'Demander un nouveau lien' }}</button>
+        </div>
+      </tyro-ui-auth-card>
+    </app-ds-preview>
+
+    <app-ds-preview [label]="lang() === 'en' ? 'Information' : 'Information'" minHeight="420px">
+      <tyro-ui-auth-card class="auth-demo auth-demo--small">
+        <span authSubtitle>{{ lang() === 'en' ? 'Reset your password' : 'Réinitialiser votre mot de passe' }}</span>
+        <div class="auth-form">
+          <p class="auth-success">
+            <i class="ri-mail-send-line"></i>
+            {{ lang() === 'en' ? 'If an account exists, a reset e-mail has been sent.' : 'Si un compte existe, un email de réinitialisation a été envoyé.' }}
+          </p>
+          <div class="auth-links is-center">
+            <button type="button" class="auth-link">{{ lang() === 'en' ? 'Back to sign-in' : 'Retour à la connexion' }}</button>
+          </div>
+        </div>
+      </tyro-ui-auth-card>
+    </app-ds-preview>
+
+  </div>
+
+  <hr class="ds-divider">
+
+  <!-- ── Inputs ────────────────────────────────────────────── -->
+  <tyro-ui-bento-card title="Inputs">
+    <tyro-ui-data-table [columns]="propCols" [data]="inputsData">
+      <ng-template tyroCol="prop" let-row>
+        <code class="ds-code">{{ $any(row).prop }}</code>
+      </ng-template>
+      <ng-template tyroCol="default" let-row>
+        <code class="ds-code">{{ $any(row).default }}</code>
+      </ng-template>
+      <ng-template tyroCol="description" let-row>
+        <span class="ds-desc" [innerHTML]="lang() === 'en' ? ($any(row).descriptionEn || $any(row).description) : $any(row).description"></span>
+      </ng-template>
+    </tyro-ui-data-table>
+  </tyro-ui-bento-card>
+
+  <!-- ── Contenu projeté ───────────────────────────────────── -->
+  <tyro-ui-bento-card [title]="lang() === 'en' ? 'Content projection' : 'Contenu projeté'">
+    <tyro-ui-data-table [columns]="propCols" [data]="slotsData">
+      <ng-template tyroCol="prop" let-row>
+        <code class="ds-code">{{ lang() === 'en' && $any(row).prop === '(défaut)' ? '(default)' : $any(row).prop }}</code>
+      </ng-template>
+      <ng-template tyroCol="default" let-row>
+        {{ lang() === 'en' && $any(row).default === 'Slogan Useritium' ? 'Useritium tagline' : $any(row).default }}
+      </ng-template>
+      <ng-template tyroCol="description" let-row>
+        <span class="ds-desc" [innerHTML]="lang() === 'en' ? ($any(row).descriptionEn || $any(row).description) : $any(row).description"></span>
+      </ng-template>
+    </tyro-ui-data-table>
+  </tyro-ui-bento-card>
+
+  <!-- ── Classes CSS ───────────────────────────────────────── -->
+  <tyro-ui-bento-card [title]="lang() === 'en' ? 'CSS classes' : 'Classes CSS'">
+    <p class="ds-desc">
+      {{ lang() === 'en'
+        ? 'Scoped under the card (.tyro-auth) and available to the projected content, light and dark themes included.'
+        : 'Scopées sous la carte (.tyro-auth) et disponibles pour le contenu projeté, thèmes clair et sombre compris.' }}
+    </p>
+    <tyro-ui-data-table [columns]="classCols" [data]="classesData">
+      <ng-template tyroCol="prop" let-row>
+        <code class="ds-code">{{ $any(row).prop }}</code>
+      </ng-template>
+      <ng-template tyroCol="description" let-row>
+        <span class="ds-desc" [innerHTML]="lang() === 'en' ? ($any(row).descriptionEn || $any(row).description) : $any(row).description"></span>
+      </ng-template>
+    </tyro-ui-data-table>
+  </tyro-ui-bento-card>
+
+  <!-- ── Usage ─────────────────────────────────────────────── -->
+  <tyro-ui-bento-card [title]="lang() === 'en' ? 'Usage' : 'Utilisation'">
+    <p class="ds-desc">
+      {{ lang() === 'en'
+        ? 'Like the login page, display it outside the dashboard layout.'
+        : 'Comme la page de connexion, l\'afficher en dehors du layout du dashboard.' }}
+    </p>
+    <pre class="ds-pre">{{ usageCode }}</pre>
+  </tyro-ui-bento-card>
+
+</section>

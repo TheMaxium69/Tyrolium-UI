@@ -1,4 +1,4 @@
-import { Component, inject, signal } from '@angular/core';
+import { Component, computed, inject, signal } from '@angular/core';
 import {
   TyroUiLogin,
   ITyroUiLoginCredentials,
@@ -25,6 +25,11 @@ export class LoginPage {
   /* ─── Démo : simule un appel API qui échoue ─── */
   readonly loading = signal(false);
   readonly error   = signal<string | null>(null);
+
+  /** Deuxième aperçu : message d'information et liens, comme sur Useritium Dashboard. */
+  readonly notice = computed(() => this.lang() === 'en'
+    ? 'Password changed, please sign in again.'
+    : 'Mot de passe modifié, reconnectez-vous.');
 
   onSubmit(_credentials: ITyroUiLoginCredentials) {
     this.error.set(null);
@@ -59,6 +64,16 @@ export class LoginPage {
       descriptionEn: 'Logo URL',
     },
     {
+      prop: '[forgotLink]', type: 'string', default: 'undefined',
+      description:   'Route du lien « Mot de passe oublié ? » sous le bouton (<code>routerLink</code>). Absent → lien masqué.',
+      descriptionEn: 'Route of the “Forgot password?” link under the button (<code>routerLink</code>). Missing → link hidden.',
+    },
+    {
+      prop: '[registerLink]', type: 'string', default: 'undefined',
+      description:   'Route du lien « Créer un compte » sous le bouton (<code>routerLink</code>). Absent → lien masqué.',
+      descriptionEn: 'Route of the “Create an account” link under the button (<code>routerLink</code>). Missing → link hidden.',
+    },
+    {
       prop: '[loading]', type: 'boolean', default: 'false',
       description:   'Désactive le formulaire et affiche le spinner sur le bouton',
       descriptionEn: 'Disables the form and shows a spinner on the button',
@@ -67,6 +82,11 @@ export class LoginPage {
       prop: '[error]', type: 'string | null', default: 'null',
       description:   'Message d\'erreur affiché au-dessus des champs',
       descriptionEn: 'Error message shown above the fields',
+    },
+    {
+      prop: '[notice]', type: 'string | null', default: 'null',
+      description:   'Message d\'information en vert au-dessus des champs (ex. « Mot de passe modifié, reconnectez-vous »). Masqué si <code>error</code> est présent.',
+      descriptionEn: 'Green information message above the fields (e.g. “Password changed, please sign in again”). Hidden when <code>error</code> is set.',
     },
     {
       prop: '[autofocus]', type: 'boolean', default: 'true',
@@ -98,9 +118,12 @@ export class LoginPage {
 
 // Template
 <tyro-ui-login
-  appName="Tyrolium Hub"
+  appName="Useritium Dashboard"
+  forgotLink="/forgot-password"
+  registerLink="/register"
   [loading]="auth.loading()"
   [error]="auth.error()"
+  [notice]="auth.notice()"
   (submitted)="onSubmit($event)">
 </tyro-ui-login>
 

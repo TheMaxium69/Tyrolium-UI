@@ -89,6 +89,7 @@ export class Layout {
           { label: 'Not Found', icon: 'ri-question-mark', link: '/page/not-found' },
           { label: 'Forbidden', icon: 'ri-forbid-2-line', link: '/page/forbidden' },
           { label: 'Login',     icon: 'ri-login-box-line', link: '/page/login' },
+          { label: 'Auth Card', icon: 'ri-shield-user-line', link: '/page/auth-card' },
         ],
       },
       {

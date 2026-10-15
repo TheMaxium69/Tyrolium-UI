@@ -1,0 +1,20 @@
+/* La carte occupe 100dvh : dans l'aperçu, on la cale sur la hauteur du cadre. */
+.auth-demo {
+  display: block;
+  width: 100%;
+}
+
+.auth-demo ::ng-deep .login-page {
+  min-height: 560px;
+  border-radius: 12px;
+}
+
+.auth-demo--small ::ng-deep .login-page {
+  min-height: 420px;
+}
+
+.auth-demo-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(340px, 100%), 1fr));
+  gap: 1.5rem;
+}
