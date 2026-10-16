@@ -14,7 +14,7 @@
     "start:gamenium": "ng serve gamenium-website --port 9008 --host 0.0.0.0",
     "start:uptime": "ng serve tyrolium-uptime --port 9009 --host 0.0.0.0",
     "start:tyroserv": "ng serve tyroserv-website --port 9010 --host 0.0.0.0",
-    "start:dashboarad": "ng serve useritium-dashboard --port 9011 --host 0.0.0.0",
+    "start:dashboard": "ng serve useritium-dashboard --port 9011 --host 0.0.0.0",
     "start:hub": "ng serve tyrolium-hub --port 9012 --host 0.0.0.0",
     "start:design": "ng serve tyrolium-design --port 9013 --host 0.0.0.0",
     "start:ip": "ng serve tyrolium-ip --port 9014 --host 0.0.0.0",
