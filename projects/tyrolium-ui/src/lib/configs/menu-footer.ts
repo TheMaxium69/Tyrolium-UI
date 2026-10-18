@@ -32,7 +32,7 @@ export const FooterServiceLink: ITyroUiFooterPage[] = [
     { label: 'Mon adresse IP',        labelEn: 'My IP address',     link: 'https://ip.tyrolium.fr' },
     { label: 'Speedtest',             labelEn: 'Speedtest',         link: 'https://speedtest.tyrolium.fr' },
     { label: 'Design System',         labelEn: 'Design System',     link: 'https://design.tyrolium.fr' },
-    { label: 'TyroDraw',              labelEn: 'TyroDraw',          link: 'https://draw.tyrolium.fr' },
+    // { label: 'TyroDraw',              labelEn: 'TyroDraw',          link: 'https://draw.tyrolium.fr' },
 ];
 
 export const FooterInternalLink: ITyroUiFooterPage[] = [
