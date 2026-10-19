@@ -1,7 +1,7 @@
 <footer id="footer" class="footer">
     <div class="footer-head">
         <div class="footer-head-logo">
-            <img [src]="logo" alt="logo">
+            <img loading="lazy" decoding="async" [src]="logo" alt="logo">
             <div class="footer-nav-info">
 
                 @if (project == "Tyrolium") {
@@ -93,7 +93,7 @@
                 @for (projectPage of footerProjectPage; track projectPage.label) {
                     <li class="footer-project-item">
                         <a [href]="projectPage.link" TyroUiGloss>{{ projectPage.label }}</a>
-                        <img class="footer-project-icon" [src]="projectPage.icon" [alt]="projectPage.label">
+                        <img loading="lazy" decoding="async" class="footer-project-icon" [src]="projectPage.icon" [alt]="projectPage.label">
                     </li>
                 }
             </ul>

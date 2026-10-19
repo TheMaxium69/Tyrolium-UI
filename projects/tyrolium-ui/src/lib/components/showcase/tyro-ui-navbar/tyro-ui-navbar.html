@@ -125,11 +125,11 @@
       </button>
       <div class="nav-lang-dropdown" [class.open]="langDropdownOpen">
         <button class="nav-lang-option" [class.selected]="langService.lang() === 'fr'" (click)="setLang('fr')">
-          <img src="/assets/tyrolium-ui/flags/france.png" alt="FR" class="nav-lang-flag-img"> Français
+          <img loading="lazy" decoding="async" src="/assets/tyrolium-ui/flags/france.png" alt="FR" class="nav-lang-flag-img"> Français
           @if (langService.lang() === 'fr') { <i class="ri-check-line nav-lang-check"></i> }
         </button>
         <button class="nav-lang-option" [class.selected]="langService.lang() === 'en'" (click)="setLang('en')">
-          <img src="/assets/tyrolium-ui/flags/royaume-uni.png" alt="EN" class="nav-lang-flag-img"> English
+          <img loading="lazy" decoding="async" src="/assets/tyrolium-ui/flags/royaume-uni.png" alt="EN" class="nav-lang-flag-img"> English
           @if (langService.lang() === 'en') { <i class="ri-check-line nav-lang-check"></i> }
         </button>
       </div>
@@ -197,7 +197,7 @@
           <div class="user-menu-profile">
             <div class="user-menu-avatar-ring">
               @if (effectiveUser()[0].urlPictureProfil || effectiveUser()[0].avatar || effectiveUser()[0].photo) {
-                <img [src]="effectiveUser()[0].urlPictureProfil || effectiveUser()[0].avatar || effectiveUser()[0].photo" [alt]="effectiveUser()[0].name" class="user-menu-avatar-img">
+                <img loading="lazy" decoding="async" [src]="effectiveUser()[0].urlPictureProfil || effectiveUser()[0].avatar || effectiveUser()[0].photo" [alt]="effectiveUser()[0].name" class="user-menu-avatar-img">
               } @else {
                 <div class="user-menu-avatar-initials">{{ getUserInitials() }}</div>
               }
@@ -248,7 +248,7 @@
         <div class="app-menu-pinned">
           <a [href]="navbarMenuPinned.link" class="app-menu-row pinned" TyroUiGloss>
             <div class="app-row-icon">
-              <img [src]="navbarMenuPinned.image" [alt]="navbarMenuPinned.name" class="app-row-img">
+              <img loading="lazy" decoding="async" [src]="navbarMenuPinned.image" [alt]="navbarMenuPinned.name" class="app-row-img">
             </div>
             <div class="app-row-info">
               <span class="app-row-name">{{ navbarMenuPinned.name }}</span>
@@ -278,7 +278,7 @@
                           @if (item.icon) {
                             <i [class]="item.icon + ' app-row-icon-ri'"></i>
                           } @else {
-                            <img [src]="item.image" [alt]="item.name" class="app-row-img">
+                            <img loading="lazy" decoding="async" [src]="item.image" [alt]="item.name" class="app-row-img">
                           }
                         </div>
                         <div class="app-row-info">
@@ -301,7 +301,7 @@
                                     @if (item.icon) {
                                         <i [class]="item.icon + ' app-row-icon-ri'"></i>
                                     } @else {
-                                        <img [src]="item.image" [alt]="item.name" class="app-row-img">
+                                        <img loading="lazy" decoding="async" [src]="item.image" [alt]="item.name" class="app-row-img">
                                     }
                                 </div>
                                 <div class="app-row-info">
@@ -323,7 +323,7 @@
                                     @if (item.icon) {
                                         <i [class]="item.icon + ' app-row-icon-ri'"></i>
                                     } @else {
-                                        <img [src]="item.image" [alt]="item.name" class="app-row-img">
+                                        <img loading="lazy" decoding="async" [src]="item.image" [alt]="item.name" class="app-row-img">
                                     }
                                 </div>
                                 <div class="app-row-info">
@@ -347,7 +347,7 @@
                         @if (item.icon) {
                           <i [class]="item.icon + ' app-row-icon-ri'"></i>
                         } @else {
-                          <img [src]="item.image" [alt]="item.name" class="app-row-img">
+                          <img loading="lazy" decoding="async" [src]="item.image" [alt]="item.name" class="app-row-img">
                         }
                       </div>
                       <div class="app-row-info">
@@ -383,16 +383,16 @@
       <!-- Langue mobile -->
       <div class="nav-lang-wrapper">
         <button class="nav-mobile-action" (click)="toggleLangDropdown()">
-          <img [src]="langService.lang() === 'fr' ? '/assets/tyrolium-ui/flags/france.png' : '/assets/tyrolium-ui/flags/royaume-uni.png'" [alt]="langService.lang() === 'fr' ? 'FR' : 'EN'" class="nav-lang-flag-img">
+          <img loading="lazy" decoding="async" [src]="langService.lang() === 'fr' ? '/assets/tyrolium-ui/flags/france.png' : '/assets/tyrolium-ui/flags/royaume-uni.png'" [alt]="langService.lang() === 'fr' ? 'FR' : 'EN'" class="nav-lang-flag-img">
           <span>{{ langService.lang() === 'fr' ? 'Français' : 'English' }}</span>
         </button>
         <div class="nav-lang-dropdown" [class.open]="langDropdownOpen">
           <button class="nav-lang-option" [class.selected]="langService.lang() === 'fr'" (click)="setLang('fr')">
-            <img src="/assets/tyrolium-ui/flags/france.png" alt="FR" class="nav-lang-flag-img"> Français
+            <img loading="lazy" decoding="async" src="/assets/tyrolium-ui/flags/france.png" alt="FR" class="nav-lang-flag-img"> Français
             @if (langService.lang() === 'fr') { <i class="ri-check-line nav-lang-check"></i> }
           </button>
           <button class="nav-lang-option" [class.selected]="langService.lang() === 'en'" (click)="setLang('en')">
-            <img src="/assets/tyrolium-ui/flags/royaume-uni.png" alt="EN" class="nav-lang-flag-img"> English
+            <img loading="lazy" decoding="async" src="/assets/tyrolium-ui/flags/royaume-uni.png" alt="EN" class="nav-lang-flag-img"> English
             @if (langService.lang() === 'en') { <i class="ri-check-line nav-lang-check"></i> }
           </button>
         </div>

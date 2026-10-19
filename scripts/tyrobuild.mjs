@@ -5,7 +5,7 @@
 //   npm run tyrobuild -- all               → tous les sites de la liste SITES
 //   npm run tyrobuild -- ip --apache       → force le serveur (sinon : valeur "server" de SITES)
 //
-// Pour chaque site : build de production (pré-rendu), vidage du dossier prod (sauf .git & co),
+// Pour chaque site : build de production (pré-rendu), optimisation des images (+ WebP), vidage du dossier prod (sauf .git & co),
 // copie du build (avec sitemap.xml + robots.txt), puis génération de la config serveur (.htaccess pour Apache, .tyro-nginx.conf pour Nginx).
 // Ne fait ni commit ni push.
 
@@ -14,6 +14,8 @@ import { cpSync, existsSync, readdirSync, readFileSync, rmSync, writeFileSync } 
 import { join, dirname } from 'path';
 import { fileURLToPath } from 'url';
 import { generateSitemap } from './generate-sitemap.mjs';
+import { formatSize, optimizeImages } from './optimize-images.mjs';
+import { generateImages } from './generate-images.mjs';
 
 const ROOT   = join(dirname(fileURLToPath(import.meta.url)), '..');
 const CONFIG = join(ROOT, 'scripts/server-config');
@@ -34,11 +36,14 @@ const KEEP = ['.git', '.gitignore', '.github', '.tyrogit', '.DS_Store'];
  * robots   : chemins toujours ajoutés en Disallow dans robots.txt (dossiers propres au serveur)
  * gone     : anciennes URLs supprimées définitivement → 410 (elles et tout ce qu'elles contiennent)
  * preserve : fichiers du dossier prod à conserver tels quels (config propre au serveur), jamais écrasés par le build
+ * imagesKeep: dossiers d'images laissés intacts par l'optimisation (téléchargements en pleine qualité)
+ * hsts     : false pour ne pas envoyer HSTS (ex. page par défaut d'un serveur, certificat pas garanti)
  * prebuild : commande à lancer avant le build
  */
 const SITES = [
   { key: 'tyrolium',    project: 'tyrolium-website',    prod: 'Tyrolium-WebSite',        domain: 'tyrolium.fr',           server: 'apache', excludes: ['Download', 'generate-pp', 'Contenu/Image'],
-    robots: ['/Contenu/', '/Download/', '/generate-pp/'], gone: ['ServerMC', 'Panel'] },
+    robots: ['/Contenu/', '/Download/', '/generate-pp/'], gone: ['ServerMC', 'Panel'],
+    imagesKeep: ['assets/wallpapers/'] },
   { key: 'solidserv',   project: 'solidserv-website',   prod: 'SolidServ-WebSite',       domain: 'solidserv.fr',          server: 'apache' },
   { key: 'tyrociel',    project: 'tyrociel-website',    prod: 'TyroCiel-WebSite',        domain: 'tyrociel.fr',           server: 'apache' },
   { key: 'influnias',   project: 'influnias-website',   prod: 'Influnias-WebSite',       domain: 'influnias.fr',          server: 'apache' },
@@ -52,7 +57,7 @@ const SITES = [
   { key: 'ip',          project: 'tyrolium-ip',         prod: 'Tyrolium-Ip',             domain: 'ip.tyrolium.fr',        server: 'nginx',  php: true, phpFront: '/api',
     robots: ['/api/'] },
   { key: 'uptime',      project: 'tyrolium-uptime',     prod: 'Tyrolium-ServerTemplate', domain: '_',                     server: ['apache', 'nginx'],
-    nginxRoot: '/var/www/<serveur>.tyrolium.fr', preserve: ['assets/server.json'] },
+    nginxRoot: '/var/www/<serveur>.tyrolium.fr', preserve: ['assets/server.json'], hsts: false },
   { key: 'speedtest',   project: 'tyrolium-speedtest',  prod: 'Tyrolium-SpeedTest',      domain: 'speedtest.tyrolium.fr', server: 'nginx',  php: true, uploads: true },
 ];
 
@@ -79,13 +84,17 @@ const targets = names.includes('all') ? SITES : names.map(name => {
 
 /* ─── Build ─────────────────────────────────────────────────────────── */
 
+// Images générées dans les sources (images de partage 1200×630, miniatures des fonds d'écran) : seulement si manquantes ou périmées
+const generated = await generateImages();
+if (generated) console.log(`✔ ${generated} image(s) générée(s) dans les sources (images de partage / miniatures) : à commiter`);
+
 const results = [];
 for (const site of targets) {
   const servers = forced ? [forced] : [].concat(site.server);
   const server  = servers.join(' + ');
   console.log(`\n━━━ ${site.key} → prod/${site.prod} (${server}) ━━━`);
   try {
-    deploy(site, servers);
+    await deploy(site, servers);
     results.push({ site, server, ok: true });
   } catch (err) {
     console.error(`✘ ${site.key} : ${err.message}`);
@@ -100,7 +109,7 @@ for (const { site, server, ok } of results) {
 console.log('\nRien n\'a été commité ni poussé : vérifier puis commit/push depuis chaque dossier prod/.');
 if (results.some(r => !r.ok)) process.exit(1);
 
-function deploy(site, servers) {
+async function deploy(site, servers) {
   const dist = join(ROOT, 'dist', site.project, 'browser');
   const prod = join(ROOT, 'prod', site.prod);
   if (!existsSync(prod)) throw new Error(`dossier prod/${site.prod} introuvable`);
@@ -108,6 +117,10 @@ function deploy(site, servers) {
   if (site.prebuild) run(site.prebuild);
   run(`npx ng build ${site.project} --configuration production`);
   if (!existsSync(join(dist, 'index.html'))) throw new Error(`build introuvable dans ${dist}`);
+
+  // Images du build : redimensionnées, recompressées + version WebP (les sources ne sont jamais modifiées)
+  const images = await optimizeImages(site.project, site.imagesKeep);
+  console.log(`✔ ${images.files} images : ${formatSize(images.before)} → ${formatSize(images.after)} (WebP : ${formatSize(images.webp)})`);
 
   // Pré-rendu si Angular a produit la coquille SPA à côté des pages générées
   const prerendered = existsSync(join(dist, 'index.csr.html'));
@@ -199,11 +212,39 @@ ErrorDocument 410 /index.html`;
 
   return fill('apache.htaccess', {
     SITE: site.domain === '_' ? site.prod : site.domain, MODE: prerendered ? 'pré-rendu' : 'SPA',
-    GONE: gone, EXCLUDES: excludes, ROUTING: routing, ERRORS: errors,
+    GONE: gone, EXCLUDES: excludes, ROUTING: routing, ERRORS: errors, HSTS: apacheHsts(site),
   });
 }
 
+/**
+ * HSTS : « pendant 7 jours, ne viens ici qu'en HTTPS ». Durée volontairement courte :
+ * si un certificat tombe, le blocage dure au plus une semaine. Sans includeSubDomains ni preload.
+ * Ignoré par les navigateurs s'il arrive en HTTP : on peut l'envoyer sans condition.
+ * (fonction plutôt que constante : appelée pendant la boucle de build, avant la fin du fichier)
+ */
+function hsts() {
+  return 'max-age=604800';
+}
+
+function apacheHsts(site) {
+  return site.hsts === false
+    ? '  # (pas de HSTS sur ce site : option hsts: false dans scripts/tyrobuild.mjs)'
+    : `  # HTTPS obligatoire pendant 7 jours (durée courte : si le certificat tombe, blocage d'une semaine au plus)\n  Header always set Strict-Transport-Security "${hsts()}"`;
+}
+
 /* ─── Config Nginx ──────────────────────────────────────────────────── */
+
+/** En-têtes de sécurité Nginx ("always" : aussi sur les pages d'erreur), indentés pour leur bloc */
+function nginxSecurity(site, indent) {
+  return [
+    `add_header X-Frame-Options "SAMEORIGIN" always;`,
+    `add_header Content-Security-Policy "frame-ancestors 'self'" always;`,
+    `add_header X-Content-Type-Options "nosniff" always;`,
+    `add_header Referrer-Policy "strict-origin-when-cross-origin" always;`,
+    `add_header Permissions-Policy "camera=(), microphone=(), geolocation=()" always;`,
+    ...(site.hsts === false ? [] : [`add_header Strict-Transport-Security "${hsts()}" always;`]),
+  ].map(line => indent + line).join('\n');
+}
 
 function nginxConfig(site, prerendered) {
   const excludes = (site.excludes ?? []).map(dir => `\
@@ -225,6 +266,7 @@ location / {
     try_files $uri $uri/index.html $uri/ =404;
     # Pages HTML : même nom à chaque déploiement → toujours revalidées
     add_header Cache-Control "no-cache";
+${nginxSecurity(site, '    ')}
 }
 
 # Vrai code HTTP + page d'erreur pré-rendue (Angular affiche la même page au démarrage)
@@ -242,6 +284,7 @@ location / {
     try_files $uri $uri/ /index.html;
     # Pages HTML : même nom à chaque déploiement → toujours revalidées
     add_header Cache-Control "no-cache";
+${nginxSecurity(site, '    ')}
 }
 `);
 
@@ -277,6 +320,7 @@ client_max_body_size 100M;
     INDEX: site.php ? 'index.html index.php' : 'index.html',
     PHP_HINT: site.php ? ', PHP' : '', PHP_REMOVE: site.php ? `, "location ~ \\.php$"${site.phpFront ? `, "location ${site.phpFront}"` : ''}` : '',
     EXTRA: extra, ROUTING: routing, PHP: php,
+    SECURITY: nginxSecurity(site, ''), SECURITY_IN: nginxSecurity(site, '    '),
   });
 }
 
