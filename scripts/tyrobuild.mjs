@@ -25,12 +25,13 @@ const KEEP = ['.git', '.gitignore', '.github', '.tyrogit', '.DS_Store'];
  * key      : nom court utilisé en ligne de commande
  * project  : projet angular.json
  * prod     : dossier dans prod/
- * domain   : nom de domaine (server_name Nginx)
+ * domain   : nom de domaine (server_name Nginx) ; '_' = page par défaut du serveur, sans domaine fixe
  * server   : 'apache' | 'nginx' par défaut
  * excludes : dossiers laissés en comportement natif (présents uniquement sur le serveur)
  * php      : le site contient / appelle des scripts PHP sur le même domaine
  * robots   : chemins toujours ajoutés en Disallow dans robots.txt (dossiers propres au serveur)
  * gone     : anciennes URLs supprimées définitivement → 410 (elles et tout ce qu'elles contiennent)
+ * preserve : fichiers du dossier prod à conserver tels quels (config propre au serveur), jamais écrasés par le build
  * prebuild : commande à lancer avant le build
  */
 const SITES = [
@@ -48,6 +49,8 @@ const SITES = [
   { key: 'design',      project: 'tyrolium-design',     prod: 'Tyrolium-Design',         domain: 'design.tyrolium.fr',    server: 'apache' },
   { key: 'ip',          project: 'tyrolium-ip',         prod: 'Tyrolium-Ip',             domain: 'ip.tyrolium.fr',        server: 'nginx',  php: true,
     robots: ['/api/'] },
+  { key: 'uptime',      project: 'tyrolium-uptime',     prod: 'Tyrolium-ServerTemplate', domain: '_',                     server: 'apache',
+    preserve: ['assets/server.json'] },
   { key: 'speedtest',   project: 'tyrolium-speedtest',  prod: 'Tyrolium-SpeedTest',      domain: 'speedtest.tyrolium.fr', server: 'nginx',  php: true, uploads: true },
 ];
 
@@ -111,11 +114,18 @@ function deploy(site, server) {
     console.log(sitemap ? `✔ sitemap.xml (${pages} pages, ${changed} modifiée(s) depuis le dernier déploiement) + robots.txt` : '✔ robots.txt (site en noindex, pas de sitemap)');
   }
 
+  // Fichiers propres au serveur : mis de côté avant le vidage, remis après la copie
+  const preserved = (site.preserve ?? [])
+    .filter(file => existsSync(join(prod, file)))
+    .map(file => ({ file, content: readFileSync(join(prod, file)) }));
+
   // Vider le dossier prod (ancien build + ancienne config serveur), sauf git & co
   for (const entry of readdirSync(prod)) {
     if (!KEEP.includes(entry)) rmSync(join(prod, entry), { recursive: true, force: true });
   }
   cpSync(dist, prod, { recursive: true });
+  for (const { file, content } of preserved) writeFileSync(join(prod, file), content);
+  if (preserved.length) console.log(`✔ conservé(s) : ${preserved.map(p => p.file).join(', ')}`);
   // Coquille SPA vide d'Angular : jamais servie par notre config (les URLs inconnues répondent 404),
   // et accessible en direct elle serait une page vide indexable → on ne la déploie pas
   if (prerendered) rmSync(join(prod, 'index.csr.html'), { force: true });
@@ -180,7 +190,7 @@ ErrorDocument 403 /index.html
 ErrorDocument 410 /index.html`;
 
   return fill('apache.htaccess', {
-    SITE: site.domain, MODE: prerendered ? 'pré-rendu' : 'SPA',
+    SITE: site.domain === '_' ? site.prod : site.domain, MODE: prerendered ? 'pré-rendu' : 'SPA',
     GONE: gone, EXCLUDES: excludes, ROUTING: routing, ERRORS: errors,
   });
 }
@@ -237,7 +247,7 @@ function nginxConfig(site, prerendered) {
 ` : '';
 
   return fill('nginx.conf', {
-    SITE: site.domain, MODE: prerendered ? 'pré-rendu' : 'SPA',
+    SITE: site.domain === '_' ? site.prod : site.domain, MODE: prerendered ? 'pré-rendu' : 'SPA',
     DOMAIN: site.domain, PROD_DIR: site.prod,
     INDEX: site.php ? 'index.html index.php' : 'index.html',
     EXTRA: extra, ROUTING: routing, PHP: php,

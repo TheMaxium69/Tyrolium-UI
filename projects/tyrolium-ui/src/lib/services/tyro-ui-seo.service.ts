@@ -116,21 +116,24 @@ export class TyroUiSeoService {
     this.setMeta('name', 'robots', seo.noindex ? 'noindex, nofollow' : d.robots);
     this.setMeta('property', 'og:title', title);
     this.setMeta('property', 'og:description', description);
-    this.setMeta('property', 'og:url', url);
+    // Site sans domaine fixe (pas de canonical dans l'index.html) : pas d'URL absolue à publier
+    if (d.origin) this.setMeta('property', 'og:url', url);
     this.setMeta('property', 'og:image', image);
     this.setMeta('name', 'twitter:title', title);
     this.setMeta('name', 'twitter:description', description);
     this.setMeta('name', 'twitter:image', image);
-    this.setCanonical(url);
+    if (d.origin) this.setCanonical(url);
 
     if (this.localized) {
       const frPath = tyroUiLocalizeUrl(this.path(), 'fr');
       this.document.documentElement.setAttribute('lang', tyroUiUrlLang(this.path()));
       this.setMeta('property', 'og:locale', lang === 'en' ? 'en_US' : 'fr_FR');
       this.setMeta('property', 'og:locale:alternate', lang === 'en' ? 'fr_FR' : 'en_US');
-      this.setAlternate('fr', urlFor(frPath));
-      this.setAlternate('en', urlFor(tyroUiLocalizeUrl(frPath, 'en')));
-      this.setAlternate('x-default', urlFor(frPath));
+      if (d.origin) {
+        this.setAlternate('fr', urlFor(frPath));
+        this.setAlternate('en', urlFor(tyroUiLocalizeUrl(frPath, 'en')));
+        this.setAlternate('x-default', urlFor(frPath));
+      }
     }
   }
 
