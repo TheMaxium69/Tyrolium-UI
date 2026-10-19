@@ -29,7 +29,8 @@ const KEEP = ['.git', '.gitignore', '.github', '.tyrogit', '.DS_Store'];
  * server   : 'apache' | 'nginx', ou ['apache', 'nginx'] pour un site déployé sur les deux
  * nginxRoot: dossier du site sur le serveur Nginx (défaut : /var/www/<domain>)
  * excludes : dossiers laissés en comportement natif (présents uniquement sur le serveur)
- * php      : le site contient / appelle des scripts PHP sur le même domaine
+ * php      : le site contient / appelle des scripts PHP sur le même domaine (Nginx : phpSocket, défaut php8.3-fpm)
+ * phpFront : Nginx, dossier dont les URLs passent toutes par son index.php (ex. '/api')
  * robots   : chemins toujours ajoutés en Disallow dans robots.txt (dossiers propres au serveur)
  * gone     : anciennes URLs supprimées définitivement → 410 (elles et tout ce qu'elles contiennent)
  * preserve : fichiers du dossier prod à conserver tels quels (config propre au serveur), jamais écrasés par le build
@@ -48,10 +49,10 @@ const SITES = [
   { key: 'gamenium',    project: 'gamenium-website',    prod: 'Gamenium-WebSite',        domain: 'gamenium.fr',           server: 'apache' },
   { key: 'tyroserv',    project: 'tyroserv-website',    prod: 'TyroServ-WebSite',        domain: 'tyroserv.fr',           server: 'apache' },
   { key: 'design',      project: 'tyrolium-design',     prod: 'Tyrolium-Design',         domain: 'design.tyrolium.fr',    server: 'apache' },
-  { key: 'ip',          project: 'tyrolium-ip',         prod: 'Tyrolium-Ip',             domain: 'ip.tyrolium.fr',        server: 'nginx',  php: true,
+  { key: 'ip',          project: 'tyrolium-ip',         prod: 'Tyrolium-Ip',             domain: 'ip.tyrolium.fr',        server: 'nginx',  php: true, phpFront: '/api',
     robots: ['/api/'] },
   { key: 'uptime',      project: 'tyrolium-uptime',     prod: 'Tyrolium-ServerTemplate', domain: '_',                     server: ['apache', 'nginx'],
-    nginxRoot: '/var/www/html', preserve: ['assets/server.json'] },
+    nginxRoot: '/var/www/<serveur>.tyrolium.fr', preserve: ['assets/server.json'] },
   { key: 'speedtest',   project: 'tyrolium-speedtest',  prod: 'Tyrolium-SpeedTest',      domain: 'speedtest.tyrolium.fr', server: 'nginx',  php: true, uploads: true },
 ];
 
@@ -206,62 +207,71 @@ ErrorDocument 410 /index.html`;
 
 function nginxConfig(site, prerendered) {
   const excludes = (site.excludes ?? []).map(dir => `\
-    # Dossier exclu : comportement natif
-    location ^~ /${dir}/ { try_files $uri $uri/ =404; }
+# Dossier exclu : comportement natif
+location ^~ /${dir}/ { try_files $uri $uri/ =404; }
+
 `).join('');
 
   const gone = site.gone?.length ? `\
-    # Pages supprimées définitivement : 410 dit aux moteurs de les retirer pour de bon
-    location ~ ^/(${site.gone.join('|')})(/|$) { return 410; }
+# Pages supprimées définitivement : 410 dit aux moteurs de les retirer pour de bon
+location ~ ^/(${site.gone.join('|')})(/|$) { return 410; }
 
 ` : '';
 
   const routing = gone + excludes + (prerendered ? `\
-    # Fichier existant, sinon page pré-rendue (/equipe → /equipe/index.html),
-    # sinon dossier (403 s'il n'a pas de page), sinon 404
-    location / {
-        try_files $uri $uri/index.html $uri/ =404;
-    }
+# Fichier existant, sinon page pré-rendue (/equipe → /equipe/index.html),
+# sinon dossier (403 s'il n'a pas de page), sinon 404
+location / {
+    try_files $uri $uri/index.html $uri/ =404;
+}
 
-    # Vrai code HTTP + page d'erreur pré-rendue (Angular affiche la même page au démarrage)
-    error_page 404 /404/index.html;
-    error_page 403 /403/index.html;
-    error_page 410 /410/index.html;
+# Vrai code HTTP + page d'erreur pré-rendue (Angular affiche la même page au démarrage)
+error_page 404 /404/index.html;
+error_page 403 /403/index.html;
+error_page 410 /410/index.html;
 
-    # /404, /403 et /410 (et /en/…) visités directement : ils renvoient aussi leur vrai code
-    location ~ ^(/en)?/404/?$ { return 404; }
-    location ~ ^(/en)?/403/?$ { return 403; }
-    location ~ ^(/en)?/410/?$ { return 410; }
+# /404, /403 et /410 (et /en/…) visités directement : ils renvoient aussi leur vrai code
+location ~ ^(/en)?/404/?$ { return 404; }
+location ~ ^(/en)?/403/?$ { return 403; }
+location ~ ^(/en)?/410/?$ { return 410; }
 ` : `\
-    # Fichier ou dossier existant, sinon point d'entrée d'Angular
-    location / {
-        try_files $uri $uri/ /index.html;
-    }
+# Fichier ou dossier existant, sinon point d'entrée d'Angular
+location / {
+    try_files $uri $uri/ /index.html;
+}
 `);
 
-  const php = site.php ? `    # PHP (scripts du site / API sur le même domaine)
-    # → adapter le socket à la version de PHP-FPM installée (ls /run/php/)
-    location ~ \\.php$ {
-        try_files $uri =404;
-        include fastcgi_params;
-        fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
-        fastcgi_pass unix:/run/php/php-fpm.sock;
-    }
+  const front = site.phpFront ? `
+# API PHP : toute URL sous ${site.phpFront}/ qui n'est pas un fichier passe par ${site.phpFront}/index.php
+location ${site.phpFront}/ {
+    try_files $uri $uri/ ${site.phpFront}/index.php?$query_string;
+}
 ` : '';
 
-  const extra = site.uploads ? `    # Test d'upload du speedtest : gros envois de données
-    client_max_body_size 100M;
+  const php = site.php ? `${front}
+# PHP (scripts du site / API sur le même domaine)
+# → socket de PHP-FPM : option phpSocket de tyrobuild (ls /run/php/)
+location ~ \\.php$ {
+    include snippets/fastcgi-php.conf;
+    fastcgi_pass ${site.phpSocket ?? 'unix:/run/php/php8.3-fpm.sock'};
+}
+` : '';
+
+  const extra = site.uploads ? `
+# Test d'upload du speedtest : gros envois de données
+client_max_body_size 100M;
 ` : '';
 
   return fill('nginx.conf', {
     SITE: site.domain === '_' ? site.prod : site.domain, MODE: prerendered ? 'pré-rendu' : 'SPA',
-    DOMAIN: site.domain, CONF_NAME: site.domain === '_' ? 'default' : site.domain,
+    // Page par défaut : un même build sur chaque serveur, sous le nom du serveur (ex. vps222.tyrolium.fr)
+    DOMAIN: site.domain === '_' ? '<serveur>.tyrolium.fr _' : site.domain,
+    CONF_NAME: site.domain === '_' ? '<serveur>.tyrolium.fr' : site.domain,
     ROOT: site.nginxRoot ?? `/var/www/${site.domain}`,
     // Page par défaut du serveur (sans domaine fixe) : répond à toute requête qui ne correspond à aucun autre site
-    LISTEN: site.domain === '_'
-      ? '    listen 80 default_server;\n    listen [::]:80 default_server;\n'
-      : '    listen 80;\n    listen [::]:80;\n',
+    LISTEN_HINT: site.domain === '_' ? '\n#       listen 443 ssl default_server;   (page par défaut : toute requête sans site dédié)' : '',
     INDEX: site.php ? 'index.html index.php' : 'index.html',
+    PHP_HINT: site.php ? ', PHP' : '', PHP_REMOVE: site.php ? `, "location ~ \\.php$"${site.phpFront ? `, "location ${site.phpFront}"` : ''}` : '',
     EXTRA: extra, ROUTING: routing, PHP: php,
   });
 }
