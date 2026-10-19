@@ -1,4 +1,5 @@
-import { Injectable, signal, computed, inject } from '@angular/core';
+import { Injectable, signal, computed, inject, PLATFORM_ID } from '@angular/core';
+import { isPlatformBrowser } from '@angular/common';
 import { TyroSsoService } from './tyro-ui-sso.service';
 
 export type ThemeMode = 'auto' | 'light' | 'dark';
@@ -9,8 +10,9 @@ const KEY = 'tyrolium-theme';
 @Injectable({ providedIn: 'root' })
 export class TyroUiThemeService {
   private readonly sso = inject(TyroSsoService);
+  private readonly isBrowser = isPlatformBrowser(inject(PLATFORM_ID));
 
-  private readonly _systemDark = signal(window.matchMedia('(prefers-color-scheme: dark)').matches);
+  private readonly _systemDark = signal(this.isBrowser && window.matchMedia('(prefers-color-scheme: dark)').matches);
 
   readonly mode = signal<ThemeMode>('auto');
 
@@ -24,6 +26,9 @@ export class TyroUiThemeService {
   readonly darkThemeEnabled = signal<boolean>(true);
 
   constructor() {
+    // Pré-rendu serveur : le thème est appliqué côté navigateur
+    if (!this.isBrowser) return;
+
     window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
       this._systemDark.set(e.matches);
       this.applyDom(false);

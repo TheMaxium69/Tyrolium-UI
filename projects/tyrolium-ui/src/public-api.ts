@@ -39,6 +39,7 @@ export * from './lib/components/modal/tyro-ui-confirm-modal/tyro-ui-confirm.serv
 /* Components — page */
 export * from './lib/components/page/tyro-ui-not-found/tyro-ui-not-found';
 export * from './lib/components/page/tyro-ui-forbidden/tyro-ui-forbidden';
+export * from './lib/components/page/tyro-ui-gone/tyro-ui-gone';
 export * from './lib/components/page/tyro-ui-auth-card/tyro-ui-auth-card';
 export * from './lib/components/page/tyro-ui-login/tyro-ui-login';
 
@@ -64,12 +65,15 @@ export * from './lib/interface/ityro-ui-dash-nav-item';
 
 /* Configs */
 export * from './lib/configs/menu-navbar';
+export * from './lib/configs/error-routes';
+export * from './lib/configs/localized-routes';
 
 /* Services */
 export * from './lib/services/tyro-ui-sso.service';
 export * from './lib/services/tyro-ui-theme.service';
 export * from './lib/services/tyro-ui-lang.service';
 export * from './lib/services/tyro-ui-auth.service';
+export * from './lib/services/tyro-ui-seo.service';
 
 /* Directives */
 export * from './lib/directive/tyro-ui-gloss';

@@ -75,7 +75,9 @@
                   "maximumError": "40kB"
                 }
               ],
-              "outputHashing": "all"
+              "outputHashing": "all",
+              "server": "projects/tyrolium-website/src/main.server.ts",
+              "outputMode": "static"
             },
             "development": {
               "optimization": false,
@@ -144,7 +146,9 @@
                   "maximumError": "32kB"
                 }
               ],
-              "outputHashing": "all"
+              "outputHashing": "all",
+              "server": "projects/solidserv-website/src/main.server.ts",
+              "outputMode": "static"
             },
             "development": {
               "optimization": false,
@@ -282,7 +286,9 @@
                   "maximumError": "32kB"
                 }
               ],
-              "outputHashing": "all"
+              "outputHashing": "all",
+              "server": "projects/tyrociel-website/src/main.server.ts",
+              "outputMode": "static"
             },
             "development": {
               "optimization": false,
@@ -351,7 +357,9 @@
                   "maximumError": "32kB"
                 }
               ],
-              "outputHashing": "all"
+              "outputHashing": "all",
+              "server": "projects/influnias-website/src/main.server.ts",
+              "outputMode": "static"
             },
             "development": {
               "optimization": false,
@@ -420,7 +428,9 @@
                   "maximumError": "32kB"
                 }
               ],
-              "outputHashing": "all"
+              "outputHashing": "all",
+              "server": "projects/nexiumiacrm-website/src/main.server.ts",
+              "outputMode": "static"
             },
             "development": {
               "optimization": false,
@@ -489,7 +499,9 @@
                   "maximumError": "32kB"
                 }
               ],
-              "outputHashing": "all"
+              "outputHashing": "all",
+              "server": "projects/useritium-website/src/main.server.ts",
+              "outputMode": "static"
             },
             "development": {
               "optimization": false,
@@ -563,7 +575,9 @@
                   "maximumError": "32kB"
                 }
               ],
-              "outputHashing": "all"
+              "outputHashing": "all",
+              "server": "projects/vturias-website/src/main.server.ts",
+              "outputMode": "static"
             },
             "development": {
               "optimization": false,
@@ -633,7 +647,9 @@
                   "maximumError": "32kB"
                 }
               ],
-              "outputHashing": "all"
+              "outputHashing": "all",
+              "server": "projects/gamenium-website/src/main.server.ts",
+              "outputMode": "static"
             },
             "development": {
               "optimization": false,
@@ -773,7 +789,9 @@
                   "maximumError": "32kB"
                 }
               ],
-              "outputHashing": "all"
+              "outputHashing": "all",
+              "server": "projects/tyrolium-speedtest/src/main.server.ts",
+              "outputMode": "static"
             },
             "development": {
               "optimization": false,
@@ -843,7 +861,9 @@
                   "maximumError": "32kB"
                 }
               ],
-              "outputHashing": "all"
+              "outputHashing": "all",
+              "server": "projects/tyrolium-ip/src/main.server.ts",
+              "outputMode": "static"
             },
             "development": {
               "optimization": false,
@@ -913,7 +933,9 @@
                   "maximumError": "32kB"
                 }
               ],
-              "outputHashing": "all"
+              "outputHashing": "all",
+              "server": "projects/tyroserv-website/src/main.server.ts",
+              "outputMode": "static"
             },
             "development": {
               "optimization": false,
@@ -982,7 +1004,9 @@
                   "maximumError": "32kB"
                 }
               ],
-              "outputHashing": "all"
+              "outputHashing": "all",
+              "server": "projects/tyrolium-design/src/main.server.ts",
+              "outputMode": "static"
             },
             "development": {
               "optimization": false,
@@ -996,8 +1020,12 @@
         "serve": {
           "builder": "@angular/build:dev-server",
           "configurations": {
-            "production": { "buildTarget": "tyrolium-design:build:production" },
-            "development": { "buildTarget": "tyrolium-design:build:development" }
+            "production": {
+              "buildTarget": "tyrolium-design:build:production"
+            },
+            "development": {
+              "buildTarget": "tyrolium-design:build:development"
+            }
           },
           "defaultConfiguration": "development"
         },

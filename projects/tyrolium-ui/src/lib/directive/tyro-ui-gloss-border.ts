@@ -1,4 +1,5 @@
-import { Directive, ElementRef, HostListener, Input, OnInit } from '@angular/core';
+import { Directive, ElementRef, HostListener, Input, OnInit, inject } from '@angular/core';
+import { DOCUMENT } from '@angular/common';
 
 @Directive({
   selector: '[TyroUiGlossBorder]',
@@ -9,6 +10,7 @@ export class TyroUiGlossBorder implements OnInit {
   @Input() glossSize = 80;
 
   private glossEl!: HTMLElement;
+  private readonly document = inject(DOCUMENT);
 
   constructor(private el: ElementRef) {}
 
@@ -16,7 +18,7 @@ export class TyroUiGlossBorder implements OnInit {
     const btn = this.el.nativeElement as HTMLElement;
     btn.style.position = 'relative';
 
-    this.glossEl = document.createElement('span');
+    this.glossEl = this.document.createElement('span');
     const bw = this.borderWidth + 'px';
 
     Object.assign(this.glossEl.style, {

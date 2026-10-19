@@ -1,0 +1,49 @@
+# ══════════════════════════════════════════════════════════════════
+# {{SITE}} — Apache ({{MODE}})
+# Généré par scripts/tyrobuild.mjs : ne pas modifier dans prod/,
+# modifier scripts/server-config/apache.htaccess puis relancer tyrobuild.
+# ══════════════════════════════════════════════════════════════════
+
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+
+  # ==========================================
+  # 1. FORCER LE HTTPS (Optimisé OVH)
+  # ==========================================
+  # Vérifie si le HTTPS est désactivé ou si le reverse proxy OVH n'est pas en HTTPS
+  RewriteCond %{HTTPS} off
+  RewriteCond %{HTTP:X-Forwarded-Proto} !https
+  RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+  # ==========================================
+  # 2. FICHIERS CACHÉS (.git, .gitignore…)
+  # ==========================================
+  # Le dossier déployé est un dépôt git : on ne sert jamais un fichier ou dossier caché
+  RewriteRule (^|/)\.(?!well-known/) - [R=404,L]
+
+  # ==========================================
+  # 3. PAGES SUPPRIMÉES DÉFINITIVEMENT (410 Gone)
+  # ==========================================
+  # Anciennes URLs encore référencées : 410 dit aux moteurs de les retirer pour de bon
+  # (liste "gone" dans scripts/tyrobuild.mjs)
+{{GONE}}
+
+  # ==========================================
+  # 4. EXCLUSION DE DOSSIERS SPÉCIFIQUES
+  # ==========================================
+  # Dossiers laissés en comportement natif Apache (liste dans scripts/tyrobuild.mjs)
+{{EXCLUDES}}
+
+  # ==========================================
+  # 5. ROUTAGE ANGULAR
+  # ==========================================
+{{ROUTING}}
+</IfModule>
+
+# ==========================================
+# 6. SÉCURITÉ ET PAGES D'ERREUR
+# ==========================================
+# Désactiver le listing des répertoires (un dossier sans page répond 403)
+Options -Indexes
+
+{{ERRORS}}

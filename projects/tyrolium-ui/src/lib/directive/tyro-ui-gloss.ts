@@ -1,4 +1,5 @@
-import { Directive, ElementRef, HostListener, Input, OnInit } from '@angular/core';
+import { Directive, ElementRef, HostListener, Input, OnInit, inject } from '@angular/core';
+import { DOCUMENT } from '@angular/common';
 
 @Directive({
   selector: '[TyroUiGloss]',
@@ -8,6 +9,7 @@ export class TyroUiGloss implements OnInit {
   @Input() glossSize = 80;
 
   private glossEl!: HTMLElement;
+  private readonly document = inject(DOCUMENT);
 
   constructor(private el: ElementRef) {}
 
@@ -16,7 +18,7 @@ export class TyroUiGloss implements OnInit {
     btn.style.position = 'relative';
     btn.style.overflow = 'hidden';
 
-    this.glossEl = document.createElement('span');
+    this.glossEl = this.document.createElement('span');
 
     Object.assign(this.glossEl.style, {
       pointerEvents: 'none',

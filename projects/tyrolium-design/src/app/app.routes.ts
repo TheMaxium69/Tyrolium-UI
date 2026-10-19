@@ -1,5 +1,5 @@
 import { Routes } from '@angular/router';
-import { TyroUiForbidden, TyroUiNotFound } from 'tyrolium-ui';
+import { TyroUiSeo, tyroUiErrorRoutes, tyroUiLocalizedRoutes } from 'tyrolium-ui';
 
 import { Layout }              from './layout/layout';
 import { PublicLayout }        from './public-layout/public-layout';
@@ -39,53 +39,78 @@ import { AuthModalPage }       from './pages/modal/auth-modal/auth-modal-page';
 
 import { NotFoundPage }        from './pages/page/not-found/not-found-page';
 import { ForbiddenPage }       from './pages/page/forbidden/forbidden-page';
+import { GonePage }            from './pages/page/gone/gone-page';
 import { LoginPage }           from './pages/page/login/login-page';
 import { AuthCardPage }        from './pages/page/auth-card/auth-card-page';
 import { EasterEggPage }       from './pages/other/easter-egg/easter-egg-page';
 
-export const routes: Routes = [
+/* ─── SEO ─────────────────────────────────────────────────────────────── */
+
+const SEO_HOME: TyroUiSeo = {
+  fullTitle:   { fr: 'Tyrolium - Design System', en: 'Tyrolium - Design System' },
+  description: { fr: 'Tyrolium Design : la documentation du Design System Tyrolium UI. Typographie, couleurs et composants Angular partagés par tous les sites du groupe.', en: 'Tyrolium Design: the documentation of the Tyrolium UI Design System. Typography, colours and Angular components shared by every site of the group.' },
+};
+
+const SEO_TYPO: TyroUiSeo = {
+  title:       { fr: 'Typographie & Couleurs', en: 'Typography & Colours' },
+  description: { fr: 'Polices, échelle typographique et palette de couleurs du Design System Tyrolium.', en: 'Fonts, type scale and colour palette of the Tyrolium Design System.' },
+};
+
+/** SEO d'une page de documentation de composant */
+const doc = (name: string): { seo: TyroUiSeo } => ({
+  seo: {
+    title:       { fr: name, en: name },
+    description: {
+      fr: `Documentation du composant ${name} de Tyrolium UI : aperçu, propriétés et exemples d'utilisation.`,
+      en: `Documentation for the Tyrolium UI ${name} component: preview, properties and usage examples.`,
+    },
+  },
+});
+
+export const routes: Routes = tyroUiLocalizedRoutes([
   {
     path: '',
     component: Layout,
     children: [
-      { path: '',                            component: Home },
-      { path: 'typo',                        component: TypoPage },
+      { path: '',                            component: Home, data: { seo: SEO_HOME } },
+      { path: 'typo',                        component: TypoPage, data: { seo: SEO_TYPO } },
 
-      { path: 'showcase/navbar',             component: NavbarPage },
-      { path: 'showcase/subnav',             component: SubnavPage },
-      { path: 'showcase/footer',             component: FooterPage },
-      { path: 'showcase/cta',               component: CtaPage },
+      { path: 'showcase/navbar',             component: NavbarPage, data: doc('Navbar') },
+      { path: 'showcase/subnav',             component: SubnavPage, data: doc('Subnav') },
+      { path: 'showcase/footer',             component: FooterPage, data: doc('Footer') },
+      { path: 'showcase/cta',               component: CtaPage, data: doc('CTA') },
 
-      { path: 'dashboard/dashboard-layout', component: DashboardLayoutPage },
-      { path: 'dashboard/button-bento',     component: ButtonBentoPage },
-      { path: 'dashboard/page-header',      component: PageHeaderPage },
-      { path: 'dashboard/bento-card',       component: BentoCardPage },
-      { path: 'dashboard/data-table',       component: DataTablePage },
-      { path: 'dashboard/chip',             component: ChipPage },
-      { path: 'dashboard/button',           component: ButtonPage },
-      { path: 'dashboard/button-group',     component: ButtonGroupPage },
-      { path: 'dashboard/switch',           component: SwitchPage },
-      { path: 'dashboard/select',           component: SelectPage },
-      { path: 'dashboard/text-field',       component: TextFieldPage },
-      { path: 'dashboard/alert',            component: AlertPage },
-      { path: 'dashboard/checkbox',         component: CheckboxPage },
-      { path: 'dashboard/progress-bar',     component: ProgressBarPage },
-      { path: 'dashboard/snackbar',         component: SnackbarPage },
-      { path: 'dashboard/skeleton',         component: SkeletonPage },
-      { path: 'dashboard/avatar',           component: AvatarPage },
-      { path: 'dashboard/avatar-group',     component: AvatarGroupPage },
-      { path: 'dashboard/user-chip',        component: UserChipPage },
-      { path: 'dashboard/bar-chart',        component: BarChartPage },
+      { path: 'dashboard/dashboard-layout', component: DashboardLayoutPage, data: doc('Dashboard Layout') },
+      { path: 'dashboard/button-bento',     component: ButtonBentoPage, data: doc('Button Bento') },
+      { path: 'dashboard/page-header',      component: PageHeaderPage, data: doc('Page Header') },
+      { path: 'dashboard/bento-card',       component: BentoCardPage, data: doc('Bento Card') },
+      { path: 'dashboard/data-table',       component: DataTablePage, data: doc('Data Table') },
+      { path: 'dashboard/chip',             component: ChipPage, data: doc('Chip') },
+      { path: 'dashboard/button',           component: ButtonPage, data: doc('Button') },
+      { path: 'dashboard/button-group',     component: ButtonGroupPage, data: doc('Button Group') },
+      { path: 'dashboard/switch',           component: SwitchPage, data: doc('Switch') },
+      { path: 'dashboard/select',           component: SelectPage, data: doc('Select') },
+      { path: 'dashboard/text-field',       component: TextFieldPage, data: doc('Text Field') },
+      { path: 'dashboard/alert',            component: AlertPage, data: doc('Alert') },
+      { path: 'dashboard/checkbox',         component: CheckboxPage, data: doc('Checkbox') },
+      { path: 'dashboard/progress-bar',     component: ProgressBarPage, data: doc('Progress Bar') },
+      { path: 'dashboard/snackbar',         component: SnackbarPage, data: doc('Snackbar') },
+      { path: 'dashboard/skeleton',         component: SkeletonPage, data: doc('Skeleton') },
+      { path: 'dashboard/avatar',           component: AvatarPage, data: doc('Avatar') },
+      { path: 'dashboard/avatar-group',     component: AvatarGroupPage, data: doc('Avatar Group') },
+      { path: 'dashboard/user-chip',        component: UserChipPage, data: doc('User Chip') },
+      { path: 'dashboard/bar-chart',        component: BarChartPage, data: doc('Bar Chart') },
 
-      { path: 'modal/auth-modal',           component: AuthModalPage },
-      { path: 'modal/confirm-modal',        component: ConfirmModalPage },
+      { path: 'modal/auth-modal',           component: AuthModalPage, data: doc('Auth Modal') },
+      { path: 'modal/confirm-modal',        component: ConfirmModalPage, data: doc('Confirm Modal') },
 
-      { path: 'page/not-found',             component: NotFoundPage },
-      { path: 'page/forbidden',             component: ForbiddenPage },
-      { path: 'page/login',                 component: LoginPage },
-      { path: 'page/auth-card',             component: AuthCardPage },
+      { path: 'page/not-found',             component: NotFoundPage, data: doc('Not Found') },
+      { path: 'page/forbidden',             component: ForbiddenPage, data: doc('Forbidden') },
+      { path: 'page/gone',                  component: GonePage, data: doc('Gone') },
+      { path: 'page/login',                 component: LoginPage, data: doc('Login') },
+      { path: 'page/auth-card',             component: AuthCardPage, data: doc('Auth Card') },
 
-      { path: 'other/easter-egg',           component: EasterEggPage },
+      { path: 'other/easter-egg',           component: EasterEggPage, data: doc('Easter Egg') },
     ],
   },
 
@@ -93,8 +118,7 @@ export const routes: Routes = [
     path: '',
     component: PublicLayout,
     children: [
-      { path: '403', component: TyroUiForbidden },
-      { path: '**',  component: TyroUiNotFound  },
+      ...tyroUiErrorRoutes(),
     ],
   },
-];
+]);

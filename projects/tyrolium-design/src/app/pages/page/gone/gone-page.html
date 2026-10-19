@@ -1,0 +1,54 @@
+<tyro-ui-page-header label="&lt;tyro-ui-gone&gt;" title="Gone">
+  @if (lang() === 'en') {
+    410 error page - shown for URLs that have been permanently removed.
+    Unlike a 404, the 410 code tells search engines to drop the page from their index for good.
+  } @else {
+    Page d'erreur 410 - affichée pour les URLs supprimées définitivement.
+    Contrairement à une 404, le code 410 indique aux moteurs de recherche de retirer la page de leur index pour de bon.
+  }
+</tyro-ui-page-header>
+
+<section id="gone-page">
+
+  <!-- ── Aperçu ────────────────────────────────────────────── -->
+  <h3 class="ds-title">{{ lang() === 'en' ? 'Preview' : 'Aperçu' }}</h3>
+  <app-ds-preview label='[homeLink]="/"' minHeight="360px">
+    <tyro-ui-gone homeLink="/"></tyro-ui-gone>
+  </app-ds-preview>
+
+  <hr class="ds-divider">
+
+  <!-- ── Inputs ────────────────────────────────────────────── -->
+  <tyro-ui-bento-card title="Inputs">
+    <tyro-ui-data-table [columns]="propCols" [data]="inputsData">
+
+      <ng-template tyroCol="prop" let-row>
+        <code class="ds-code">{{ $any(row).prop }}</code>
+      </ng-template>
+
+      <ng-template tyroCol="default" let-row>
+        <code class="ds-code">{{ $any(row).default }}</code>
+      </ng-template>
+
+      <ng-template tyroCol="description" let-row>
+        <span class="ds-desc" [innerHTML]="lang() === 'en' ? ($any(row).descriptionEn || $any(row).description) : $any(row).description"></span>
+      </ng-template>
+
+    </tyro-ui-data-table>
+  </tyro-ui-bento-card>
+
+  <!-- ── Usage ─────────────────────────────────────────────── -->
+  <tyro-ui-bento-card [title]="lang() === 'en' ? 'Usage - app.routes.ts' : 'Utilisation - app.routes.ts'">
+    <pre class="ds-pre">{{ routeCode }}</pre>
+  </tyro-ui-bento-card>
+
+  <tyro-ui-bento-card [title]="lang() === 'en' ? 'Usage - removed URLs (server)' : 'Utilisation - URLs supprimées (serveur)'">
+    <p class="ds-desc">
+      {{ lang() === 'en'
+        ? 'The server answers with the real 410 code and the pre-rendered /410 page; Angular then displays this component on the requested URL.'
+        : 'Le serveur répond avec le vrai code 410 et la page /410 pré-rendue ; Angular affiche ensuite ce composant sur l\'URL demandée.' }}
+    </p>
+    <pre class="ds-pre">{{ serverCode }}</pre>
+  </tyro-ui-bento-card>
+
+</section>

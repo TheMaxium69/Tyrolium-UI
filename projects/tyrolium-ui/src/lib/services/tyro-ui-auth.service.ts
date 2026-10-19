@@ -1,4 +1,5 @@
-import { Injectable, signal, inject, InjectionToken } from '@angular/core';
+import { Injectable, signal, inject, InjectionToken, PLATFORM_ID } from '@angular/core';
+import { isPlatformBrowser } from '@angular/common';
 import { ITyroUiUser } from '../interface/ityro-ui-user';
 import { TyroSsoService } from './tyro-ui-sso.service';
 import { TyroUiLangService } from './tyro-ui-lang.service';
@@ -22,6 +23,7 @@ export class TyroUiAuthService {
   private readonly apiUrl = inject(TYRO_AUTH_API);
   private readonly sso    = inject(TyroSsoService);
   private readonly lang   = inject(TyroUiLangService).lang;
+  private readonly isBrowser = isPlatformBrowser(inject(PLATFORM_ID));
 
   readonly user      = signal<ITyroUiUser | null>(null);
   readonly loading   = signal(false);
@@ -30,6 +32,9 @@ export class TyroUiAuthService {
   readonly modalTab  = signal<'login' | 'register'>('login');
 
   constructor() {
+    // Pré-rendu serveur : pas de session
+    if (!this.isBrowser) return;
+
     this.restoreSession();
     this.listenSso();
   }
@@ -105,6 +110,7 @@ export class TyroUiAuthService {
   }
 
   getToken(): string | null {
+    if (!this.isBrowser) return null;
     return localStorage.getItem(TOKEN_KEY);
   }
 

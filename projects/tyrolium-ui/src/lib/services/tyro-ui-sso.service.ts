@@ -1,4 +1,5 @@
-import { Injectable } from '@angular/core';
+import { Injectable, PLATFORM_ID, inject } from '@angular/core';
+import { isPlatformBrowser } from '@angular/common';
 
 const SSO_BASE = 'https://sso.tyrolium.fr';
 const UUID_KEY = '_tyro_uuid';
@@ -14,7 +15,10 @@ export class TyroSsoService {
   private last: Partial<Record<SsoKey, string | null>> = {};
   private initRetried = false;
 
-  constructor() { this.boot(); }
+  constructor() {
+    // Pré-rendu serveur : pas de SSO (ni window, ni localStorage)
+    if (isPlatformBrowser(inject(PLATFORM_ID))) this.boot();
+  }
 
   on(key: SsoKey, handler: Handler): void {
     const list = this.handlers.get(key) ?? [];

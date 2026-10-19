@@ -1,4 +1,5 @@
-import { Injectable, signal, inject } from '@angular/core';
+import { Injectable, signal, inject, PLATFORM_ID } from '@angular/core';
+import { isPlatformBrowser } from '@angular/common';
 import { TyroSsoService } from './tyro-ui-sso.service';
 
 export type TyroLang = 'fr' | 'en';
@@ -9,10 +10,14 @@ const KEY = 'tyrolium-lang';
 @Injectable({ providedIn: 'root' })
 export class TyroUiLangService {
   private readonly sso = inject(TyroSsoService);
+  private readonly isBrowser = isPlatformBrowser(inject(PLATFORM_ID));
 
   readonly lang = signal<TyroLang>('fr');
 
   constructor() {
+    // Pré-rendu serveur : on génère la version FR, la langue réelle est appliquée côté navigateur
+    if (!this.isBrowser) return;
+
     this.lang.set(this.loadLang());
     this.applyDom(false);
 
@@ -46,6 +51,18 @@ export class TyroUiLangService {
         this.applyDom(false);
       }
     });
+  }
+
+  /** Langue enregistrée par l'utilisateur (sélecteur, SSO) ; null si elle n'est que déduite du navigateur */
+  storedLang(): TyroLang | null {
+    if (!this.isBrowser) return null;
+    const local = localStorage.getItem(KEY) as TyroLang | null;
+    return local && LANGS.includes(local) ? local : null;
+  }
+
+  /** Langue imposée par l'URL (/en/…) : appliquée sans être enregistrée comme préférence */
+  useUrlLang(lang: TyroLang) {
+    this.lang.set(lang);
   }
 
   set(lang: TyroLang) {

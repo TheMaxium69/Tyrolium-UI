@@ -1,6 +1,7 @@
 import {
   Component, DestroyRef, ElementRef, EventEmitter, HostListener, Input, Output, ViewChild, inject, signal,
 } from '@angular/core';
+import { DOCUMENT } from '@angular/common';
 import { TyroUiAvatar, TyroUiAvatarSize } from '../tyro-ui-avatar/tyro-ui-avatar';
 import { TyroUiChip } from '../tyro-ui-chip/tyro-ui-chip';
 import { TyroUiSkeleton } from '../tyro-ui-skeleton/tyro-ui-skeleton';
@@ -53,7 +54,7 @@ export class TyroUiUserChip {
    */
   @ViewChild('bubble') set bubbleRef(ref: ElementRef<HTMLElement> | undefined) {
     this.bubbleEl = ref?.nativeElement;
-    if (this.bubbleEl) document.body.appendChild(this.bubbleEl);
+    if (this.bubbleEl) this.document.body.appendChild(this.bubbleEl);
   }
   private bubbleEl?: HTMLElement;
 
@@ -61,12 +62,14 @@ export class TyroUiUserChip {
   /** Position fixe : la bulle n'est pas coupée par un conteneur qui défile (tableaux…). */
   readonly position = signal({ top: 0, left: 0 });
 
+  private readonly document = inject(DOCUMENT);
+
   constructor() {
     // Capture : le défilement d'un conteneur interne ne remonte pas jusqu'à document.
     const onScroll = () => this.close();
-    document.addEventListener('scroll', onScroll, true);
+    this.document.addEventListener('scroll', onScroll, true);
     inject(DestroyRef).onDestroy(() => {
-      document.removeEventListener('scroll', onScroll, true);
+      this.document.removeEventListener('scroll', onScroll, true);
       this.bubbleEl?.remove();
     });
   }
