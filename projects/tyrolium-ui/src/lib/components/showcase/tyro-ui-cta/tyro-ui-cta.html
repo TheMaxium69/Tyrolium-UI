@@ -8,13 +8,13 @@
             </div>
             <div class="cta-card__actions">
                 @if (btnRouterLink == "") {
-                    <a target="_blank" [href]="btnLink" class="btn-white" [innerHTML]="btnIcon + ' ' + btn"></a>
+                    <a target="_blank" rel="noopener noreferrer" [href]="btnLink" class="btn-white" [innerHTML]="btnIcon + ' ' + btn"></a>
                 } @else {
                     <a [routerLink]="btnRouterLink" class="btn-white" [innerHTML]="btnIcon + ' ' + btn"></a>
                 }
 
                 @if (subRouterLink == "" && subAncreLink == "") {
-                    <a target="_blank" [href]="subLink" class="btn-transparent">
+                    <a target="_blank" rel="noopener noreferrer" [href]="subLink" class="btn-transparent">
                         {{ subbtn }} <i class="ri-arrow-right-line"></i>
                     </a>
                 } @else if (subLink == "" && subAncreLink == "") {

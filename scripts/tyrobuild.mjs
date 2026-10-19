@@ -223,6 +223,8 @@ location ~ ^/(${site.gone.join('|')})(/|$) { return 410; }
 # sinon dossier (403 s'il n'a pas de page), sinon 404
 location / {
     try_files $uri $uri/index.html $uri/ =404;
+    # Pages HTML : même nom à chaque déploiement → toujours revalidées
+    add_header Cache-Control "no-cache";
 }
 
 # Vrai code HTTP + page d'erreur pré-rendue (Angular affiche la même page au démarrage)
@@ -238,6 +240,8 @@ location ~ ^(/en)?/410/?$ { return 410; }
 # Fichier ou dossier existant, sinon point d'entrée d'Angular
 location / {
     try_files $uri $uri/ /index.html;
+    # Pages HTML : même nom à chaque déploiement → toujours revalidées
+    add_header Cache-Control "no-cache";
 }
 `);
 
