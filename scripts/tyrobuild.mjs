@@ -26,7 +26,8 @@ const KEEP = ['.git', '.gitignore', '.github', '.tyrogit', '.DS_Store'];
  * project  : projet angular.json
  * prod     : dossier dans prod/
  * domain   : nom de domaine (server_name Nginx) ; '_' = page par défaut du serveur, sans domaine fixe
- * server   : 'apache' | 'nginx' par défaut
+ * server   : 'apache' | 'nginx', ou ['apache', 'nginx'] pour un site déployé sur les deux
+ * nginxRoot: dossier du site sur le serveur Nginx (défaut : /var/www/<domain>)
  * excludes : dossiers laissés en comportement natif (présents uniquement sur le serveur)
  * php      : le site contient / appelle des scripts PHP sur le même domaine
  * robots   : chemins toujours ajoutés en Disallow dans robots.txt (dossiers propres au serveur)
@@ -49,8 +50,8 @@ const SITES = [
   { key: 'design',      project: 'tyrolium-design',     prod: 'Tyrolium-Design',         domain: 'design.tyrolium.fr',    server: 'apache' },
   { key: 'ip',          project: 'tyrolium-ip',         prod: 'Tyrolium-Ip',             domain: 'ip.tyrolium.fr',        server: 'nginx',  php: true,
     robots: ['/api/'] },
-  { key: 'uptime',      project: 'tyrolium-uptime',     prod: 'Tyrolium-ServerTemplate', domain: '_',                     server: 'apache',
-    preserve: ['assets/server.json'] },
+  { key: 'uptime',      project: 'tyrolium-uptime',     prod: 'Tyrolium-ServerTemplate', domain: '_',                     server: ['apache', 'nginx'],
+    nginxRoot: '/var/www/html', preserve: ['assets/server.json'] },
   { key: 'speedtest',   project: 'tyrolium-speedtest',  prod: 'Tyrolium-SpeedTest',      domain: 'speedtest.tyrolium.fr', server: 'nginx',  php: true, uploads: true },
 ];
 
@@ -79,10 +80,11 @@ const targets = names.includes('all') ? SITES : names.map(name => {
 
 const results = [];
 for (const site of targets) {
-  const server = forced ?? site.server;
+  const servers = forced ? [forced] : [].concat(site.server);
+  const server  = servers.join(' + ');
   console.log(`\n━━━ ${site.key} → prod/${site.prod} (${server}) ━━━`);
   try {
-    deploy(site, server);
+    deploy(site, servers);
     results.push({ site, server, ok: true });
   } catch (err) {
     console.error(`✘ ${site.key} : ${err.message}`);
@@ -97,7 +99,7 @@ for (const { site, server, ok } of results) {
 console.log('\nRien n\'a été commité ni poussé : vérifier puis commit/push depuis chaque dossier prod/.');
 if (results.some(r => !r.ok)) process.exit(1);
 
-function deploy(site, server) {
+function deploy(site, servers) {
   const dist = join(ROOT, 'dist', site.project, 'browser');
   const prod = join(ROOT, 'prod', site.prod);
   if (!existsSync(prod)) throw new Error(`dossier prod/${site.prod} introuvable`);
@@ -130,8 +132,13 @@ function deploy(site, server) {
   // et accessible en direct elle serait une page vide indexable → on ne la déploie pas
   if (prerendered) rmSync(join(prod, 'index.csr.html'), { force: true });
 
-  const file = server === 'nginx' ? '.tyro-nginx.conf' : '.htaccess';
-  writeFileSync(join(prod, file), server === 'nginx' ? nginxConfig(site, prerendered) : apacheConfig(site, prerendered));
+  // Une config par serveur (un site peut être déployé à la fois sur Apache et sur Nginx)
+  const files = servers.map(server => {
+    const file = server === 'nginx' ? '.tyro-nginx.conf' : '.htaccess';
+    writeFileSync(join(prod, file), server === 'nginx' ? nginxConfig(site, prerendered) : apacheConfig(site, prerendered));
+    return file;
+  });
+  const file = files.join(' + ');
 
   const changes = execSync('git status --short', { cwd: prod }).toString().trim().split('\n').filter(Boolean).length;
   console.log(`✔ ${prerendered ? 'pré-rendu' : 'SPA'} copié + ${file} généré (${changes} fichier(s) modifié(s) dans prod/${site.prod})`);
@@ -248,7 +255,12 @@ function nginxConfig(site, prerendered) {
 
   return fill('nginx.conf', {
     SITE: site.domain === '_' ? site.prod : site.domain, MODE: prerendered ? 'pré-rendu' : 'SPA',
-    DOMAIN: site.domain, PROD_DIR: site.prod,
+    DOMAIN: site.domain, CONF_NAME: site.domain === '_' ? 'default' : site.domain,
+    ROOT: site.nginxRoot ?? `/var/www/${site.domain}`,
+    // Page par défaut du serveur (sans domaine fixe) : répond à toute requête qui ne correspond à aucun autre site
+    LISTEN: site.domain === '_'
+      ? '    listen 80 default_server;\n    listen [::]:80 default_server;\n'
+      : '    listen 80;\n    listen [::]:80;\n',
     INDEX: site.php ? 'index.html index.php' : 'index.html',
     EXTRA: extra, ROUTING: routing, PHP: php,
   });
