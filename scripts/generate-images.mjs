@@ -38,6 +38,7 @@ const GLYPH_GRADIENT = [[0, '#3366ff'], [0.25, '#1900ff'], [1, '#ff0000']];
 /**
  * Logo (projects/tyrolium-ui/src/styles/assets/projects/<logo>.png) et thème de chaque site (défaut : tyrolium).
  * glyph : icône Remix Icon (node_modules/remixicon/icons/<glyph>.svg) pour les icônes d'application à la place du logo
+ * app   : nom de l'application installée (manifest) s'il diffère du nom du site (og:site_name)
  */
 const OG_SITES = {
   'tyrolium-website':    'Tyrolium',
@@ -50,8 +51,8 @@ const OG_SITES = {
   'gamenium-website':    'Gamenium',
   'tyroserv-website':    'TyroServ',
   'tyrolium-design':     'Tyrolium',
-  'tyrolium-ip':         { logo: 'Tyrolium', glyph: 'Map/map-pin-user-fill' },
-  'tyrolium-speedtest':  { logo: 'Tyrolium', glyph: 'Media/speed-up-fill' },
+  'tyrolium-ip':         { logo: 'Tyrolium', glyph: 'Map/map-pin-user-fill', app: 'Tyrolium IP' },
+  'tyrolium-speedtest':  { logo: 'Tyrolium', glyph: 'Media/speed-up-fill', app: 'Tyrolium SpeedTest' },
   'tyrolium-uptime':     { logo: 'Tyrolium', glyph: 'Device/server-fill' },
 };
 
@@ -122,7 +123,7 @@ export async function generateImages() {
 
   // ── Icônes d'application (fond blanc) + site.webmanifest ───────────
   for (const [project, entry] of Object.entries(OG_SITES)) {
-    const { logo: logoName, glyph } = typeof entry === 'string' ? { logo: entry } : entry;
+    const { logo: logoName, glyph, app } = typeof entry === 'string' ? { logo: entry } : entry;
     // Source de l'icône : le logo du site, ou l'icône Remix Icon des outils
     const source = glyph ? join(ROOT, 'node_modules/remixicon/icons', `${glyph}.svg`) : join(LOGOS, `${logoName}.png`);
     const image  = glyph ? await renderGlyph(source) : source;
@@ -151,7 +152,7 @@ export async function generateImages() {
     // Manifest : nom et description lus dans l'index.html du site (réécrit seulement s'il change)
     const index = readFileSync(join(ROOT, 'projects', project, 'src', 'index.html'), 'utf8');
     const meta  = (attr) => (index.match(new RegExp(`<meta ${attr} content="([^"]*)"`))?.[1] ?? '').replace(/&#39;/g, "'").replace(/&amp;/g, '&');
-    const name  = meta('property="og:site_name"') || logoName;
+    const name  = app || meta('property="og:site_name"') || logoName;
     const manifest = JSON.stringify({
       id: '/',
       name,
