@@ -14,6 +14,8 @@ import { cpSync, existsSync, readdirSync, readFileSync, rmSync, writeFileSync } 
 import { join, dirname } from 'path';
 import { fileURLToPath } from 'url';
 import { generateSitemap } from './generate-sitemap.mjs';
+import { generateTxt } from './generate-txt.mjs';
+import { generateRss } from './generate-rss.mjs';
 import { formatSize, optimizeImages } from './optimize-images.mjs';
 import { generateImages } from './generate-images.mjs';
 
@@ -38,12 +40,14 @@ const KEEP = ['.git', '.gitignore', '.github', '.tyrogit', '.DS_Store'];
  * preserve : fichiers du dossier prod à conserver tels quels (config propre au serveur), jamais écrasés par le build
  * imagesKeep: dossiers d'images laissés intacts par l'optimisation (téléchargements en pleine qualité)
  * hsts     : false pour ne pas envoyer HSTS (ex. page par défaut d'un serveur, certificat pas garanti)
+ * rss      : flux RSS d'une section (pages datées par publishedAt) : { section, file, title }
  * prebuild : commande à lancer avant le build
  */
 const SITES = [
   { key: 'tyrolium',    project: 'tyrolium-website',    prod: 'Tyrolium-WebSite',        domain: 'tyrolium.fr',           server: 'apache', excludes: ['Download', 'generate-pp', 'Contenu/Image'],
     robots: ['/Contenu/', '/Download/', '/generate-pp/'], gone: ['ServerMC', 'Panel'],
-    imagesKeep: ['assets/wallpapers/'] },
+    imagesKeep: ['assets/wallpapers/'],
+    rss: { section: '/etudes-de-cas/', file: 'rss.xml', title: 'Tyrolium - Études de cas' } },
   { key: 'solidserv',   project: 'solidserv-website',   prod: 'SolidServ-WebSite',       domain: 'solidserv.fr',          server: 'apache' },
   { key: 'tyrociel',    project: 'tyrociel-website',    prod: 'TyroCiel-WebSite',        domain: 'tyrociel.fr',           server: 'apache' },
   { key: 'influnias',   project: 'influnias-website',   prod: 'Influnias-WebSite',       domain: 'influnias.fr',          server: 'apache' },
@@ -128,6 +132,16 @@ async function deploy(site, servers) {
     // Comparé au déploiement précédent (encore dans prod/) pour dater chaque page (<lastmod>)
     const { pages, changed, sitemap } = generateSitemap(site.project, prod, site.robots);
     console.log(sitemap ? `✔ sitemap.xml (${pages} pages, ${changed} modifiée(s) depuis le dernier déploiement) + robots.txt` : '✔ robots.txt (site en noindex, pas de sitemap)');
+  }
+
+  // Présentation du site pour les IA (llms.txt), crédits (humans.txt), contact sécurité (.well-known/security.txt)
+  const txt = generateTxt(site.project);
+  console.log(txt.llms ? `✔ llms.txt (${txt.pages} pages) + humans.txt + .well-known/security.txt` : '✔ humans.txt + .well-known/security.txt (pas de llms.txt : site en noindex ou non pré-rendu)');
+
+  // Flux RSS d'une section (articles datés par publishedAt)
+  if (prerendered && site.rss) {
+    const feed = generateRss(site.project, site.rss);
+    console.log(`✔ ${feed.file} (flux RSS : ${feed.items} articles)`);
   }
 
   // Fichiers propres au serveur : mis de côté avant le vidage, remis après la copie

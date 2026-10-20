@@ -27,6 +27,8 @@ export interface TyroUiSeo {
   image?: string;
   /** Exclut la page des moteurs de recherche (pages d'erreur, pages techniques…) */
   noindex?: boolean;
+  /** Article daté (AAAA-MM-JJ) : og:type "article" + article:published_time (Google, LinkedIn, flux RSS) */
+  publishedAt?: string;
 }
 
 /** Statut HTTP porté par une page d'erreur pré-rendue (voir tyroUiErrorRoutes) */
@@ -122,6 +124,9 @@ export class TyroUiSeoService {
     this.setMeta('name', 'twitter:title', title);
     this.setMeta('name', 'twitter:description', description);
     this.setMeta('name', 'twitter:image', image);
+    this.setMeta('property', 'og:type', seo.publishedAt ? 'article' : 'website');
+    if (seo.publishedAt) this.setMeta('property', 'article:published_time', seo.publishedAt);
+    else this.meta.removeTag('property="article:published_time"');
     if (d.origin) this.setCanonical(url);
 
     if (this.localized) {
