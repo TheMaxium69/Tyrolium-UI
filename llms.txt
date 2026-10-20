@@ -1,0 +1,70 @@
+# Tyrolium Design
+
+> Tyrolium Design : la documentation du Design System Tyrolium UI. Typographie, couleurs et composants Angular partagés par tous les sites du groupe.
+
+Site officiel : https://design.tyrolium.fr (page d'accueil : Tyrolium - Design System).
+Chaque page existe en français et en anglais : version anglaise = même adresse précédée de /en (ex. https://design.tyrolium.fr/en).
+Fait partie du groupe Tyrolium, holding technologique française fondée en 2017 par Maxime Tournier. Contact : contact@tyrolium.fr.
+
+## Pages
+
+- [Typographie & Couleurs](https://design.tyrolium.fr/typo): Polices, échelle typographique et palette de couleurs du Design System Tyrolium.
+
+## Composants - Dashboard
+
+- [Alert](https://design.tyrolium.fr/dashboard/alert): Documentation du composant Alert de Tyrolium UI : aperçu, propriétés et exemples d'utilisation.
+- [Avatar](https://design.tyrolium.fr/dashboard/avatar): Documentation du composant Avatar de Tyrolium UI : aperçu, propriétés et exemples d'utilisation.
+- [Avatar Group](https://design.tyrolium.fr/dashboard/avatar-group): Documentation du composant Avatar Group de Tyrolium UI : aperçu, propriétés et exemples d'utilisation.
+- [Bar Chart](https://design.tyrolium.fr/dashboard/bar-chart): Documentation du composant Bar Chart de Tyrolium UI : aperçu, propriétés et exemples d'utilisation.
+- [Bento Card](https://design.tyrolium.fr/dashboard/bento-card): Documentation du composant Bento Card de Tyrolium UI : aperçu, propriétés et exemples d'utilisation.
+- [Button](https://design.tyrolium.fr/dashboard/button): Documentation du composant Button de Tyrolium UI : aperçu, propriétés et exemples d'utilisation.
+- [Button Bento](https://design.tyrolium.fr/dashboard/button-bento): Documentation du composant Button Bento de Tyrolium UI : aperçu, propriétés et exemples d'utilisation.
+- [Button Group](https://design.tyrolium.fr/dashboard/button-group): Documentation du composant Button Group de Tyrolium UI : aperçu, propriétés et exemples d'utilisation.
+- [Checkbox](https://design.tyrolium.fr/dashboard/checkbox): Documentation du composant Checkbox de Tyrolium UI : aperçu, propriétés et exemples d'utilisation.
+- [Chip](https://design.tyrolium.fr/dashboard/chip): Documentation du composant Chip de Tyrolium UI : aperçu, propriétés et exemples d'utilisation.
+- [Dashboard Layout](https://design.tyrolium.fr/dashboard/dashboard-layout): Documentation du composant Dashboard Layout de Tyrolium UI : aperçu, propriétés et exemples d'utilisation.
+- [Data Table](https://design.tyrolium.fr/dashboard/data-table): Documentation du composant Data Table de Tyrolium UI : aperçu, propriétés et exemples d'utilisation.
+- [Page Header](https://design.tyrolium.fr/dashboard/page-header): Documentation du composant Page Header de Tyrolium UI : aperçu, propriétés et exemples d'utilisation.
+- [Progress Bar](https://design.tyrolium.fr/dashboard/progress-bar): Documentation du composant Progress Bar de Tyrolium UI : aperçu, propriétés et exemples d'utilisation.
+- [Select](https://design.tyrolium.fr/dashboard/select): Documentation du composant Select de Tyrolium UI : aperçu, propriétés et exemples d'utilisation.
+- [Skeleton](https://design.tyrolium.fr/dashboard/skeleton): Documentation du composant Skeleton de Tyrolium UI : aperçu, propriétés et exemples d'utilisation.
+- [Snackbar](https://design.tyrolium.fr/dashboard/snackbar): Documentation du composant Snackbar de Tyrolium UI : aperçu, propriétés et exemples d'utilisation.
+- [Switch](https://design.tyrolium.fr/dashboard/switch): Documentation du composant Switch de Tyrolium UI : aperçu, propriétés et exemples d'utilisation.
+- [Text Field](https://design.tyrolium.fr/dashboard/text-field): Documentation du composant Text Field de Tyrolium UI : aperçu, propriétés et exemples d'utilisation.
+- [User Chip](https://design.tyrolium.fr/dashboard/user-chip): Documentation du composant User Chip de Tyrolium UI : aperçu, propriétés et exemples d'utilisation.
+
+## Composants - Modales
+
+- [Auth Modal](https://design.tyrolium.fr/modal/auth-modal): Documentation du composant Auth Modal de Tyrolium UI : aperçu, propriétés et exemples d'utilisation.
+- [Confirm Modal](https://design.tyrolium.fr/modal/confirm-modal): Documentation du composant Confirm Modal de Tyrolium UI : aperçu, propriétés et exemples d'utilisation.
+
+## Composants - Autres
+
+- [Easter Egg](https://design.tyrolium.fr/other/easter-egg): Documentation du composant Easter Egg de Tyrolium UI : aperçu, propriétés et exemples d'utilisation.
+
+## Composants - Pages
+
+- [Auth Card](https://design.tyrolium.fr/page/auth-card): Documentation du composant Auth Card de Tyrolium UI : aperçu, propriétés et exemples d'utilisation.
+- [Forbidden](https://design.tyrolium.fr/page/forbidden): Documentation du composant Forbidden de Tyrolium UI : aperçu, propriétés et exemples d'utilisation.
+- [Gone](https://design.tyrolium.fr/page/gone): Documentation du composant Gone de Tyrolium UI : aperçu, propriétés et exemples d'utilisation.
+- [Login](https://design.tyrolium.fr/page/login): Documentation du composant Login de Tyrolium UI : aperçu, propriétés et exemples d'utilisation.
+- [Not Found](https://design.tyrolium.fr/page/not-found): Documentation du composant Not Found de Tyrolium UI : aperçu, propriétés et exemples d'utilisation.
+
+## Composants - Vitrine
+
+- [CTA](https://design.tyrolium.fr/showcase/cta): Documentation du composant CTA de Tyrolium UI : aperçu, propriétés et exemples d'utilisation.
+- [Footer](https://design.tyrolium.fr/showcase/footer): Documentation du composant Footer de Tyrolium UI : aperçu, propriétés et exemples d'utilisation.
+- [Navbar](https://design.tyrolium.fr/showcase/navbar): Documentation du composant Navbar de Tyrolium UI : aperçu, propriétés et exemples d'utilisation.
+- [Subnav](https://design.tyrolium.fr/showcase/subnav): Documentation du composant Subnav de Tyrolium UI : aperçu, propriétés et exemples d'utilisation.
+
+## Groupe Tyrolium
+
+- [Gamenium](https://gamenium.fr): Gamenium est un SaaS gratuit pour les joueurs : consultez les actualités JV, gérez votre collection dans le moindre détail et explorez une base de référence complète de jeux vidéo. Une filiale de Tyrolium.
+- [Influnias](https://influnias.fr): Influnias est une agence de créateurs de contenu qui donne aux talents du numérique les moyens de grandir. De la stratégie éditoriale aux partenariats de marque, nous accompagnons chaque créateur avec expertise et passion. Une filiale de Tyrolium.
+- [NexiumiaCRM](https://nexiumiacrm.fr): NexiumiaCRM est un CRM professionnel. Gérez vos contacts, votre pipeline et votre activité avec un outil hébergé et conçu avec le savoir-faire français. Une filiale de Tyrolium.
+- [SolidServ](https://solidserv.fr): SolidServ est un hébergeur de serveurs situé en France pour les entreprises et les particuliers. VPS, hébergement web, serveurs dédiés et serveurs de jeu - une infrastructure fiable et haute performance pour tous vos projets. Une filiale de Tyrolium.
+- [TyroCiel](https://tyrociel.fr): TyroCiel est un studio de jeu-vidéo français. Nous créons des expériences gaming immersives et originales avec passion et liberté créative totale. Une filiale de Tyrolium.
+- [Tyrolium](https://tyrolium.fr): Tyrolium est une holding technologique française fondée en 2017. De la conception web à l'infrastructure cloud, nous accompagnons chaque projet avec expertise et passion. Nous développons notre propre écosystème : hébergement, gaming, CRM et réseaux sociaux. Fondé par Maxime Tournier.
+- [TyroServ](https://tyroserv.fr): TyroServ est un serveur Minecraft PVP Faction moddé. Découvrez le TyroMod, notre mod exclusif avec la fusion de minerais. Saison 3 en cours de développement. Une filiale de Tyrolium.
+- [Useritium](https://useritium.fr): Useritium est un compte universel français gratuit. Une seule identité pour accéder à tout l'écosystème, hébergé en France par SolidServ. Une filiale de Tyrolium.
+- [Vturias](https://vturias.fr): Vturias est une agence de VTubing française dédiée à la création, la promotion et le développement des talents virtuels. Une filiale de Tyrolium, née du partenariat avec la VTubeuse AuroreTVv.
