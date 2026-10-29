@@ -1173,6 +1173,76 @@
           "builder": "@angular/build:unit-test"
         }
       }
+    },
+    "tyrolium-maintenance": {
+      "projectType": "application",
+      "schematics": {},
+      "root": "projects/tyrolium-maintenance",
+      "sourceRoot": "projects/tyrolium-maintenance/src",
+      "prefix": "app",
+      "architect": {
+        "build": {
+          "builder": "@angular/build:application",
+          "options": {
+            "browser": "projects/tyrolium-maintenance/src/main.ts",
+            "tsConfig": "projects/tyrolium-maintenance/tsconfig.app.json",
+            "assets": [
+              {
+                "glob": "**/*",
+                "input": "projects/tyrolium-maintenance/public"
+              },
+              {
+                "glob": "**/*",
+                "input": "projects/tyrolium-ui/src/styles/assets",
+                "output": "assets/tyrolium-ui"
+              }
+            ],
+            "styles": [
+              "projects/tyrolium-ui/src/styles/tyrolium-ui.css",
+              "projects/tyrolium-maintenance/src/styles.css"
+            ]
+          },
+          "configurations": {
+            "production": {
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "1MB",
+                  "maximumError": "2MB"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "16kB",
+                  "maximumError": "32kB"
+                }
+              ],
+              "outputHashing": "all"
+            },
+            "development": {
+              "optimization": false,
+              "extractLicenses": false,
+              "sourceMap": true,
+              "budgets": []
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "serve": {
+          "builder": "@angular/build:dev-server",
+          "configurations": {
+            "production": {
+              "buildTarget": "tyrolium-maintenance:build:production"
+            },
+            "development": {
+              "buildTarget": "tyrolium-maintenance:build:development"
+            }
+          },
+          "defaultConfiguration": "development"
+        },
+        "test": {
+          "builder": "@angular/build:unit-test"
+        }
+      }
     }
   }
 }

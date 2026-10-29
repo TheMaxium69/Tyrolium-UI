@@ -15,6 +15,7 @@ projects/useritium-dashboard
 projects/tyrolium-hub
 projects/tyrolium-ip
 projects/tyrolium-speedtest
+projects/tyrolium-maintenance
 
 # Compiled output
 /dist

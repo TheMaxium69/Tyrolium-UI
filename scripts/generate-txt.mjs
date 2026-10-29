@@ -60,7 +60,7 @@ function siteInfo(project) {
  */
 const NOT_IN_GROUP = [
   'tyrolium-ui', 'tyrolium-hub', 'useritium-dashboard', 'template-website', 'tyrolium-uptime',
-  'tyrolium-ip', 'tyrolium-speedtest', 'tyrolium-design',
+  'tyrolium-ip', 'tyrolium-speedtest', 'tyrolium-design', 'tyrolium-maintenance',
 ];
 
 /** Les autres sites du groupe (filiales indexables, avec un domaine) */

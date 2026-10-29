@@ -54,6 +54,7 @@ const OG_SITES = {
   'tyrolium-ip':         { logo: 'Tyrolium', glyph: 'Map/map-pin-user-fill', app: 'Tyrolium IP' },
   'tyrolium-speedtest':  { logo: 'Tyrolium', glyph: 'Media/speed-up-fill', app: 'Tyrolium SpeedTest' },
   'tyrolium-uptime':     { logo: 'Tyrolium', glyph: 'Device/server-fill' },
+  'tyrolium-maintenance': { logo: 'Tyrolium', glyph: 'Design/tools-fill' },
 };
 
 const WALLPAPERS = {

@@ -62,6 +62,8 @@ const SITES = [
     robots: ['/api/'] },
   { key: 'uptime',      project: 'tyrolium-uptime',     prod: 'Tyrolium-ServerTemplate', domain: '_',                     server: ['apache', 'nginx'],
     nginxRoot: '/var/www/<serveur>.tyrolium.fr', preserve: ['assets/server.json'], hsts: false },
+  { key: 'maintenance', project: 'tyrolium-maintenance', prod: 'Tyrolium-Maintenance',   domain: '_',                     server: ['apache', 'nginx'],
+    nginxRoot: '/var/www/<serveur>.tyrolium.fr', hsts: false },
   { key: 'speedtest',   project: 'tyrolium-speedtest',  prod: 'Tyrolium-SpeedTest',      domain: 'speedtest.tyrolium.fr', server: 'nginx',  php: true, uploads: true },
 ];
 
